@@ -22,3 +22,9 @@ cd dotfiles
 
 Install script just **REMOVES** old files and places symlinks to files in this repo. Do NOT delete cloned repo after installing!
 
+## Requirements
+
+```
+yay -S bash git vim yay
+```
+
