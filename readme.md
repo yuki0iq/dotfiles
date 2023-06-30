@@ -15,7 +15,7 @@ Yuki Sireneva's config files in one place and with easy install!
 ## Usage 
 
 ```
-git clone --recursive https://github.com/yuki0iq/dotfiles
+git clone --recurse-submodules https://github.com/yuki0iq/dotfiles
 cd dotfiles
 ./install.sh
 ```
