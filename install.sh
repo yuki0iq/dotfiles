@@ -8,5 +8,5 @@ ln -s $PWD/.gitconfig ~/.gitconfig
 ln -s $PWD/bash-status-line/shell.sh ~/shell.sh
 
 python3 -m pip install cmake
-yay -S vim-lightline-git vim-youcompleteme-git
+yay -S vim-lightline-git vim-youcompleteme-git thefuck
 
