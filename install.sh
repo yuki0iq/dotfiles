@@ -10,6 +10,6 @@ ln -s $PWD/.bashrc ~/.bashrc
 ln -s $PWD/.gitconfig ~/.gitconfig
 ln -s $PWD/bash-status-line/shell.sh ~/shell.sh
 
-python3 -m pip install cmake
-yay -S vim-lightline-git vim-youcompleteme-git thefuck
+# add own mirror with precompiled AUR packages!
+sudo pacman -S vim-lightline-git vim-youcompleteme-git thefuck
 
