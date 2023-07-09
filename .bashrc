@@ -136,8 +136,7 @@ ex ()
   fi
 }
 
-
-. ~/shell.sh
-alias git-log='git log --oneline --decorate --graph --abbrev=0'
+source ~/shell.sh
+source /usr/share/git/completion/git-completion.bash
 
 eval "$(thefuck --alias)"

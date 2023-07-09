@@ -1,3 +1,50 @@
+[alias]
+    l = log --graph --abbrev=0 --decorate --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
+    ll = !git l --all
+    lr = !git ll $(git rev-list -g --all)
+    cl = clone
+    p = push
+    pp = push --force
+    t = pull
+    f = fetch --all
+    b = branch
+    br = branch -d
+    brr = branch -D
+    bm = branch -M
+    s = status
+    a = add
+    ai = add -i
+    ap = add -p
+    ua = reset HEAD
+    d = diff
+    dd = diff --staged
+    done = diff --stat
+    c = commit
+    cc = commit -m
+    ca = commit --amend
+    co = checkout
+    cob = checkout -b
+    cod = checkout --detach
+    rbb = reset --soft HEAD^
+    me = merge
+    mea = merge --abort
+    mec = merge --continue
+    mb = merge-base
+    su = submodule
+    sua = submodule add
+    sus = submodule status --recursive
+    sui = submodule init
+    suu = submodule update
+    re = rebase
+    rei = rebase -i
+    reo = rebase --onto
+    rea = rebase --abort
+    rec = rebase --continue
+    res = rebase --skip
+    reto = rebase --edit-todo
+    bla = blame
+[core]
+    editor = vim
 [init]
 	defaultBranch = main
 [user]
