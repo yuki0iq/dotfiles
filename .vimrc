@@ -17,3 +17,4 @@ set laststatus=2
 set noshowmode
 language en_US.utf8
 set smartindent
+inoremap # X#
