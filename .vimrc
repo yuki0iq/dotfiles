@@ -12,7 +12,7 @@ set hlsearch
 set incsearch
 set title
 set confirm
-set t_Co=256
+set t_Co=16
 set laststatus=2
 set noshowmode
 language en_US.utf8

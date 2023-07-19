@@ -5,7 +5,8 @@
     lr = !git ll $(git rev-list -g --all)
     cl = clone
     p = push
-    pp = push --force
+    pp = push --force-with-lease
+    ppp = push --force
     t = pull
     f = fetch --all
     b = branch
