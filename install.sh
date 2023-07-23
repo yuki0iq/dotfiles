@@ -1,14 +1,13 @@
 #!/bin/sh
 
-rm -r ~/.vimrc ~/.bashrc ~/.gitconfig ~/shell.sh
-
 git submodule init
 git submodule update
 
-ln -s $PWD/.vimrc ~/.vimrc
-ln -s $PWD/.bashrc ~/.bashrc
-ln -s $PWD/.gitconfig ~/.gitconfig
-ln -s $PWD/bash-status-line/shell.sh ~/shell.sh
+ln -sf $PWD/.vimrc ~/.vimrc
+ln -sf $PWD/.bashrc ~/.bashrc
+ln -sf $PWD/.gitconfig ~/.gitconfig
+ln -sf $PWD/bash-status-line/shell.sh ~/shell.sh
+ln -sf $PWD/.ssh/authorized_keys ~/.ssh/authorized_keys
 
 # add own mirror with precompiled AUR packages!
 sudo pacman -S vim-lightline-git vim-youcompleteme-git thefuck
