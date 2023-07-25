@@ -22,6 +22,7 @@ shopt -s expand_aliases
 shopt -s histappend
 
 if command -v statusline >/dev/null; then
+    export PS1_MODE=minimal
     eval "$(statusline --env)"
 else
     source ~/shell.sh
