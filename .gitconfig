@@ -45,6 +45,7 @@
     res = rebase --skip
     reto = rebase --edit-todo
     bla = blame
+    ff = merge --ff-only
 [core]
     editor = vim
 [init]
