@@ -15,7 +15,8 @@ if type -P dircolors >/dev/null ; then
     fi
 fi
 
-alias ls='ls --color=auto'
+alias ls='exa --color=auto'
+alias cat='bat'
 
 shopt -s checkwinsize
 shopt -s expand_aliases
