@@ -1,0 +1,112 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "srcery"
+
+[icons]
+#icons = "awesome4"
+icons = "none"
+
+[[block]]
+block = "external_ip"
+format = " Ext $ip "
+
+[[block]]
+block = "net"
+device = "wlp"
+format = " $icon $signal_strength $ssid $ip "
+inactive_format = ""
+missing_format = ""
+
+[[block]]
+block = "net"
+device = "enp"
+format = " $icon $ip "
+inactive_format = ""
+missing_format = ""
+
+#[[block]]
+#block = "speedtest"
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+alert_unit = "GB"
+format = " $icon $available "
+[[block.click]]
+button = "right"
+update = true
+
+[[block]]
+block = "cpu"
+format = " $icon $utilization "
+format_alt = " $icon $frequency{ $boost|} "
+
+[[block]]
+block = "temperature"
+good = 20
+idle = 40
+info = 65
+warning = 75
+format = " $icon $max "
+
+[[block]]
+block = "memory"
+format = " $icon $mem_total_used.eng(w:4) "
+format_alt = " $icon_swap $swap_used.eng(w:4) "
+
+[[block]]
+block = "sound"
+device_kind = "sink"
+show_volume_when_muted = true
+
+[[block]]
+block = "sound"
+device_kind = "source"
+
+[[block]]
+block = "battery"
+missing_format = ""
+format = " $icon $percentage {$time |} "
+full_format = " $icon FULL "
+full_threshold = 100
+info = 75
+good = 50
+warning = 25
+critical = 10
+empty_threshold = 3
+
+[[block]]
+block = "custom"
+command = '''echo "{\"text\": \"$USER at $HOSTNAME\", \"state\": \"Good\"}"'''
+interval = "once"
+json = true
+
+[[block]]
+block = "uptime"
+interval = 1000
+
+[[block]]
+block = "time"
+interval = 5
+format = " $timestamp.datetime(f:'%a %Y-%b-%d %H:%M') "
+
+[[block]]
+block = "menu"
+#text = " \uf011 "
+text = " [x]"
+[[block.items]]
+display = " ->   Sleep   <-"
+cmd = "systemctl suspend"
+[[block.items]]
+display = " -> Hibernate <-"
+cmd = "systemctl hibernate"
+[[block.items]]
+display = " -> Power Off <-"
+cmd = "poweroff"
+confirm_msg = "Are you sure you want to power off?"
+[[block.items]]
+display = " ->  Restart  <-"
+cmd = "reboot"
+confirm_msg = "Are you sure you want to reboot?"
