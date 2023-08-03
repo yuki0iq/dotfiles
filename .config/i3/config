@@ -9,13 +9,12 @@ font pango:Terminus 10px
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-exec --no-startup-id setxkbmap -option compose:menu,grp:caps_switch
+exec --no-startup-id "setxkbmap -option compose:menu,grp:caps_switch"
+exec --no-startup-id "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1"
 exec fcitx5
+
 exec nitrogen --restore
 exec xcompmgr
-
-#exec xfsettingsd
-#exec xfce4-power-manager
 
 set $refresh_i3status killall -SIGUSR1 i3status
 

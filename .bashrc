@@ -32,5 +32,3 @@ else
 fi
 
 source /usr/share/git/completion/git-completion.bash
-
-eval "$(thefuck --alias)"
