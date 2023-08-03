@@ -12,5 +12,5 @@ ln -sf $PWD/i3srs.toml ~/i3srs.toml
 ln -sf $PWD/.config/i3/config ~/.config/i3/config
 
 # add own mirror with precompiled AUR packages!
-sudo pacman -S vim-lightline-git vim-youcompleteme-git st i3-wm i3lock dmenu i3status-rust terminus-font ttf-cascadia-code-nerd bat exa ripgrep
+sudo pacman -S vim-lightline-git vim-youcompleteme-git st i3-wm i3lock dmenu i3status-rust xcompmgr nitrogen terminus-font ttf-cascadia-code-nerd bat exa ripgrep
 

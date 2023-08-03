@@ -14,8 +14,8 @@ exec fcitx5
 exec nitrogen --restore
 exec xcompmgr
 
-exec xfsettingsd
-exec xfce4-power-manager
+#exec xfsettingsd
+#exec xfce4-power-manager
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
