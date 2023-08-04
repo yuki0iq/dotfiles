@@ -13,7 +13,7 @@ format = " Ext $ip "
 
 [[block]]
 block = "net"
-device = "wlp"
+device = "wl"
 format = " $icon $signal_strength $ssid $ip "
 inactive_format = ""
 missing_format = ""
