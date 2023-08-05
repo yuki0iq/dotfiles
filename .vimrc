@@ -1,20 +1,10 @@
 set nocp
-set nu rnu
-color default
-syntax on
-set ruler
-set tabstop=4
-set shiftwidth=4
-set smarttab
-set expandtab
-set showmatch
-set hlsearch
-set incsearch
-set title
-set confirm
-set termguicolors
-set laststatus=2
-set noshowmode
 language en_US.utf8
-set smartindent
+syntax on
+color habamax
+set tgc title confirm
+set nosmd ls=2
+set nu rnu
+set ts=4 sw=4 et sta si cc=100
+set sm hls is
 inoremap # X#
