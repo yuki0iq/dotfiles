@@ -22,7 +22,10 @@ shopt -s checkwinsize
 shopt -s expand_aliases
 shopt -s histappend
 
-export PATH="${HOME}/.cargo/bin:${PATH}"
+if [[ -z CARGOENV ]]; then
+    export CARGOENV="${HOME}/.cargo/bin"
+    export PATH="${CARGOENV}:${PATH}"
+fi
 
 if command -v statusline >/dev/null; then
     export PS1_MODE=minimal
