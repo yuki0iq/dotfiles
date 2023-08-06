@@ -1,7 +1,7 @@
 set nocp
 language en_US.utf8
 syntax on
-color habamax
+color monokai
 set tgc title confirm
 set nosmd ls=2
 set nu rnu
