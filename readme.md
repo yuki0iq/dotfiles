@@ -19,10 +19,11 @@ Yuki Sireneva's config files in one place and with almost easy install!
 ## Usage 
 
 ```
-git clone --recurse-submodules https://github.com/yuki0iq/dotfiles
+git clone --recurse-submodules gitea@git.yukii.keenetic.pro:yuki0iq/dotfiles
 cd dotfiles
 # <install scripts>
 ./install-init.sh
+sudo ./install-network.sh
 ./install.sh
 ./install-vim.sh
 ./install-x11.sh
@@ -33,6 +34,8 @@ Install script just **REMOVES** old files and places symlinks to files in this r
 ### Install scripts:
 
 * `install-init` updates submodules
+
+* `install-network` for systemd-resolved and proper network handling
 
 * `install` for bashrc, git config and ssh keys
 
