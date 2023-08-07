@@ -6,7 +6,7 @@ Yuki Sireneva's config files in one place and with almost easy install!
 
 * `.bashrc` with some aliases
 
-* `bash-status-line` (bash version). To use rust version, use `cargo install statusline`
+* To use bash-status-line-2, `cargo install statusline`
 
 * `.vimrc` and vim plugins installed through AUR
 
