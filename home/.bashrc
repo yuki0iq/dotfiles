@@ -30,8 +30,6 @@ fi
 if command -v statusline >/dev/null; then
     export PS1_MODE=minimal
     eval "$(statusline --env)"
-else
-    source ~/shell.sh
 fi
 
 source /usr/share/git/completion/git-completion.bash

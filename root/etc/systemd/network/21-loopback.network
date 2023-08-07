@@ -1,0 +1,8 @@
+[Match]
+Type=loopback
+
+[DHCPv4]
+RouteMetric=12
+
+[DHCPv6]
+RouteMetric=12
