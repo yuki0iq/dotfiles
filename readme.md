@@ -25,7 +25,7 @@ cd dotfiles
 sudo ./install-base.sh
 sudo ./install-network.sh
 ./install-init.sh
-./install.sh
+./install-home.sh
 ./install-vim.sh
 ./install-x11.sh
 ```
@@ -36,11 +36,11 @@ Install script just **REMOVES** old files and places symlinks to files in this r
 
 * `install-base` for misc packages
 
-* `install-network` for systemd-resolved and proper network handling
+* `install-network` for systemd-resolved, proper network handling and ssh
 
 * `install-init` updates submodules
 
-* `install` for bashrc, git config and ssh keys
+* `install-home` for bashrc, git config and ssh keys
 
 * `install-vim` for vim configuration 
 
