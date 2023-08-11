@@ -8,3 +8,4 @@ set nu rnu
 set ts=4 sw=4 et sta si cc=100
 set sm hls is
 inoremap # X#
+set cot+=popup
