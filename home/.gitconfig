@@ -52,10 +52,11 @@
     editor = vim
     pager = delta
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [user]
-	name = Yuki
-	email = yuki.utk8g@gmail.com
+    name = Yuki
+    email = yuki.utk8g@gmail.com
+    signingkey = /home/yuki/.ssh/id_ed25519.pub
 [interactive]
     diffFilter = delta --color-only
 [delta]
@@ -65,3 +66,9 @@
     conflictstyle = diff3
 [diff]
     colorMoved = default
+[gpg]
+    format = ssh
+[commit]
+    gpgsign = true
+[tag]
+    gpgsign = true
