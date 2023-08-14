@@ -72,3 +72,5 @@
     gpgsign = true
 [tag]
     gpgsign = true
+[gpg "ssh"]
+    allowedsignersfile = /home/yuki/.config/git/allowed_signers
