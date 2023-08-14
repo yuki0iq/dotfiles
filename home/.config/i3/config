@@ -67,6 +67,7 @@ bindsym $mod+F6 exec --no-startup-id $darken   && $refresh_i3status
 
 
 # ====== APPEARANCE ======
+workspace_layout tabbed
 smart_borders on
 
 
@@ -75,6 +76,9 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
+bindsym Mod1+Tab       focus next
+bindsym Mod1+Shift+Tab focus prev
 
 bindsym $mod+Left  focus left
 bindsym $mod+Down  focus down
