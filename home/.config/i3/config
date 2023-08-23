@@ -3,25 +3,26 @@
 
 set $mod Mod4
 
-font pango:Terminus 10px
-#font pango:Cascadia Code PL 8
+#font pango:Terminus 10px
+font pango:Cascadia Code PL 10
 
 
 # ====== AUTORUNS ======
-exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xhost +local:root
+exec --no-startup-id "feh --no-fehbg --bg-fill ~/wallpaper.png"
 
 exec --no-startup-id "setxkbmap -option compose:menu,grp:caps_switch"
 exec --no-startup-id "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1"
-exec --no-startup-id "feh --no-fehbg --bg-fill ~/wallpaper.png"
+exec --no-startup-id "xinput set-prop 'Logitech USB Optical Mouse' 'libinput Left Handed Enabled' 1"
 exec --no-startup-id fcitx5
-exec --no-startup-id xcompmgr
 
+exec --no-startup-id xcompmgr
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # ====== QUICK COMMANDS ======
 set $refresh_i3status killall -SIGUSR1 i3status
 
-set $terminal st -f "Caskaydia Cove NerdFont"
+set $terminal kitty
 set $runner   dmenu_run
 
 set $sink_up   pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -32,12 +33,12 @@ set $src_mute  pactl set-source-mute @DEFAULT_SOURCE@ toggle
 set $brighten xbacklight -dec 4 -time 0 -steps 1
 set $darken   xbacklight -inc 4 -time 0 -steps 1
 
-set $ps_af maim -o                                     "/home/$USER/Pictures/$(date -Is).png"
-set $ps_sf maim -o --select                            "/home/$USER/Pictures/$(date -Is).png"
-set $ps_wf maim -o --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date -Is).png"
-set $ps_a  maim -o                                     | xclip -selection clipboard -t image/png
-set $ps_s  maim -o --select                            | xclip -selection clipboard -t image/png
-set $ps_w  maim -o --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+set $ps_af maim                               "/home/$USER/Pictures/$(date -Is).png"
+set $ps_sf maim -s                            "/home/$USER/Pictures/$(date -Is).png"
+set $ps_wf maim -i $(xdotool getactivewindow) "/home/$USER/Pictures/$(date -Is).png"
+set $ps_a  maim -s                            | xclip -selection clipboard -t image/png
+set $ps_s  maim -s                            | xclip -selection clipboard -t image/png
+set $ps_w  maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 
 
 # ====== HOTKEYS ======
@@ -69,6 +70,7 @@ bindsym $mod+F6 exec --no-startup-id $darken   && $refresh_i3status
 # ====== APPEARANCE ======
 workspace_layout tabbed
 smart_borders on
+focus_wrapping workspace
 
 
 # ====== MOVEMENT ======
@@ -179,7 +181,8 @@ bindsym $mod+r mode "resize"
 
 # ====== STATUSLINE ======
 bar {
-    font -*-*-medium-r-normal-*-8-*-*-*-*-*-iso10646-*
+    #font -*-*-medium-r-normal-*-8-*-*-*-*-*-iso10646-*
+    font pango:Cascadia Code PL 8
     position top
     status_command i3status-rs ~/i3srs.toml
 }

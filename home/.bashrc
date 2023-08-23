@@ -17,6 +17,7 @@ fi
 
 alias ls='exa --color=auto'
 alias cat='bat'
+alias eax='echo $?'
 
 shopt -s checkwinsize
 shopt -s expand_aliases

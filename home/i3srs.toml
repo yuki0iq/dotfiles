@@ -4,8 +4,8 @@ icons_format = "{icon}"
 theme = "srcery"
 
 [icons]
-#icons = "awesome4"
-icons = "none"
+icons = "awesome4"
+#icons = "none"
 
 [[block]]
 block = "external_ip"
@@ -94,19 +94,19 @@ format = " $timestamp.datetime(f:'%a %Y-%b-%d %H:%M') "
 
 [[block]]
 block = "menu"
-#text = " \uf011 "
-text = " [x]"
+text = " \uf011 "
+#text = " [x]"
 [[block.items]]
-display = " ->   Sleep   <-"
+display = " ->   Sleep   <- "
 cmd = "systemctl suspend"
 [[block.items]]
-display = " -> Hibernate <-"
+display = " -> Hibernate <- "
 cmd = "systemctl hibernate"
 [[block.items]]
-display = " -> Power Off <-"
+display = " -> Power Off <- "
 cmd = "poweroff"
 confirm_msg = "Are you sure you want to power off?"
 [[block.items]]
-display = " ->  Restart  <-"
+display = " ->  Restart  <- "
 cmd = "reboot"
 confirm_msg = "Are you sure you want to reboot?"
