@@ -63,8 +63,8 @@ bindsym $mod+F11 exec --no-startup-id $sink_down && $refresh_i3status
 bindsym $mod+F10 exec --no-startup-id $sink_mute && $refresh_i3status
 bindsym $mod+F9  exec --no-startup-id $src_mute  && $refresh_i3status
 
-bindsym $mod+F5 exec --no-startup-id $brighten && $refresh_i3status
-bindsym $mod+F6 exec --no-startup-id $darken   && $refresh_i3status
+bindsym $mod+F6 exec --no-startup-id $brighten && $refresh_i3status
+bindsym $mod+F5 exec --no-startup-id $darken   && $refresh_i3status
 
 
 # ====== APPEARANCE ======
