@@ -9,6 +9,7 @@ set ts=4 sw=4 et sta si cc=100
 set sm hls is
 inoremap # X#
 set cot+=popup
+set fo+=crn1j
 
 let g:ycm_show_detailed_diag_in_popup = 1
 let g:ycm_echo_current_diagnostic = 'virtual-text'
