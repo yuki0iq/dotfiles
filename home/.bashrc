@@ -15,9 +15,19 @@ if type -P dircolors >/dev/null ; then
     fi
 fi
 
+alias vim='nvim'
+alias emacs='nvim'
+alias nano='nvim'
 alias ls='exa --color=auto'
 alias cat='bat'
 alias eax='echo $?'
+alias yay='yay --sudoloop'
+
+alias get-pacman-mirrors="curl -s 'https://archlinux.org/mirrorlist/all/' | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 -"
+
+alias _sed='echo use sd'
+alias _find='echo use fd'
+alias _ps='echo use procs'
 
 shopt -s checkwinsize
 shopt -s expand_aliases
@@ -32,5 +42,7 @@ if command -v statusline >/dev/null; then
     export PS1_MODE=minimal
     eval "$(statusline --env)"
 fi
+
+export EDITOR=nvim
 
 source /usr/share/git/completion/git-completion.bash
