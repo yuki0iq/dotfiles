@@ -18,12 +18,12 @@ set $idle $idle_simple timeout 300 'swaylock -f -c 000000' before-sleep 'swayloc
 
 exec_always --no-startup-id $idle_simple
 
-# exec_always --no-startup-id "polybar-msg cmd quit; PATH=~/.config/sway:$PATH polybar -c ~/.config/sway/polybar.ini"
-
 exec --no-startup-id lxpolkit
 
 input * xkb_layout us,ru
-input * xkb_variant colemak_dh,rulemak_dh
+input * xkb_variant colemak_dh,
+
+# rip rulemak_dh
 input * xkb_model pc101
 input * xkb_options compose:menu,grp:caps_toggle,grp_led:scroll
 
@@ -40,13 +40,6 @@ set $sink_down wpctl set-volume @DEFAULT_SINK@ 5%-
 set $sink_mute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 set $src_mute  wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
-set $ps_af ~/.config/sway/grimshot save screen
-set $ps_sf ~/.config/sway/grimshot save anything
-set $ps_wf ~/.config/sway/grimshot save active
-set $ps_a ~/.config/sway/grimshot copy screen
-set $ps_s ~/.config/sway/grimshot copy anything
-set $ps_w ~/.config/sway/grimshot copy active
-
 
 # ====== HOTKEYS ======
 bindsym --to-code $mod+Shift+Ctrl+F1 exec $idle
@@ -57,13 +50,13 @@ bindsym --release Super_L exec --no-startup-id 'rofi -show combi -combi-modes wi
 bindsym --to-code $mod+L exec --no-startup-id 'cat /dev/null | rofi -dmenu -mesg "Run anything..." -p "?> " -l 0 -theme minimal | SHLVL=-1 sh -'
 bindsym --to-code $mod+N exec --no-startup-id ~/.config/sway/wss
 
-bindsym --to-code Ctrl+Print       exec --no-startup-id $ps_af
-bindsym --to-code Ctrl+Shift+Print exec --no-startup-id $ps_sf
-bindsym --to-code Ctrl+$mod+Print  exec --no-startup-id $ps_wf
+bindsym --to-code Ctrl+Print       exec --no-startup-id grimshot save screen
+bindsym --to-code Ctrl+Shift+Print exec --no-startup-id grimshot save anything
+bindsym --to-code Ctrl+$mod+Print  exec --no-startup-id grimshot save active
 
-bindsym --to-code Print       exec --no-startup-id $ps_a
-bindsym --to-code Shift+Print exec --no-startup-id $ps_s
-bindsym --to-code $mod+Print  exec --no-startup-id $ps_w
+bindsym --to-code Print       exec --no-startup-id grimshot copy screen
+bindsym --to-code Shift+Print exec --no-startup-id grimshot copy anything
+bindsym --to-code $mod+Print  exec --no-startup-id grimshot copy active
 
 bindsym --to-code XF86AudioRaiseVolume exec --no-startup-id $sink_up  
 bindsym --to-code XF86AudioLowerVolume exec --no-startup-id $sink_down
