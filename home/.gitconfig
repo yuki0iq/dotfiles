@@ -1,60 +1,78 @@
 [alias]
     git = !git
-    l = log --graph --abbrev=0 --decorate --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
+    l = log --graph --abbrev=0 --decorate --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %aN%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
     ll = !git l --all
     lll = !git ll $(git rev-list -g --all)
-    cl = clone
+    lo = !git l --oneline
+    llo = !git ll --oneline
+    lllo = !git lll --oneline
     p = push
     pp = push --force-with-lease
     ppp = push --force
-    t = pull
-    f = fetch --all
+    pa = push --all
+    ppa = push --force-with-lease --all
+    pppa = push --force --all
+    take = pull
+    f = fetch
+    fa = fetch --all
     b = branch
     br = branch -d
     brr = branch -D
     bm = branch -M
     s = status
-    a = add
-    aa = add .
-    aaa = add ..
+    a = add -u
+    aa = add -u .
+    aaa = add -u ..
+    au = add
+    aau = add .
+    aaau = add ..
     ai = add -i
     ap = add -p
-    ua = reset HEAD
     d = diff
     dd = diff --staged
-    done = diff --stat
+    done = show --stat
+    ddone = diff --stat
+    dddone = diff --stat --staged
     c = commit
     cc = commit -m
     ca = commit --amend
     co = checkout
     cob = checkout -b
     cod = checkout --detach
-    rbb = reset --soft HEAD^
-    me = merge
+    che = cherry-pick
+    chea = cherry-pick --abort
+    chec = cherry-pick --continue
+    me = merge --no-ff
     mea = merge --abort
     mec = merge --continue
+    meff = merge --ff-only
     mb = merge-base
     su = submodule
-    sua = submodule add
+    sud = submodule deinit --force --all
     sus = submodule status --recursive
-    sui = submodule init
-    suu = submodule update
+    sui = submodule init --recursive
+    suu = submodule update --init --recursive
     re = rebase
-    rei = rebase -i
-    reo = rebase --onto
+    rei = rebase --no-gpg-sign -i
+    reo = rebase --no-gpg-sign --onto
+    reio = rebase --no-gpg-sign -i --onto
+    reoi = rebase --no-gpg-sign -i --onto
     rea = rebase --abort
     rec = rebase --continue
-    res = rebase --skip
-    reto = rebase --edit-todo
-    bla = blame
-    ff = merge --ff-only
+    reskip = rebase --skip
+    retodo = rebase --edit-todo
+    resoft = reset --soft
+    rehard = reset --hard
+    st = stash
+    sta = stash pop
+    stnu = stash drop
 [core]
-    editor = vim
-    pager = delta
+    editor = nvim
+	pager = less -+X
 [init]
     defaultBranch = main
 [user]
-    name = Yuki
+    name = Yuki Sireneva
     email = yuki.utk8g@gmail.com
     signingkey = /home/yuki/.ssh/id_ed25519.pub
 [interactive]
@@ -74,3 +92,12 @@
     gpgsign = true
 [gpg "ssh"]
     allowedsignersfile = /home/yuki/.config/git/allowed_signers
+[safe]
+	directory = /mount/d/sunwalker-client
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[rerere]
+	enabled = true
