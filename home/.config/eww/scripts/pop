@@ -1,9 +1,8 @@
 #!/bin/bash
 
-EWW="eww -c `realpath ~/.config/eww/bar`"
 LOCK_BASE=`realpath ~/.cache/eww-lock`
 close() {
-    $EWW close $1
+    eww close $1
     rm -f "$LOCK_BASE.$1"
 }
 
@@ -15,7 +14,7 @@ close_all() {
 
 open() {
     echo > "$LOCK_BASE.$1"
-    $EWW open $1 --screen 0
+    eww open $1 --screen 0
 }
 
 toggle() {
