@@ -1,8 +1,8 @@
 #!/bin/sh
 
-yay -S sway swaylock eww-wayland rofi-wayland kitty grim lxpolkit dunst \
+yay -S sway swaylock eww-wayland rofi-lbonn-wayland kitty grim lxsession-gtk3 dunst \
   terminus-font ttf-cascadia-code-nerd ttf-fantasque-sans-mono noto-fonts noto-fonts-cjk \
-  qt5ct subl krita firefox qalculate transmission mpv cmus ffmpeg rustup
+  qt5ct sublime-text-4 krita firefox qalculate-gtk transmission-qt mpv cmus ffmpeg rustup
 
 mkdir ~/.ssh ~/.config ~/.config/eww ~/.config/sublime-text
 
