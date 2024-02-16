@@ -1,0 +1,21 @@
+#!/bin/bash
+
+BATTERY="$(ls -1 /sys/class/power_supply | grep BAT | head -1)"
+if [[ -n "$BAT" ]]; then
+	BATTERY="/sys/class/power_supply/${BATTERY}"
+	status="$(cat $BATTERY/status | tr A-Z a-z)"
+	now="$(cat $BATTERY/charge_now)"
+	max="$(cat $BATTERY/charge_full)"
+
+	# According to linux kernel documentation, valid statuses are:
+	#   Unknown, Charging, Discharging, Not charging, Full
+	# TODO: add full (dis)charge time estimate, this should not be that hard...
+	printf "{\"status\": \"$status\", \"level\": $(( 1000 * $now / $max ))}"
+else
+	# the only one of zero batteries is full
+	printf "{\"status\": \"unknown\", \"level\": 1000}"
+	# printf "{\"status\": \"charging\", \"level\": 666}"
+	# printf "{\"status\": \"discharging\", \"level\": 666}"
+	# printf "{\"status\": \"not charging\", \"level\": 666}"
+	# printf "{\"status\": \"full\", \"level\": 666}"
+fi

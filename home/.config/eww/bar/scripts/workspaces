@@ -1,0 +1,10 @@
+#!/bin/bash
+
+repeat() {
+    swaymsg -t get_workspaces | jq --unbuffered -c .
+}
+
+repeat
+swaymsg -mt subscribe '["workspace"]' | jq --unbuffered -c . | while read _; do
+    repeat
+done

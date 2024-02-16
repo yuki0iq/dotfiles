@@ -1,0 +1,3 @@
+#!/bin/bash
+
+swaymsg -mt subscribe '["workspace", "window"]' | jq --unbuffered -cr '((select(.change == "focus") | (.current // .container)) // (select(.change == "title") | .container | select(.focused == true))) | select(.visible != false) | pick(.name, .app_id, .shell)'

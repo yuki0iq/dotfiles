@@ -1,0 +1,328 @@
+* {
+	all: unset;
+	font-family: Fantasque Sans Mono;
+    font-size: 16;
+    margin: .1em;
+}
+
+.window, tooltip {
+    background-color: #0f0f17;
+    border-radius: 1em;
+    margin: .25em;
+    opacity: .9;
+}
+
+tooltip label {
+    margin: 0.5em;
+}
+
+
+.spaced {
+    margin-left: .3em;
+    margin-right: .3em;
+}
+
+.clock_date {
+    font-size: .9em;    
+}
+
+.keyboard, .winclass {
+    color: #e0b089;
+}
+
+.circle_bar {
+    background-color: #38384d;
+    color: #38384d;
+    border-radius: 1em;
+}
+
+.icon {
+    font-size: 10;
+    color: #00cc00;
+}
+
+.bright_icon {
+    color: #e4c9af;
+}
+
+.memory {
+    color: #e0b089;
+}
+
+.battery {
+    color: #afbea2;
+}
+
+.volume {
+    color: #a1bdce;
+}
+
+.cpu {
+    color: #61da76;
+}
+
+.wifi, .clock_date {
+    color: #d7beda;
+}
+
+.brightness trough highlight {
+    background-image: linear-gradient(to right, #e4c9af 30%, #f2cdcd 50%, #e0b089 100% *50);
+}
+
+.volume_slider trough highlight {
+    background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
+}
+
+scale trough {
+    all: unset;
+    background-color: #22242b;
+    border-radius: 1em;
+    min-height: .5em;
+    min-width: 6em;
+
+    highlight {
+        border-radius: 1em;
+    }
+}
+
+.if_down {
+    color: #373b41;
+}
+
+.if_no-carrier {
+    color: #ad705a;
+}
+
+.if_carrier {
+    color: #6086a6;
+}
+
+.if_routable {
+    color: #518a56;
+}
+
+.ns_fail {
+    background-color: #ad705a;
+}
+
+.ns_ok {
+    background-color: #518a56;
+}
+
+.notify_on {
+    background-color: #6086a6;
+}
+
+.notify_off {
+    background-color: #373b41;
+}
+
+.nf {
+    font-family: CaskaydiaCove NFM;
+}
+
+
+.activities {
+    border-radius: 1em;
+    padding: 0em;
+}
+
+.workspace {
+    background-color: #222;
+    border-radius: 1em;
+    color: #aaa;
+    min-width: 1.4em;
+    min-height: 1.4em;
+    border-radius: 1em;
+    font-size: 1em;
+
+}
+
+.workspace:hover {
+    background-color: #555;
+}
+
+.urgent_mark {
+    background-color: #a44;
+}
+
+.urgent {
+    color: #f55;
+}
+
+.visible {
+    color: #f0c674;
+}
+
+
+.cal_win {
+    border-radius: 1.5em;
+
+    .cal-in {
+        padding: 0em .75em 0em .75em;
+        color: #bfc9db;
+
+        .cal {
+            padding: .25em;
+
+            :selected {
+                color: #f0c674;
+            }
+
+            .header, .highlight {
+                color: #a1bdce;
+            }
+
+            .button {
+                color: #afbea2;
+            }
+
+            :indeterminate {
+                color: #808890;
+            }
+        }
+    }
+}
+
+.sys_text_sub {
+    color: #bbc5d7;
+}
+
+.sys_text {
+    font-weight: bold;
+}
+
+.sys_icon {
+    font-size: 1.5em;
+}
+
+.sys_enlarge {
+    margin: .5em;
+}
+
+.sys_button {
+    margin: 0em;
+}
+
+.sys_text_box {
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+.sys_text_right {
+    min-width: 2em;
+}
+
+.sys_icons {
+    border-radius: 1em;
+    background-color: #222;
+}
+
+.sys_win {
+    border-radius: 2em;
+    padding: 1em;
+}
+
+.sys_box {
+    border-radius: 1em;
+    margin: .2em;
+    padding: .2em;
+}
+
+
+
+
+
+
+.song_cover_art {
+	background-size: cover;	
+	background-position: center;
+	min-height: 24px;
+	min-width: 24px;
+	margin: 10px;
+	border-radius: 100px;
+}
+
+.song {
+	color: #a1bdce;
+	font-size : 18px;
+	font-weight : bold;
+	margin : 3px 5px 0px 0px;
+}
+
+.song_btn_play {
+	color: #a1bdce;
+	font-size : 28px;
+	margin : 3px 0px 0px 5px;
+
+}
+
+
+.song_btn_prev, .song_btn_next {
+	color: #bfc9db;
+	font-size : 24px;
+	margin : 3px 0px 0px 5px;
+
+}
+
+.music_pop {
+    background-color: #0f0f17;
+	border-radius: 16px;
+}
+.music_cover_art {
+	background-size: cover;
+	background-position: center;
+	min-height: 100px;
+    box-shadow: 5px 5px 5px 5px #06060b;
+	min-width: 170px;
+	margin: 20px;
+	border-radius: 20px;
+}
+
+.music {
+	color: #a1bdce;
+	font-size : 20px;
+	font-weight : bold;
+	margin : 20px 0px 0px -15px;
+}
+
+.music_artist {
+	color: #bbc5d7;
+	font-size : 16px;
+	font-weight : normal;
+	margin : 0px 0px 0px 0px;
+}
+
+.music_btn_prev {
+	color: #bbc5d7;
+	font-size : 32px;
+	font-weight : normal;
+	margin: 0px 0px 0px 0px;
+}
+.music_btn_play {
+	color: #a1bdce;
+	font-size : 48px;
+	font-weight : normal;
+	margin: 0px 0px 0px 0px;
+}
+.music_btn_next {
+	color: #bbc5d7;
+	font-size : 32px;
+	font-weight : normal;
+	margin: 0px 0px 0px 0px;
+}
+
+.music_bar scale trough highlight {
+	all: unset;
+    background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
+	border-radius: 24px;
+}
+.music_bar scale trough {
+	all: unset;
+	background-color: #232232;
+    box-shadow: 0 6px 5px 2px #06060b;
+	border-radius: 24px;
+	min-height: 13px;
+	min-width: 190px;
+	margin : -10px 10px 20px 0px;
+}

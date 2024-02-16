@@ -25,10 +25,6 @@ alias yay='yay --sudoloop'
 
 alias get-pacman-mirrors="curl -s 'https://archlinux.org/mirrorlist/all/' | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 -"
 
-alias _sed='echo use sd'
-alias _find='echo use fd'
-alias _ps='echo use procs'
-
 shopt -s checkwinsize
 shopt -s expand_aliases
 shopt -s histappend

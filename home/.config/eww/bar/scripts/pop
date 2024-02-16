@@ -1,0 +1,30 @@
+#!/bin/bash
+
+EWW="eww -c `realpath ~/.config/eww/bar`"
+LOCK_BASE=`realpath ~/.cache/eww-lock`
+close() {
+    $EWW close $1
+    rm -f "$LOCK_BASE.$1"
+}
+
+close_all() {
+    for wnd in system music_win calendar network activities; do
+        close $wnd
+    done
+}
+
+open() {
+    echo > "$LOCK_BASE.$1"
+    $EWW open $1 --screen 0
+}
+
+toggle() {
+    if [[ -f "$LOCK_BASE.$1" ]]; then
+        close $1
+    else
+        close_all
+        open $1
+    fi
+}
+
+toggle "$1"

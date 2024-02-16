@@ -1,0 +1,18 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"CMake",
+		"i3 wm",
+		"INI",
+		"LSP",
+		"LSP-pylsp",
+		"LSP-rust-analyzer",
+		"Package Control",
+		"Rust Enhanced",
+		"TOML",
+	],
+}
