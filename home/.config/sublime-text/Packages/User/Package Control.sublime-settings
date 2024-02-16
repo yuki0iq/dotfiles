@@ -11,6 +11,7 @@
 		"LSP",
 		"LSP-pylsp",
 		"LSP-rust-analyzer",
+		"MakeTargets",
 		"Package Control",
 		"Rust Enhanced",
 		"TOML",
