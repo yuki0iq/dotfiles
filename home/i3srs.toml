@@ -1,10 +1,14 @@
 icons_format = "{icon}"
 
 [theme]
-theme = "srcery"
+#theme = "srcery"
 
 [icons]
 icons = "awesome4"
+
+#[[block]]
+#block = "focused_window"
+#format = " $title.str(max_w:100) | i3wm "
 
 [[block]]
 block = "net"
@@ -53,6 +57,11 @@ format = " $icon "
 format_alt = " $icon $mem_used.eng(w:4) $icon_swap $swap_used.eng(w:4) "
 
 [[block]]
+block = "music"
+#format_alt = " $icon "
+format = " $icon {$combo.str(max_w:50) |}"
+
+[[block]]
 block = "sound"
 device_kind = "sink"
 show_volume_when_muted = true
@@ -72,12 +81,6 @@ good = 50
 warning = 25
 critical = 10
 empty_threshold = 3
-
-[[block]]
-block = "custom"
-command = '''echo "{\"text\": \"$USER at $HOSTNAME\", \"state\": \"Good\"}"'''
-interval = "once"
-json = true
 
 [[block]]
 block = "uptime"
