@@ -3,32 +3,32 @@
 
 set $mod Mod4
 
-#font pango:Terminus 10px
-font pango:Cascadia Code PL 10
+# font pango:Cascadia Code PL 10
+font pango:Fantasque Sans Mono 0
 
 
 # ====== AUTORUNS ======
 exec --no-startup-id xhost +local:root
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec --no-startup-id "feh --no-fehbg --bg-fill ~/wallpaper.png"
+exec_always --no-startup-id "polybar-msg cmd quit; polybar"
 
-exec --no-startup-id "setxkbmap -option compose:menu,grp:caps_switch"
-exec --no-startup-id "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1"
-exec --no-startup-id "xinput set-prop 'Logitech USB Optical Mouse' 'libinput Left Handed Enabled' 1"
+exec_always --no-startup-id "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1"
+exec_always --no-startup-id "xinput set-prop 'Logitech USB Optical Mouse' 'libinput Left Handed Enabled' 1"
 exec --no-startup-id fcitx5
 
-exec --no-startup-id xcompmgr
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id dunst
+exec --no-startup-id picom
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # ====== QUICK COMMANDS ======
-set $refresh_i3status killall -SIGUSR1 i3status
-
 set $terminal kitty
 set $runner   dmenu_run
 
-set $sink_up   pactl set-sink-volume @DEFAULT_SINK@ +5%
-set $sink_down pactl set-sink-volume @DEFAULT_SINK@ -5%
-set $sink_mute pactl set-sink-mute @DEFAULT_SINK@ toggle
-set $src_mute  pactl set-source-mute @DEFAULT_SOURCE@ toggle
+set $sink_up   wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+set $sink_down wpctl set-volume @DEFAULT_SINK@ 5%-
+set $sink_mute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+set $src_mute  wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
 set $brighten xbacklight -dec 4 -time 0 -steps 1
 set $darken   xbacklight -inc 4 -time 0 -steps 1
@@ -37,13 +37,13 @@ set $ps_af maim                               "/home/$USER/Pictures/$(date -Is).
 set $ps_sf maim -s                            "/home/$USER/Pictures/$(date -Is).png"
 set $ps_wf maim -i $(xdotool getactivewindow) "/home/$USER/Pictures/$(date -Is).png"
 set $ps_a  maim -s                            | xclip -selection clipboard -t image/png
-set $ps_s  maim -s                            | xclip -selection clipboard -t image/png
+set $ps_s  maim -s | tee "/home/$USER/Pictures/$(date -Is).png" | xclip -selection clipboard -t image/png
 set $ps_w  maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 
 
 # ====== HOTKEYS ======
 bindsym $mod+Return exec $terminal
-bindsym $mod+d exec --no-startup-id $runner
+bindsym $mod+s exec --no-startup-id $runner
 
 bindsym Ctrl+Print       exec --no-startup-id $ps_af
 bindsym Ctrl+Shift+Print exec --no-startup-id $ps_sf
@@ -53,31 +53,59 @@ bindsym Print       exec --no-startup-id $ps_a
 bindsym Shift+Print exec --no-startup-id $ps_s
 bindsym $mod+Print  exec --no-startup-id $ps_w
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id $sink_up   && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id $sink_down && $refresh_i3status
-bindsym XF86AudioMute        exec --no-startup-id $sink_mute && $refresh_i3status
-bindsym XF86AudioMicMute     exec --no-startup-id $src_mute  && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id $sink_up  
+bindsym XF86AudioLowerVolume exec --no-startup-id $sink_down
+bindsym XF86AudioMute        exec --no-startup-id $sink_mute
+bindsym XF86AudioMicMute     exec --no-startup-id $src_mute 
 
-bindsym $mod+F12 exec --no-startup-id $sink_up   && $refresh_i3status
-bindsym $mod+F11 exec --no-startup-id $sink_down && $refresh_i3status
-bindsym $mod+F10 exec --no-startup-id $sink_mute && $refresh_i3status
-bindsym $mod+F9  exec --no-startup-id $src_mute  && $refresh_i3status
+bindsym XF86AudioPlayPause exec playerctl play-pause
+bindsym XF86AudioPlay      exec playerctl play-pause
+bindsym XF86AudioPause     exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
-bindsym $mod+F6 exec --no-startup-id $brighten && $refresh_i3status
-bindsym $mod+F5 exec --no-startup-id $darken   && $refresh_i3status
+bindsym $mod+F12 exec --no-startup-id $sink_up  
+bindsym $mod+F11 exec --no-startup-id $sink_down
+bindsym $mod+F10 exec --no-startup-id $sink_mute
+bindsym $mod+F9  exec --no-startup-id $src_mute 
 
+bindsym $mod+F6 exec --no-startup-id $brighten
+bindsym $mod+F5 exec --no-startup-id $darken  
+
+bindsym $mod+F3 exec --no-startup-id "(setxkbmap -query | rg colemak >/dev/null) && (setxkbmap -variant ,) || (setxkbmap -variant colemak,rulemak)"
+
+bindsym $mod+XF86AudioPause exec ssh purplesyringa@192.168.1.16 -i ~/.ssh/id_ed25519_old playerctl pause
 
 # ====== APPEARANCE ======
 workspace_layout tabbed
 smart_borders on
-focus_wrapping workspace
+hide_edge_borders smart
+
+for_window [class=".*"] title_format ""
+# title_align center
+default_border pixel 2
+default_floating_border pixel 2
+
+gaps inner 5
+gaps outer 0
+smart_gaps on
+
+# class                 border    backgr.   text      indicator child_border
+client.focused          #787878a0 #787878a0 #ffffffff #2e9ef4d0 #285577d0
+client.focused_inactive #333333a0 #333333a0 #ffffffff #484e50d0 #5f676ad0
+client.unfocused        #000000a0 #000000a0 #444444ff #292d2ed0 #222222d0
+client.urgent           #a00000a0 #a00000a0 #a00000ff #900000d0 #900000d0
+client.placeholder      #000000a0 #000000a0 #ffffffff #000000d0 #0c0c0cd0
+
+client.background       #000000
 
 
 # ====== MOVEMENT ======
 bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+n focus down
+bindsym $mod+e focus up
+bindsym $mod+i focus right
 
 bindsym Mod1+Tab       focus next
 bindsym Mod1+Shift+Tab focus prev
@@ -88,27 +116,29 @@ bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
 
 bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+n move down
+bindsym $mod+Shift+e move up
+bindsym $mod+Shift+i move right
 
 bindsym $mod+Shift+Left  move left
 bindsym $mod+Shift+Down  move down
 bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+f fullscreen toggle
+bindsym $mod+t fullscreen toggle
 
-bindsym $mod+s layout stacking
+bindsym $mod+r layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+f layout toggle split
 
 floating_modifier $mod
 bindsym $mod+Ctrl+Shift+space floating toggle
 bindsym $mod+Ctrl+space focus mode_toggle
 
 bindsym $mod+a focus parent
-#bindsym $mod+d focus child
+#bindsym $mod+s focus child
+
+focus_wrapping workspace
 
 
 # ====== WORKSPACES ======
@@ -151,20 +181,22 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+Tab move container to workspace next
 bindsym $mod+Shift+Ctrl+Tab move container to workspace prev
 
+workspace_auto_back_and_forth yes
+
 
 # ====== DESTROY ======
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+p restart
+bindsym $mod+Shift+f exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit' --font 'pango:Fantasque Sans Mono 10'"
 
 
 # ====== RESIZE =======
 mode "resize" {
     bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
+    bindsym n resize grow height 10 px or 10 ppt
+    bindsym e resize shrink height 10 px or 10 ppt
+    bindsym i resize grow width 10 px or 10 ppt
 
     bindsym Left resize shrink width 10 px or 10 ppt
     bindsym Down resize grow height 10 px or 10 ppt
@@ -173,17 +205,8 @@ mode "resize" {
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
+    bindsym $mod+p mode "default"
 }
 
-bindsym $mod+r mode "resize"
-
-
-# ====== STATUSLINE ======
-bar {
-    #font -*-*-medium-r-normal-*-8-*-*-*-*-*-iso10646-*
-    font pango:Cascadia Code PL 8
-    position top
-    status_command i3status-rs ~/i3srs.toml
-}
+bindsym $mod+p mode "resize"
 
