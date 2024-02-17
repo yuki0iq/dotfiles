@@ -8,9 +8,6 @@ font pango:Fantasque Sans Mono 0
 # ====== AUTORUNS ======
 include /etc/sway/config.d/50-systemd-user.conf
 
-exec systemctl --user set-environment GTK_THEME=Adwaita:dark
-exec hash dbus-update-activation-environment 2>/dev/null &&      dbus-update-activation-environment --systemd GTK_THEME
-
 output * bg ~/pixiv_81691677_p0.jpg fill
 
 set $idle_simple (killall swayidle || true) && swayidle -w timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'

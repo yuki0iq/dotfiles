@@ -13,6 +13,6 @@ repeat() {
 id=@DEFAULT_`echo $1 | tr a-z A-Z`@
 
 repeat $id
-pactl -fjson subscribe | jq --unbuffered -rc "select(.event==\"change\") | select(.on==\"$1\") | .index" | while read -r id; do
+pactl -fjson subscribe | jq --unbuffered -rc "select(.event==\"change\") | select(.on==\"$1\") | .index" | while read -r _; do
     repeat $id
 done
