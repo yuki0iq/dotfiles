@@ -89,7 +89,7 @@
         (for q in {[ping_dns]}  ; Ohhhh I hate the 'functional' purity you push on me *here*
           (button :class "ns_${q == 0 ? 'ok' : 'fail'}"
             :tooltip "network ${q == 0 ? 'ok' : 'unreachable'}"
-            :onclick "${script_home}/pop network"
+            :onclick "${script_home}/pop system"
             "　"))))
       (box (circular-progress :value {sound_out.vol} :class "circle_bar volume" :thickness 3.5
         (button :class "icon volume"
