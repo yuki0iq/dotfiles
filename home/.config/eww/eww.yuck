@@ -9,8 +9,7 @@
 (deflisten swaykb "~/.config/eww/scripts/keyboard")
 (deflisten swaywin "~/.config/eww/scripts/window")
 
-(defvar script_home "~/.config/eww/scripts")
-(defvar eww "eww -c $HOME/.config/eww")
+(defvar script_home "~/kek/dotfiles/home/.config/eww/scripts")
 
 (defwidget left [] (box :orientation "h" :space-evenly false :halign "start"
   (current)))
@@ -30,7 +29,7 @@
 
 (defvar time_rev false)
 (defwidget clock_module []
-  (eventbox :onhover "${eww} update time_rev=true" :onhoverlost "${eww} update time_rev=false" :onclick "${script_home}/pop calendar"
+  (eventbox :onhover "eww update time_rev=true" :onhoverlost "eww update time_rev=false" :onclick "${script_home}/pop calendar"
     (box :class "module" :space-evenly "false" :orientation "h" :spacing "3"
       (label :class "spaced clock_date" :text {formattime(EWW_TIME, time_rev ? '%A, %Y-%b-%d' : '%b %d, %a')})
       (label :class "spaced clock_time" :text {formattime(EWW_TIME, '%T')}))))
@@ -45,7 +44,7 @@
     (for q in {[dunst_muted]}
       (button :class "notify_${q == true ? 'off' : 'on'}"
         :tooltip "notifications ${q == true ? 'muted' : 'on'}"
-        :onclick "dunstctl set-paused toggle && ${eww} update"
+        :onclick "dunstctl set-paused toggle"
         "　"))))
 
 
@@ -187,7 +186,7 @@
 ; (defpoll song_status :interval "2s"  "~/.config/eww/scripts/music_info --status")
 ; (defpoll cover_art :interval "2s"  "~/.config/eww/scripts/music_info --cover")
 ; (defwidget music [] 
-;   (eventbox :onhover "${eww} update music_reveal=true" :onhoverlost "${eww} update music_reveal=false"
+;   (eventbox :onhover "eww update music_reveal=true" :onhoverlost "eww update music_reveal=false"
 ;     (box :class "module-2" :orientation "h" :space-evenly "false"
 ;       (box :class "song_cover_art" :style "background-image: url('${cover_art}');")
 ;       (button :class "song" :onclick "~/.config/eww/scripts/pop music" song)
@@ -215,7 +214,7 @@
 
 ; (defpoll brightness_percent :interval "5s" "brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
 ; (defwidget bright []
-;   (eventbox :onhover "${eww} update br_reveal=true" :onhoverlost "${eww} update br_reveal=false"
+;   (eventbox :onhover "eww update br_reveal=true" :onhoverlost "${eww} update br_reveal=false"
 ;     (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3" 
 ;       (label :text "" :class "bright_icon" :tooltip "brightness")
 ;       (revealer :transition "slideleft" :reveal br_reveal :duration "350ms"

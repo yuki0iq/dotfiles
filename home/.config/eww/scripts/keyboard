@@ -1,6 +1,6 @@
 #!/bin/bash
 
-common='select(.identifier == "0:0:wlr_virtual_keyboard_v1") | .xkb_active_layout_name | {name: ., short: .[:2] | ascii_downcase}'
+common='select(.type == "keyboard") | .xkb_active_layout_name | {name: ., short: .[:2] | ascii_downcase}'
 
 swaymsg -t get_inputs | jq -cr --unbuffered ".[] | $common"
 swaymsg -mt subscribe '["input"]' | jq -cr --unbuffered "select(.change == \"xkb_layout\") | .input | $common"

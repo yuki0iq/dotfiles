@@ -15,10 +15,10 @@ output * bg ~/pixiv_81691677_p0.jpg fill
 
 set $idle_simple (killall swayidle || true) && swayidle -w timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
 set $idle $idle_simple timeout 300 'swaylock -f -c 000000' before-sleep 'swaylock -f -c 00000'
+exec_always $idle_simple
 
-exec_always --no-startup-id $idle_simple
-
-exec --no-startup-id lxpolkit
+exec_always eww open bar --screen 0
+exec lxpolkit
 
 input * xkb_layout us,ru
 input * xkb_variant colemak_dh,
@@ -29,8 +29,8 @@ input * xkb_options compose:menu,grp:caps_toggle,grp_led:scroll
 
 input * left_handed enabled
 
-exec --no-startup-id fcitx5
-exec --no-startup-id dunst
+exec fcitx5
+exec dunst
 
 # ====== QUICK COMMANDS ======
 set $terminal kitty
@@ -46,22 +46,22 @@ bindsym --to-code $mod+Shift+Ctrl+F1 exec $idle
 bindsym --to-code $mod+Shift+Ctrl+F2 exec $idle_simple
 
 bindsym --to-code $mod+Return exec $terminal
-bindsym --release Super_L exec --no-startup-id 'rofi -show combi -combi-modes window,drun,run -modes combi -theme minimal'
-bindsym --to-code $mod+L exec --no-startup-id 'cat /dev/null | rofi -dmenu -mesg "Run anything..." -p "?> " -l 0 -theme minimal | SHLVL=-1 sh -'
-bindsym --to-code $mod+N exec --no-startup-id ~/.config/sway/wss
+bindsym --release Super_L exec 'rofi -show combi -combi-modes window,drun,run -modes combi -theme minimal'
+bindsym --to-code $mod+L exec 'cat /dev/null | rofi -dmenu -mesg "Run anything..." -p "?> " -l 0 -theme minimal | SHLVL=-1 sh -'
+bindsym --to-code $mod+N exec ~/.config/sway/wss
 
-bindsym --to-code Ctrl+Print       exec --no-startup-id grimshot save screen
-bindsym --to-code Ctrl+Shift+Print exec --no-startup-id grimshot save anything
-bindsym --to-code Ctrl+$mod+Print  exec --no-startup-id grimshot save active
+bindsym --to-code Ctrl+Print       exec grimshot save screen
+bindsym --to-code Ctrl+Shift+Print exec grimshot save anything
+bindsym --to-code Ctrl+$mod+Print  exec grimshot save active
 
-bindsym --to-code Print       exec --no-startup-id grimshot copy screen
-bindsym --to-code Shift+Print exec --no-startup-id grimshot copy anything
-bindsym --to-code $mod+Print  exec --no-startup-id grimshot copy active
+bindsym --to-code Print       exec grimshot copy screen
+bindsym --to-code Shift+Print exec grimshot copy anything
+bindsym --to-code $mod+Print  exec grimshot copy active
 
-bindsym --to-code XF86AudioRaiseVolume exec --no-startup-id $sink_up  
-bindsym --to-code XF86AudioLowerVolume exec --no-startup-id $sink_down
-bindsym --to-code XF86AudioMute        exec --no-startup-id $sink_mute
-bindsym --to-code XF86AudioMicMute     exec --no-startup-id $src_mute 
+bindsym --to-code XF86AudioRaiseVolume exec $sink_up  
+bindsym --to-code XF86AudioLowerVolume exec $sink_down
+bindsym --to-code XF86AudioMute        exec $sink_mute
+bindsym --to-code XF86AudioMicMute     exec $src_mute 
 
 bindsym --to-code XF86AudioPrev exec playerctl previous
 bindsym --to-code XF86AudioStop exec playerctl stop
