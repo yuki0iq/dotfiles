@@ -7,7 +7,7 @@ close() {
 }
 
 close_all() {
-    for wnd in system music_win calendar network activities; do
+    for wnd in system music_win calendar network activities wireless; do
         close $wnd
     done
 }

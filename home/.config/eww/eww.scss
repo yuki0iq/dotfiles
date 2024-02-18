@@ -23,7 +23,8 @@ tooltip label {
 }
 
 .clock_date {
-    font-size: .9em;    
+    font-size: .9em;
+    padding-top: .05em;
 }
 
 .keyboard, .winclass {
@@ -39,6 +40,12 @@ tooltip label {
 .icon {
     font-size: 10;
     color: #00cc00;
+}
+
+.bigger_icon {
+    margin: 0em;
+    font-size: 1.5em;
+    font-family: Cascadia Code PL;
 }
 
 .bright_icon {
@@ -121,8 +128,11 @@ scale trough {
     font-family: CaskaydiaCove NFM;
 }
 
+.wifi_entry:hover {
+    background-color: #222;
+}
 
-.activities {
+.wifi_entry, .activities {
     border-radius: 1em;
     padding: 0em;
 }

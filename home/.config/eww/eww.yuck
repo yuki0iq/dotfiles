@@ -3,6 +3,8 @@
 (defpoll ping_dns :interval "10s" "ping -c1 -W0.1 1.1.1.1 >/dev/null; echo $?")
 (defpoll dunst_muted :interval "10s" "dunstctl is-paused")
 (defpoll battery :interval "15s" "~/.config/eww/scripts/battery")
+(defpoll wifi :interval "5s" "~/.config/eww/scripts/wifi status")
+(defpoll wifi_list :interval "10s" "~/.config/eww/scripts/wifi list")
 (deflisten swayws "~/.config/eww/scripts/workspaces")
 (deflisten sound_out "~/.config/eww/scripts/sound sink")
 (deflisten sound_in "~/.config/eww/scripts/sound source")
@@ -100,6 +102,9 @@
         (button :class "icon cpu" :tooltip "cpu load ${round(EWW_CPU['avg'], 1)}%" :onclick "${script_home}/pop system" "　")))
       (box (circular-progress :value {EWW_RAM['used_mem_perc']} :class "circle_bar memory" :thickness 3.5
         (button :class "icon memory" :tooltip "ram usage ${round(EWW_RAM['used_mem_perc'], 1)}%" :onclick "${script_home}/pop system" "　")))
+      (box :visible {wifi == "" ? false : wifi.State == "connected"}
+        (circular-progress :value {150 + 2 * replace(wifi.AverageRSSI, " dBm", "")} :class "circle_bar wifi" :thickness 3.5
+        (button :class "icon wifi" :tooltip "${wifi.Connected_network}" :onclick "${script_home}/pop system" "　")))
       (box :visible {battery == "" ? false : battery.status != "unknown"}
         (circular-progress :value {battery.level / 10} :class "circle_bar battery" :thickness 3.5
           (button :class "icon battery" :tooltip "battery on ${battery.level / 10}%, ${battery.status}" :onclick "${script_home}/pop system"
@@ -136,14 +141,23 @@
         (box :class "sys_text_box" :orientation "v"
           (label :halign "start" :class "sys_text" :text "memory")
           (label :halign "start" :class "sys_text_sub" :text "${round(EWW_RAM['used_mem'] / 1000000000, 2)} of ${round(EWW_RAM['total_mem'] / 1000000000, 1)}")))
-    ; TODO --- wireless ---
       (box :orientation "h" :space-evenly "false" :halign "end"
         (box :class "sys_text_box" :orientation "v"
           (label :halign "end" :class "sys_text" :text "wireless")
-          (label :halign "end" :class "sys_text_sub" :text "todo"))
-        (circular-progress :value 100 :class "circle_bar wifi" :thickness 5
-          (label :text "󰍛" :class "nf sys_text_box sys_icon sys_enlarge wifi"))))
-    ; TODO ^^^ wireless ^^^
+          (label :halign "end" :class "sys_text_sub"
+            :text {wifi == '' ? 'disabled' : wifi.State == 'disconnected' ? 'not connected' : wifi.Connected_network}))
+        (button :onclick "${script_home}/pop wireless"
+          (circular-progress :class "circle_bar wifi" :thickness 5
+            :value {wifi == '' ? 0 :
+              wifi.State == 'disconnected' ? 0 :
+              150 + 2 * replace(wifi.AverageRSSI, " dBm", "")}
+            (label :class "nf sys_text_box sys_icon sys_enlarge wifi"
+              :text {wifi == '' ? "-" :
+                wifi.State == 'disconnected' ? "󰤮" :
+                replace(wifi.AverageRSSI, " dBm", "") >= -35 ? "󰤨" :
+                replace(wifi.AverageRSSI, " dBm", "") >= -45 ? "󰤥" :
+                replace(wifi.AverageRSSI, " dBm", "") >= -55 ? "󰤢" :
+                replace(wifi.AverageRSSI, " dBm", "") >= -65 ? "󰤟" : "󰤯"})))))
     ; TODO <<< now playing...
     (box :orientation "h" :space-evenly "false"
       (button :onclick "wpctl set-mute @DEFAULT_SINK@ toggle" :class "sys_button"
@@ -158,18 +172,65 @@
     ; TODO <<< add brightness control...
     (box :class "sys_box" :orientation "v" :space-evenly false
       (label :class "sys_text" :text "Network is ${ping_dns == 0 ? 'online' : 'offline'}")
-      (for iface in {jq(network, "[.[] | select(.link_index | not)]")}
-        (box :class "sys_text_box" :orientation "v" :space-evenly false
-          (label :halign "start"
-            :class "sys_text if_${search(iface.flags, '\"UP\"') == [] ? 'down' :
-              iface.operstate == 'DOWN' ? 'no-carrier' :
-              iface.operstate == 'UNKNOWN' ? 'carrier' :
-              iface.operstate == 'UP' ? 'routable' : 'unknown'}"
-            :text {iface.ifname})
-          (for iaddr in {iface.addr_info} (label :halign "start" :class "sys_text_sub" :text "${iaddr.local}/${iaddr.prefixlen}"))))
-    )))
+        (for iface in {jq(network, "[.[] | select(.link_index | not)]")}
+          (box :class "sys_text_box" :orientation "v" :space-evenly false
+            (label :halign "start"
+              :class "sys_text if_${search(iface.flags, '\"UP\"') == [] ? 'down' :
+                iface.operstate == 'DOWN' ? 'no-carrier' :
+                iface.operstate == 'UNKNOWN' ? 'carrier' :
+                iface.operstate == 'UP' ? 'routable' : 'unknown'}"
+              :text {iface.ifname})
+            (for iaddr in {iface.addr_info}
+              (label :halign "start" :class "sys_text_sub"
+                :text "${iaddr.local}/${iaddr.prefixlen}")))))))
 
 (defwindow system :geometry (geometry :anchor "top right") (system))
+
+
+
+(defwidget wireless []
+  (box :class "window sys_win" :orientation "v" :space-evenly "false" :spacing 0
+    (box :orientation "h" :space-evenly "false"
+      (button :onclick "${script_home}/pop system"
+        (circular-progress :value 0 :class "circle_bar wifi" :thickness 5
+          (label :class "nf sys_text_box sys_icon sys_enlarge wifi" :text "󰁍")))
+      (button :onclick "${script_home}/wifi scan"
+        (circular-progress :value 0 :class "circle_bar wifi" :thickness 5
+          (label :class "nf sys_text_box sys_icon sys_enlarge wifi" :text "󰑐")))
+      (box :orientation "h" :space-evenly "false" :halign "end" :hexpand true
+        (box :class "sys_text_box" :orientation "v"
+          (label :halign "end" :class "sys_text" :text "wireless")
+          (label :halign "end" :class "sys_text_sub"
+            :text {wifi == '' ? 'disabled' : wifi.State == 'disconnected' ? 'not connected' : wifi.Connected_network}))
+        (button :onclick "${script_home}/wifi disconnect"
+          (circular-progress :class "circle_bar wifi" :thickness 5
+            :value {wifi == '' ? 0 :
+              wifi.State == 'disconnected' ? 0 :
+              150 + 2 * replace(wifi.AverageRSSI, " dBm", "")}
+            (label :class "nf sys_text_box sys_icon sys_enlarge wifi"
+              :text {wifi == '' ? "-" :
+                wifi.State == 'disconnected' ? "󰤮" :
+                replace(wifi.AverageRSSI, " dBm", "") >= -35 ? "󰤨" :
+                replace(wifi.AverageRSSI, " dBm", "") >= -45 ? "󰤥" :
+                replace(wifi.AverageRSSI, " dBm", "") >= -55 ? "󰤢" :
+                replace(wifi.AverageRSSI, " dBm", "") >= -65 ? "󰤟" : "󰤯"}))))
+      (button :onclick "${script_home}/pop wireless"
+        (circular-progress :value 0 :class "circle_bar wifi" :thickness 5
+          (label :class "nf sys_text_box sys_icon sys_enlarge wifi" :text "󰅖"))))
+    (box :class "sys_box" :orientation "v" :space-evenly false :spacing 3
+      (for netw in wifi_list
+        (eventbox :class "wifi_entry" :onclick "${script_home}/wifi connect ${netw.security} ${netw.escaped}"
+          (box :class "sys_text_box" :orientation "h" :space-evenly false
+            (label :class "nf spaced wifi" :style "font-family: CaskaydiaCove NF"
+              :text {netw.strength >= -45 ? netw.security == "open" ? "󰤨" : "󰤪" :
+                netw.strength >= -55 ? netw.security == "open" ? "󰤥" : "󰤧" :
+                netw.strength >= -65 ? netw.security == "open" ? "󰤢" : "󰤤" :
+                netw.strength >= -75 ? netw.security == "open" ? "󰤟" : "󰤡" :
+                netw.security == "open" ? "󰤯" : "󰤬"})
+            (box :style "min-width: .5em")
+            (label :halign "start" :class {netw.current == ">" ? 'visible' : 'sys_text_sub'} :text {netw.name})))))))
+
+(defwindow wireless :geometry (geometry :anchor "top right") (wireless))
 
 
 
@@ -185,7 +246,7 @@
 ; (defpoll current_status :interval "1s"  "~/.config/eww/scripts/music_info --time")
 ; (defpoll song_status :interval "2s"  "~/.config/eww/scripts/music_info --status")
 ; (defpoll cover_art :interval "2s"  "~/.config/eww/scripts/music_info --cover")
-; (defwidget music [] 
+; (defwidget music []
 ;   (eventbox :onhover "eww update music_reveal=true" :onhoverlost "eww update music_reveal=false"
 ;     (box :class "module-2" :orientation "h" :space-evenly "false"
 ;       (box :class "song_cover_art" :style "background-image: url('${cover_art}');")
@@ -215,7 +276,7 @@
 ; (defpoll brightness_percent :interval "5s" "brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
 ; (defwidget bright []
 ;   (eventbox :onhover "eww update br_reveal=true" :onhoverlost "${eww} update br_reveal=false"
-;     (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3" 
+;     (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3"
 ;       (label :text "" :class "bright_icon" :tooltip "brightness")
 ;       (revealer :transition "slideleft" :reveal br_reveal :duration "350ms"
 ;         (scale :class "brightbar" :value brightness_percent :orientation "h" :tooltip "${brightness_percent}%" :max 100 :min 0 :onchange "brightnessctl set {}%")))))
@@ -224,10 +285,10 @@
 ; (defpoll COL_WLAN :interval "1m" "~/.config/eww/scripts/wifi --COL")
 ; (defpoll ESSID_WLAN :interval "1m" "~/.config/eww/scripts/wifi --ESSID")
 ; (defpoll WLAN_ICON :interval "1m" "~/.config/eww/scripts/wifi --ICON")
-; (defwidget wifi [] 
+; (defwidget wifi []
 ;   (eventbox :onhover "${eww} update wifi_rev=true" :onhoverlost "${eww} update wifi_rev=false"
 ;     (box :vexpand "false" :hexpand "false" :space-evenly "false"
 ;       (button :class "module-wif" :onclick "networkmanager_dmenu" :limit-width 12 :style "color: ${COL_WLAN};" WLAN_ICON)
-;       (revealer :transition "slideright" :reveal wifi_rev :duration "350ms" 
+;       (revealer :transition "slideright" :reveal wifi_rev :duration "350ms"
 ;         (label :class "module_essid" :text ESSID_WLAN)))))
 

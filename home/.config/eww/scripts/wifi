@@ -1,26 +1,41 @@
 #!/bin/bash
 
-status=$(nmcli g | grep -oE "disconnected")
-essid=$(nmcli c | grep wlp2s0 | awk '{print ($1)}')
+station=$(iwctl station list | tail +5 | head -c 22 | tail -c +6)
+[[ -z "$station" ]] && exit
 
-if [ $status ] ; then
-    icon="ON"
-    text=""
-    col="#575268"
+ask-password() {
+    cat /dev/null | rofi -dmenu -password -mesg "Enter password for $1: $2" -p ">> " -l 0 -theme minimal
+}
 
-else
-    icon="OFF"
-    text="${essid}"
-    col="#a1bdce"
-fi
+psk-try-connect() {
+    $iwctl connect "$1" -P "$2" 2>&1 | tail -c +8 | head -c -5
+}
 
+iwctl="iwctl station $station"
+case "$1" in
+    status) $iwctl show | jq -Rsrc '[. / "\n" | .[4:-2][] | gsub("\\x1b\\[0m"; "") | {"key": (.[12:34] | gsub(" +$"; "") | gsub(" "; "_")), "value": (.[34:] | gsub(" +$"; ""))}] | from_entries' ;;
+    # TODO show current network
+    list) $iwctl get-networks rssi-dbms | jq -Rsrc '[. / "\n" | .[4:-2][] | gsub("\\x1b\\[(1;9)?0m"; "") | {"name": (.[6:40] | gsub(" +$"; "")), "security": (.[40:60] | gsub(" +$"; "")), "strength": .[60:63], "current": .[2:3]} | select(.security == "psk" or .security == "open") += {"escaped": .name | @sh}] | sort_by(.strength) | .[:20]' ;;
+    connect)
+        [[ -z "$3" ]] && echo Empty SSID && exit 1
 
+        case "$2" in
+            open) $iwctl connect "$3" ;;
+            psk)
+                pass=""
+                [[ -z "$(psk-try-connect "$3" "$pass")" ]] && break
 
-if [[ "$1" == "--COL" ]]; then
-    echo $col	
-elif [[ "$1" == "--ESSID" ]]; then
-	echo $text
-elif [[ "$1" == "--ICON" ]]; then
-	echo $icon
-fi
-
+                reason=""
+                while true; do
+                    pass="$(ask-password "$3" "$reason")"
+                    [[ -z "$pass" ]] && break
+                    reason="$(psk-try-connect "$3" "$pass")"
+                    [[ -z "$reason" ]] && break
+                done ;;
+            *) ;;
+        esac
+        ;;
+    disconnect) $iwctl disconnect ;;
+    scan) $iwctl scan ;;
+    *) echo Unsupported command && exit 1 ;;
+esac
