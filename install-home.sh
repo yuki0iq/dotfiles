@@ -3,7 +3,9 @@
 yay -Syyu swaylock kitty lxsession-gtk3 dunst \
   terminus-font ttf-cascadia-code-nerd ttf-fantasque-sans-mono noto-fonts noto-fonts-cjk \
   qt5ct nwg-look krita firefox qalculate-gtk transmission-qt mpv cmus ffmpeg rustup \
-  grimshot sway-im eww-tray-wayland-git rofi-lbonn-wayland sublime-text-4
+  grimshot sway-im eww-tray-wayland-git rofi-lbonn-wayland sublime-text-4 inotify-tools
+
+# add yourself to `video` group to control brightness...
 
 mkdir -p ~/.ssh ~/.config ~/.config/sublime-text
 
