@@ -10,6 +10,7 @@
 (deflisten sound_in "~/.config/eww/scripts/sound source")
 (deflisten swaykb "~/.config/eww/scripts/keyboard")
 (deflisten swaywin "~/.config/eww/scripts/window")
+(deflisten brightness "~/.config/eww/scripts/backlight")
 
 (defvar script_home "~/kek/dotfiles/home/.config/eww/scripts")
 
@@ -169,7 +170,11 @@
         (label :class "nf sys_text_box sys_icon volume" :text {sound_in.muted == true ? "󰍭" : "󰍬"}))
       (scale :class "volume_slider" :orientation "h" :hexpand true :max 101 :min 0 :value {sound_in.vol} :onchange "wpctl set-volume @DEFAULT_SOURCE@ {}%")
       (label :class "sys_text_right sys_text_box sys_text_sub" :text "${sound_in.vol}%"))
-    ; TODO <<< add brightness control...
+    (box :orientation "h" :space-evenly "false" :visible {brightness != -1}
+      (label :class "nf sys_text_box sys_icon brightness" :text "")
+      (scale :class "brightness_slider" :orientation "h" :hexpand true :max 101 :min 1 :value {brightness}
+        :onchange "echo {} > /sys/class/backlight/acpi_video0/brightness")
+      (label :class "sys_text_right sys_text_box sys_text_sub" :text "${brightness}%"))
     (box :class "sys_box" :orientation "v" :space-evenly false
       (label :class "sys_text" :text "Network is ${ping_dns == 0 ? 'online' : 'offline'}")
         (for iface in {jq(network, "[.[] | select(.link_index | not)]")}
@@ -273,7 +278,6 @@
 ; (defwindow music_win :stacking "fg" :focusable "false" :screen 1 :geometry (geometry :anchor "top center") (music_pop))
 
 
-; (defpoll brightness_percent :interval "5s" "brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
 ; (defwidget bright []
 ;   (eventbox :onhover "eww update br_reveal=true" :onhoverlost "${eww} update br_reveal=false"
 ;     (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3"

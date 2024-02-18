@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo -1
+path=/sys/class/backlight/acpi_video0/brightness
+[[ ! -f $path ]] && sleep inf
+
+inotifywait -me modify $path --format %w | while read _; do cat $path; done

@@ -48,7 +48,7 @@ tooltip label {
     font-family: Cascadia Code PL;
 }
 
-.bright_icon {
+.brightness {
     color: #e4c9af;
 }
 
@@ -72,7 +72,7 @@ tooltip label {
     color: #d7beda;
 }
 
-.brightness trough highlight {
+.brightness_slider trough highlight {
     background-image: linear-gradient(to right, #e4c9af 30%, #f2cdcd 50%, #e0b089 100% *50);
 }
 
