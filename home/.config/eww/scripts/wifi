@@ -1,7 +1,7 @@
 #!/bin/bash
 
 station=$(iwctl station list | tail +5 | head -c 22 | tail -c +6)
-[[ -z "$station" ]] && exit
+[[ -z "$station" ]] && exit -1
 
 ask-password() {
     cat /dev/null | rofi -dmenu -password -mesg "Enter password for $1: $2" -p ">> " -l 0 -theme minimal
@@ -14,18 +14,16 @@ psk-try-connect() {
 iwctl="iwctl station $station"
 case "$1" in
     status) $iwctl show | jq -Rsrc '[. / "\n" | .[4:-2][] | gsub("\\x1b\\[0m"; "") | {"key": (.[12:34] | gsub(" +$"; "") | gsub(" "; "_")), "value": (.[34:] | gsub(" +$"; ""))}] | from_entries' ;;
-    # TODO show current network
     list) $iwctl get-networks rssi-dbms | jq -Rsrc '[. / "\n" | .[4:-2][] | gsub("\\x1b\\[(1;9)?0m"; "") | {"name": (.[6:40] | gsub(" +$"; "")), "security": (.[40:60] | gsub(" +$"; "")), "strength": .[60:63], "current": .[2:3]} | select(.security == "psk" or .security == "open") += {"escaped": .name | @sh}] | sort_by(.strength) | .[:20]' ;;
     connect)
-        [[ -z "$3" ]] && echo Empty SSID && exit 1
+        [[ -z "$3" ]] && exit -2
 
         case "$2" in
             open) $iwctl connect "$3" ;;
             psk)
-                pass=""
-                [[ -z "$(psk-try-connect "$3" "$pass")" ]] && break
-
+                pass=1
                 reason=""
+                if [[ -z "$(psk-try-connect "$3" "$pass")" ]]; then exit; fi
                 while true; do
                     pass="$(ask-password "$3" "$reason")"
                     [[ -z "$pass" ]] && break
@@ -37,5 +35,5 @@ case "$1" in
         ;;
     disconnect) $iwctl disconnect ;;
     scan) $iwctl scan ;;
-    *) echo Unsupported command && exit 1 ;;
+    *) echo Unsupported command && exit -3 ;;
 esac
