@@ -15,7 +15,7 @@ set $idle $idle_simple timeout 300 'swaylock -f -c 000000' before-sleep 'swayloc
 exec_always $idle_simple
 
 exec_always eww open bar --screen 0
-exec lxpolkit
+exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 
 input * xkb_layout us,ru
 input * xkb_variant colemak_dh,

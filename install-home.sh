@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yay -Syyu sway-im swaylock kitty lxsession-gtk3 dunst grimshot eww-tray-wayland-git rofi-lbonn-wayland \
+yay -Syyu sway-im swaylock kitty mate-polkit dunst grimshot eww-tray-wayland-git rofi-lbonn-wayland \
   gnome-desktop breeze inotify-tools nwg-look qt5ct dconf-editor \
   terminus-font ttf-cascadia-code-nerd ttf-fantasque-sans-mono noto-fonts noto-fonts-cjk \
   krita firefox qalculate-gtk transmission-qt mpv cmus ffmpeg rustup sublime-text-4
