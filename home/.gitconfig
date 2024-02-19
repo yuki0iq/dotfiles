@@ -68,7 +68,7 @@
     stnu = stash drop
 [core]
     editor = nvim
-	pager = less -+X
+	pager = delta
 [init]
     defaultBranch = main
 [user]
@@ -78,6 +78,7 @@
 [interactive]
     diffFilter = delta --color-only
 [delta]
+    pager = less -+X
     navigate = true    # use n and N to move between diff sections
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 [merge]
