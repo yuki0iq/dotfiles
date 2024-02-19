@@ -7,8 +7,10 @@ close() {
 }
 
 close_all() {
-    for wnd in system music_win calendar network activities wireless; do
-        close $wnd
+    windows="system music_win calendar network activities wireless"
+    eww close $windows
+    for wnd in $windows; do
+        rm -f "$LOCK_BASE.$wnd"
     done
 }
 
