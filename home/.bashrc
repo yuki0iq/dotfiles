@@ -22,6 +22,7 @@ alias ls='exa --color=auto'
 alias cat='bat'
 alias eax='echo $?'
 alias yay='yay --sudoloop'
+alias ip='ip -c=always'
 
 alias get-pacman-mirrors="curl -s 'https://archlinux.org/mirrorlist/all/' | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 -"
 
