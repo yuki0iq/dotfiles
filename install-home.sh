@@ -9,7 +9,7 @@ yay -Syyu sway-im swaylock kitty mate-polkit dunst grimshot eww-tray-wayland-git
 
 mkdir -p ~/.ssh ~/.config ~/.config/sublime-text
 
-ln -sf $PWD/home/.{bash{_profile,rc},gitconfig} ~/
+ln -sf $PWD/home/.{bash{_profile,rc},gitconfig,xkb} ~/
 ln -sf $PWD/home/.ssh/authorized_keys ~/.ssh/
 ln -sf $PWD/home/.config/sublime-text/Packages ~/.config/sublime-text/
 
