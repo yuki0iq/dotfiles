@@ -3,6 +3,7 @@ xkb_keymap {
         include "evdev"
 
         // Colemak-DH aliases:
+        // include "aliases(qwerty)"
         alias <LatQ> = <AD01>;
         alias <LatW> = <AD02>;
         alias <LatF> = <AD03>;
@@ -12,7 +13,7 @@ xkb_keymap {
         alias <LatL> = <AD07>;
         alias <LatU> = <AD08>;
         alias <LatY> = <AD09>;
-
+        
         alias <LatA> = <AC01>;
         alias <LatR> = <AC02>;
         alias <LatS> = <AC03>;
@@ -44,7 +45,7 @@ xkb_keymap {
 
     // Colemak-DH, taken from xkeyboard-config
     // Rulemak-DH, semi-optimized for Russian by Yuki <yuki.utk8g@gmail.com>
-    partial alphanumeric_keys modifier_keys xkb_symbols {
+    partial alphanumeric_keys xkb_symbols {
 
         name[Group1] = "English (Colemak-DH-Yuki)";
         name[Group2] = "Russian (Rulemak-DH-Yuki, phonetic Colemak-DH)";

@@ -33,35 +33,35 @@ set $src_mute  wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
 
 # ====== HOTKEYS ======
-bindsym --to-code $mod+Shift+Ctrl+F1 exec $idle
-bindsym --to-code $mod+Shift+Ctrl+F2 exec $idle_simple
+bindsym $mod+Shift+Ctrl+F1 exec $idle
+bindsym $mod+Shift+Ctrl+F2 exec $idle_simple
 
-bindsym --to-code $mod+Return exec $terminal
+bindsym $mod+Return exec $terminal
 bindsym --release Super_L exec 'rofi -show combi -combi-modes window,drun,run -modes combi -theme minimal'
-bindsym --to-code $mod+L exec 'cat /dev/null | rofi -dmenu -mesg "Run anything..." -p "?> " -l 0 -theme minimal | SHLVL=-1 sh -'
-bindsym --to-code $mod+N exec ~/.config/sway/wss
+bindsym $mod+L exec 'cat /dev/null | rofi -dmenu -mesg "Run anything..." -p "?> " -l 0 -theme minimal | SHLVL=-1 sh -'
+bindsym $mod+N exec ~/.config/sway/wss
 
-bindsym --to-code Ctrl+Print       exec grimshot save screen
-bindsym --to-code Ctrl+Shift+Print exec grimshot save anything
-bindsym --to-code Ctrl+$mod+Print  exec grimshot save active
+bindsym Ctrl+Print       exec grimshot save screen
+bindsym Ctrl+Shift+Print exec grimshot save anything
+bindsym Ctrl+$mod+Print  exec grimshot save active
 
-bindsym --to-code Print       exec grimshot copy screen
-bindsym --to-code Shift+Print exec grimshot copy anything
-bindsym --to-code $mod+Print  exec grimshot copy active
+bindsym Print       exec grimshot copy screen
+bindsym Shift+Print exec grimshot copy anything
+bindsym $mod+Print  exec grimshot copy active
 
-bindsym --to-code XF86AudioRaiseVolume exec $sink_up  
-bindsym --to-code XF86AudioLowerVolume exec $sink_down
-bindsym --to-code XF86AudioMute        exec $sink_mute
-bindsym --to-code XF86AudioMicMute     exec $src_mute 
+bindsym XF86AudioRaiseVolume exec $sink_up  
+bindsym XF86AudioLowerVolume exec $sink_down
+bindsym XF86AudioMute        exec $sink_mute
+bindsym XF86AudioMicMute     exec $src_mute 
 
-bindsym --to-code XF86AudioPrev exec playerctl previous
-bindsym --to-code XF86AudioStop exec playerctl stop
-bindsym --to-code XF86AudioPlay exec playerctl play-pause
-bindsym --to-code XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
 
-bindsym --to-code $mod+F3 exec .config/sway/arst.sh
+bindsym $mod+F3 exec .config/sway/arst.sh
 
-bindsym --to-code $mod+F11 exec ssh purplesyringa@192.168.1.8 -i ~/.ssh/id_ed25519_old playerctl play-pause
+bindsym $mod+F11 exec ssh purplesyringa@192.168.1.8 -i ~/.ssh/id_ed25519_old playerctl play-pause
 
 # ====== APPEARANCE ======
 workspace_layout tabbed
@@ -88,31 +88,31 @@ client.background       #000000
 
 
 # ====== MOVEMENT ======
-bindsym --to-code Mod1+Tab       focus next
-bindsym --to-code Mod1+Shift+Tab focus prev
+bindsym Mod1+Tab       focus next
+bindsym Mod1+Shift+Tab focus prev
 
-bindsym --to-code $mod+Left  focus left
-bindsym --to-code $mod+Down  focus down
-bindsym --to-code $mod+Up    focus up
-bindsym --to-code $mod+Right focus right
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
 
-bindsym --to-code $mod+Shift+Left  move left
-bindsym --to-code $mod+Shift+Down  move down
-bindsym --to-code $mod+Shift+Up    move up
-bindsym --to-code $mod+Shift+Right move right
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
 
-bindsym --to-code $mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
-bindsym --to-code $mod+s layout stacking
-bindsym --to-code $mod+t layout tabbed
-bindsym --to-code $mod+w layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+w layout toggle split
 
-floating_modifier $mod
-bindsym --to-code $mod+Ctrl+Shift+space floating toggle
-bindsym --to-code $mod+Ctrl+space focus mode_toggle
+floating_modifier Mod4
+bindsym $mod+Ctrl+Shift+space floating toggle
+bindsym $mod+Ctrl+space focus mode_toggle
 
-bindsym --to-code $mod+a focus parent
-#bindsym --to-code $mod+s focus child
+bindsym $mod+a focus parent
+#bindsym $mod+s focus child
 
 focus_wrapping workspace
 
@@ -130,50 +130,50 @@ set $ws9 "9"
 set $ws10 "10"
 
 # switch to workspace
-bindsym --to-code $mod+1 workspace number $ws1
-bindsym --to-code $mod+2 workspace number $ws2
-bindsym --to-code $mod+3 workspace number $ws3
-bindsym --to-code $mod+4 workspace number $ws4
-bindsym --to-code $mod+5 workspace number $ws5
-bindsym --to-code $mod+6 workspace number $ws6
-bindsym --to-code $mod+7 workspace number $ws7
-bindsym --to-code $mod+8 workspace number $ws8
-bindsym --to-code $mod+9 workspace number $ws9
-bindsym --to-code $mod+0 workspace number $ws10
-bindsym --to-code $mod+Tab workspace next
-bindsym --to-code $mod+Shift+Tab workspace prev
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 # move focused container to workspace
-bindsym --to-code $mod+Shift+1 move container to workspace number $ws1
-bindsym --to-code $mod+Shift+2 move container to workspace number $ws2
-bindsym --to-code $mod+Shift+3 move container to workspace number $ws3
-bindsym --to-code $mod+Shift+4 move container to workspace number $ws4
-bindsym --to-code $mod+Shift+5 move container to workspace number $ws5
-bindsym --to-code $mod+Shift+6 move container to workspace number $ws6
-bindsym --to-code $mod+Shift+7 move container to workspace number $ws7
-bindsym --to-code $mod+Shift+8 move container to workspace number $ws8
-bindsym --to-code $mod+Shift+9 move container to workspace number $ws9
-bindsym --to-code $mod+Shift+0 move container to workspace number $ws10
-bindsym --to-code $mod+Ctrl+Tab move container to workspace next
-bindsym --to-code $mod+Shift+Ctrl+Tab move container to workspace prev
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Ctrl+Tab move container to workspace next
+bindsym $mod+Shift+Ctrl+Tab move container to workspace prev
 
 workspace_auto_back_and_forth yes
 
-bindsym --to-code $mod+Mod1+m resize shrink width 10 px or 10 ppt
-bindsym --to-code $mod+Mod1+n resize grow height 10 px or 10 ppt
-bindsym --to-code $mod+Mod1+e resize shrink height 10 px or 10 ppt
-bindsym --to-code $mod+Mod1+i resize grow width 10 px or 10 ppt
+bindsym $mod+Mod1+m resize shrink width 10 px or 10 ppt
+bindsym $mod+Mod1+n resize grow height 10 px or 10 ppt
+bindsym $mod+Mod1+e resize shrink height 10 px or 10 ppt
+bindsym $mod+Mod1+i resize grow width 10 px or 10 ppt
 
-bindsym --to-code $mod+Mod1+Left resize shrink width 10 px or 10 ppt
-bindsym --to-code $mod+Mod1+Down resize grow height 10 px or 10 ppt
-bindsym --to-code $mod+Mod1+Up resize shrink height 10 px or 10 ppt
-bindsym --to-code $mod+Mod1+Right resize grow width 10 px or 10 ppt
+bindsym $mod+Mod1+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Mod1+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Mod1+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Mod1+Right resize grow width 10 px or 10 ppt
 
 
 # ====== DESTROY ======
-bindsym --to-code $mod+Shift+q kill
-bindsym --to-code $mod+Shift+r reload
-bindsym --to-code $mod+Shift+p restart
-bindsym --to-code $mod+Shift+o exec "swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit' 'swaymsg exit' --font 'pango:Fantasque Sans Mono 10'"
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+p restart
+bindsym $mod+Shift+o exec "swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit' 'swaymsg exit' --font 'pango:Fantasque Sans Mono 10'"
 
 
