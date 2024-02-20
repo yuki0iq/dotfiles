@@ -17,13 +17,7 @@ exec_always $idle_simple
 exec_always eww open bar --screen 0
 exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 
-input * xkb_layout us,ru
-input * xkb_variant colemak_dh,
-
-# rip rulemak_dh
-input * xkb_model pc101
-input * xkb_options compose:menu,grp:caps_toggle,grp_led:scroll
-
+input * xkb_file ~/.config/sway/yuki.xkb
 input * left_handed enabled
 
 exec fcitx5
