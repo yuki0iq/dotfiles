@@ -2,7 +2,7 @@
 
 pacman -Syyu bash patch sudo which bat eza git-delta ripgrep bind curl inetutils iproute2 iputils \
   inxi neofetch onefetch tokei htop ncdu tmux vim mc lsof strace git openssh speedtest-cli w3m \
-  iwd ly-dm
+  iwd ly
 
 # TODO install yay
 
