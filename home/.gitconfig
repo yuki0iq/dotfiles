@@ -68,7 +68,7 @@
     stnu = stash drop
 [core]
     editor = nvim
-	pager = delta
+    pager = delta
 [init]
     defaultBranch = main
 [user]
@@ -81,6 +81,8 @@
     pager = less -+X
     navigate = true    # use n and N to move between diff sections
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = true
+    right-arrow = ->
 [merge]
     conflictstyle = diff3
 [diff]
@@ -93,12 +95,10 @@
     gpgsign = true
 [gpg "ssh"]
     allowedsignersfile = /home/yuki/.config/git/allowed_signers
-[safe]
-	directory = /mount/d/sunwalker-client
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
 [rerere]
-	enabled = true
+    enabled = true
