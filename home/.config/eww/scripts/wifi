@@ -13,7 +13,7 @@ psk-try-connect() {
 
 iwctl="iwctl station $station"
 case "$1" in
-    status) $iwctl show | jq -Rsrc '[. / "\n" | .[4:-2][] | gsub("\\x1b\\[0m"; "") | {"key": (.[12:34] | gsub(" +$"; "") | gsub(" "; "_")), "value": (.[34:] | gsub(" +$"; ""))}] | from_entries' ;;
+    status) $iwctl show | jq -Rsrc '[. / "\n" | .[4:-2][] | gsub("\\x1b\\[0m"; "") | {"key": (.[12:34] | gsub(" +$"; "") | gsub(" "; "_")), "value": (.[34:] | gsub(" +$"; ""))}] | from_entries | . + {"Connected_network": .Connected_network[:15]}' ;;
     list) $iwctl get-networks rssi-dbms | jq -Rsrc '[. / "\n" | .[4:-2][] | gsub("\\x1b\\[(1;9)?0m"; "") | {"name": (.[6:40] | gsub(" +$"; "")), "security": (.[40:60] | gsub(" +$"; "")), "strength": .[60:63], "current": .[2:3]} | select(.security == "psk" or .security == "open") += {"escaped": .name | @sh}] | sort_by(.strength) | .[:20]' ;;
     connect)
         [[ -z "$3" ]] && exit -2

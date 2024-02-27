@@ -115,7 +115,7 @@
 
 (defwidget system []
   (box :class "window sys_win" :orientation "v" :space-evenly "false" :spacing 0
-    (box :orientation "h" :space-evenly "true"
+    (box :orientation "h"
       (box :orientation "h" :space-evenly "false" :halign "start"
         (circular-progress :value {EWW_CPU['avg']} :class "circle_bar cpu" :thickness 5
           (label :text "󰍛" :class "nf sys_text_box sys_icon sys_enlarge cpu"))
@@ -135,7 +135,7 @@
               battery.status == 'not charging' ? "+" :
               battery.status == 'discharging' ? "↓" :
               battery.status == 'full' ? "=" : "-"}))))
-    (box :orientation "h" :space-evenly "true"
+    (box :orientation "h"
       (box :orientation "h" :space-evenly "false" :halign "start"
         (circular-progress :value {EWW_RAM['used_mem_perc']} :class "circle_bar memory" :thickness 5
           (label :text "󰍛" :class "nf sys_text_box sys_icon sys_enlarge memory"))
