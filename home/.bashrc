@@ -30,7 +30,7 @@ shopt -s checkwinsize
 shopt -s expand_aliases
 shopt -s histappend
 
-if [[ -z CARGOENV ]]; then
+if [[ -z $CARGOENV ]]; then
     export CARGOENV="${HOME}/.cargo/bin"
     export PATH="${CARGOENV}:${PATH}"
 fi
