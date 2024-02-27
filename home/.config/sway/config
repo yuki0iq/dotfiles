@@ -2,7 +2,7 @@
 
 set $mod Mod4
 
-font pango:Fantasque Sans Mono 0
+font pango:Fantasque Sans Mono 1
 
 
 # ====== AUTORUNS ======
@@ -78,6 +78,7 @@ for_window [class=".*"] title_format ""
 # title_align center
 default_border pixel 2
 default_floating_border pixel 2
+titlebar_padding 2
 
 gaps inner 5
 gaps outer 0
