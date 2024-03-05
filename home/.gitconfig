@@ -33,6 +33,7 @@
     c = commit
     cc = commit -m
     ca = commit --amend
+    cca = commit -m --amend
     co = checkout
     cob = checkout -b
     cod = checkout --detach
