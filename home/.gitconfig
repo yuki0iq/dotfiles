@@ -1,6 +1,6 @@
 [alias]
     git = !git
-    l = log --graph --abbrev=0 --decorate --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %aN%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
+    l = log --graph --decorate --format=format:\"%C(bold blue)%h%C(reset) %C(dim italic cyan)%ah%C(reset) %C(dim white)%aN%C(reset) %C(green)(%ar)%C(reset)%C(yellow)%d%C(reset) %C(italic dim white)%GS%C(reset)%n %C(white)%s%C(reset)\"
     ll = !git l --all
     lll = !git ll $(git rev-list -g --all)
     lo = !git l --oneline
