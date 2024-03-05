@@ -36,10 +36,9 @@
     cca = commit -m --amend
     co = checkout
     cob = checkout -b
-    cod = checkout --detach
-    che = cherry-pick
-    chea = cherry-pick --abort
-    chec = cherry-pick --continue
+    cpi = cherry-pick
+    cpa = cherry-pick --abort
+    cpc = cherry-pick --continue
     me = merge --no-ff
     mea = merge --abort
     mec = merge --continue
