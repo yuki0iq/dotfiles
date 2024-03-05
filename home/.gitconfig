@@ -12,7 +12,7 @@
     pa = push --all
     ppa = push --force-with-lease --all
     pppa = push --force --all
-    take = pull
+    take = pull --rebase
     f = fetch
     fa = fetch --all
     b = branch
@@ -49,10 +49,10 @@
     sui = submodule init --recursive
     suu = submodule update --init --recursive
     re = rebase
-    rei = rebase --no-gpg-sign -i
-    reo = rebase --no-gpg-sign --onto
-    reio = rebase --no-gpg-sign -i --onto
-    reoi = rebase --no-gpg-sign -i --onto
+    rei = rebase -i
+    reo = rebase --onto
+    reio = rebase -i --onto
+    reoi = rebase -i --onto
     rea = rebase --abort
     rec = rebase --continue
     reskip = rebase --skip
