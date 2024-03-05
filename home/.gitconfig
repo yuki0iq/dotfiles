@@ -30,9 +30,6 @@
     ap = add -p
     d = diff
     dd = diff --staged
-    done = show --stat
-    ddone = diff --stat
-    dddone = diff --stat --staged
     c = commit
     cc = commit -m
     ca = commit --amend
@@ -46,7 +43,6 @@
     mea = merge --abort
     mec = merge --continue
     meff = merge --ff-only
-    mb = merge-base
     su = submodule
     sud = submodule deinit --force --all
     sus = submodule status --recursive
@@ -63,9 +59,6 @@
     retodo = rebase --edit-todo
     resoft = reset --soft
     rehard = reset --hard
-    st = stash
-    sta = stash pop
-    stnu = stash drop
 [core]
     editor = nvim
     pager = delta
