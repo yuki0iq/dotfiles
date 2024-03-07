@@ -6,6 +6,7 @@
 export QT_QPA_PLATFORMTHEME=qt5ct
 
 
+[[ -z "$XDG_RUNTIME_DIR" ]] && export XDG_RUNTIME_DIR=/run/user/$(id -u)
 SSH_ENV="$XDG_RUNTIME_DIR/ssh-agent-environment"
 
 ssh_agent_env() {
