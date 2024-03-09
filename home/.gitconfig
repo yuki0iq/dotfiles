@@ -30,6 +30,8 @@
     ap = add -p
     d = diff
     dd = diff --staged
+    do = diff --ours
+    dt = diff --theirs
     c = commit
     cc = commit -m
     ca = commit --amend
