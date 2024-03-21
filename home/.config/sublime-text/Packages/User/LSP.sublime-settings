@@ -12,35 +12,35 @@
                 {
                     "scopes": ["source.c"],
                     "syntaxes": ["Packages/C++/C.sublime-syntax"],
-                    "languageId": "c"
+                    "languageId": "c",
                 },
                 {
                     "scopes": ["source.c++"],
                     "syntaxes": ["Packages/C++/C++.sublime-syntax"],
-                    "languageId": "cpp"
+                    "languageId": "cpp",
                 },
                 {
                     "scopes": ["source.objc"],
                     "syntaxes": ["Packages/Objective-C/Objective-C.sublime-syntax"],
-                    "languageId": "objective-c"
+                    "languageId": "objective-c",
                 },
                 {
                     "scopes": ["source.objc++"],
                     "syntaxes": ["Packages/Objective-C/Objective-C++.sublime-syntax"],
-                    "languageId": "objective-cpp"
+                    "languageId": "objective-cpp",
                 }
             ],
             "initializationOptions": {
                 "cache": {
-                    "directory": "/tmp/ccls-cache"
+                    "directory": "/tmp/ccls-cache",
                 },
                 "completion": {
-                    "detailedLabel": true
+                    "detailedLabel": true,
                 },
                 "clang": {
-                    "extraArgs": ["-std=c++2a"],
-                }
-            }
-        }
-    }
+                    "extraArgs": ["-std=c++23"],
+                },
+            },
+        },
+    },
 }

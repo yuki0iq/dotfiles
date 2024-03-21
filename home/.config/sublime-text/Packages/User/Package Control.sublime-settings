@@ -6,9 +6,11 @@
 	"installed_packages":
 	[
 		"CMake",
+		"Dockerfile Syntax Highlighting",
 		"i3 wm",
 		"INI",
 		"LSP",
+		"LSP-clangd",
 		"LSP-pylsp",
 		"LSP-rust-analyzer",
 		"MakeTargets",
