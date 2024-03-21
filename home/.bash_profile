@@ -25,3 +25,5 @@ else
     ssh_agent_env
 fi
 
+
+if [ -e /home/yuki/.nix-profile/etc/profile.d/nix.sh ]; then . /home/yuki/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
