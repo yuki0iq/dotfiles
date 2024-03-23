@@ -15,6 +15,7 @@ if type -P dircolors >/dev/null ; then
     fi
 fi
 
+alias vi='nvim'
 alias vim='nvim'
 alias emacs='nvim'
 alias nano='nvim'
@@ -23,6 +24,7 @@ alias cat='bat'
 alias eax='echo $?'
 alias yay='yay --sudoloop'
 alias ip='ip -c=always'
+alias disas='~/kek/Mirror/disas/disas'
 
 alias get-pacman-mirrors="curl -s 'https://archlinux.org/mirrorlist/all/' | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 -"
 
