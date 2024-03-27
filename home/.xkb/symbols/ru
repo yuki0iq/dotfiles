@@ -1,6 +1,6 @@
 // Rulemak-DH, semi-optimized for Russian by Yuki <yuki.utk8g@gmail.com>
 partial alphanumeric_keys
-xkb_symbols "rulemak_dh" {
+xkb_symbols "rulemak_dh_yuki" {
 
     name[Group1]= "Russian (Rulemak-DH, phonetic Colemak-DH)";
 
@@ -59,4 +59,5 @@ xkb_symbols "rulemak_dh" {
 
     include "level3(ralt_switch)"
     include "nbsp(level4)"
+    include "yuki(movement)"
 };

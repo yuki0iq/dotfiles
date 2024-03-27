@@ -1,0 +1,18 @@
+partial alphanumeric_keys
+xkb_symbols "movement" {
+
+    key.type = "EIGHT_LEVEL";
+    key <AD02>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Insert,     Insert,     Insert,     Insert      ]   };
+    key <AD03>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Home,       Home,       Home,       Home        ]   };
+    key <AC03>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  End,        End,        End,        End         ]   };
+    key <AD04>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Prior,      Prior,      Prior,      Prior       ]   };
+    key <AC04>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Next,       Next,       Next,       Next        ]   };
+    key <AD08>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Up,         Up,         Up,         Up          ]   };
+    key <AC07>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Left,       Left,       Left,       Left        ]   };
+    key <AC08>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Down,       Down,       Down,       Down        ]   };
+    key <AC09>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Right,      Right,      Right,      Right       ]   };
+    key <AD07>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Delete,     Delete,     Delete,     Delete      ]   };
+    key <AB07>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  BackSpace,  BackSpace,  BackSpace,  BackSpace   ]   };
+
+    include "level5(menu_switch)"
+};

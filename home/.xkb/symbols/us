@@ -1,0 +1,6 @@
+partial alphanumeric_keys
+xkb_symbols "colemak_dh_yuki" {
+
+    include "us(colemak_dh)"
+    include "yuki(movement)"
+};

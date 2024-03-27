@@ -19,9 +19,9 @@ exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 
 input type:keyboard {
     xkb_layout us,ru
-    xkb_variant colemak_dh,rulemak_dh
+    xkb_variant colemak_dh_yuki,rulemak_dh_yuki
     xkb_model pc101
-    xkb_options compose:menu,compose:rwin,grp:caps_toggle,grp_led:scroll
+    xkb_options compose:rctrl,grp:caps_toggle,grp_led:scroll
     xkb_numlock enabled
 }
 input * left_handed enabled
