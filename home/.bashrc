@@ -22,7 +22,6 @@ alias nano='nvim'
 alias ls='exa --color=auto'
 alias cat='bat'
 alias eax='echo $?'
-alias yay='yay --sudoloop'
 alias ip='ip -c=always'
 alias disas='~/kek/Mirror/disas/disas'
 
