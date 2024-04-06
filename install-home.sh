@@ -4,7 +4,8 @@ paru -Syyu sway-im swaylock kitty mate-polkit dunst grimshot eww-tray-wayland-gi
   gnome-desktop breeze inotify-tools nwg-look qt5ct dconf-editor materia-gtk-theme \
   terminus-font ttf-cascadia-code-nerd ttf-fantasque-sans-mono noto-fonts{,-cjk} \
   krita firefox qalculate-gtk transmission-qt mpv cmus ffmpeg rustup sublime-text-4 \
-  mozc-ut fcitx5-{configtool,git,gtk,mozc-ut}
+  mozc-ut fcitx5-{configtool,git,gtk,mozc-ut} \
+  wayvnc
 
 # add yourself to `video` group to control brightness...
 
