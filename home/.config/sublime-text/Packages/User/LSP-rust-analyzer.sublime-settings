@@ -3,4 +3,8 @@
     "command": [
         "~yuki/.rustup/toolchains/nightly-x86_64-unknown-linux-musl/bin/rust-analyzer"
     ],
+    "settings": {
+        "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "always",
+        "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
+    }
 }
