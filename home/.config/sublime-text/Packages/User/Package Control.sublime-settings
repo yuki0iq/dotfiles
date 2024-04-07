@@ -13,6 +13,7 @@
 		"LSP-clangd",
 		"LSP-pylsp",
 		"LSP-rust-analyzer",
+		"LSP-typescript",
 		"MakeTargets",
 		"Package Control",
 		"Rust Enhanced",
