@@ -42,5 +42,6 @@ if command -v statusline >/dev/null; then
 fi
 
 export EDITOR=nvim
+export PAGER=less -R
 
 source /usr/share/git/completion/git-completion.bash
