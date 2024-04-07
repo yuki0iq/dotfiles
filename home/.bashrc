@@ -45,3 +45,4 @@ export EDITOR=nvim
 export PAGER=less -R
 
 source /usr/share/git/completion/git-completion.bash
+source /usr/share/doc/pkgfile/command-not-found.bash
