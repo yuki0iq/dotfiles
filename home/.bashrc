@@ -6,6 +6,9 @@
 
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
+export HISTSIZE=-1
+export HISTFILESIZE=-1
+
 # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
 if type -P dircolors >/dev/null ; then
     if [[ -f ~/.dir_colors ]] ; then
