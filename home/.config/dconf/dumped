@@ -6,7 +6,8 @@ window-is-maximized=false
 window-width=540
 
 [com/github/wwmm/easyeffects]
-last-used-input-preset='Presets'
+bypass=false
+last-used-input-preset='Reduce microphone noise'
 last-used-output-preset='Presets'
 window-fullscreen=false
 window-height=325
@@ -18,16 +19,26 @@ color=(1.0, 1.0, 1.0, 1.0)
 color-axis-labels=(1.0, 1.0, 1.0, 1.0)
 
 [com/github/wwmm/easyeffects/streaminputs]
-input-device='alsa_input.pci-0000_00_1b.0.9.analog-stereo'
-plugins=@as []
+blocklist=@as []
+input-device='alsa_input.pci-0000_00_1b.0.11.analog-stereo'
+plugins=['rnnoise#0', 'echo_canceller#0', 'speex#0']
+
+[com/github/wwmm/easyeffects/streaminputs/echocanceller/0]
+bypass=false
+filter-length=20
+
+[com/github/wwmm/easyeffects/streaminputs/rnnoise/0]
+bypass=false
+enable-vad=true
 
 [com/github/wwmm/easyeffects/streaminputs/speex/0]
+enable-denoise=true
 enable-dereverb=true
 enable-vad=true
 noise-suppression=-60
 
 [com/github/wwmm/easyeffects/streamoutputs]
-output-device='alsa_output.pci-0000_00_1b.0.9.analog-stereo'
+output-device='alsa_output.pci-0000_00_1b.0.11.analog-stereo'
 plugins=@as []
 
 [com/github/wwmm/easyeffects/streamoutputs/crystalizer/0]
