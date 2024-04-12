@@ -4,6 +4,8 @@ Yuki Sireneva's config files in one place and with almost easy install!
 
 ## Featuring
 
+* systemd-networkd config
+
 * `.bashrc` with some aliases
 
 * To use bash-status-line-2, `cargo +nightly install statusline`
