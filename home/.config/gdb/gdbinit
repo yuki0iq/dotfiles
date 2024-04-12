@@ -1,2 +1,2 @@
 source /usr/share/gef/gef.py
-set history filename ~/.config/gdb/.gdb_history
+set history filename ~/.local/state/gdb/.gdb_history
