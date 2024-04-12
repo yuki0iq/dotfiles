@@ -1,0 +1,3 @@
+#!/bin/bash
+
+swaymsg -t get_workspaces | jq --unbuffered -rc '.[] | "\t" + .name + "\t" + (if .urgent then "urgent " else "" end) + (if .focused then "this " else (if .visible then "shown " else "" end) end) + "\t" + .representation[2:-1]' | rofi -theme minimal -dmenu -p 'workspace -> ' | awk '{ print $1 }' | xargs -Iq swaymsg workspace number q

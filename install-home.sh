@@ -1,18 +1,16 @@
 #!/bin/sh
 
 paru -Syyu sway-im swaylock kitty mate-polkit dunst grimshot eww-tray-wayland-git rofi-lbonn-wayland \
-  gnome-desktop breeze inotify-tools nwg-look qt5ct dconf-editor materia-gtk-theme \
+  gnome-desktop breeze inotify-tools nwg-look dconf-editor materia-gtk-theme \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
-  krita firefox qalculate-gtk transmission-qt mpv cmus ffmpeg rustup sublime-text-4 \
-  fcitx5-{configtool,gtk,mozc} \
-  wayvnc
+  krita firefox qbittorrent mpv cmus ffmpeg rustup sublime-text-4 fcitx5-{configtool,gtk,mozc} wayvnc gef
 
 # add yourself to `video` group to control brightness...
 
 mkdir -p ~/.ssh ~/.config ~/.config/sublime-text
 
-ln -sf $PWD/home/.{bash{_profile,rc},gitconfig,xkb} ~/
+ln -sf $PWD/home/.{bash{_profile,rc},xkb} ~/
 ln -sf $PWD/home/.ssh/authorized_keys ~/.ssh/
 ln -sf $PWD/home/.config/sublime-text/Packages ~/.config/sublime-text/
 
-ln -sf $PWD/home/.config/{dunst,environment.d,eww,fcitx5,git,gtk-3.0,kitty,nwg-look,paru,rofi,qt5ct,sway} ~/.config/
+ln -sf $PWD/home/.config/{dconf,dunst,easyeffects,eww,fcitx5,gdb,git,gtk-3.0,kitty,MangoHud,nvim,nwg-look,paru,rofi,sway} ~/.config/
