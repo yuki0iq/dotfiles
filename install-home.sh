@@ -8,7 +8,7 @@ paru -Syyu sway-im swaylock kitty mate-polkit dunst grimshot eww-tray-wayland-gi
 
 # add yourself to `video` group to control brightness...
 
-mkdir -p ~/.ssh ~/.config ~/.config/sublime-text
+mkdir -p ~/.ssh ~/.config ~/.config/sublime-text ~/.local ~/.local/share ~/.local/state
 
 ln -sf $PWD/home/.{bash{_profile,rc},xkb} ~/
 ln -sf $PWD/home/.ssh/authorized_keys ~/.ssh/
