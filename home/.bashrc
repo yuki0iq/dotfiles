@@ -4,8 +4,6 @@
 
 [[ $- != *i* ]] && return
 
-[ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
-
 export XDG_DATA_HOME=~/.local/share
 export XDG_CONFIG_HOME=~/.config
 export XDG_STATE_HOME=~/.local/state
@@ -55,6 +53,7 @@ fi
 export EDITOR=nvim
 export PAGER='less -R'
 
+source /usr/share/bash-completion/bash_completion
 source /usr/share/git/completion/git-completion.bash
 source /usr/share/doc/pkgfile/command-not-found.bash
 

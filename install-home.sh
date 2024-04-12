@@ -3,7 +3,8 @@
 paru -Syyu sway-im swaylock kitty mate-polkit dunst grimshot eww-tray-wayland-git rofi-lbonn-wayland \
   gnome-desktop breeze inotify-tools nwg-look dconf-editor materia-gtk-theme \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
-  krita firefox qbittorrent mpv cmus ffmpeg rustup sublime-text-4 fcitx5-{configtool,gtk,mozc} wayvnc gef
+  krita firefox qbittorrent mpv cmus ffmpeg rustup sublime-text-4 fcitx5-{configtool,gtk,mozc} gef \
+  wayvnc bash-completion
 
 # add yourself to `video` group to control brightness...
 
