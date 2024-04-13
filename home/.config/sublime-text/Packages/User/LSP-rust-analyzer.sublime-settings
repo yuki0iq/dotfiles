@@ -1,7 +1,7 @@
 // Settings in here override those in "LSP-rust-analyzer/LSP-rust-analyzer.sublime-settings"
 {
     "command": [
-        "~yuki/.rustup/toolchains/nightly-x86_64-unknown-linux-musl/bin/rust-analyzer"
+        "/home/yuki/.local/share/rustup/toolchains/nightly-x86_64-unknown-linux-musl/bin/rust-analyzer",
     ],
     "settings": {
         "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "always",

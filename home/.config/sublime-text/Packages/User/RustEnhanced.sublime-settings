@@ -1,3 +1,8 @@
 {
     "rust_syntax_checking_method": "clippy",
+    "rust_env": {
+        "CARGO_HOME": "/home/yuki/.local/share/cargo",
+        "RUSTUP_HOME": "/home/yuki/.local/share/rustup",
+        "PATH": "$PATH:/home/yuki/.local/share/cargo",
+    }
 }
