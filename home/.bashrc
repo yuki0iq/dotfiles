@@ -4,11 +4,6 @@
 
 [[ $- != *i* ]] && return
 
-export XDG_DATA_HOME=~/.local/share
-export XDG_CONFIG_HOME=~/.config
-export XDG_STATE_HOME=~/.local/state
-export XDG_CACHE_HOME=~/.cache
-
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 export HISTSIZE=-1
 export HISTFILESIZE=-1
@@ -38,11 +33,10 @@ shopt -s checkwinsize
 shopt -s expand_aliases
 shopt -s histappend
 
-if [[ -z $CARGOENV ]]; then
-    export CARGOENV="${HOME}/.cargo/bin"
-    export PATH="${CARGOENV}:${PATH}"
+if [[ -z $CARGO_HOME ]]; then
     export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
     export CARGO_HOME="$XDG_DATA_HOME"/cargo
+    export PATH="${CARGO_HOME}/bin:${PATH}"
 fi
 
 if command -v statusline >/dev/null; then
