@@ -36,7 +36,7 @@ shopt -s histappend
 if [[ -z $CARGO_HOME ]]; then
     export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
     export CARGO_HOME="$XDG_DATA_HOME"/cargo
-    export PATH="${CARGO_HOME}/bin:${PATH}"
+    export PATH="${PATH}:${CARGO_HOME}/bin"
 fi
 
 if command -v statusline >/dev/null; then
