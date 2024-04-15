@@ -11,6 +11,7 @@ patch -d / -Np1 < patch/network.patch
 
 install -m0644 root/etc/systemd/network/{20-wired,21-loopback,25-wireless}.network /etc/systemd/network
 install -m0644 root/etc/ssh/{ssh,sshd}_config /etc/ssh
+install -m0644 root/etc/ly/config.ini /etc/ly
 install -m0644 root/etc/{locale.gen,{pacman,vconsole}.conf} /etc
 
 systemctl enable --now systemd-timesyncd systemd-networkd systemd-resolved iwd sshd ly-dm pkgfile-update.timer
