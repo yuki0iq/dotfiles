@@ -15,6 +15,7 @@
 		"LSP-rust-analyzer",
 		"LSP-typescript",
 		"MakeTargets",
+		"Nix",
 		"Package Control",
 		"Rust Enhanced",
 		"Smali",
