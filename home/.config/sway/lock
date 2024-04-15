@@ -1,0 +1,20 @@
+#!/bin/sh
+WALL=~/pixiv_81691677_p0.jpg
+BLURRED=~/.cache/wallpaper-blurred
+
+if [[ ! -f $BLURRED ]]; then
+    ffmpeg -i $WALL -vf "gblur=sigma=5:steps=3" -f apng $BLURRED
+    rm $SUBFILE
+fi
+
+exec swaylock \
+    --grace 15 \
+    --grace-no-mouse \
+    --grace-no-touch \
+    --indicator-idle-visible \
+    --clock \
+    --show-failed-attempts \
+    --show-keyboard-layout \
+    --color 000000 \
+    --image $BLURRED \
+    --scaling fill
