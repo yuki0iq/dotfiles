@@ -12,7 +12,7 @@ output * bg ~/pixiv_81691677_p0.jpg fill
 
 set $idle_simple (killall swayidle || true) && swayidle -w timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
 set $idle $idle_simple timeout 240 '~/.config/sway/lock' before-sleep '~/.config/sway/lock'
-exec_always $idle_simple
+exec_always $idle
 
 # exec_always "polybar-msg cmd quit; PATH=~/.config/sway:$PATH polybar -c ~/.config/sway/polybar.ini"
 exec_always eww open bar --screen 0
