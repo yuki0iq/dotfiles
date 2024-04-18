@@ -67,7 +67,7 @@ bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 
-bindsym $mod+F3 exec .config/sway/arst.sh
+bindsym $mod+F3 exec .config/sway/layout-variant
 
 bindsym $mod+F11 exec ssh purplesyringa@192.168.1.8 -i ~/.ssh/id_ed25519_old playerctl play-pause
 
