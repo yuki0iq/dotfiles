@@ -379,7 +379,7 @@ input-feedback-sounds=false
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
-location-mode='path-bar'
+location-mode='filename-entry'
 show-hidden=false
 show-size-column=true
 show-type-column=true
