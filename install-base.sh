@@ -1,17 +1,25 @@
 #!/bin/sh
 
-pacman -Syyu bash patch sudo which bat eza git-delta ripgrep bind curl inetutils iproute2 iputils \
-  inxi neofetch onefetch tokei htop ncdu tmux vim mc lsof strace git openssh speedtest-cli w3m \
-  iwd ly terminus-font pkgfile
+pacman -Syu git
+pushd /tmp
+  git clone https://aur.archlinux.org/paru-bin.git
+  pushd paru-bin
+    makepkg -si
+  popd
+  rm -rf paru-bin
+popd
 
-# TODO install paru
+paru -Syu rate-mirrors
+rate-mirrors arch > /etc/pacman.d/mirrorlist
 
-# created as `diff -Naur sysd yuki > network.patch`
-patch -d / -Np1 < patch/network.patch
+pushd root
+  find -type f -exec install -vDm0644 {} /{} \;
+popd
 
-install -m0644 root/etc/systemd/network/{20-wired,21-loopback,25-wireless}.network /etc/systemd/network
-install -m0644 root/etc/ssh/{ssh,sshd}_config /etc/ssh
-install -m0644 root/etc/ly/config.ini /etc/ly
-install -m0644 root/etc/{locale.gen,{pacman,vconsole}.conf} /etc
+paru -Syu \
+  bash diffutils patch sudo tmux bash-completion \
+  pkgfile bat eza git-delta ripgrep htop ncdu \
+  bind iproute2 iputils iwd curl rsync openssh speedtest-cli w3m \
+  inxi nvim lsof strace ly terminus-font
 
-systemctl enable --now systemd-timesyncd systemd-networkd systemd-resolved iwd sshd ly-dm pkgfile-update.timer
+systemctl enable --now systemd-{timesyncd,networkd,resolved} iwd sshd ly-dm pkgfile-update.timer

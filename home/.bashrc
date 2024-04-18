@@ -27,8 +27,6 @@ alias eax='echo $?'
 alias ip='ip -c=always'
 alias disas='~/kek/Mirror/disas/disas'
 
-alias get-pacman-mirrors="curl -s 'https://archlinux.org/mirrorlist/all/' | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 -"
-
 shopt -s checkwinsize
 shopt -s expand_aliases
 shopt -s histappend

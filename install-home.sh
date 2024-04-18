@@ -1,12 +1,13 @@
 #!/bin/sh
 
-paru -Syyu sway-im swaylock-effects kitty mate-polkit dunst grimshot eww-tray-wayland-git rofi-lbonn-wayland \
-  gnome-desktop breeze inotify-tools nwg-look dconf-editor materia-gtk-theme \
+paru -Syu \
+  sway-im swaylock-effects eww-tray-wayland-git rofi-lbonn-wayland \
+  mate-polkit dunst grimshot inotify-tools \
+  fcitx5-{configtool,gtk,mozc} \
+  gnome-desktop breeze nwg-look materia-gtk-theme \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
-  krita firefox qbittorrent mpv cmus ffmpeg rustup sublime-text-4 fcitx5-{configtool,gtk,mozc} gef \
-  wayvnc bash-completion
-
-# add yourself to `video` group to control brightness...
+  wayvnc waypipe firefox kitty gef sublime-text-4 \
+  krita qbittorrent cmus ffmpeg mpv
 
 mkdir -p ~/.ssh ~/.config ~/.config/sublime-text ~/.local ~/.local/share ~/.local/state
 
