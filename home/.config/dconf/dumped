@@ -20,7 +20,7 @@ color-axis-labels=(1.0, 1.0, 1.0, 1.0)
 
 [com/github/wwmm/easyeffects/streaminputs]
 blocklist=@as []
-input-device='alsa_input.pci-0000_00_1b.0.11.analog-stereo'
+input-device='alsa_input.pci-0000_00_1b.0.5.analog-stereo'
 plugins=['rnnoise#0', 'echo_canceller#0', 'speex#0']
 
 [com/github/wwmm/easyeffects/streaminputs/echocanceller/0]
@@ -38,7 +38,7 @@ enable-vad=true
 noise-suppression=-60
 
 [com/github/wwmm/easyeffects/streamoutputs]
-output-device='alsa_output.pci-0000_00_1b.0.11.analog-stereo'
+output-device='alsa_output.pci-0000_00_1b.0.5.analog-stereo'
 plugins=@as []
 
 [com/github/wwmm/easyeffects/streamoutputs/crystalizer/0]
@@ -367,7 +367,7 @@ font-antialiasing='grayscale'
 font-hinting='full'
 font-name='Noto Sans 10'
 font-rgba-order='rgb'
-gtk-theme='Materia-compact'
+gtk-theme='Materia-light-compact'
 icon-theme='Adwaita'
 text-scaling-factor=1.0
 toolbar-icons-size='large'
@@ -379,7 +379,7 @@ input-feedback-sounds=false
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
-location-mode='filename-entry'
+location-mode='path-bar'
 show-hidden=false
 show-size-column=true
 show-type-column=true
