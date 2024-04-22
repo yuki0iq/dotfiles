@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BATTERY="$(ls -1 /sys/class/power_supply | grep BAT | head -1)"
-if [[ -n "$BAT" ]]; then
+if [[ -n "$BATTERY" ]]; then
 	BATTERY="/sys/class/power_supply/${BATTERY}"
 	status="$(cat $BATTERY/status | tr A-Z a-z)"
 	now="$(cat $BATTERY/charge_now)"
