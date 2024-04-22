@@ -359,6 +359,9 @@ enable-denoise=true
 enable-dereverb=false
 enable-vad=false
 
+[org/gnome/Connections]
+first-run=false
+
 [org/gnome/desktop/interface]
 color-scheme='prefer-dark'
 cursor-size=24
