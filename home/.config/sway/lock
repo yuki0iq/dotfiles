@@ -8,11 +8,16 @@ if [[ ! -f $BLURRED ]]; then
 fi
 
 exec swaylock \
-    --grace 15 \
+    --daemonize \
+    --grace 10 \
     --grace-no-mouse \
     --grace-no-touch \
     --indicator-idle-visible \
+    --indicator-radius 64 \
+    --indicator-thickness 10 \
     --clock \
+    --timestr '%H:%M' \
+    --datestr '%B %d, %a' \
     --show-failed-attempts \
     --show-keyboard-layout \
     --color 000000 \
