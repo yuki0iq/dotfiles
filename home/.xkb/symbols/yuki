@@ -14,16 +14,12 @@ xkb_symbols "movement" {
     key <AD07>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Delete,     Delete,     Delete,     Delete      ]   };
     key <AB07>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  BackSpace,  BackSpace,  BackSpace,  BackSpace   ]   };
 
-    include "yuki(level5_menu_lock)"
-    include "yuki(level5_scroll_switch)"
+    include "level5(menu_switch)"
+    include "yuki(level5_scroll_lock)"
 };
 
-partial modifier_keys
-xkb_symbols "level5_menu_lock" {
-  key <MENU> {[  ISO_Level5_Lock  ], type[group1]="ONE_LEVEL" };
-};
 
 partial modifier_keys
-xkb_symbols "level5_scroll_switch" {
-  key <SCLK> {[  ISO_Level5_Shift  ], type[group1]="ONE_LEVEL" };
+xkb_symbols "level5_scroll_lock" {
+  key <SCLK> {[  ISO_Level5_Lock  ], type[group1]="ONE_LEVEL" };
 };
