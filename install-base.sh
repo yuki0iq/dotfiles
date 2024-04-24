@@ -18,8 +18,8 @@ popd
 
 paru -Syu \
   bash diffutils patch sudo tmux bash-completion \
-  pkgfile bat eza git-delta ripgrep htop ncdu \
-  bind iproute2 iputils iwd curl rsync openssh speedtest-cli w3m \
+  pacman-contrib pkgfile bat eza git-delta ripgrep htop ncdu moreutils \
+  bind iproute2 iputils nft iwd curl rsync openssh speedtest-cli w3m \
   inxi nvim lsof strace ly terminus-font
 
 systemctl enable --now systemd-{timesyncd,networkd,resolved} iwd sshd ly-dm pkgfile-update.timer
