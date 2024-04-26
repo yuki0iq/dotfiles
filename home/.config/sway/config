@@ -186,3 +186,5 @@ bindsym $mod+Shift+p restart
 bindsym $mod+Shift+o exec "swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit' 'swaymsg exit' --font 'pango:Fantasque Sans Mono 10'"
 
 
+# ====== Floating ======
+for_window [app_id="org.keepassxc.KeePassXC"] floating enable

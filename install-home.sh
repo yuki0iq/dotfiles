@@ -6,7 +6,7 @@ paru -Syu \
   fcitx5-{configtool,gtk,mozc} \
   gnome-desktop breeze nwg-look materia-gtk-theme qt6ct \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
-  wayvnc waypipe firefox kitty gef sublime-text-4 \
+  wayvnc waypipe firefox kitty gef sublime-text-4 keepassxc \
   krita qbittorrent cmus ffmpeg mpv
 
 mkdir -p ~/.ssh ~/.config ~/.config/sublime-text ~/.local ~/.local/share ~/.local/state
