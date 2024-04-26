@@ -56,3 +56,5 @@ export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
 alias adb='HOME=$XDG_DATA_HOME/android adb'
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
