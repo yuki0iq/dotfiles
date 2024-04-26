@@ -22,4 +22,4 @@ paru -Syu \
   bind iproute2 iputils nft iptables-nft iwd curl rsync openssh speedtest-cli w3m \
   inxi nvim lsof strace ly terminus-font
 
-systemctl enable --now systemd-{timesyncd,networkd,resolved} iwd sshd ly-dm pkgfile-update.timer
+systemctl enable --now systemd-{timesyncd,networkd,resolved} iwd sshd ly-dm pkgfile-update.timer nftables
