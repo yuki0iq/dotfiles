@@ -8,7 +8,8 @@ paru -Syu \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
   wayvnc waypipe firefox kitty gef sublime-text-4 keepassxc \
   xdg-desktop-portal-gtk \
-  krita qbittorrent cmus ffmpeg mpv
+  krita qbittorrent cmus ffmpeg mpv \
+  power-profiles-daemon python-gobject
 
 mkdir -p ~/.ssh ~/.config ~/.config/sublime-text ~/.local ~/.local/share ~/.local/state
 
