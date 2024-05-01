@@ -84,11 +84,11 @@ gaps outer 0
 smart_gaps on
 
 # class                 border    backgr.   text      indicator child_border
-client.focused          #787878a0 #787878a0 #787878a0 #2e9ef4d0 #285577d0
-client.focused_inactive #333333a0 #333333a0 #333333a0 #484e50d0 #5f676ad0
-client.unfocused        #000000a0 #000000a0 #000000a0 #292d2ed0 #222222d0
-client.urgent           #a00000a0 #a00000a0 #a00000a0 #900000d0 #900000d0
-client.placeholder      #000000a0 #000000a0 #000000a0 #000000d0 #0c0c0cd0
+client.focused          #787878a0 #787878a0 #787878a0 #787878a0 #285577d0
+client.focused_inactive #333333a0 #333333a0 #333333a0 #333333a0 #5f676ad0
+client.unfocused        #000000a0 #000000a0 #000000a0 #000000a0 #222222d0
+client.urgent           #a00000a0 #a00000a0 #a00000a0 #a00000a0 #a00000d0
+client.placeholder      #000000a0 #000000a0 #000000a0 #000000a0 #0c0c0cd0
 
 client.background       #000000
 
