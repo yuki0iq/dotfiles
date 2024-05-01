@@ -2,7 +2,8 @@
 
 set $mod Mod4
 
-font pango:Fantasque Sans Mono 1
+# ah yes the "fuck you" solution
+font pango:Fantasque Sans Mono 0.001
 
 
 # ====== AUTORUNS ======
