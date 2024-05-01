@@ -27,9 +27,6 @@ input type:keyboard {
 }
 input * left_handed enabled
 
-exec fcitx5
-exec dunst
-
 # ====== QUICK COMMANDS ======
 set $terminal kitty
 

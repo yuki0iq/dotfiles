@@ -1,9 +1,8 @@
 #!/bin/sh
 
 paru -Syu \
-  sway-im swaylock-effects eww-tray-wayland-git rofi-wayland \
+  sway-git swaylock-effects eww-tray-wayland-git rofi-wayland \
   mate-polkit dunst grimshot inotify-tools \
-  fcitx5-{configtool,gtk,mozc} \
   gnome-desktop breeze nwg-look materia-gtk-theme qt6ct-kde \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
   wayvnc waypipe firefox kitty gef sublime-text-4 keepassxc \

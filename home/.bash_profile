@@ -8,8 +8,6 @@ export XDG_STATE_HOME=~/.local/state
 export XDG_CACHE_HOME=~/.cache
 
 export QT_QPA_PLATFORMTHEME=qt6ct
-export QT_IM_MODULE=fcitx5
-export GLFW_IM_MODULE=fcitx5
 
 [[ -z "$XDG_RUNTIME_DIR" ]] && export XDG_RUNTIME_DIR=/run/user/$(id -u)
 SSH_ENV="$XDG_RUNTIME_DIR/ssh-agent-environment"
