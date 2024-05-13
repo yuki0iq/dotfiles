@@ -7,6 +7,9 @@ export XDG_CONFIG_HOME=~/.config
 export XDG_STATE_HOME=~/.local/state
 export XDG_CACHE_HOME=~/.cache
 
+# Make xdg-open always prompt (probably)
+export DE=flatpak
+
 export QT_QPA_PLATFORMTHEME=qt6ct
 
 [[ -z "$XDG_RUNTIME_DIR" ]] && export XDG_RUNTIME_DIR=/run/user/$(id -u)
