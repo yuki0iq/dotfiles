@@ -1,6 +1,6 @@
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/org/gnome/'
-saved-view='/'
+saved-pathbar-path='/ca/desrt/dconf-editor/'
+saved-view='/ca/desrt/dconf-editor/'
 window-height=500
 window-is-maximized=false
 window-width=540
@@ -380,6 +380,27 @@ toolbar-style='both-horiz'
 [org/gnome/desktop/sound]
 event-sounds=true
 input-feedback-sounds=false
+
+[org/gnome/terminal/legacy]
+always-check-default-terminal=false
+default-show-menubar=false
+menu-accelerator-enabled=false
+
+[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+background-color='rgb(0,0,0)'
+background-transparency-percent=18
+bold-is-bright=false
+font='Fantasque Sans Mono 14'
+foreground-color='rgb(255,255,255)'
+palette=['rgb(0,0,0)', 'rgb(196,11,25)', 'rgb(4,167,92)', 'rgb(193,104,30)', 'rgb(9,82,173)', 'rgb(144,8,179)', 'rgb(15,142,162)', 'rgb(162,157,144)', 'rgb(81,79,85)', 'rgb(220,81,66)', 'rgb(41,198,112)', 'rgb(218,162,12)', 'rgb(60,137,230)', 'rgb(195,110,205)', 'rgb(50,188,210)', 'rgb(255,255,255)']
+scrollbar-policy='never'
+use-system-font=false
+use-theme-colors=false
+use-transparent-background=true
+
+[org/gtk/settings/color-chooser]
+custom-colors=[(0.56653333333333322, 0.032666666666666649, 0.70000000000000007, 1.0), (0.50589333333333331, 0.089466666666666694, 0.60999999999999999, 1.0), (0.63921568627450975, 0.27843137254901962, 0.72941176470588232, 1.0), (0.03400000000000003, 0.32229752066115697, 0.68000000000000005, 1.0), (0.091677777777777761, 0.38249926538108348, 0.7433333333333334, 1.0), (0.070588235294117646, 0.28235294117647058, 0.54509803921568623, 1.0), (0.14015555555555545, 0.79333333333333333, 0.49308225806451589, 1.0), (0.14015555555555553, 0.79333333333333333, 0.493082258064516, 1.0)]
+selected-color=(true, 0.56653333333333322, 0.032666666666666649, 0.70000000000000007, 1.0)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'

@@ -29,7 +29,7 @@ input type:keyboard {
 input * left_handed enabled
 
 # ====== QUICK COMMANDS ======
-set $terminal kitty
+set $terminal gnome-terminal
 
 set $sink_up   wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 set $sink_down wpctl set-volume @DEFAULT_SINK@ 5%-

@@ -5,7 +5,7 @@ paru -Syu \
   mate-polkit dunst grimshot inotify-tools \
   gnome-desktop breeze nwg-look materia-gtk-theme qt6ct-kde \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
-  wayvnc waypipe firefox kitty gef sublime-text-4 keepassxc \
+  wayvnc waypipe firefox gnome-terminal-transparency gef sublime-text-4 keepassxc \
   xdg-desktop-portal-gtk \
   krita qbittorrent cmus ffmpeg mpv \
   power-profiles-daemon python-gobject
