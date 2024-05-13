@@ -21,11 +21,31 @@ alias vi='nvim'
 alias vim='nvim'
 alias emacs='nvim'
 alias nano='nvim'
-alias ls='exa --color=auto'
-alias cat='bat'
-alias eax='echo $?'
-alias ip='ip -c=always'
 alias disas='~/kek/Mirror/disas/disas'
+
+alias cat='bat'
+alias ip='ip -c=always'
+alias ls='eza --color=auto'
+
+# Allow more colored commands when grc is present
+if command -v grc >/dev/null; then
+    grc='grc -se'
+    alias blkid="$grc blkid"
+    alias df="$grc df"
+    alias dig="$grc dig"
+    alias du="$grc du"
+    alias env="$grc env"
+    alias free="$grc free"
+    alias lsblk="$grc lsblk"
+    alias lsmod="$grc lsmod"
+    alias lspci="$grc lspci"
+    alias mount="$grc mount"
+    alias nmap="$grc nmap"
+    alias ping="$grc ping"
+    alias stat="$grc stat"
+    alias uptime="$grc uptime"
+    unset grc
+fi
 
 shopt -s checkwinsize
 shopt -s expand_aliases
@@ -43,7 +63,10 @@ if command -v statusline >/dev/null; then
 fi
 
 export EDITOR=nvim
-export PAGER='less -R'
+export PAGER=less
+export LESS=-R
+export MANROFFOPT=-c
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 source /usr/share/bash-completion/bash_completion
 source /usr/share/git/completion/git-completion.bash

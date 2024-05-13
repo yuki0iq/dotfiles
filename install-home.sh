@@ -3,7 +3,7 @@
 paru -Syu \
   sway-git swaylock-effects eww-tray-wayland-git rofi-wayland \
   mate-polkit dunst grimshot inotify-tools \
-  gnome-desktop breeze nwg-look materia-gtk-theme qt6ct-kde \
+  gnome-desktop breeze nwg-look materia-gtk-theme qt6ct-kde grc \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
   wayvnc waypipe firefox gnome-terminal-transparency gef sublime-text-4 keepassxc \
   xdg-desktop-portal-gtk \
