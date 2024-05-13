@@ -373,13 +373,18 @@ font-name='Noto Sans 10'
 font-rgba-order='rgb'
 gtk-theme='Materia-light-compact'
 icon-theme='Adwaita'
+monospace-font-name='Fantasque Sans Mono 11'
 text-scaling-factor=1.0
 toolbar-icons-size='large'
 toolbar-style='both-horiz'
 
 [org/gnome/desktop/sound]
 event-sounds=true
-input-feedback-sounds=false
+input-feedback-sounds=true
+
+[org/gnome/desktop/wm/preferences]
+audible-bell=true
+button-layout='appmenu:close'
 
 [org/gnome/terminal/legacy]
 always-check-default-terminal=false
@@ -387,6 +392,7 @@ default-show-menubar=false
 menu-accelerator-enabled=false
 
 [org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+audible-bell=true
 background-color='rgb(0,0,0)'
 background-transparency-percent=18
 bold-is-bright=false
@@ -397,6 +403,9 @@ scrollbar-policy='never'
 use-system-font=false
 use-theme-colors=false
 use-transparent-background=true
+
+[org/gnome/tweaks]
+show-extensions-notice=false
 
 [org/gtk/settings/color-chooser]
 custom-colors=[(0.56653333333333322, 0.032666666666666649, 0.70000000000000007, 1.0), (0.50589333333333331, 0.089466666666666694, 0.60999999999999999, 1.0), (0.63921568627450975, 0.27843137254901962, 0.72941176470588232, 1.0), (0.03400000000000003, 0.32229752066115697, 0.68000000000000005, 1.0), (0.091677777777777761, 0.38249926538108348, 0.7433333333333334, 1.0), (0.070588235294117646, 0.28235294117647058, 0.54509803921568623, 1.0), (0.14015555555555545, 0.79333333333333333, 0.49308225806451589, 1.0), (0.14015555555555553, 0.79333333333333333, 0.493082258064516, 1.0)]
