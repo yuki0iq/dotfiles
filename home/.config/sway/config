@@ -43,8 +43,8 @@ bindsym $mod+Shift+Ctrl+F2 exec $idle_sleep
 
 bindsym $mod+Return exec $terminal
 # bindsym --release Super_L
-bindsym $mod+N exec 'rofi -show combi -combi-modes window,drun,run -modes combi -theme minimal'
-bindsym $mod+L exec 'cat /dev/null | rofi -dmenu -mesg "Run anything..." -p "?> " -l 0 -theme minimal | SHLVL=-1 sh -'
+bindsym $mod+N exec 'rofi -show combi -combi-modes window,drun -modes combi -theme minimal'
+bindsym $mod+L exec 'SHLVL=-1 exec sh -c "$(rofi -dmenu -mesg \"Run anything...\" -p \"$> \" -l 0 -theme minimal)"'
 bindsym $mod+K exec ~/.config/sway/wss
 
 bindsym Ctrl+Print       exec grimshot save screen
