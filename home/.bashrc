@@ -69,7 +69,6 @@ fi
 
 export EDITOR=nvim
 export PAGER=less
-export LESS=-R
 export MANROFFOPT=-c
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
