@@ -1,6 +1,6 @@
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/ca/desrt/dconf-editor/'
-saved-view='/ca/desrt/dconf-editor/'
+saved-pathbar-path='/org/'
+saved-view='/'
 window-height=500
 window-is-maximized=false
 window-width=540
@@ -385,6 +385,29 @@ input-feedback-sounds=true
 [org/gnome/desktop/wm/preferences]
 audible-bell=true
 button-layout='appmenu:close'
+
+[org/gnome/font-manager]
+compare-background-color='rgb(255,255,255)'
+compare-foreground-color='rgb(0,0,0)'
+compare-list=@as []
+content-pane-position=398
+google-fonts-background-color='rgb(255,255,255)'
+google-fonts-foreground-color='rgb(0,0,0)'
+is-maximized=false
+language-filter-list=@as []
+prefer-dark-theme=true
+preview-font-size=29.991712707182323
+preview-mode='preview'
+preview-page=0
+preview-text="    The quick brown fox jumps over the lazy dog.\n\n    ABCDEFGHIJKLMNOPQRSTUVWXYZ\n    abcdefghijklmnopqrstuvwxyz\n    1234567890.:,;(*!?')\n\n\n\n    "
+selected-category='2'
+selected-font='4'
+window-position=(56, 50)
+window-size=(900, 600)
+
+[org/gnome/font-manager/font-viewer]
+window-position=(56, 50)
+window-size=(600, 400)
 
 [org/gnome/terminal/legacy]
 always-check-default-terminal=false
