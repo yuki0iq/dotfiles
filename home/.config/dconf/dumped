@@ -20,7 +20,7 @@ color-axis-labels=(1.0, 1.0, 1.0, 1.0)
 
 [com/github/wwmm/easyeffects/streaminputs]
 blocklist=@as []
-input-device='alsa_input.pci-0000_00_1b.0.7.analog-stereo'
+input-device='alsa_input.pci-0000_00_1b.0.analog-stereo'
 plugins=['rnnoise#0', 'echo_canceller#0', 'speex#0']
 
 [com/github/wwmm/easyeffects/streaminputs/echocanceller/0]
@@ -38,7 +38,7 @@ enable-vad=true
 noise-suppression=-60
 
 [com/github/wwmm/easyeffects/streamoutputs]
-output-device='alsa_output.pci-0000_00_1b.0.7.analog-stereo'
+output-device='alsa_output.pci-0000_00_1b.0.analog-stereo'
 plugins=@as []
 
 [com/github/wwmm/easyeffects/streamoutputs/crystalizer/0]
@@ -440,10 +440,10 @@ location-mode='path-bar'
 show-hidden=false
 show-size-column=true
 show-type-column=true
-sidebar-width=152
+sidebar-width=168
 sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
 window-position=(56, 50)
-window-size=(1920, 996)
+window-size=(1700, 886)
