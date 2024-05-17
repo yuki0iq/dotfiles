@@ -10,9 +10,9 @@ bypass=false
 last-used-input-preset='Reduce microphone noise'
 last-used-output-preset='Presets'
 window-fullscreen=false
-window-height=325
+window-height=755
 window-maximized=false
-window-width=704
+window-width=924
 
 [com/github/wwmm/easyeffects/spectrum]
 color=(1.0, 1.0, 1.0, 1.0)
