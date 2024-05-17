@@ -24,6 +24,9 @@ if type -P dircolors >/dev/null ; then
     fi
 fi
 
+alias upspeed="iperf3 -c iperf3.moji.fr -p 5225"
+alias downspeed="iperf3 -c iperf3.moji.fr -p 5225 -R"
+
 alias vi='nvim'
 alias vim='nvim'
 alias emacs='nvim'
