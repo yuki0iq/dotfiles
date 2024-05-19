@@ -19,8 +19,8 @@ Yuki Sireneva's config files in one place and with almost easy install!
 ```
 git clone git@github.com:yuki0iq/dotfiles
 cd dotfiles
-sudo ./install-base.sh
-./install-home.sh
+sudo ./root.sh
+./home.sh
 ```
 
 Install scripts **REMOVE** old files and places symlinks to files in this repo. Do NOT delete cloned repo after installing!
