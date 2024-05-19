@@ -2,7 +2,9 @@
 # ~/.bashrc
 #
 
-[[ $- != *i* ]] && return
+export DE=flatpak
+
+export QT_QPA_PLATFORMTHEME=qt6ct
 
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
@@ -10,6 +12,9 @@ export XDG_DATA_HOME=~/.local/share
 export XDG_CONFIG_HOME=~/.config
 export XDG_STATE_HOME=~/.local/state
 export XDG_CACHE_HOME=~/.cache
+
+[[ $- != *i* ]] && return
+
 
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 export HISTSIZE=-1
