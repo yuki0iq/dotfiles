@@ -1,0 +1,13 @@
+[Default Applications]
+application/json=sublime_text.desktop
+text/plain=sublime_text.desktop
+application/x-wine-extension-ini=sublime_text.desktop
+text/x-makefile=sublime_text.desktop
+text/x-c++hdr=sublime_text.desktop
+
+[Added Associations]
+application/json=sublime_text.desktop;
+text/plain=sublime_text.desktop;
+application/x-wine-extension-ini=sublime_text.desktop;
+text/x-makefile=sublime_text.desktop;
+text/x-c++hdr=sublime_text.desktop;
