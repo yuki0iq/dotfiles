@@ -3,11 +3,14 @@
 paru -Syu \
   sway-git swaylock-effects eww-tray-wayland-git rofi-wayland \
   mate-polkit dunst grimshot inotify-tools \
-  gnome-desktop breeze nwg-look materia-gtk-theme qt6ct-kde grc \
+  gnome-desktop nwg-look materia-gtk-theme \
+  breeze qt6ct-kde \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
-  wayvnc waypipe firefox foot gef sublime-text-4 keepassxc \
-  xdg-desktop-portal{,-wlr,-gtk} \
-  cmus ffmpeg mpv sound-theme-freedesktop \
+  wayvnc waypipe \
+  firefox \
+  foot grc gef sublime-text-4 \
+  xdg-desktop-portal{,-wlr,-gtk} keepassxc \
+  pipewire{,-pulse,-alsa,-jack} wireplumber cmus ffmpeg mpv sound-theme-freedesktop \
   krita qbittorrent thunar gvfs{,-gphoto2,-mtp} imv engrampa \
   power-profiles-daemon python-gobject
 
