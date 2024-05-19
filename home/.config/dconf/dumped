@@ -447,3 +447,17 @@ sort-order='ascending'
 type-format='category'
 window-position=(56, 50)
 window-size=(1700, 886)
+
+[org/mate/engrampa/general]
+unar-open-zip=false
+
+[org/mate/engrampa/listing]
+list-mode='as-folder'
+show-path=false
+sort-method='name'
+sort-type='ascending'
+
+[org/mate/engrampa/ui]
+sidebar-width=200
+window-height=1036
+window-width=1920
