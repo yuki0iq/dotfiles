@@ -6,8 +6,9 @@ paru -Syu \
   gnome-desktop breeze nwg-look materia-gtk-theme qt6ct-kde grc \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
   wayvnc waypipe firefox foot gef sublime-text-4 keepassxc \
-  xdg-desktop-portal-gtk \
-  krita qbittorrent cmus ffmpeg mpv sound-theme-freedesktop \
+  xdg-desktop-portal{,-wlr,-gtk} \
+  cmus ffmpeg mpv sound-theme-freedesktop \
+  krita qbittorrent thunar gvfs{,-gphoto2,-mtp} imv engrampa \
   power-profiles-daemon python-gobject
 
 mkdir -p ~/.ssh ~/.config ~/.config/sublime-text ~/.local ~/.local/share ~/.local/state
