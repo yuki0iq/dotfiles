@@ -22,5 +22,6 @@ paru -Syu \
   bind iproute2 iputils nft iptables-nft iwd curl rsync openssh speedtest-cli w3m nmap \
   inxi nvim lsof strace ly terminus-font \
   nohang
+paru -S --asdeps dmidecode
 
 systemctl enable --now systemd-{timesyncd,networkd,resolved} iwd sshd ly-dm pkgfile-update.timer nftables nohang-desktop
