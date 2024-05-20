@@ -20,4 +20,4 @@ ln -sf $PWD/home/.{bash{_profile,rc},xkb} ~/
 ln -sf $PWD/home/.ssh/authorized_keys ~/.ssh/
 ln -sf $PWD/home/.config/sublime-text/Packages ~/.config/sublime-text/
 
-ln -sf $PWD/home/.config/{dconf,dunst,easyeffects,eww,foot,gdb,git,gtk-3.0,MangoHud,nvim,nwg-look,paru,qt6ct,rofi,sway} ~/.config/
+ln -sf $PWD/home/.config/{dconf,dunst,easyeffects,eww,foot,gdb,git,gtk-3.0,htop,MangoHud,nvim,nwg-look,paru,qt6ct,rofi,sway} ~/.config/
