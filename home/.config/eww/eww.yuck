@@ -1,4 +1,4 @@
-(defpoll load_average :interval "10s" "cat /proc/loadavg | cut -d' ' -f1")
+(defpoll load_average :interval "10s" "</proc/loadavg cut -d' ' -f1")
 (defpoll ping_dns :interval "10s" "ping -c1 -W0.1 1.1.1.1 >/dev/null; echo $?")
 (defpoll battery :interval "15s" "~/.config/eww/scripts/battery")
 (defpoll wifi :interval "5s" "~/.config/eww/scripts/wifi status")
