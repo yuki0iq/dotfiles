@@ -8,8 +8,6 @@
 (deflisten swaywin "~/.config/eww/scripts/window")
 (deflisten brightness "~/.config/eww/scripts/backlight")
 
-(defvar script_home "~/kek/dotfiles/home/.config/eww/scripts")
-
 (defwidget left [] (box :orientation "h" :space-evenly false :halign "start"
   (current)))
 (defwidget center [] (box :orientation "h" :space-evenly false :halign "center"
@@ -28,7 +26,7 @@
 
 (defvar time_rev false)
 (defwidget clock_module []
-  (eventbox :onhover "eww update time_rev=true" :onhoverlost "eww update time_rev=false" :onclick "${script_home}/pop calendar"
+  (eventbox :onhover "eww update time_rev=true" :onhoverlost "eww update time_rev=false" :onclick "~/kek/dotfiles/home/.config/eww/scripts/pop calendar"
     (box :class "module" :space-evenly "false" :orientation "h" :spacing "3"
       (label :class "spaced clock_date" :text {formattime(EWW_TIME, time_rev ? '%A, %Y-%b-%d' : '%b %d, %a')})
       (label :class "spaced clock_time" :text {formattime(EWW_TIME, '%T')}))))
@@ -44,13 +42,13 @@
 
 
 (defwidget current []
-  (eventbox :onclick ""
+  (eventbox :onclick "~/kek/dotfiles/home/.config/sway/wss"
     (box :class "sys_button" :space-evenly false
       (box :class "workspace" :orientation "h" :space-evenly false
         :tooltip "Active workspaces: ${jq(swayws, '{out: [.[].name] | join(\", \")}').out}"
         ; NOTE that here we show ONLY ONE workspace!!
         (for ws in {jq(swayws, "[.[] | select(.visible == true and .focused == true)][:1]")}
-          (button :class "workspace"
+          (box :class "workspace"
             (label :class "visible workspace" :text {replace(ws.name, '10', '0')}))))
       (label :class "spaced winclass" :tooltip {swaywin.name}
         :text {swaywin.shell == "xdg_shell" ? swaywin.app_id : swaywin.shell != "null" ? swaywin.shell : ''})
