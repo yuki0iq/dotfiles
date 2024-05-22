@@ -37,7 +37,13 @@
 (defwidget keyboard []
   (eventbox ; switch layout on click? who needs this anyway
     (box :class "module" :space-evenly false
-      (label :class "spaced keyboard" :text {swaykb.short} :tooltip {swaykb.name}))))
+      (for kb in {[jq(swaykb, 
+        "select(.change == \"xkb_layout\")
+        | .input
+        | select(.type == \"keyboard\")
+        | .xkb_active_layout_name
+        | {name: ., short: .[:2] | ascii_downcase}")]}
+        (label :class "spaced keyboard" :text {kb.short} :tooltip {kb.name})))))
 
 
 
@@ -50,8 +56,14 @@
         (for ws in {jq(swayws, "[.[] | select(.visible == true and .focused == true)][:1]")}
           (box :class "workspace"
             (label :class "visible workspace" :text {replace(ws.name, '10', '0')}))))
-      (label :class "spaced winclass" :tooltip {swaywin.name}
-        :text {swaywin.shell == "xdg_shell" ? swaywin.app_id : swaywin.shell != "null" ? swaywin.shell : ''})
+      (box (for win in {[jq(swaywin,
+        "(
+          (select(.change == \"focus\") | (.current // .container))
+          //
+          (select(.change == \"title\") | .container | select(.focused == true))
+        ) | select(.visible != false)")]}
+        (label :class "spaced winclass" :tooltip {win.name}
+          :text {win.shell == "xdg_shell" ? win.app_id : win.shell != "null" ? win.shell : ''})))
       (for q in {[jq(swayws, "[.[] | select(.urgent == true)]")]}
         (circular-progress :thickness 8
           (button :class "urgent_mark"
@@ -63,8 +75,8 @@
   (eventbox
     (box :class "sys_icons"
       (box
-        (circular-progress :thickness 5
-          (for q in {[ping_dns]}  ; Ohhhh I hate the 'functional' purity you push on me *here*
+        (for q in {[ping_dns]}  ; Ohhhh I hate the 'functional' purity you push on me *here*
+          (circular-progress :thickness 5
             (button :class "ns_${q == 0 ? 'ok' : 'fail'}"
               :tooltip "network ${q == 0 ? 'ok' : 'unreachable'}"
               "　"))))

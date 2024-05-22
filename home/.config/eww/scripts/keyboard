@@ -1,6 +1,4 @@
 #!/bin/bash
 
-common='select(.type == "keyboard") | .xkb_active_layout_name | {name: ., short: .[:2] | ascii_downcase}'
-
-swaymsg -t get_inputs | jq -cr --unbuffered ".[] | $common"
-swaymsg -mt subscribe '["input"]' | jq -cr --unbuffered "select(.change == \"xkb_layout\") | .input | $common"
+swaymsg -t get_inputs | jq -cr --unbuffered ".[] | { change: \"xkb_layout\", input: . }"
+exec swaymsg -rmt subscribe '["input"]'
