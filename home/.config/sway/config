@@ -67,8 +67,6 @@ bindsym XF86AudioNext exec playerctl next
 
 bindsym $mod+F3 exec .config/sway/layout-variant
 
-bindsym $mod+F11 exec ssh purplesyringa@192.168.1.8 -i ~/.ssh/id_ed25519_old playerctl play-pause
-
 # ====== APPEARANCE ======
 workspace_layout tabbed
 smart_borders on
@@ -180,7 +178,6 @@ bindsym $mod+Mod1+Right resize grow width 10 px or 10 ppt
 # ====== DESTROY ======
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+r reload
-bindsym $mod+Shift+p restart
 bindsym $mod+Shift+o exec "swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit' 'swaymsg exit' --font 'pango:Fantasque Sans Mono 10'"
 
 
