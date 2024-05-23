@@ -13,6 +13,10 @@ export XDG_CONFIG_HOME=~/.config
 export XDG_STATE_HOME=~/.local/state
 export XDG_CACHE_HOME=~/.cache
 
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx5
+
 [[ $- != *i* ]] && return
 
 

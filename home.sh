@@ -12,7 +12,8 @@ paru -Syu \
   xdg-desktop-portal{,-wlr,-gtk} keepassxc \
   pipewire{,-pulse,-alsa,-jack} wireplumber cmus ffmpeg mpv sound-theme-freedesktop \
   krita qbittorrent thunar gvfs{,-gphoto2,-mtp} imv engrampa \
-  power-profiles-daemon python-gobject
+  power-profiles-daemon python-gobject \
+  fcitx5-im fcitx5-mozc
 
 mkdir -p ~/.ssh ~/.config ~/.config/sublime-text ~/.local ~/.local/share ~/.local/state
 
@@ -20,4 +21,4 @@ ln -sf $PWD/home/.{bash{_profile,rc},xkb} ~/
 ln -sf $PWD/home/.ssh/authorized_keys ~/.ssh/
 ln -sf $PWD/home/.config/sublime-text/Packages ~/.config/sublime-text/
 
-ln -sf $PWD/home/.config/{dconf,dunst,easyeffects,eww,foot,gdb,git,gtk-3.0,htop,MangoHud,nvim,nwg-look,paru,qt6ct,rofi,sway} ~/.config/
+ln -sf $PWD/home/.config/{dconf,dunst,easyeffects,eww,fcitx5,foot,gdb,git,gtk-3.0,htop,MangoHud,nvim,nwg-look,paru,qt6ct,rofi,sway} ~/.config/
