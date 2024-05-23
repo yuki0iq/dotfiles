@@ -1,2 +1,0 @@
-#!/bin/bash
-exec swaymsg -rmt subscribe '["workspace", "window"]'

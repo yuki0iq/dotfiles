@@ -1,4 +1,0 @@
-#!/bin/bash
-
-swaymsg -t get_inputs | jq -cr --unbuffered ".[] | { change: \"xkb_layout\", input: . }"
-exec swaymsg -rmt subscribe '["input"]'

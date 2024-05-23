@@ -2,10 +2,8 @@
 (defpoll ping_dns :interval "10s" "ping -c1 -W0.1 1.1.1.1 >/dev/null; echo $?")
 (defpoll battery :interval "15s" "~/.config/eww/scripts/battery")
 (defpoll wifi :interval "5s" "~/.config/eww/scripts/wifi status")
-(deflisten swayws "~/.config/eww/scripts/workspaces")
 (deflisten sound_out "~/.config/eww/scripts/sound sink")
-(deflisten swaykb "~/.config/eww/scripts/keyboard")
-(deflisten swaywin "~/.config/eww/scripts/window")
+(deflisten swaynyaa "exec ~/kek/swaynyaad/target/release/swaynyaad")
 (deflisten brightness "~/.config/eww/scripts/backlight")
 
 (defwidget left [] (box :orientation "h" :space-evenly false :halign "start"
@@ -37,13 +35,7 @@
 (defwidget keyboard []
   (eventbox ; switch layout on click? who needs this anyway
     (box :class "module" :space-evenly false
-      (for kb in {[jq(swaykb, 
-        "select(.change == \"xkb_layout\")
-        | .input
-        | select(.type == \"keyboard\")
-        | .xkb_active_layout_name
-        | {name: ., short: .[:2] | ascii_downcase}")]}
-        (label :class "spaced keyboard" :text {kb.short} :tooltip {kb.name})))))
+        (label :class "spaced keyboard" :text {swaynyaa.layout_short_name} :tooltip {swaynyaa.layout_name}))))
 
 
 
@@ -51,24 +43,20 @@
   (eventbox :onclick "~/kek/dotfiles/home/.config/sway/wss"
     (box :class "sys_button" :space-evenly false
       (box :class "workspace" :orientation "h" :space-evenly false
-        :tooltip "Active workspaces: ${jq(swayws, '{out: [.[].name] | join(\", \")}').out}"
-        ; NOTE that here we show ONLY ONE workspace!!
-        (for ws in {jq(swayws, "[.[] | select(.visible == true and .focused == true)][:1]")}
-          (box :class "workspace"
-            (label :class "visible workspace" :text {replace(ws.name, '10', '0')}))))
-      (box (for win in {[jq(swaywin,
-        "(
-          (select(.change == \"focus\") | (.current // .container))
-          //
-          (select(.change == \"title\") | .container | select(.focused == true))
-        ) | select(.visible != false)")]}
-        (label :class "spaced winclass" :tooltip {win.name}
-          :text {win.shell == "xdg_shell" ? win.app_id : win.shell != "null" ? win.shell : ''})))
-      (for q in {[jq(swayws, "[.[] | select(.urgent == true)]")]}
+        :tooltip "Active workspaces: ${swaynyaa.workspaces_existing}"
+        (box :class "workspace"
+          (label :class "visible workspace" :text {replace(swaynyaa.workspace_focused, '10', '0')})))
+      (label :class "spaced winclass" :tooltip {swaynyaa.window_focused_name}
+        :text {
+          swaynyaa.window_focused_shell == "xdg_shell"
+          ? swaynyaa.window_focused_app_id
+          : swaynyaa.window_focused_shell != "null"
+            ? swaynyaa.window_focused_shell
+            : ''})
         (circular-progress :thickness 8
           (button :class "urgent_mark"
-            :tooltip "Urgent workspaces: ${jq(q, '{out: [.[].name] | join(\", \")}').out}"
-            :visible {arraylength(q) != 0} "　"))))))
+            :tooltip "Urgent workspaces: ${swaynyaa.workspaces_urgent}"
+            :visible {arraylength(swaynyaa.workspaces_urgent) != 0} "　")))))
 
 
 (defwidget sys []
