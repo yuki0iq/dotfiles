@@ -46,17 +46,20 @@
         :tooltip "Active workspaces: ${swaynyaa.workspaces_existing}"
         (box :class "workspace"
           (label :class "visible workspace" :text {replace(swaynyaa.workspace_focused, '10', '0')})))
-      (label :class "spaced winclass" :tooltip {swaynyaa.window_focused_name}
+      (label :class "spaced winclass"
+        :visible {swaynyaa.window_focused_shell != 'null'}
+        :tooltip {swaynyaa.window_focused_name}
         :text {
           swaynyaa.window_focused_shell == "xdg_shell"
           ? swaynyaa.window_focused_app_id
           : swaynyaa.window_focused_shell != "null"
             ? swaynyaa.window_focused_shell
             : ''})
-        (circular-progress :thickness 8
-          (button :class "urgent_mark"
-            :tooltip "Urgent workspaces: ${swaynyaa.workspaces_urgent}"
-            :visible {arraylength(swaynyaa.workspaces_urgent) != 0} "　")))))
+      (circular-progress :thickness 8
+        :visible {arraylength(swaynyaa.workspaces_urgent) != 0}
+        (button :class "urgent_mark"
+          :tooltip "Urgent workspaces: ${swaynyaa.workspaces_urgent}"
+          "　")))))
 
 
 (defwidget sys []
