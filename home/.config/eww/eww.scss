@@ -5,7 +5,7 @@
     margin: .1em;
 }
 
-.window, tooltip {
+.window, .cal_win, tooltip {
     background-color: #0f0f17;
     border-radius: 1em;
     margin: .25em;
@@ -196,9 +196,6 @@ scale trough {
     font-weight: bold;
 }
 
-.sys_icon {
-    font-size: 1.5em;
-}
 
 .sys_enlarge {
     margin: .5em;
@@ -220,6 +217,10 @@ scale trough {
 .sys_icons {
     border-radius: 1em;
     background-color: #222;
+
+    image {
+        min-width: 1.5em;
+    }
 }
 
 .sys_win {

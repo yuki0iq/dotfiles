@@ -6,16 +6,17 @@ if [[ -n "$BATTERY" ]]; then
 	status="$(cat $BATTERY/status | tr A-Z a-z)"
 	now="$(cat $BATTERY/charge_now)"
 	max="$(cat $BATTERY/charge_full)"
+	icon="$(upower -d | grep icon-name -m1 | awk '{ print substr($2, 2, length($2)-2); }')"
 
 	# According to linux kernel documentation, valid statuses are:
 	#   Unknown, Charging, Discharging, Not charging, Full
 	# TODO: add full (dis)charge time estimate, this should not be that hard...
-	printf "{\"status\": \"$status\", \"level\": $(( 1000 * $now / $max ))}"
+	printf "{\"status\": \"$status\", \"level\": $(( 1000 * $now / $max )), \"icon\": \"$icon\"}"
 else
 	# the only one of zero batteries is full
-	printf "{\"status\": \"unknown\", \"level\": 1000}"
+	printf "{\"status\": \"unknown\", \"level\": 1000, \"icon\": \"\"}"
 	# printf "{\"status\": \"charging\", \"level\": 666}"
-	# printf "{\"status\": \"discharging\", \"level\": 666}"
+	# printf "{\"status\": \"discharging\", \"level\": 666, \"icon\": \"battery-level-0-symbolic\"}"
 	# printf "{\"status\": \"not charging\", \"level\": 666}"
 	# printf "{\"status\": \"full\", \"level\": 666}"
 fi

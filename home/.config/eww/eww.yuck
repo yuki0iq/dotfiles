@@ -64,38 +64,41 @@
 
 (defwidget sys []
   (eventbox
-    (box :class "sys_icons"
-      (box
-        (for q in {[ping_dns]}  ; Ohhhh I hate the 'functional' purity you push on me *here*
-          (circular-progress :thickness 5
-            (button :class "ns_${q == 0 ? 'ok' : 'fail'}"
-              :tooltip "network ${q == 0 ? 'ok' : 'unreachable'}"
-              "　"))))
-      (box
-        (circular-progress :value {sound_out.vol} :class "circle_bar volume" :thickness 3.5
-          (button :class "icon volume"
-            :tooltip "output volume ${sound_out.vol}% ${sound_out.muted == true ? 'muted' : ''}"
-            :onclick "pavucontrol &"
-            {sound_out.muted == true ? "--" : "　"})))
-      (box
-        (circular-progress :value {EWW_CPU['avg']} :class "circle_bar cpu" :thickness 3.5
-          (button :class "icon cpu"
-            :tooltip "cpu load ${round(EWW_CPU['avg'], 1)}%, lavg ${load_average}"
-            "　")))
-      (box
-        (circular-progress :value {EWW_RAM['used_mem_perc']} :class "circle_bar memory" :thickness 3.5
-          (button :class "icon memory"
-            :tooltip "ram usage ${round(EWW_RAM['used_mem_perc'], 1)}%"
-            "　")))
-      (box :visible {wifi == "" ? false : wifi.State == "connected"}
-        (circular-progress :value {150 + 2 * replace(wifi.AverageRSSI, " dBm", "")} :class "circle_bar wifi" :thickness 3.5
-          (button :class "icon wifi"
-            :tooltip "${wifi.Connected_network}"
-            "　")))
-      (box :visible {battery == "" ? false : battery.status != "unknown"}
-        (circular-progress :value {battery.level / 10} :class "circle_bar battery" :thickness 3.5
-          (button :class "icon battery"
-            :tooltip "battery on ${battery.level / 10}%, ${battery.status}"
-            {battery.status == 'charging' ? "↑" :
-              battery.status == 'not charging' ? "+" :
-              battery.status == 'discharging' ? "↓" : "　"}))))))
+    (box :class "sys_icons" :space-evenly false
+      (circular-progress :thickness 5
+        (button :class "ns_${ping_dns == 0 ? 'ok' : 'fail'}"
+          :tooltip "network ${ping_dns == 0 ? 'ok' : 'unreachable'}"
+          "　"))
+
+      (circular-progress :value {EWW_CPU['avg']} :class "circle_bar cpu" :thickness 3.5
+        (button :class "icon cpu"
+          :tooltip "cpu load ${round(EWW_CPU['avg'], 1)}%, lavg ${load_average}"
+          "　"))
+
+      (circular-progress :value {EWW_RAM['used_mem_perc']} :class "circle_bar memory" :thickness 3.5
+        (button :class "icon memory"
+          :tooltip "ram usage ${round(EWW_RAM['used_mem_perc'], 1)}%"
+          "　"))
+
+      (button
+        :tooltip {wifi.Connected_network}
+        (image :icon "network-wireless-${
+            wifi.State == 'disconnected' ? 'offline' :
+            replace(wifi.AverageRSSI, ' dBm', '') >= -25 ? 'signal-excellent' :
+            replace(wifi.AverageRSSI, ' dBm', '') >= -35 ? 'signal-good' :
+            replace(wifi.AverageRSSI, ' dBm', '') >= -45 ? 'signal-ok' :
+            replace(wifi.AverageRSSI, ' dBm', '') >= -55 ? 'signal-weak' : 'signal-none'
+          }-symbolic"))
+
+      (circular-progress :value {sound_out.vol}
+        (button :onclick "exec pavucontrol &"
+          :tooltip "output volume ${sound_out.vol}% ${sound_out.muted == true ? 'muted' : ''}"
+          (image :icon "audio-volume-${
+            sound_out.muted == true ? 'muted' :
+            sound_out.vol == 'null' ? 'muted' :
+            sound_out.vol > 100 ? 'overamplified' :
+            sound_out.vol > 50 ? 'high' :
+            sound_out.vol > 25 ? 'medium' : 'low'}-symbolic")))
+
+      (box :visible {battery == "" ? false : battery?.icon != ""}
+        (image :icon {battery?.icon})))))
