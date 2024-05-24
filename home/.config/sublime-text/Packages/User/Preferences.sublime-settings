@@ -1,15 +1,9 @@
 {
     "theme": "Default Dark.sublime-theme",
-    // "font_face": "Cascadia Code PL Semilight",
-    // "font_size": 11,
 
     "font_face": "Fantasque Sans Mono",
     "font_size": 12,
 
-    // "font_face": "Monaspace Radon",
-    // "font_size": 10,
-    // "line_padding_top": 2,
-    // "line_padding_bottom": 2,
     "font_options": ["liga", "clig", "calt", "dlig"],
     "translate_tabs_to_spaces": true,
     "color_scheme": "Mariana.sublime-color-scheme",
