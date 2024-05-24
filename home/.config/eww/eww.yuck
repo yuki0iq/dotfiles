@@ -6,11 +6,11 @@
 (deflisten swaynyaa "exec ~/kek/swaynyaad/target/release/swaynyaad")
 (deflisten brightness "~/.config/eww/scripts/backlight")
 
-(defwidget left [] (box :orientation "h" :space-evenly false :halign "start"
+(defwidget left [] (box :orientation "h" :space-evenly false :class "widget" :halign "start"
   (current)))
-(defwidget center [] (box :orientation "h" :space-evenly false :halign "center"
+(defwidget center [] (box :orientation "h" :space-evenly false :class "widget" :halign "center"
   (clock_module) (keyboard)))
-(defwidget right [] (box :orientation "h" :space-evenly false :halign "end"
+(defwidget right [] (box :orientation "h" :space-evenly false :class "widget" :halign "end"
   (sys)))
 
 (defwidget bar_impl [] (box :class "window" :orientation "h"
