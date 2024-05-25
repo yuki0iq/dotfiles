@@ -436,7 +436,7 @@ selected-color=(true, 0.56653333333333322, 0.032666666666666649, 0.7000000000000
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
-location-mode='path-bar'
+location-mode='filename-entry'
 show-hidden=false
 show-size-column=true
 show-type-column=true
@@ -446,7 +446,7 @@ sort-directories-first=true
 sort-order='ascending'
 type-format='category'
 window-position=(56, 50)
-window-size=(1700, 886)
+window-size=(1920, 996)
 
 [org/mate/engrampa/general]
 unar-open-zip=false
