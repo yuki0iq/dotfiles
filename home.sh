@@ -5,6 +5,7 @@ paru -Syu \
   mate-polkit dunst grimshot inotify-tools \
   nwg-look materia-gtk-theme \
   breeze qt6ct-kde \
+  papirus-icon-theme \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
   wayvnc waypipe \
   firefox \
