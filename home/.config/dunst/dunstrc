@@ -24,10 +24,10 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = (200, 350)
+    width = 240
 
     # The maximum height of a single notification, excluding the frame.
-    height = 200
+    height = 100
 
     # Position the notification in the top right corner
     origin = bottom-right
@@ -49,7 +49,7 @@
 
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
-    progress_bar_height = 10
+    progress_bar_height = 5
 
     # Set the frame width of the progress bar
     progress_bar_frame_width = 1
@@ -61,7 +61,7 @@
     progress_bar_max_width = 300
 
     # Corner radius for the progress bar. 0 disables rounded corners.
-    progress_bar_corner_radius = 0
+    progress_bar_corner_radius = 2
 
     # Corner radius for the icon image.
     icon_corner_radius = 0
@@ -101,7 +101,7 @@
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
     # Click events on gaps do not currently propagate to applications below.
-    gap_size = 0
+    gap_size = 8
 
     # Define a color for the separator.
     # possible values are:
@@ -123,7 +123,6 @@
 
     ### Text ###
 
-    # font = Cascadia Code PL 9
     font = Fantasque Sans Mono 10
 
     # The spacing between lines.  If the height is smaller than the
@@ -164,7 +163,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%s</b>\n%b"
+    format = "<b>%s %p</b>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -172,7 +171,7 @@
 
     # Vertical alignment of message text and icon.
     # Possible values are "top", "center" and "bottom".
-    vertical_alignment = center
+    vertical_alignment = top
 
     # Show age of message if message is older than show_age_threshold
     # seconds.
@@ -199,12 +198,12 @@
 
     # Recursive icon lookup. You can set a single theme, instead of having to
     # define all lookup paths.
-    enable_recursive_icon_lookup = false
+    enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
     # icon_theme = Adwaita
     # You can also set multiple icon themes, with the leftmost one being used first.
-    icon_theme = "Adwaita, breeze"
+    icon_theme = Papirus-Dark, Papirus
 
     # Align icons left/right/top/off
     icon_position = left
@@ -315,7 +314,7 @@
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#000000a0"
-    foreground = "#888888"
+    foreground = "#ffffff"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon

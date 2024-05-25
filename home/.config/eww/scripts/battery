@@ -14,9 +14,9 @@ if [[ -n "$BATTERY" ]]; then
 	printf "{\"status\": \"$status\", \"level\": $(( 1000 * $now / $max )), \"icon\": \"$icon\"}"
 else
 	# the only one of zero batteries is full
-	printf "{\"status\": \"unknown\", \"level\": 1000, \"icon\": \"\"}"
+	# printf "{\"status\": \"unknown\", \"level\": 1000, \"icon\": \"\"}"
 	# printf "{\"status\": \"charging\", \"level\": 666}"
-	# printf "{\"status\": \"discharging\", \"level\": 666, \"icon\": \"battery-level-0-symbolic\"}"
+	# printf "{\"status\": \"discharging\", \"level\": 666, \"icon\": \"battery-level-60-charging-symbolic\"}"
 	# printf "{\"status\": \"not charging\", \"level\": 666}"
 	# printf "{\"status\": \"full\", \"level\": 666}"
 fi

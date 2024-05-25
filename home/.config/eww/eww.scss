@@ -221,6 +221,11 @@ scale trough {
     image {
         min-width: 1.5em;
     }
+
+    image, button {
+        padding: 0px;
+        margin: 0px;
+    }
 }
 
 .sys_win {

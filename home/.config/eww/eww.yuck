@@ -3,6 +3,7 @@
 (defpoll battery :interval "15s" "~/.config/eww/scripts/battery")
 (defpoll wifi :interval "5s" "~/.config/eww/scripts/wifi status")
 (deflisten sound_out "~/.config/eww/scripts/sound sink")
+(deflisten sound_in "~/.config/eww/scripts/sound source")
 (deflisten swaynyaa "exec ~/kek/swaynyaad/target/release/swaynyaad")
 (deflisten brightness "~/.config/eww/scripts/backlight")
 
@@ -90,15 +91,25 @@
             replace(wifi.AverageRSSI, ' dBm', '') >= -55 ? 'signal-weak' : 'signal-none'
           }-symbolic"))
 
-      (circular-progress :value {sound_out.vol}
-        (button :onclick "exec pavucontrol &"
-          :tooltip "output volume ${sound_out.vol}% ${sound_out.muted == true ? 'muted' : ''}"
-          (image :icon "audio-volume-${
-            sound_out.muted == true ? 'muted' :
-            sound_out.vol == 'null' ? 'muted' :
-            sound_out.vol > 100 ? 'overamplified' :
-            sound_out.vol > 50 ? 'high' :
-            sound_out.vol > 25 ? 'medium' : 'low'}-symbolic")))
+      (button :onclick "exec pavucontrol &"
+        :tooltip "output volume ${sound_out.vol}% ${sound_out.muted == true ? 'muted' : ''}"
+        (image :icon "audio-volume-${
+          sound_out.muted == true ? 'muted' :
+          sound_out.vol == 'null' ? 'muted' :
+          sound_out.vol > 100 ? 'overamplified' :
+          sound_out.vol > 50 ? 'high' :
+          sound_out.vol > 25 ? 'medium' : 'low'}-symbolic"))
 
-      (box :visible {battery == "" ? false : battery?.icon != ""}
-        (image :icon {battery?.icon})))))
+      (button :onclick "exec pavucontrol &"
+        :tooltip "input volume ${sound_in.vol}% ${sound_in.muted == true ? 'muted' : ''}"
+        (image :icon "microphone-sensitivity-${
+          sound_in.muted == true ? 'muted' :
+          sound_in.vol == 'null' ? 'muted' :
+          sound_in.vol > 50 ? 'high' :
+          sound_in.vol > 25 ? 'medium' :
+          sound_in.vol > 0 ? 'low' : 'none'}-symbolic"))
+
+      (button
+        :tooltip "${battery.status} at ${battery.level / 10}%"
+        :visible {battery == "" ? false : battery.icon != ""}
+        (image :icon {battery.icon})))))
