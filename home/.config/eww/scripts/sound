@@ -26,6 +26,7 @@ repeat() {
     level=${level/"Volume: "/}
     level=${level/./}
 
+    canberra-gtk-play -i audio-volume-change &
     dunstify \
         -a wireplumber-watcher \
         -u low \
