@@ -1,31 +1,28 @@
 #!/bin/bash
 
+win=$1
+sid=$2
+
 LOCK_BASE=`realpath ~/.cache/eww-lock`
 close() {
-    eww close $1
-    rm -f "$LOCK_BASE.$1"
+    eww close $win
+    rm -f "$LOCK_BASE.$win-$sid"
 }
 
 close_all() {
     windows="system music_win calendar network activities wireless"
     eww close $windows
-    for wnd in $windows; do
-        rm -f "$LOCK_BASE.$wnd"
-    done
+    rm -f $LOCK_BASE.*
 }
 
 open() {
-    echo > "$LOCK_BASE.$1"
-    eww open $1 --screen 0
+    echo > "$LOCK_BASE.$win-$sid"
+    eww open $win --screen $sid
 }
 
-toggle() {
-    if [[ -f "$LOCK_BASE.$1" ]]; then
-        close $1
-    else
-        close_all
-        open $1
-    fi
-}
-
-toggle "$1"
+if [[ -f "$LOCK_BASE.$win-$sid" ]]; then
+    close
+else
+    close_all
+    open
+fi

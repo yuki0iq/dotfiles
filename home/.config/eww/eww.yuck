@@ -4,28 +4,28 @@
 (defpoll wifi :interval "5s" "~/.config/eww/scripts/wifi status")
 (deflisten sound_out "~/.config/eww/scripts/sound sink")
 (deflisten sound_in "~/.config/eww/scripts/sound source")
-(deflisten swaynyaa "exec ~/kek/swaynyaad/target/release/swaynyaad")
+(deflisten swaynyaa "exec ~/kek/swaynyaad/target/release/swaynyaad --listener")
 (deflisten brightness "~/.config/eww/scripts/backlight")
 
-(defwidget left [] (box :orientation "h" :space-evenly false :class "widget" :halign "start"
-  (current)))
-(defwidget center [] (box :orientation "h" :space-evenly false :class "widget" :halign "center"
-  (clock_module) (keyboard)))
+(defwidget left [screen] (box :orientation "h" :space-evenly false :class "widget" :halign "start"
+  (current :screen screen)))
+(defwidget center [screen] (box :orientation "h" :space-evenly false :class "widget" :halign "center"
+  (clock_module :screen screen) (keyboard)))
 (defwidget right [] (box :orientation "h" :space-evenly false :class "widget" :halign "end"
   (sys)))
 
-(defwidget bar_impl [] (box :class "window" :orientation "h"
-  (left) (center) (right)))
+(defwidget bar_impl [screen] (box :class "window" :orientation "h"
+  (left :screen screen) (center :screen screen) (right)))
 
-(defwindow bar :geometry (geometry :width "100%" :anchor "top center")
+(defwindow bar [monitor] :geometry (geometry :width "100%" :anchor "top center")
   :stacking "fg" :windowtype "dock" :exclusive true
-  (bar_impl))
+  (bar_impl :screen monitor))
 
 
 
 (defvar time_rev false)
-(defwidget clock_module []
-  (eventbox :onhover "eww update time_rev=true" :onhoverlost "eww update time_rev=false" :onclick "~/kek/dotfiles/home/.config/eww/scripts/pop calendar"
+(defwidget clock_module [screen]
+  (eventbox :onhover "eww update time_rev=true" :onhoverlost "eww update time_rev=false" :onclick "~/kek/dotfiles/home/.config/eww/scripts/pop calendar ${screen}"
     (box :class "module" :space-evenly "false" :orientation "h" :spacing "3"
       (label :class "spaced clock_date" :text {formattime(EWW_TIME, time_rev ? '%A, %Y-%b-%d' : '%b %d, %a')})
       (label :class "spaced clock_time" :text {formattime(EWW_TIME, '%T')}))))
@@ -40,27 +40,29 @@
 
 
 
-(defwidget current []
+(defwidget current [screen]
   (eventbox :onclick "~/kek/dotfiles/home/.config/sway/wss"
     (box :class "sys_button" :space-evenly false
       (box :class "workspace" :orientation "h" :space-evenly false
         :tooltip "Active workspaces: ${swaynyaa.workspaces_existing}"
         (box :class "workspace"
-          (label :class "visible workspace" :text {replace(swaynyaa.workspace_focused, '10', '0')})))
+          (label :class "visible workspace" :text {replace(swaynyaa.screens[screen].workspace, '10', '0')})))
+      (label :class "spaced" :text {swaynyaa.screen_focused == screen})
       (label :class "spaced winclass"
-        :visible {swaynyaa.window_focused_shell != 'null'}
-        :tooltip {swaynyaa.window_focused_name}
+        :visible {swaynyaa.screens[screen].shell != 'null'}
+        :tooltip {swaynyaa.screens[screen].name}
         :text {
-          swaynyaa.window_focused_shell == "xdg_shell"
-          ? swaynyaa.window_focused_app_id
-          : swaynyaa.window_focused_shell != "null"
-            ? swaynyaa.window_focused_shell
+          swaynyaa.screens[screen].shell == "xdg_shell"
+          ? swaynyaa.screens[screen].app_id
+          : swaynyaa.screens[screen].shell != "null"
+            ? swaynyaa.screens[screen].shell
             : ''})
       (circular-progress :thickness 8
         :visible {arraylength(swaynyaa.workspaces_urgent) != 0}
         (button :class "urgent_mark"
           :tooltip "Urgent workspaces: ${swaynyaa.workspaces_urgent}"
-          "　")))))
+          "　"))
+      )))
 
 
 (defwidget sys []

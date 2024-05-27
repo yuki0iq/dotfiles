@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if pgrep --uid $(id -u) -f swaynyaaopener; then
+    echo swaynyaad opener is already running
+else
+    exec -a swaynyaaopener ~/kek/swaynyaad/target/release/swaynyaad --opener
+fi
