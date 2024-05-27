@@ -47,9 +47,11 @@
         :tooltip "Active workspaces: ${swaynyaa.workspaces_existing}"
         (box :class "workspace"
           (label :class "visible workspace" :text {replace(swaynyaa.screens[screen].workspace, '10', '0')})))
+
       (label :class "spaced"
         :visible {swaynyaa.screen_focused == screen}
         :text "this")
+
       (label :class "spaced winclass"
         :visible {swaynyaa.screens[screen].shell != 'null'}
         :tooltip {swaynyaa.screens[screen].name}
@@ -59,12 +61,12 @@
           : swaynyaa.screens[screen].shell != "null"
             ? swaynyaa.screens[screen].shell
             : ''})
+
       (circular-progress :thickness 8
         :visible {arraylength(swaynyaa.workspaces_urgent) != 0}
         (button :class "urgent_mark"
           :tooltip "Urgent workspaces: ${swaynyaa.workspaces_urgent}"
-          "　"))
-      )))
+          "　")))))
 
 
 (defwidget sys []
@@ -75,6 +77,43 @@
           :tooltip "network ${ping_dns == 0 ? 'ok' : 'unreachable'}"
           "　"))
 
+      (image
+        :tooltip {wifi.Connected_network}
+        :icon "network-wireless-${
+          wifi.State == 'disconnected' ? 'offline' :
+          replace(wifi.AverageRSSI, ' dBm', '') >= -25 ? 'signal-excellent' :
+          replace(wifi.AverageRSSI, ' dBm', '') >= -35 ? 'signal-good' :
+          replace(wifi.AverageRSSI, ' dBm', '') >= -45 ? 'signal-ok' :
+          replace(wifi.AverageRSSI, ' dBm', '') >= -55 ? 'signal-weak' : 'signal-none'
+        }")
+
+      (eventbox
+        :onclick "exec pavucontrol &"
+        (image
+          :tooltip "output volume ${sound_out.vol}% ${sound_out.muted == true ? 'muted' : ''}"
+          :icon "audio-volume-${
+            sound_out.muted == true ? 'muted' :
+            sound_out.vol == 'null' ? 'muted' :
+            sound_out.vol > 100 ? 'overamplified' :
+            sound_out.vol > 50 ? 'high' :
+            sound_out.vol > 25 ? 'medium' : 'low'}"))
+
+      (eventbox
+        :onclick "exec pavucontrol &"
+        (image
+          :tooltip "input volume ${sound_in.vol}% ${sound_in.muted == true ? 'muted' : ''}"
+          :icon "mic-volume-${
+            sound_in.muted == true ? 'muted' :
+            sound_in.vol == 'null' ? 'muted' :
+            sound_in.vol > 50 ? 'high' :
+            sound_in.vol > 25 ? 'medium' :
+            sound_in.vol > 0 ? 'low' : 'muted'}"))
+
+      (image
+        :tooltip "${battery.status} at ${battery.level / 10}%"
+        :visible {battery == "" ? false : battery.icon != ""}
+        :icon {battery.icon})
+
       (circular-progress :value {EWW_CPU['avg']} :class "circle_bar cpu" :thickness 3.5
         (button :class "icon cpu"
           :tooltip "cpu load ${round(EWW_CPU['avg'], 1)}%, lavg ${load_average}"
@@ -83,37 +122,4 @@
       (circular-progress :value {EWW_RAM['used_mem_perc']} :class "circle_bar memory" :thickness 3.5
         (button :class "icon memory"
           :tooltip "ram usage ${round(EWW_RAM['used_mem_perc'], 1)}%"
-          "　"))
-
-      (button
-        :tooltip {wifi.Connected_network}
-        (image :icon "network-wireless-${
-            wifi.State == 'disconnected' ? 'offline' :
-            replace(wifi.AverageRSSI, ' dBm', '') >= -25 ? 'signal-excellent' :
-            replace(wifi.AverageRSSI, ' dBm', '') >= -35 ? 'signal-good' :
-            replace(wifi.AverageRSSI, ' dBm', '') >= -45 ? 'signal-ok' :
-            replace(wifi.AverageRSSI, ' dBm', '') >= -55 ? 'signal-weak' : 'signal-none'
-          }"))
-
-      (button :onclick "exec pavucontrol &"
-        :tooltip "output volume ${sound_out.vol}% ${sound_out.muted == true ? 'muted' : ''}"
-        (image :icon "audio-volume-${
-          sound_out.muted == true ? 'muted' :
-          sound_out.vol == 'null' ? 'muted' :
-          sound_out.vol > 100 ? 'overamplified' :
-          sound_out.vol > 50 ? 'high' :
-          sound_out.vol > 25 ? 'medium' : 'low'}"))
-
-      (button :onclick "exec pavucontrol &"
-        :tooltip "input volume ${sound_in.vol}% ${sound_in.muted == true ? 'muted' : ''}"
-        (image :icon "microphone-sensitivity-${
-          sound_in.muted == true ? 'muted' :
-          sound_in.vol == 'null' ? 'muted' :
-          sound_in.vol > 50 ? 'high' :
-          sound_in.vol > 25 ? 'medium' :
-          sound_in.vol > 0 ? 'low' : 'none'}"))
-
-      (button
-        :tooltip "${battery.status} at ${battery.level / 10}%"
-        :visible {battery == "" ? false : battery.icon != ""}
-        (image :icon {battery.icon})))))
+          "　")))))
