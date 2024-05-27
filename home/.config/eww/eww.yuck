@@ -47,7 +47,9 @@
         :tooltip "Active workspaces: ${swaynyaa.workspaces_existing}"
         (box :class "workspace"
           (label :class "visible workspace" :text {replace(swaynyaa.screens[screen].workspace, '10', '0')})))
-      (label :class "spaced" :text {swaynyaa.screen_focused == screen})
+      (label :class "spaced"
+        :visible {swaynyaa.screen_focused == screen}
+        :text "this")
       (label :class "spaced winclass"
         :visible {swaynyaa.screens[screen].shell != 'null'}
         :tooltip {swaynyaa.screens[screen].name}
