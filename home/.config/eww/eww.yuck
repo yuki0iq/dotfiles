@@ -89,7 +89,7 @@
             replace(wifi.AverageRSSI, ' dBm', '') >= -35 ? 'signal-good' :
             replace(wifi.AverageRSSI, ' dBm', '') >= -45 ? 'signal-ok' :
             replace(wifi.AverageRSSI, ' dBm', '') >= -55 ? 'signal-weak' : 'signal-none'
-          }-symbolic"))
+          }"))
 
       (button :onclick "exec pavucontrol &"
         :tooltip "output volume ${sound_out.vol}% ${sound_out.muted == true ? 'muted' : ''}"
@@ -98,7 +98,7 @@
           sound_out.vol == 'null' ? 'muted' :
           sound_out.vol > 100 ? 'overamplified' :
           sound_out.vol > 50 ? 'high' :
-          sound_out.vol > 25 ? 'medium' : 'low'}-symbolic"))
+          sound_out.vol > 25 ? 'medium' : 'low'}"))
 
       (button :onclick "exec pavucontrol &"
         :tooltip "input volume ${sound_in.vol}% ${sound_in.muted == true ? 'muted' : ''}"
@@ -107,7 +107,7 @@
           sound_in.vol == 'null' ? 'muted' :
           sound_in.vol > 50 ? 'high' :
           sound_in.vol > 25 ? 'medium' :
-          sound_in.vol > 0 ? 'low' : 'none'}-symbolic"))
+          sound_in.vol > 0 ? 'low' : 'none'}"))
 
       (button
         :tooltip "${battery.status} at ${battery.level / 10}%"
