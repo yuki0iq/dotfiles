@@ -94,9 +94,9 @@
           :icon "audio-volume-${
             sound_out.muted == true ? 'muted' :
             sound_out.vol == 'null' ? 'muted' :
-            sound_out.vol > 100 ? 'overamplified' :
             sound_out.vol > 50 ? 'high' :
-            sound_out.vol > 25 ? 'medium' : 'low'}"))
+            sound_out.vol > 25 ? 'medium' :
+            sound_out.vol > 0 ? 'low' : 'muted'}"))
 
       (eventbox
         :onclick "exec pavucontrol &"
