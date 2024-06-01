@@ -27,7 +27,7 @@
 (defwidget clock_module [screen]
   (eventbox :onhover "eww update time_rev=true" :onhoverlost "eww update time_rev=false" :onclick "~/kek/dotfiles/home/.config/eww/scripts/pop calendar ${screen}"
     (box :class "module" :space-evenly "false" :orientation "h" :spacing "3"
-      (label :class "spaced clock_date" :text {formattime(EWW_TIME, time_rev ? '%A, %Y-%b-%d' : '%b %d, %a')})
+      (label :class "spaced clock_date" :text {formattime(EWW_TIME, time_rev ? '%A, %Y-%b-%d' : '%b %-d, %a')})
       (label :class "spaced clock_time" :text {formattime(EWW_TIME, '%T')}))))
 
 (defwidget cal [] (box :class "window cal_win" :orientation "v" (box :class "cal-in" (calendar :class "cal"))))
