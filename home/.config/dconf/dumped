@@ -743,7 +743,7 @@ sort-directories-first=true
 sort-order='ascending'
 type-format='category'
 window-position=(56, 50)
-window-size=(1920, 996)
+window-size=(1610, 876)
 
 [org/mate/engrampa/general]
 unar-open-zip=false
