@@ -73,7 +73,7 @@ listview {
 }
 
 element {
-  children: [element-text];
+  children: [element-text, element-icon];
 }
 
 element-text {
