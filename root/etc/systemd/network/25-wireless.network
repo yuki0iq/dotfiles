@@ -6,9 +6,3 @@ DHCP=yes
 IgnoreCarrierLoss=3s
 MulticastDNS=true
 DNSOverTLS=true
-
-#[DHCPv4]
-#RouteMetric=20
-
-#[DHCPv6]
-#RouteMetric=20
