@@ -20,10 +20,9 @@ paru -Syu \
 paru -S --asdeps \
   thunar-{archive-plugin,volman}tumbler gvfs{,-gphoto2,-mtp} python-gobject
 
-mkdir -p ~/.ssh ~/.config ~/.config/sublime-text ~/.local ~/.local/share ~/.local/state
+mkdir -p ~/.ssh ~/.local ~/.local/share ~/.local/state
 
 ln -sf $PWD/home/.{bash{_profile,rc},xkb} ~/
 ln -sf $PWD/home/.ssh/authorized_keys ~/.ssh/
-ln -sf $PWD/home/.config/sublime-text/Packages ~/.config/sublime-text/
+ln -sf $PWD/home/.config/ ~/
 
-ln -sf $PWD/home/.config/{dconf,dunst,easyeffects,eww,fcitx5,foot,gdb,git,gtk-3.0,gtk-4.0,htop,MangoHud,nvim,nwg-look,paru,qt6ct,rofi,sway} ~/.config/
