@@ -8,10 +8,12 @@ window-width=540
 [com/github/wwmm/easyeffects]
 autohide-popovers=true
 bypass=false
-last-used-input-preset='Reduce microphone noise'
+last-used-input-preset='Nothing'
 last-used-output-preset='Presets'
+process-all-inputs=false
+process-all-outputs=false
 show-native-plugin-ui=true
-use-cubic-volumes=false
+use-cubic-volumes=true
 use-dark-theme=false
 window-fullscreen=false
 window-height=755
@@ -34,8 +36,9 @@ type='Lines'
 
 [com/github/wwmm/easyeffects/streaminputs]
 blocklist=@as []
-input-device='alsa_input.pci-0000_00_1b.0.5.analog-stereo'
-plugins=['rnnoise#0', 'echo_canceller#0', 'speex#0']
+input-device='alsa_input.pci-0000_00_1b.0.analog-stereo.5'
+plugins=@as []
+use-default-input-device=true
 
 [com/github/wwmm/easyeffects/streaminputs/echocanceller/0]
 bypass=false
@@ -52,8 +55,10 @@ enable-vad=true
 noise-suppression=-60
 
 [com/github/wwmm/easyeffects/streamoutputs]
-output-device='alsa_output.pci-0000_00_1b.0.5.analog-stereo'
+blocklist=@as []
+output-device='alsa_output.pci-0000_00_1b.0.analog-stereo.5'
 plugins=@as []
+use-default-output-device=true
 
 [com/github/wwmm/easyeffects/streamoutputs/crystalizer/0]
 intensity-band0=20.0
@@ -743,7 +748,13 @@ sort-directories-first=true
 sort-order='ascending'
 type-format='category'
 window-position=(56, 50)
-window-size=(1610, 876)
+window-size=(1550, 866)
+
+[org/mate/engrampa/dialogs/extract]
+create-subdirectory=true
+overwrite=true
+recreate-folders=true
+skip-newer=false
 
 [org/mate/engrampa/general]
 unar-open-zip=false
