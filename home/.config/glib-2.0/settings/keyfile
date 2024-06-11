@@ -1,0 +1,45 @@
+[com/github/wwmm/easyeffects/spectrum]
+color=(1.0, 1.0, 1.0, 1.0)
+color-axis-labels=(1.0, 1.0, 1.0, 1.0)
+dynamic-y-scale=false
+fill=false
+height=120
+line-width=2.0000000000000004
+maximum-frequency=20480
+n-points=512
+rounded-corners=true
+show=true
+show-bar-border=true
+type='Lines'
+
+[org/gnome/desktop/interface]
+gtk-theme='Materia-light-compact'
+icon-theme='Papirus-Dark'
+cursor-theme='Adwaita'
+cursor-size=24
+font-name='Cantarell 11'
+font-hinting='slight'
+font-antialiasing='grayscale'
+font-rgba-order='rgb'
+text-scaling-factor=1.0
+toolbar-style='both-horiz'
+toolbar-icons-size='large'
+color-scheme='prefer-dark'
+
+[org/gnome/desktop/sound]
+event-sounds=true
+input-feedback-sounds=false
+
+[org/gtk/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
+show-hidden=true
+show-size-column=true
+show-type-column=true
+sidebar-width=168
+sort-column='name'
+sort-directories-first=true
+sort-order='ascending'
+type-format='category'
+window-position=(56, 50)
+window-size=(1550, 866)
