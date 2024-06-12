@@ -12,7 +12,7 @@
     "rulers": [[100, "dotted"], [144, "solid"]],
     "ignored_packages":
     [
-		"Rust",
+        "Rust",
         "Vintage",
     ],
 }
