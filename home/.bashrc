@@ -2,20 +2,11 @@
 # ~/.bashrc
 #
 
-export DE=flatpak
-export GSETTINGS_BACKEND=keyfile
-
-export QT_QPA_PLATFORMTHEME=qt6ct
+for file in ~/.config/environment.d/*.conf; do
+    source <(sed 's|^|export |' $file)
+done
 
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
-
-export XDG_DATA_HOME=~/.local/share
-export XDG_CONFIG_HOME=~/.config
-export XDG_STATE_HOME=~/.local/state
-export XDG_CACHE_HOME=~/.cache
-
-export QT_IM_MODULE=fcitx5
-export XMODIFIERS=@im=fcitx5
 
 [[ $- != *i* ]] && return
 
