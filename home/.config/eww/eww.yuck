@@ -9,23 +9,23 @@
 
 (defwidget left [screen] (box :orientation "h" :space-evenly false :class "widget" :halign "start"
   (current :screen screen)))
-(defwidget center [screen] (box :orientation "h" :space-evenly false :class "widget" :halign "center"
-  (clock_module :screen screen) (keyboard)))
+(defwidget center [screen-id] (box :orientation "h" :space-evenly false :class "widget" :halign "center"
+  (clock_module :screen-id screen-id) (keyboard)))
 (defwidget right [] (box :orientation "h" :space-evenly false :class "widget" :halign "end"
   (sys)))
 
-(defwidget bar_impl [screen] (box :class "window" :orientation "h"
-  (left :screen screen) (center :screen screen) (right)))
+(defwidget bar_impl [screen screen-id] (box :class "window" :orientation "h"
+  (left :screen screen) (center :screen-id screen-id) (right)))
 
-(defwindow bar [monitor] :geometry (geometry :width "100%" :anchor "top center")
+(defwindow bar [monitor screen] :geometry (geometry :width "100%" :anchor "top center")
   :stacking "fg" :windowtype "dock" :exclusive true
-  (bar_impl :screen monitor))
+  (bar_impl :screen monitor :screen-id screen))
 
 
 
 (defvar time_rev false)
-(defwidget clock_module [screen]
-  (eventbox :onhover "eww update time_rev=true" :onhoverlost "eww update time_rev=false" :onclick "~/kek/dotfiles/home/.config/eww/scripts/pop calendar ${screen}"
+(defwidget clock_module [screen-id]
+  (eventbox :onhover "eww update time_rev=true" :onhoverlost "eww update time_rev=false" :onclick "~/kek/dotfiles/home/.config/eww/scripts/pop calendar ${screen-id}"
     (box :class "module" :space-evenly "false" :orientation "h" :spacing "3"
       (label :class "spaced clock_date" :text {formattime(EWW_TIME, time_rev ? '%A, %Y-%b-%d' : '%b %-d, %a')})
       (label :class "spaced clock_time" :text {formattime(EWW_TIME, '%T')}))))
@@ -43,10 +43,9 @@
 (defwidget current [screen]
   (eventbox :onclick "~/kek/dotfiles/home/.config/sway/wss"
     (box :class "sys_button" :space-evenly false
-      (box :class "workspace" :orientation "h" :space-evenly false
+      (label :class "workspace"
         :tooltip "Active workspaces: ${swaynyaa.workspaces_existing}"
-        (box :class "workspace"
-          (label :class "visible workspace" :text {replace(swaynyaa.screens[screen].workspace, '10', '0')})))
+        :text {replace(swaynyaa.screens[screen].workspace, '10', '0')})
 
       (label :class "spaced"
         :visible {swaynyaa.screen_focused == screen}
@@ -94,8 +93,8 @@
           :icon "audio-volume-${
             sound_out.muted == true ? 'muted' :
             sound_out.vol == 'null' ? 'muted' :
-            sound_out.vol > 50 ? 'high' :
-            sound_out.vol > 25 ? 'medium' :
+            sound_out.vol >= 50 ? 'high' :
+            sound_out.vol >= 25 ? 'medium' :
             sound_out.vol > 0 ? 'low' : 'muted'}"))
 
       (eventbox
@@ -105,8 +104,8 @@
           :icon "mic-volume-${
             sound_in.muted == true ? 'muted' :
             sound_in.vol == 'null' ? 'muted' :
-            sound_in.vol > 50 ? 'high' :
-            sound_in.vol > 25 ? 'medium' :
+            sound_in.vol >= 50 ? 'high' :
+            sound_in.vol >= 25 ? 'medium' :
             sound_in.vol > 0 ? 'low' : 'muted'}"))
 
       (image

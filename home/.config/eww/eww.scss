@@ -5,7 +5,13 @@
     margin: .1em;
 }
 
-.window, .cal_win, tooltip {
+.window {
+    background-color: rgba(0, 0, 0, 1.0);
+    margin: 0;
+    min-height: 2em;
+}
+
+.cal_win, tooltip {
     background-color: rgba(15, 15, 25, 90%);
     border-radius: 1em;
     margin: .25em;
@@ -15,7 +21,6 @@ tooltip label {
     margin: 0.5em;
 }
 
-
 .spaced {
     margin-left: .3em;
     margin-right: .3em;
@@ -23,7 +28,6 @@ tooltip label {
 
 .clock_date {
     font-size: .9em;
-    padding-top: .05em;
 }
 
 .keyboard, .winclass {
@@ -36,53 +40,16 @@ tooltip label {
     border-radius: 1em;
 }
 
-.icon {
-    font-size: 10px;
-    color: #00cc00;
-}
-
-.brightness {
-    color: #e4c9af;
-}
-
 .memory {
     color: #e0b089;
-}
-
-.battery {
-    color: #afbea2;
-}
-
-.volume {
-    color: #a1bdce;
 }
 
 .cpu {
     color: #61da76;
 }
 
-.wifi, .clock_date {
+.clock_date {
     color: #d7beda;
-}
-
-.brightness_slider trough highlight {
-    background-image: linear-gradient(to right, #e4c9af 30%, #f2cdcd 50%, #e0b089 100% *50);
-}
-
-.volume_slider trough highlight {
-    background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
-}
-
-scale trough {
-    all: unset;
-    background-color: #22242b;
-    border-radius: 1em;
-    min-height: .5em;
-    min-width: 6em;
-
-    highlight {
-        border-radius: 1em;
-    }
 }
 
 .if_down {
@@ -117,46 +84,20 @@ scale trough {
     background-color: #373b41;
 }
 
-.nf {
-    font-family: Symbols Nerd Font;
-}
-
-.wifi_entry:hover {
-    background-color: #222;
-}
-
-.wifi_entry, .activities {
-    border-radius: 1em;
-    padding: 0em;
-}
-
 .workspace {
-    background-color: #222;
-    border-radius: 1em;
-    color: #aaa;
-    min-width: 1.4em;
-    min-height: 1.4em;
-    border-radius: 1em;
+    color: #f0c674;
     font-size: 1em;
-
-}
-
-.workspace:hover {
-    background-color: #555;
+    border: 2px #222 solid;
+    margin-top: .2em;
+    margin-bottom: .2em;
+    margin-left: .2em;
+    border-radius: 50%;
+    min-width: 1.2em;
 }
 
 .urgent_mark {
     background-color: #a44;
 }
-
-.urgent {
-    color: #f55;
-}
-
-.visible {
-    color: #f0c674;
-}
-
 
 .cal_win {
     border-radius: 1.5em;
@@ -187,35 +128,12 @@ scale trough {
     }
 }
 
-.sys_text_sub {
-    color: #bbc5d7;
-}
-
-.sys_text {
-    font-weight: bold;
-}
-
-
-.sys_enlarge {
-    margin: .5em;
-}
-
 .sys_button {
     margin: 0em;
 }
 
-.sys_text_box {
-    margin-left: .5em;
-    margin-right: .5em;
-}
-
-.sys_text_right {
-    min-width: 2em;
-}
-
 .sys_icons {
     border-radius: 1em;
-    background-color: #222;
 
     image {
         min-width: 1.5em;
@@ -227,18 +145,6 @@ scale trough {
     }
 
     .circle_bar {
-        margin: 0em .25em;
+        margin: 0em .2em;
     }
 }
-
-.sys_win {
-    border-radius: 2em;
-    padding: 1em;
-}
-
-.sys_box {
-    border-radius: 1em;
-    margin: .2em;
-    padding: .2em;
-}
-
