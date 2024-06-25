@@ -24,7 +24,7 @@ paru -S --asdeps \
 
 mkdir -p ~/.ssh ~/.local ~/.local/share ~/.local/state
 
-ln -sf $PWD/home/.{bash{_profile,rc},xkb} ~/
+ln -sf $PWD/home/.{bash{_profile,rc}} ~/
 ln -sf $PWD/home/.ssh/authorized_keys ~/.ssh/
 ln -sf $PWD/home/.config/ ~/
 
