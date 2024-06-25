@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pacman -Syu git
+pacman -Syu base-devel git
 pushd /tmp
   git clone https://aur.archlinux.org/paru-bin.git
   pushd paru-bin
