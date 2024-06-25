@@ -17,10 +17,30 @@ Yuki Sireneva's config files in one place and with almost easy install!
 ## Usage 
 
 ```
-git clone git@github.com:yuki0iq/dotfiles
+pacstrap -K /mnt base linux linux-firmware
+genfstab -U /mnt >> /mnt/etc/fstab
+vim /mnt/etc/fstab
+arch-chroot /mnt
+
+# Install bootloader here
+
+echo 'reimu' > /etc/hostname
+passwd
+useradd -m -G wheel yuki
+passwd yuki
+visudo  # allow `wheel` users to use sudo
+su yuki
+
+git clone https://github.com/yuki0iq/dotfiles
 cd dotfiles
 sudo ./root.sh
 ./home.sh
+. ~/.bashrc
+
+paru -S rustup
+rustup toolchain install nightly
+cargo +nightly install statusline
+. ~/.bashrc
 ```
 
 Install scripts **REMOVE** old files and places symlinks to files in this repo. Do NOT delete cloned repo after installing!

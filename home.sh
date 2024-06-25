@@ -11,8 +11,10 @@ paru -Syu \
   wayvnc waypipe \
   firefox \
   foot grc gef sublime-text-4 \
-  xdg-desktop-portal{,-wlr,-gtk} keepassxc \
-  pipewire{,-pulse,-alsa,-jack} wireplumber cmus ffmpeg mpv sound-theme-freedesktop \
+  xdg-desktop-portal{,-wlr,-gtk} \
+  pipewire{,-pulse,-alsa,-jack} wireplumber \
+  cmus cmus-plugin-vgm ffmpeg mpv \
+  sound-theme-freedesktop \
   krita qbittorrent thunar imv engrampa \
   power-profiles-daemon \
   fcitx5-im fcitx5-mozc

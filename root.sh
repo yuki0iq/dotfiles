@@ -16,12 +16,14 @@ pushd root
   find -type f -exec install -vDm0644 {} /{} \;
 popd
 
+locale-gen
+
 paru -Syu \
   bash diffutils patch sudo tmux bash-completion \
   pacman-contrib pkgfile bat eza git-delta ripgrep htop ncdu moreutils \
-  bind iproute2 iputils nft iptables-nft iwd curl rsync openssh speedtest-cli w3m nmap \
+  bind iproute2 iputils nft iwd curl rsync openssh iperf3 w3m nmap \
   inxi nvim lsof strace ly terminus-font \
   nohang
 paru -S --asdeps dmidecode
 
-systemctl enable --now systemd-{timesyncd,networkd,resolved} iwd sshd ly-dm pkgfile-update.timer nftables nohang-desktop
+systemctl enable systemd-{timesyncd,networkd,resolved} iwd sshd ly-dm pkgfile-update.timer nftables nohang-desktop
