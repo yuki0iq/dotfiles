@@ -11,6 +11,10 @@ export XDG_RUNTIME_DIR=/run/user/$(id -u)
 [[ $- != *i* ]] && return
 
 
+# Default .bashrc files
+[[ -f /etc/bash.bashrc ]] && source /etc/bash.bashrc
+[[ -f /etc/skel/.bashrc ]] && source /etc/skel/.bashrc
+
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 export HISTSIZE=-1
 export HISTFILESIZE=-1
@@ -79,7 +83,7 @@ ssh_agent_env() {
     # ssh-add
 }
 
-if [ -f "$SSH_ENV" ]; then
+if [[ -f "$SSH_ENV" ]]; then
     . "$SSH_ENV" > /dev/null
     ps $SSH_AGENT_PID | grep ssh-agent$ > /dev/null || ssh_agent_env
 else
