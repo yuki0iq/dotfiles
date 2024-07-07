@@ -40,7 +40,6 @@ alias ls='eza --color=auto'
 # Allow more colored commands when grc is present
 if command -v grc >/dev/null; then
     grc='grc -se'
-    alias blkid="$grc blkid"
     alias df="$grc df"
     alias dig="$grc dig"
     alias du="$grc du"
