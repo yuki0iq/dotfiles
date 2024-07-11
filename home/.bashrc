@@ -91,13 +91,36 @@ else
 fi
 
 export EDITOR=nvim
-export PAGER=less
+export PAGER='less -R +X'
 export MANROFFOPT=-c
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 source /usr/share/bash-completion/bash_completion
 source /usr/share/git/completion/git-completion.bash
-source /usr/share/doc/pkgfile/command-not-found.bash
+# source /usr/share/doc/pkgfile/command-not-found.bash
+
+command_not_found_handle () {
+    local pkgs cmd=$1
+    local FUNCNEST=10
+
+    set +o verbose
+
+    if command -v busybox >/dev/null && (busybox --list | grep ^$cmd\$ >/dev/null 2>&1); then
+        busybox "$@"
+    else
+        mapfile -t pkgs < <(pkgfile -bv -- "$cmd" 2>/dev/null)
+
+        if (( ${#pkgs[*]} )); then
+            printf '%s may be found in the following packages:\n' "$cmd"
+            printf '  %s\n' "${pkgs[@]}"
+        else
+            printf "bash: %s: command not found\n" "$cmd"
+        fi >&2
+    fi
+
+    return 127
+}
+
 
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 export W3M_DIR="$XDG_DATA_HOME"/w3m
