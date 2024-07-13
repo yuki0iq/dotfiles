@@ -1,6 +1,10 @@
-ngrok
+ngrok/
 fcitx/
 ibus/
 pavucontrol.ini
 QtProject.conf
 pulse/
+mozc/
+rncbc.org/
+ipython/
+docker/
