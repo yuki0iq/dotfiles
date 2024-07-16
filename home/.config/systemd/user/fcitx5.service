@@ -1,0 +1,7 @@
+[Unit]
+Description=Fcitx5, a powerful Input Method Framework
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+Exec=fcitx5

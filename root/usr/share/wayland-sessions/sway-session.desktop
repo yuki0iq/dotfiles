@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=sway systemd session
+Comment=An i3-compatible Wayland compositor
+Exec=systemctl --user --wait start sway-session.target
+Type=Application

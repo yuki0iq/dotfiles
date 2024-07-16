@@ -1,0 +1,7 @@
+[Unit]
+Description=Polkit auth agent from Mate
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+Exec=/usr/lib/mate-polkit/polkit-mate-authentication-agent-1

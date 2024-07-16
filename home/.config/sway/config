@@ -18,8 +18,6 @@ exec_always $idle_lock
 # exec_always "polybar-msg cmd quit; PATH=~/.config/sway:$PATH polybar -c ~/.config/sway/polybar.ini"
 # exec_always 'pkill eww; eww open bar --screen 0 --id nya0 --arg monitor=VGA-1'
 exec_always ~/.config/sway/bar-opener
-exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
-exec fcitx5
 
 input type:keyboard {
     xkb_layout us,ru
