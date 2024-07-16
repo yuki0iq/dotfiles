@@ -4,4 +4,4 @@ PartOf=graphical-session.target
 
 [Service]
 Type=simple
-Exec=fcitx5
+ExecStart=fcitx5

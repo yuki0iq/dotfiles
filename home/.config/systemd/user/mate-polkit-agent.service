@@ -4,4 +4,4 @@ PartOf=graphical-session.target
 
 [Service]
 Type=simple
-Exec=/usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+ExecStart=/usr/lib/mate-polkit/polkit-mate-authentication-agent-1
