@@ -8,7 +8,9 @@ done
 
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
-[[ $- != *i* ]] && return
+if ! tty >/dev/null 2>&1; then
+    return
+fi
 
 
 # Default .bashrc files
@@ -70,8 +72,13 @@ if [[ -z $CARGO_HOME ]]; then
     export PATH="${PATH}:${CARGO_HOME}/bin"
 fi
 
-if command -v statusline >/dev/null; then
+if [[ $TERM == linux ]]; then
+    export PS1_MODE=text
+else
     export PS1_MODE=minimal
+fi
+
+if command -v statusline >/dev/null; then
     eval "$(statusline --env)"
 fi
 
