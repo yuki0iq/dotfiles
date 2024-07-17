@@ -1,6 +1,6 @@
 [Unit]
 Description=Polkit auth agent from Mate
-PartOf=graphical-session.target
+After=sway.service
 
 [Service]
 Type=simple
