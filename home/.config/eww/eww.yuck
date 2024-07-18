@@ -1,11 +1,10 @@
 (defpoll load_average :interval "10s" "</proc/loadavg cut -d' ' -f1")
-(defpoll ping_dns :interval "10s" "ping -c1 -W0.1 1.1.1.1 >/dev/null; echo $?")
-(defpoll battery :interval "15s" "~/.config/eww/scripts/battery")
-(defpoll wifi :interval "5s" "~/.config/eww/scripts/wifi status")
-(deflisten sound_out "~/.config/eww/scripts/sound sink")
-(deflisten sound_in "~/.config/eww/scripts/sound source")
-(deflisten swaynyaa "exec ~/kek/swaynyaad/target/release/swaynyaad --listener")
-(deflisten brightness "~/.config/eww/scripts/backlight")
+(defpoll ping_dns :initial "1" :interval "10s" "ping -c1 -W0.1 1.1.1.1 >/dev/null; echo $?")
+(defpoll battery :initial "{}" :interval "15s" "~/.config/eww/scripts/battery")
+(defpoll wifi :initial "{}" :interval "5s" "~/.config/eww/scripts/wifi status")
+(deflisten sound_out :initial "{\"value\": 0, \"muted\": 1}" "~/.config/eww/scripts/sound sink")
+(deflisten sound_in :initial "{\"value\": 0, \"muted\": 1}" "~/.config/eww/scripts/sound source")
+(deflisten swaynyaa :initial "{}" "exec ~/kek/swaynyaad/target/release/swaynyaad --listener")
 
 (defwidget left [screen] (box :orientation "h" :space-evenly false :class "widget" :halign "start"
   (current :screen screen)))
@@ -36,7 +35,7 @@
 (defwidget keyboard []
   (eventbox ; switch layout on click? who needs this anyway
     (box :class "module" :space-evenly false
-        (label :class "spaced keyboard" :text {swaynyaa.layout_short_name} :tooltip {swaynyaa.layout_name}))))
+        (label :class "spaced keyboard" :text {swaynyaa?.layout_short_name} :tooltip {swaynyaa?.layout_name}))))
 
 
 
@@ -44,27 +43,27 @@
   (eventbox :onclick "~/kek/dotfiles/home/.config/sway/wss"
     (box :class "sys_button" :space-evenly false
       (label :class "workspace"
-        :tooltip "Active workspaces: ${swaynyaa.workspaces_existing}"
-        :text {replace(swaynyaa.screens[screen].workspace, '10', '0')})
+        :tooltip "Active workspaces: ${swaynyaa?.workspaces_existing}"
+        :text {replace(swaynyaa?.screens?.[screen]?.workspace, '10', '0')})
 
       (label :class "spaced"
-        :visible {swaynyaa.screen_focused == screen}
+        :visible {swaynyaa?.screen_focused == screen}
         :text "this")
 
       (label :class "spaced winclass"
-        :visible {swaynyaa.screens[screen].shell != 'null'}
-        :tooltip {swaynyaa.screens[screen].name}
+        :visible {swaynyaa?.screens?.[screen]?.shell != 'null'}
+        :tooltip {swaynyaa?.screens?.[screen]?.name}
         :text {
-          swaynyaa.screens[screen].shell == "xdg_shell"
-          ? swaynyaa.screens[screen].app_id
-          : swaynyaa.screens[screen].shell != "null"
-            ? swaynyaa.screens[screen].shell
+          swaynyaa?.screens?.[screen]?.shell == "xdg_shell"
+          ? swaynyaa?.screens?.[screen]?.app_id
+          : swaynyaa?.screens?.[screen]?.shell != "null"
+            ? swaynyaa?.screens?.[screen]?.shell
             : ''})
 
       (circular-progress :thickness 8
-        :visible {arraylength(swaynyaa.workspaces_urgent) != 0}
+        :visible {arraylength(swaynyaa?.workspaces_urgent ?: []) != 0}
         (button :class "urgent_mark"
-          :tooltip "Urgent workspaces: ${swaynyaa.workspaces_urgent}"
+          :tooltip "Urgent workspaces: ${swaynyaa?.workspaces_urgent}"
           "　")))))
 
 
@@ -77,13 +76,13 @@
           "　"))
 
       (image
-        :tooltip {wifi.Connected_network}
+        :tooltip {wifi?.Connected_network}
         :icon "network-wireless-${
-          wifi.State == 'disconnected' ? 'offline' :
-          replace(wifi.AverageRSSI, ' dBm', '') >= -25 ? 'signal-excellent' :
-          replace(wifi.AverageRSSI, ' dBm', '') >= -35 ? 'signal-good' :
-          replace(wifi.AverageRSSI, ' dBm', '') >= -45 ? 'signal-ok' :
-          replace(wifi.AverageRSSI, ' dBm', '') >= -55 ? 'signal-weak' : 'signal-none'
+          wifi?.State == 'disconnected' ? 'offline' :
+          (replace(wifi?.AverageRSSI, ' dBm', '') ?: 0) >= -25 ? 'signal-excellent' :
+          (replace(wifi?.AverageRSSI, ' dBm', '') ?: 0) >= -35 ? 'signal-good' :
+          (replace(wifi?.AverageRSSI, ' dBm', '') ?: 0) >= -45 ? 'signal-ok' :
+          (replace(wifi?.AverageRSSI, ' dBm', '') ?: 0) >= -55 ? 'signal-weak' : 'signal-none'
         }")
 
       (eventbox
@@ -109,13 +108,13 @@
             sound_in.vol > 0 ? 'low' : 'muted'}"))
 
       (image
-        :tooltip "${battery.status} at ${battery.level / 10}%"
-        :visible {battery == "" ? false : battery.icon != ""}
-        :icon {battery.icon})
+        :tooltip "${battery?.status} at ${battery?.level ?: 0 / 10}%"
+        :visible {battery == "" ? false : battery?.icon != ""}
+        :icon {battery?.icon})
 
       (circular-progress :value {EWW_CPU['avg']} :class "circle_bar cpu" :thickness 3.5
         (button :class "icon cpu"
-          :tooltip "cpu load ${round(EWW_CPU['avg'], 1)}%, lavg ${load_average}"
+          :tooltip "cpu load ${round(EWW_CPU['avg'], 1)}%, lavg ${load_average ?: '??'}"
           "　"))
 
       (circular-progress :value {EWW_RAM['used_mem_perc']} :class "circle_bar memory" :thickness 3.5
