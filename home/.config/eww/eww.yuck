@@ -77,12 +77,13 @@
 
       (image
         :tooltip {wifi?.Connected_network}
+        :visible {wifi == "" ? false : wifi?.State == ''}
         :icon "network-wireless-${
           wifi?.State == 'disconnected' ? 'offline' :
-          (replace(wifi?.AverageRSSI, ' dBm', '') ?: 0) >= -25 ? 'signal-excellent' :
-          (replace(wifi?.AverageRSSI, ' dBm', '') ?: 0) >= -35 ? 'signal-good' :
-          (replace(wifi?.AverageRSSI, ' dBm', '') ?: 0) >= -45 ? 'signal-ok' :
-          (replace(wifi?.AverageRSSI, ' dBm', '') ?: 0) >= -55 ? 'signal-weak' : 'signal-none'
+          (replace(wifi?.AverageRSSI, ' dBm', '') ?: -100) >= -25 ? 'signal-excellent' :
+          (replace(wifi?.AverageRSSI, ' dBm', '') ?: -100) >= -35 ? 'signal-good' :
+          (replace(wifi?.AverageRSSI, ' dBm', '') ?: -100) >= -45 ? 'signal-ok' :
+          (replace(wifi?.AverageRSSI, ' dBm', '') ?: -100) >= -55 ? 'signal-weak' : 'signal-none'
         }")
 
       (eventbox
