@@ -22,7 +22,6 @@ exec_always ~/.config/sway/bar-opener
 input type:keyboard {
     xkb_layout us,ru
     xkb_variant colemak_dh_yuki,rulemak_dh_yuki
-    xkb_model pc101
     xkb_options compose:rctrl,grp:caps_toggle,grp_led:scroll
     xkb_numlock enabled
 }
