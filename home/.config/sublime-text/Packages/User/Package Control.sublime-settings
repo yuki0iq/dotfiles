@@ -5,22 +5,19 @@
 	],
 	"installed_packages":
 	[
+		"Awk",
 		"CMake",
 		"Dockerfile Syntax Highlighting",
 		"i3 wm",
 		"INI",
 		"LSP",
 		"LSP-clangd",
-		"LSP-pylsp",
 		"LSP-rust-analyzer",
-		"LSP-typescript",
 		"MakeTargets",
-		"Mediawiker",
 		"Nftables",
 		"Nix",
 		"Package Control",
 		"Rust Enhanced",
-		"Smali",
 		"TOML",
 	],
 }
