@@ -2,8 +2,7 @@
 (defpoll ping_dns :initial "1" :interval "10s" "ping -c1 -W0.1 1.1.1.1 >/dev/null; echo $?")
 (defpoll battery :initial "{}" :interval "15s" "~/.config/eww/scripts/battery")
 (defpoll wifi :initial "{}" :interval "5s" "~/.config/eww/scripts/wifi status")
-(deflisten sound_out :initial "{\"value\": 0, \"muted\": 1}" "exec ~/.config/eww/scripts/sound sink")
-(deflisten sound_in :initial "{\"value\": 0, \"muted\": 1}" "exec ~/.config/eww/scripts/sound source")
+(deflisten sound :initial "{}" "exec ~/.config/eww/scripts/sound.awk < <(pactl -fjson subscribe)")
 (deflisten swaynyaa :initial "{}" "exec ~/kek/swaynyaad/target/release/swaynyaad --listener")
 
 (defwidget left [screen] (box :orientation "h" :space-evenly false :class "widget" :halign "start"
@@ -89,24 +88,24 @@
       (eventbox
         :onclick "exec pavucontrol &"
         (image
-          :tooltip "output volume ${sound_out.vol}% ${sound_out.muted == true ? 'muted' : ''}"
+          :tooltip "output volume ${sound?.out?.vol}% ${sound?.out?.muted == true ? 'muted' : ''}"
           :icon "audio-volume-${
-            sound_out.muted == true ? 'muted' :
-            sound_out.vol == 'null' ? 'muted' :
-            sound_out.vol >= 50 ? 'high' :
-            sound_out.vol >= 25 ? 'medium' :
-            sound_out.vol > 0 ? 'low' : 'muted'}"))
+            sound?.out?.muted == true ? 'muted' :
+            sound?.out?.vol == 'null' ? 'muted' :
+            sound?.out?.vol >= 50 ? 'high' :
+            sound?.out?.vol >= 25 ? 'medium' :
+            sound?.out?.vol > 0 ? 'low' : 'muted'}"))
 
       (eventbox
         :onclick "exec pavucontrol &"
         (image
-          :tooltip "input volume ${sound_in.vol}% ${sound_in.muted == true ? 'muted' : ''}"
+          :tooltip "input volume ${sound?.in?.vol}% ${sound?.in?.muted == true ? 'muted' : ''}"
           :icon "mic-volume-${
-            sound_in.muted == true ? 'muted' :
-            sound_in.vol == 'null' ? 'muted' :
-            sound_in.vol >= 50 ? 'high' :
-            sound_in.vol >= 25 ? 'medium' :
-            sound_in.vol > 0 ? 'low' : 'muted'}"))
+            sound?.in?.muted == true ? 'muted' :
+            sound?.in?.vol == 'null' ? 'muted' :
+            sound?.in?.vol >= 50 ? 'high' :
+            sound?.in?.vol >= 25 ? 'medium' :
+            sound?.in?.vol > 0 ? 'low' : 'muted'}"))
 
       (image
         :tooltip "${battery?.status} at ${battery?.level ?: 0 / 10}%"
