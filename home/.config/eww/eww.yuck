@@ -2,7 +2,7 @@
 (defpoll ping_dns :initial "1" :interval "10s" "ping -c1 -W0.1 1.1.1.1 >/dev/null; echo $?")
 (defpoll battery :initial "{}" :interval "15s" "~/.config/eww/scripts/battery")
 (defpoll wifi :initial "{}" :interval "5s" "~/.config/eww/scripts/wifi status")
-(deflisten sound :initial "{}" "exec ~/.config/eww/scripts/sound.awk < <(pactl -fjson subscribe)")
+(deflisten sound :initial "{}" "exec busybox awk -f ~/.config/eww/scripts/sound.awk < <(pactl -fjson subscribe)")
 (deflisten swaynyaa :initial "{}" "exec ~/kek/swaynyaad/target/release/swaynyaad --listener")
 
 (defwidget left [screen] (box :orientation "h" :space-evenly false :class "widget" :halign "start"
