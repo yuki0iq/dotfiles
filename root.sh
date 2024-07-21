@@ -21,7 +21,7 @@ chmod 0400 /etc/doas.conf
 locale-gen
 
 paru -Syu \
-  bash diffutils patch doas tmux bash-completion doas-sudo-shim-minimal busybox \
+  bash diffutils patch opendoas tmux bash-completion sudo busybox \
   pacman-contrib pkgfile bat eza git-delta ripgrep htop ncdu moreutils \
   bind iproute2 iputils nft iwd curl rsync openssh iperf3 w3m nmap \
   inxi nvim lsof strace ly terminus-font \
