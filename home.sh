@@ -8,7 +8,7 @@ paru -Syu \
   qt6ct kvantum kvantum-theme-materia \
   papirus-icon-theme \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
-  wayvnc waypipe \
+  wayvnc waypipe wdisplays \
   firefox \
   foot grc gef sublime-text-4 \
   xdg-desktop-portal{,-wlr,-gtk} \
