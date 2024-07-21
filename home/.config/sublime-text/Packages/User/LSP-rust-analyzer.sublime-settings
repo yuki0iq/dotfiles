@@ -4,5 +4,11 @@
         "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "always",
         "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
     },
+    "command": [
+        "/usr/bin/env",
+        "CARGO_HOME=/home/yuki/.local/share/cargo",
+        "RUSTUP_HOME=/home/yuki/.local/share/rustup",
+        "/usr/bin/rust-analyzer",
+    ],
     "enabled": true,
 }
