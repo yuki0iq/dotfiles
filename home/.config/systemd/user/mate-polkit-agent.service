@@ -1,7 +1,9 @@
 [Unit]
 Description=Polkit auth agent from Mate
-After=sway.service
 
 [Service]
 Type=simple
 ExecStart=/usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+
+[Install]
+WantedBy=graphical-session.target

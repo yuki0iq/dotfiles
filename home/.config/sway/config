@@ -8,6 +8,7 @@ font pango:Fantasque Sans Mono 0.001
 
 # ====== AUTORUNS ======
 include /etc/sway/config.d/50-systemd-user.conf
+exec systemctl --user start sway-session-init.target
 
 output * bg ~/pixiv_81691677_p0.jpg fill
 

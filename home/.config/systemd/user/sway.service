@@ -2,6 +2,8 @@
 Description=Sway, an i3-compatible Wayland compositor
 Documentation=man:sway(1)
 PropagatesStopTo=sway-session.target
+PropagatesStopTo=sway-session-pre.target
+PropagatesStopTo=sway-session-init.target
 
 [Service]
 Type=simple

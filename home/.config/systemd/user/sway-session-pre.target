@@ -1,0 +1,6 @@
+[Unit]
+Description=Sway graphical session, initialization steps
+Documentation=man:sway(1)
+Requires=sway.service
+After=sway.service
+PropagatesStopTo=graphical-session.target

@@ -1,7 +1,9 @@
 [Unit]
 Description=Fcitx5, a powerful Input Method Framework
-After=sway.service
 
 [Service]
 Type=simple
 ExecStart=fcitx5
+
+[Install]
+WantedBy=graphical-session.target
