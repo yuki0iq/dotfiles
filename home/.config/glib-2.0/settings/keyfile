@@ -43,3 +43,6 @@ sort-order='ascending'
 type-format='category'
 window-position=(56, 50)
 window-size=(1550, 866)
+
+[com/github/wwmm/easyeffects]
+use-dark-theme=true
