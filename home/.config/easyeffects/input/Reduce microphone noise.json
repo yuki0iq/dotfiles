@@ -9,7 +9,18 @@
             "output-gain": 0.0,
             "residual-echo-suppression": -70
         },
+        "loudness#0": {
+            "bypass": false,
+            "clipping": false,
+            "clipping-range": 6.0,
+            "fft": "4096",
+            "input-gain": -10.0,
+            "output-gain": 24.0,
+            "std": "ISO226-2003",
+            "volume": 0.0
+        },
         "plugins_order": [
+            "loudness#0",
             "rnnoise#0",
             "echo_canceller#0",
             "speex#0"
@@ -18,7 +29,7 @@
             "bypass": false,
             "enable-vad": true,
             "input-gain": 0.0,
-            "model-path": "",
+            "model-name": "",
             "output-gain": 0.0,
             "release": 20.0,
             "vad-thres": 50.0,
