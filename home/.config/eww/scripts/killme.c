@@ -1,4 +1,3 @@
-#!/usr/bin/tcc -run
 #include <errno.h>
 #include <linux/prctl.h>
 #include <signal.h>
