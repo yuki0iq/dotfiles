@@ -79,6 +79,8 @@ else
 fi
 
 if command -v statusline >/dev/null; then
+    # statusline does the job for bash
+    export MAILCHECK=never
     eval "$(statusline --env)"
 fi
 
