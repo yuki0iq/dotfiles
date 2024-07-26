@@ -2,6 +2,10 @@
 Description=Sway graphical session
 Documentation=man:sway(1)
 BindsTo=graphical-session.target
-Requires=sway-session-init.target
+Requires=sway-session-pre.target
+Requires=graphical-session-pre.target
 PropagatesStopTo=sway.service
+PropagatesStopTo=sway-session-pre.target
+PropagatesStopTo=sway-session-init.target
 PropagatesStopTo=graphical-session.target
+PropagatesStopTo=graphical-session-pre.target

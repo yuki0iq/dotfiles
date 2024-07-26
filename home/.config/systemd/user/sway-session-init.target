@@ -2,3 +2,4 @@
 Description=Sway graphical session, ready to use
 Documentation=man:sway(1)
 Requires=sway-session-pre.target
+BindsTo=graphical-session-pre.target

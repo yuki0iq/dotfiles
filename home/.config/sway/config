@@ -7,8 +7,13 @@ font pango:Fantasque Sans Mono 0.001
 
 
 # ====== AUTORUNS ======
-include /etc/sway/config.d/50-systemd-user.conf
-exec systemctl --user start sway-session-init.target
+exec systemctl --user set-environment XDG_CURRENT_DESKTOP=sway \
+    && systemctl --user import-environment DISPLAY SWAYSOCK WAYLAND_DISPLAY \
+    && systemctl --user show-environment \
+    && hash dbus-update-activation-environment 2>/dev/null \
+    && dbus-update-activation-environment --systemd --verbose \
+        DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway WAYLAND_DISPLAY \
+    && systemctl --user start sway-session-init.target
 
 output * bg ~/pixiv_81691677_p0.jpg fill
 
