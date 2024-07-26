@@ -4,6 +4,7 @@ Description=Polkit auth agent from Mate
 [Service]
 Type=simple
 ExecStart=/usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+Restart=always
 
 [Install]
 WantedBy=graphical-session.target

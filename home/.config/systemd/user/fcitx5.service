@@ -4,6 +4,7 @@ Description=Fcitx5, a powerful Input Method Framework
 [Service]
 Type=simple
 ExecStart=fcitx5
+Restart=always
 
 [Install]
 WantedBy=graphical-session.target
