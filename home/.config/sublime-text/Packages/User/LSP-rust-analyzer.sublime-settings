@@ -8,7 +8,10 @@
         "/usr/bin/env",
         "CARGO_HOME=/home/yuki/.local/share/cargo",
         "RUSTUP_HOME=/home/yuki/.local/share/rustup",
-        "/usr/bin/rust-analyzer",
+        "/usr/bin/rustup",
+        "run",
+        "nightly",
+        "rust-analyzer",
     ],
     "enabled": true,
 }
