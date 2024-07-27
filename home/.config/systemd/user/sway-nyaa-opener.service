@@ -1,0 +1,10 @@
+[Unit]
+Description=Sway Nyaa daemon, bar opener part
+
+[Service]
+Type=simple
+ExecStart=/home/yuki/kek/swaynyaad/target/release/swaynyaad --opener
+Restart=always
+
+[Install]
+WantedBy=sway-session.target
