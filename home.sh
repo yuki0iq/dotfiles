@@ -10,7 +10,7 @@ paru -Syu \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
   wayvnc waypipe wdisplays \
   firefox \
-  foot grc gef sublime-text-4 \
+  xdg-terminal-exec-mkhl foot grc gef sublime-text-4 \
   xdg-desktop-portal{,-wlr,-gtk} \
   pipewire{,-pulse,-alsa,-jack} wireplumber \
   cmus cmus-plugin-vgm ffmpeg mpv \

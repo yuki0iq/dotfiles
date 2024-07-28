@@ -39,7 +39,7 @@ bindsym $mod+Shift+Ctrl+F2 exec $idle_sleep
 
 bindsym $mod+Return exec $terminal
 # bindsym --release Super_L
-bindsym $mod+N exec '. ~/.bashrc && rofi -show combi -combi-modes window,drun -modes combi'
+bindsym $mod+N exec '. ~/.bashrc && TERMINAL='$terminal' rofi -show combi -combi-modes window,drun -modes combi'
 bindsym $mod+L exec 'SHLVL=-1 exec sh -c "$(rofi -dmenu -mesg \"Run anything...\" -p \"$> \" -l 0)"'
 bindsym $mod+K exec ~/.config/sway/wss
 
