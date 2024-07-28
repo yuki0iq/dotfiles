@@ -8,9 +8,10 @@ done
 
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
-if ! tty >/dev/null 2>&1; then
-    return
-fi
+# if ! tty >/dev/null 2>&1; then
+#     return
+# fi
+[[ $- != *i* ]] && return
 
 
 # Default .bashrc files
