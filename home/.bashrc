@@ -85,20 +85,7 @@ if command -v statusline >/dev/null; then
     eval "$(statusline --env)"
 fi
 
-export SSH_ENV="$XDG_RUNTIME_DIR/ssh-agent-environment"
-ssh_agent_env() {
-    ssh-agent > "$SSH_ENV"
-    chmod 600 "$SSH_ENV"
-    . "$SSH_ENV" > /dev/null
-    # ssh-add
-}
-
-if [[ -f "$SSH_ENV" ]]; then
-    . "$SSH_ENV" > /dev/null
-    ps $SSH_AGENT_PID | grep ssh-agent$ > /dev/null || ssh_agent_env
-else
-    ssh_agent_env
-fi
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 export EDITOR=nvim
 export PAGER='less -R +X'
@@ -107,7 +94,6 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 source /usr/share/bash-completion/bash_completion
 source /usr/share/git/completion/git-completion.bash
-# source /usr/share/doc/pkgfile/command-not-found.bash
 
 command_not_found_handle () {
     local pkgs cmd=$1
