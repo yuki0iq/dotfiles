@@ -10,6 +10,7 @@
 		"Dockerfile Syntax Highlighting",
 		"i3 wm",
 		"INI",
+		"JQ Syntax",
 		"LSP",
 		"LSP-clangd",
 		"LSP-rust-analyzer",
