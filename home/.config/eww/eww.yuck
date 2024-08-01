@@ -52,12 +52,9 @@
       (label :class "spaced winclass"
         :visible {swaynyaa?.screens?.[screen]?.shell != 'null'}
         :tooltip {swaynyaa?.screens?.[screen]?.name}
-        :text {
-          swaynyaa?.screens?.[screen]?.shell == "xdg_shell"
-          ? swaynyaa?.screens?.[screen]?.app_id
-          : swaynyaa?.screens?.[screen]?.shell != "null"
-            ? swaynyaa?.screens?.[screen]?.shell
-            : ''})
+        :text "${
+          swaynyaa?.screens?.[screen]?.app_id ?: swaynyaa?.screens?.[screen]?.shell}${
+          matches(swaynyaa?.screens?.[screen]?.floating, '_on$') ? ' float' : ''}")
 
       (circular-progress :thickness 8
         :visible {arraylength(swaynyaa?.workspaces_urgent ?: []) != 0}
