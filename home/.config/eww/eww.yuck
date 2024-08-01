@@ -73,7 +73,7 @@
 
       (image
         :tooltip {wifi?.Connected_network}
-        :visible {wifi == "" ? false : wifi?.State == ''}
+        :visible {wifi == "" ? false : wifi?.State != ''}
         :icon "network-wireless-${
           wifi?.State == 'disconnected' ? 'offline' :
           (replace(wifi?.AverageRSSI, ' dBm', '') ?: -100) >= -25 ? 'signal-excellent' :
