@@ -39,6 +39,7 @@ alias vim='nvim'
 alias emacs='nvim'
 alias nano='nvim'
 alias disas='~/kek/Mirror/disas/disas'
+alias yay='paru'
 
 alias cat='bat'
 alias ip='ip -c=always'
