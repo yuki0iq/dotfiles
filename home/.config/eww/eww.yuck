@@ -32,9 +32,8 @@
 (defwindow calendar :geometry (geometry :anchor "top center") (cal))
 
 (defwidget keyboard []
-  (eventbox ; switch layout on click? who needs this anyway
-    (box :class "module" :space-evenly false
-        (label :class "spaced keyboard" :text {swaynyaa?.layout_short_name} :tooltip {swaynyaa?.layout_name}))))
+  (box :class "module" :space-evenly false
+    (label :class "spaced keyboard" :text {swaynyaa?.layout_short_name} :tooltip {swaynyaa?.layout_name})))
 
 
 
