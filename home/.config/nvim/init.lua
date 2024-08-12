@@ -231,6 +231,9 @@ require("lazy").setup({
             vim.g.virtcolumn_priority = 10
         end,
     },
+    {
+        'elkowar/yuck.vim',
+    },
 }, {
     git = {
         timeout = 3600, -- kill after AN HOUR instead of 2 minutes

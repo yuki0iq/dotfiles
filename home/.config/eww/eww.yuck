@@ -1,3 +1,5 @@
+; vim: set et sw=2 ts=2
+
 (defpoll load_average :interval "10s" "</proc/loadavg cut -d' ' -f1")
 (defpoll ping_dns :initial "1" :interval "10s" "ping -c1 -W0.1 1.1.1.1 >/dev/null; echo $?")
 (defpoll battery :initial "{}" :interval "15s" "~/.config/eww/scripts/battery")
