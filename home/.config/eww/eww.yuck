@@ -87,23 +87,13 @@
         :onclick "exec pavucontrol &"
         (image
           :tooltip "output volume ${sound?.out?.vol}% ${sound?.out?.muted == true ? 'muted' : ''}"
-          :icon "audio-volume-${
-            sound?.out?.muted == true ? 'muted' :
-            sound?.out?.vol == 'null' ? 'muted' :
-            sound?.out?.vol >= 50 ? 'high' :
-            sound?.out?.vol >= 25 ? 'medium' :
-            sound?.out?.vol > 0 ? 'low' : 'muted'}"))
+          :icon {sound?.out?.icon}))
 
       (eventbox
         :onclick "exec pavucontrol &"
         (image
           :tooltip "input volume ${sound?.in?.vol}% ${sound?.in?.muted == true ? 'muted' : ''}"
-          :icon "mic-volume-${
-            sound?.in?.muted == true ? 'muted' :
-            sound?.in?.vol == 'null' ? 'muted' :
-            sound?.in?.vol >= 50 ? 'high' :
-            sound?.in?.vol >= 25 ? 'medium' :
-            sound?.in?.vol > 0 ? 'low' : 'muted'}"))
+          :icon {sound?.in?.icon}))
 
       (image
         :tooltip "${battery?.status} at ${battery?.level ?: 0 / 10}%"
