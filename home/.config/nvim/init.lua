@@ -234,6 +234,9 @@ require("lazy").setup({
     {
         'elkowar/yuck.vim',
     },
+    {
+        'tpope/vim-commentary',
+    },
 }, {
     git = {
         timeout = 3600, -- kill after AN HOUR instead of 2 minutes
