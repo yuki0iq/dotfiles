@@ -1,42 +1,79 @@
 ; vim: set et sw=2 ts=2
 
-(defpoll load_average :interval "10s" "</proc/loadavg cut -d' ' -f1")
-(defpoll ping_dns :initial "1" :interval "10s" "ping -c1 -W0.1 1.1.1.1 >/dev/null; echo $?")
-(defpoll battery :initial "{}" :interval "15s" "~/.config/eww/scripts/battery")
-(defpoll wifi :initial "{}" :interval "5s" "~/.config/eww/scripts/wifi status")
-(deflisten sound :initial "{}" "exec busybox awk -f ~/.config/eww/scripts/sound.awk < <(tcc -run ~/.config/eww/scripts/killme.c /bin/pactl -fjson subscribe)")
-(deflisten swaynyaa :initial "{}" "exec ~/kek/swaynyaad/target/release/swaynyaad --listener")
+(defpoll load_average :interval "10s"
+  "</proc/loadavg cut -d' ' -f1")
 
-(defwidget left [screen] (box :orientation "h" :space-evenly false :class "widget" :halign "start"
-  (current :screen screen)))
-(defwidget center [screen-id] (box :orientation "h" :space-evenly false :class "widget" :halign "center"
-  (clock_module :screen-id screen-id) (keyboard)))
-(defwidget right [] (box :orientation "h" :space-evenly false :class "widget" :halign "end"
-  (sys)))
+(defpoll ping_dns :initial "1" :interval "10s"
+  "ping -c1 -W0.1 1.1.1.1 >/dev/null; echo $?")
 
-(defwidget bar_impl [screen screen-id] (box :class "window" :orientation "h"
-  (left :screen screen) (center :screen-id screen-id) (right)))
+(defpoll battery :initial "{}" :interval "15s"
+  "~/.config/eww/scripts/battery")
 
-(defwindow bar [monitor screen] :geometry (geometry :width "100%" :anchor "top center")
-  :stacking "fg" :windowtype "dock" :exclusive true
+(defpoll wifi :initial "{}" :interval "5s"
+  "~/.config/eww/scripts/wifi status")
+
+(deflisten sound :initial "{}"
+  "exec busybox awk -f ~/.config/eww/scripts/sound.awk \
+    < <(tcc -run ~/.config/eww/scripts/killme.c /bin/pactl -fjson subscribe)")
+
+(deflisten swaynyaa :initial "{}"
+  "exec ~/kek/swaynyaad/target/release/swaynyaad --listener")
+
+
+(defwidget left [screen]
+  (box :orientation "h" :space-evenly false :class "widget" :halign "start"
+    (current :screen screen)))
+
+(defwidget center [screen-id]
+  (box :orientation "h" :space-evenly false :class "widget" :halign "center"
+    (clock_module :screen-id screen-id)
+    (keyboard)))
+
+(defwidget right []
+  (box :orientation "h" :space-evenly false :class "widget" :halign "end"
+    (sys)))
+
+
+(defwidget bar_impl [screen screen-id]
+  (box :class "window" :orientation "h"
+    (left :screen screen)
+    (center :screen-id screen-id)
+    (right)))
+
+(defwindow bar [monitor screen]
+  :geometry (geometry :width "100%" :anchor "top center")
+  :stacking "fg"
+  :windowtype "dock"
+  :exclusive true
   (bar_impl :screen monitor :screen-id screen))
 
 
 
 (defvar time_rev false)
 (defwidget clock_module [screen-id]
-  (eventbox :onhover "eww update time_rev=true" :onhoverlost "eww update time_rev=false" :onclick "~/kek/dotfiles/home/.config/eww/scripts/pop calendar ${screen-id}"
+  (eventbox
+    :onhover "eww update time_rev=true"
+    :onhoverlost "eww update time_rev=false"
+    :onclick "~/kek/dotfiles/home/.config/eww/scripts/pop calendar ${screen-id}"
     (box :class "module" :space-evenly "false" :orientation "h" :spacing "3"
-      (label :class "spaced clock_date" :text {formattime(EWW_TIME, time_rev ? '%A, %Y-%b-%d' : '%b %-d, %a')})
-      (label :class "spaced clock_time" :text {formattime(EWW_TIME, '%T')}))))
+      (label :class "spaced clock_date"
+        :text {formattime(EWW_TIME, time_rev ? '%A, %Y-%b-%d' : '%b %-d, %a')})
+      (label :class "spaced clock_time"
+        :text {formattime(EWW_TIME, '%T')}))))
 
-(defwidget cal [] (box :class "window cal_win" :orientation "v" (box :class "cal-in" (calendar :class "cal"))))
-(defwindow calendar :geometry (geometry :anchor "top center") (cal))
+(defwidget cal []
+  (box :class "window cal_win" :orientation "v"
+    (box :class "cal-in"
+      (calendar :class "cal"))))
+(defwindow calendar
+  :geometry (geometry :anchor "top center")
+  (cal))
 
 (defwidget keyboard []
   (box :class "module" :space-evenly false
-    (label :class "spaced keyboard" :text {swaynyaa?.layout_short_name} :tooltip {swaynyaa?.layout_name})))
-
+    (label :class "spaced keyboard"
+      :text {swaynyaa?.layout_short_name}
+      :tooltip {swaynyaa?.layout_name})))
 
 
 (defwidget current [screen]
