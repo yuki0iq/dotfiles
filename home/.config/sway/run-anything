@@ -1,0 +1,8 @@
+#!/bin/busybox sh
+
+impl() {
+    rofi -dmenu -mesg "Run anything..." -p "$> " -l 0
+}
+
+exec sh -c "$(impl)"
+
