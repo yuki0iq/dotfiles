@@ -51,10 +51,10 @@ bindsym Print       exec grimshot copy screen
 bindsym Shift+Print exec grimshot copy anything
 bindsym $mod+Print  exec grimshot copy active
 
-bindsym XF86AudioRaiseVolume exec $sink_up  
+bindsym XF86AudioRaiseVolume exec $sink_up
 bindsym XF86AudioLowerVolume exec $sink_down
 bindsym XF86AudioMute        exec $sink_mute
-bindsym XF86AudioMicMute     exec $src_mute 
+bindsym XF86AudioMicMute     exec $src_mute
 
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
