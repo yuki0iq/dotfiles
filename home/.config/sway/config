@@ -38,7 +38,8 @@ bindsym $mod+Shift+Ctrl+F1 exec $idle_lock
 bindsym $mod+Shift+Ctrl+F2 exec $idle_sleep
 
 bindsym $mod+Return exec $terminal
-bindsym --release Super_L exec ~/.config/sway/navigate-to
+# bindsym --release Super_L -- CONFLICTS with other $mod+... bindings, idk why
+bindsym $mod+N exec ~/.config/sway/navigate-to
 bindsym $mod+L exec ~/.config/sway/run-anything
 bindsym $mod+K exec ~/.config/sway/wss
 
