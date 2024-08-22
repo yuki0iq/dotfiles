@@ -33,7 +33,7 @@ input-feedback-sounds=false
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
-location-mode='path-bar'
+location-mode='filename-entry'
 show-hidden=true
 show-size-column=true
 show-type-column=true
@@ -47,3 +47,9 @@ window-size=(1550, 866)
 
 [com/github/wwmm/easyeffects]
 use-dark-theme=true
+
+[com/saivert/pwvucontrol]
+enable-overamplification=true
+window-width=820
+window-height=640
+is-maximized=false
