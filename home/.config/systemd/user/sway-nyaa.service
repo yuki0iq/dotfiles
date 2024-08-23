@@ -1,0 +1,13 @@
+[Unit]
+Description=Sway Nyaa daemon, the bar and more
+
+[Service]
+Type=simple
+Environment=GTK_USE_PORTAL=0
+Environment=GSK_RENDERER=cairo
+Environment=GDK_BACKEND=wayland
+ExecStart=/home/yuki/kek/swaynyaad/target/debug/swaynyaad
+Restart=always
+
+[Install]
+WantedBy=sway-session.target

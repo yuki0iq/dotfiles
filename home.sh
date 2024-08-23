@@ -1,7 +1,7 @@
 #!/bin/sh
 
 paru -Syu \
-  sway-git sway-systemd swaylock-effects eww-tray-wayland-git rofi-wayland tcc \
+  sway-git sway-systemd swaylock-effects rofi-wayland tcc \
   mate-polkit dunst grimshot inotify-tools \
   nwg-look materia-gtk-theme \
   qt5ct kvantum-qt5 \
