@@ -10,6 +10,7 @@ font pango:Fantasque Sans Mono 0.001
 exec ~/.config/sway/assign-cgroups.py
 exec busybox sh ~/.config/sway/session.sh
 
+output "Apple Computer Inc Color LCD Unknown" scale 1.5
 output * bg ~/pixiv_81691677_p0.jpg fill
 
 set $idle_lock ~/.config/sway/idle-lock
