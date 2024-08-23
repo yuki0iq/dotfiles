@@ -23,7 +23,8 @@ input type:keyboard {
     xkb_options compose:rctrl,grp:caps_toggle,grp_led:scroll
     xkb_numlock enabled
 }
-input * left_handed enabled
+input type:pointer left_handed enabled
+input type:touchpad tap enabled
 
 # ====== QUICK COMMANDS ======
 set $terminal footclient
