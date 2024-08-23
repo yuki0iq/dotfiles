@@ -20,7 +20,7 @@ exec_always $idle_lock
 input type:keyboard {
     xkb_layout us,ru
     xkb_variant colemak_dh_yuki,rulemak_dh_yuki
-    xkb_options compose:rctrl,grp:caps_toggle,grp_led:scroll
+    xkb_options compose:rctrl,grp:caps_toggle,grp_led:caps
     xkb_numlock enabled
 }
 input type:pointer left_handed enabled
