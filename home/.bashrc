@@ -105,11 +105,11 @@ command_not_found_handle () {
     if command -v busybox >/dev/null && (busybox --list | grep ^$cmd\$ >/dev/null 2>&1); then
         busybox "$@"
     else
-        mapfile -t pkgs < <(pkgfile -bv -- "$cmd" 2>/dev/null)
+        mapfile -t pkgs < <(paru --color=always -F -- "$cmd" 2>/dev/null)
 
         if (( ${#pkgs[*]} )); then
             printf '%s may be found in the following packages:\n' "$cmd"
-            printf '  %s\n' "${pkgs[@]}"
+            printf '    %s\n' "${pkgs[@]}"
         else
             printf "bash: %s: command not found\n" "$cmd"
         fi >&2

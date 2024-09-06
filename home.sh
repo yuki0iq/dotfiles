@@ -2,7 +2,7 @@
 
 paru -Syu \
   sway-git sway-systemd swaylock-effects rofi-wayland tcc \
-  mate-polkit dunst grimshot inotify-tools \
+  mate-polkit dunst grimshot \
   nwg-look materia-gtk-theme \
   qt5ct kvantum-qt5 \
   qt6ct kvantum kvantum-theme-materia \

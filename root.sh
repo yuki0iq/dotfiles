@@ -22,7 +22,7 @@ locale-gen
 
 paru -Syu \
   bash diffutils patch opendoas tmux bash-completion sudo busybox \
-  pacman-contrib pkgfile bat eza git-delta ripgrep htop ncdu moreutils \
+  pacman-contrib bat eza git-delta ripgrep htop ncdu moreutils \
   bind iproute2 iputils nft iwd curl rsync openssh iperf3 w3m nmap \
   inxi nvim lsof strace terminus-font greetd greetd-tuigreet \
   nohang
