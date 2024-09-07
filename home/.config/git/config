@@ -57,15 +57,15 @@
     rehard = reset --hard
 [core]
     editor = nvim
-    pager = delta
+    pager = less -+X
 [init]
     defaultBranch = main
 [user]
     name = Yuki Sireneva
     email = yuki.utk8g@gmail.com
     signingkey = /home/yuki/.ssh/id_ed25519.pub
-[interactive]
-    diffFilter = delta --color-only
+#[interactive]
+#    diffFilter = delta --color-only
 [delta]
     pager = less -+X
     navigate = true    # use n and N to move between diff sections
