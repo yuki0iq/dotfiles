@@ -45,6 +45,9 @@ alias cat='bat'
 alias ip='ip -c=always'
 alias ls='eza --color=auto'
 
+alias psu='ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,ucmd'
+alias psc='ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,cmd'
+
 # Allow more colored commands when grc is present
 if command -v grc >/dev/null; then
     grc='grc -se'
