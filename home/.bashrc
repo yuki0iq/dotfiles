@@ -93,11 +93,10 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 export EDITOR=nvim
 export PAGER='less -R +X'
-#export MANROFFOPT=-c
-#export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT=-c
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 source /usr/share/bash-completion/bash_completion
-[ -f /usr/share/git/completion/git-completion.bash ] && source /usr/share/git/completion/git-completion.bash
 
 command_not_found_handle () {
     local pkgs cmd=$1
