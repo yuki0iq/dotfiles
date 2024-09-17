@@ -1,0 +1,9 @@
+[Match]
+Name=eth0
+
+[Network]
+Bond=bond0
+PrimarySlave=true
+DHCP=yes
+MulticastDNS=true
+DNSOverTLS=true

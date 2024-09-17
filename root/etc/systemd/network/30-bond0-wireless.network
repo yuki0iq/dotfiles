@@ -1,0 +1,9 @@
+[Match]
+Name=wlan0
+
+[Network]
+Bond=bond0
+DHCP=yes
+IgnoreCarrierLoss=3s
+MulticastDNS=true
+DNSOverTLS=true

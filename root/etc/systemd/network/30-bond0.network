@@ -1,0 +1,6 @@
+[Match]
+Name=bond0
+
+[Network]
+BindCarrier=eth0 wlan0
+DHCP=yes
