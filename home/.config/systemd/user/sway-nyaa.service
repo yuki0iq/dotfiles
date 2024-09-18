@@ -7,7 +7,7 @@ Environment=RUST_LOG=info
 Environment=GTK_USE_PORTAL=0
 Environment=GSK_RENDERER=cairo
 Environment=GDK_BACKEND=wayland
-ExecStart=/home/yuki/kek/swaynyaad/target/debug/swaynyaad
+ExecStart=/home/yuki/kek/swaynyaad/target/x86_64-unknown-linux-gnu/release/swaynyaad
 Restart=always
 
 [Install]
