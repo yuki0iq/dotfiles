@@ -1,3 +1,5 @@
+// vim: ft=xkb
+
 partial alphanumeric_keys modifier_keys
 xkb_symbols "movement" {
 

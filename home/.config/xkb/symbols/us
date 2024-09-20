@@ -1,3 +1,5 @@
+// vim: ft=xkb
+
 partial alphanumeric_keys
 xkb_symbols "colemak_dh_yuki" {
 
