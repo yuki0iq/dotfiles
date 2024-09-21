@@ -4,8 +4,8 @@ paru -Syu \
   sway-git sway-systemd swaylock-effects rofi-wayland tcc \
   mate-polkit dunst grimshot \
   nwg-look materia-gtk-theme \
-  qt5ct kvantum-qt5 \
-  qt6ct kvantum kvantum-theme-materia \
+  qt5ct-kde breeze5 \
+  qt6ct-kde breeze \
   papirus-icon-theme \
   terminus-font{,-italic} ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts{,-cjk} \
   wayvnc waypipe wdisplays \
