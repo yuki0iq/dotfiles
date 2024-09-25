@@ -65,6 +65,8 @@ if command -v grc >/dev/null; then
     alias ping="$grc ping"
     alias stat="$grc stat"
     alias uptime="$grc uptime"
+    alias w="$grc w"
+    alias who="$grc who"
     unset grc
 fi
 
