@@ -1,0 +1,112 @@
+{
+    "Name": "Default",
+    "Version": 1,
+    "Widgets": [
+        {
+            "SplitterVertical": {
+                "State": "AAAA/wAAAAEAAAACAAAAHAAAA3cA/////wEAAAACAA==",
+                "Widgets": [
+                    {
+                        "SplitterHorizontal": {
+                            "State": "AAAA/wAAAAEAAAAEAAAAggAABoIAAAA+AAAAZwD/////AQAAAAEA",
+                            "Widgets": [
+                                {
+                                    "PlayerControls": {
+                                    }
+                                },
+                                {
+                                    "SeekBar": {
+                                        "ElapsedTotal": false,
+                                        "ShowLabels": true
+                                    }
+                                },
+                                {
+                                    "PlaylistControls": {
+                                    }
+                                },
+                                {
+                                    "VolumeControls": {
+                                        "Mode": 3
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "SplitterHorizontal": {
+                            "State": "AAAA/wAAAAEAAAADAAACBwAAA9YAAAGhAP////8BAAAAAQA=",
+                            "Widgets": [
+                                {
+                                    "SplitterVertical": {
+                                        "State": "AAAA/wAAAAEAAAACAAAAIAAAA6AA/////wEAAAACAA==",
+                                        "Widgets": [
+                                            {
+                                                "SearchBar": {
+                                                    "Widgets": "1c827a58f07a4a939b185d9c0285f936|09356ff889694ff7941174448bd67b7a"
+                                                }
+                                            },
+                                            {
+                                                "SplitterHorizontal": {
+                                                    "State": "AAAA/wAAAAEAAAACAAAA5wAAAQ0A/////wEAAAABAA==",
+                                                    "Widgets": [
+                                                        {
+                                                            "LibraryFilter": {
+                                                                "Artwork": 0,
+                                                                "Captions": 1,
+                                                                "Columns": "1",
+                                                                "Display": 0,
+                                                                "Group": "Default",
+                                                                "ID": "1c827a58f07a4a939b185d9c0285f936",
+                                                                "Index": 0,
+                                                                "ShowSummary": true,
+                                                                "State": "AAAAJXjaY2BgYGRgYLjJAKFBgNH+A5QBFWAAAC0ZAg0="
+                                                            }
+                                                        },
+                                                        {
+                                                            "LibraryFilter": {
+                                                                "Artwork": 0,
+                                                                "Captions": 1,
+                                                                "Columns": "3",
+                                                                "Display": 0,
+                                                                "Group": "Default",
+                                                                "ID": "09356ff889694ff7941174448bd67b7a",
+                                                                "Index": 1,
+                                                                "ShowSummary": true,
+                                                                "State": "AAAAJXjaY2BgYAQjKAGi7T9AGVABBgATygE1"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "PlaylistTabs": {
+                                        "Widgets": [
+                                            {
+                                                "Playlist": {
+                                                    "Columns": "8:132|3|0:2|1|7:2",
+                                                    "HeaderState": "AAAAZXjaY2BgYGVgYLBkYGDMAtI+UDqeASIOAoxAzATEzEDMAhK3X7cj8HWr3A77G2AqyH5L1UP3dSLVcP7OmSAwC6SR4T8QAAAACRpu",
+                                                    "ID": "4240fd767d8a4697a4607f2b5a215f0e",
+                                                    "Preset": 0,
+                                                    "SingleMode": false
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "SelectionInfo": {
+                                        "Options": 23,
+                                        "State": "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ4AAAACAAAAAQAAAAAAAAAAAAAAAGT/////AAAAhAAAAAAAAAACAAAAZAAAAAEAAAAAAAABOgAAAAEAAAAAAAAD6AAAAABkAAAAAA=="
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
