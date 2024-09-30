@@ -97,24 +97,15 @@ export MANROFFOPT=-c
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 source /usr/share/bash-completion/bash_completion
+source <(printf "original_" && cat /usr/share/doc/pkgfile/command-not-found.bash)
 
 command_not_found_handle () {
-    local pkgs cmd=$1
-    local FUNCNEST=10
+    local cmd=$1
 
-    set +o verbose
-
-    if command -v busybox >/dev/null && (busybox --list | grep ^$cmd\$ >/dev/null 2>&1); then
+    if busybox --list | grep ^$cmd\$ >/dev/null 2>&1; then
         busybox "$@"
     else
-        mapfile -t pkgs < <(paru --color=always -F -- "$cmd" 2>/dev/null)
-
-        if (( ${#pkgs[*]} )); then
-            printf '%s may be found in the following packages:\n' "$cmd"
-            printf '    %s\n' "${pkgs[@]}"
-        else
-            printf "bash: %s: command not found\n" "$cmd"
-        fi >&2
+        original_command_not_found_handle "$@"
     fi
 
     return 127
