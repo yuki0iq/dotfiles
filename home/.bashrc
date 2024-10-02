@@ -86,7 +86,7 @@ fi
 if command -v statusline >/dev/null; then
     # statusline does the job for bash
     export MAILCHECK=-1
-    eval "$(statusline --env)"
+    eval "$(statusline env)"
 fi
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
