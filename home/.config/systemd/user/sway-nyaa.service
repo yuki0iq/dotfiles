@@ -5,8 +5,7 @@ Description=Sway Nyaa daemon, the bar and more
 Type=simple
 Environment=RUST_LOG=info
 Environment=GTK_USE_PORTAL=0
-Environment=GSK_RENDERER=cairo
-Environment=GDK_BACKEND=wayland
+Environment=GSK_RENDERER=vulkan
 ExecStart=/home/yuki/kek/swaynyaad/target/x86_64-unknown-linux-gnu/release/swaynyaad
 Restart=always
 
