@@ -1,6 +1,7 @@
 #!/bin/sh
-if [[ swaymsg -t get_inputs | rg Colemak >/dev/null ]]; then
-    swaymsg input '* xkb_variant ","'
+set -exuo pipefail
+if swaymsg -t get_inputs | busybox grep Colemak >/dev/null; then
+    swaymsg 'input type:keyboard xkb_variant "basic,winkeys"'
 else
-    swaymsg input '* xkb_variant "colemak_dh_yuki,rulemak_dh_yuki"'
+    swaymsg 'input type:keyboard xkb_variant "colemak_dh_yuki,rulemak_dh_yuki"'
 fi
