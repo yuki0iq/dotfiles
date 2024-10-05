@@ -10,10 +10,6 @@ export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
 [[ $- != *i* ]] && return
 
-
-# Default .bashrc files
-[[ -f /etc/profile ]] && source /etc/profile
-
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 export HISTSIZE=-1
 export HISTFILESIZE=-1
@@ -95,7 +91,6 @@ export PAGER='less -R +X'
 export MANROFFOPT=-c
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-source /usr/share/bash-completion/bash_completion
 source <(printf "original_" && cat /usr/share/doc/pkgfile/command-not-found.bash)
 
 command_not_found_handle () {
