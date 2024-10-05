@@ -17,3 +17,5 @@ image/svg+xml=firefox.desktop;
 application/xml=sublime_text.desktop;
 application/x-openvpn-profile=sublime_text.desktop;
 text/x-patch=sublime_text.desktop;
+application/epub+zip=okularApplication_epub.desktop;
+application/pdf=okularApplication_pdf.desktop;
