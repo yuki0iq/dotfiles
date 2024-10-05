@@ -1,2 +1,3 @@
 source /usr/share/gef/gef.py
 set history filename ~/.local/state/gdb/.gdb_history
+set debuginfod enabled on
