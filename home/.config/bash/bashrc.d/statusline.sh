@@ -1,8 +1,12 @@
-if [[ $TERM == linux ]]; then
-    export PS1_MODE=text
-else
-    export PS1_MODE=minimal
-fi
+case $TERM in
+    linux|tmux-*)
+        PS1_MODE=text
+        ;;
+    *)
+        PS1_MODE=minimal
+        ;;
+esac
+export PS1_MODE
 
 if command -v statusline >/dev/null; then
     # statusline does the job for bash
