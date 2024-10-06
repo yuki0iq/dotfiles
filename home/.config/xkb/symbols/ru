@@ -29,7 +29,7 @@ xkb_symbols "rulemak_dh_yuki" {
     key <AD07> { [     Cyrillic_el,     Cyrillic_EL ] };
     key <AD08> { [      Cyrillic_u,      Cyrillic_U,     Cyrillic_yu,     Cyrillic_YU ] };
     key <AD09> { [ Cyrillic_shorti, Cyrillic_SHORTI ] };
-    key <AD10> { [     Cyrillic_ze,     Cyrillic_ZE,       semicolon,           colon ] };
+    key <AD10> { [       semicolon,           colon,     Cyrillic_ze,     Cyrillic_ZE ] };
     key <AD11> { [     bracketleft,       braceleft,   guillemotleft                  ] };
     key <AD12> { [    bracketright,      braceright,  guillemotright                  ] };
     key <BKSL> { [       backslash,             bar ] };
@@ -50,7 +50,7 @@ xkb_symbols "rulemak_dh_yuki" {
     key <AB02> { [    Cyrillic_tse,    Cyrillic_TSE ] };
     key <AB03> { [     Cyrillic_de,     Cyrillic_DE ] };
     key <AB04> { [     Cyrillic_ve,     Cyrillic_VE ] };
-    key <AB05> { [    Cyrillic_sha,    Cyrillic_SHA,  Cyrillic_shcha,  Cyrillic_SHCHA ] };
+    key <AB05> { [     Cyrillic_ze,     Cyrillic_ZE ] };
     key <AB06> { [     Cyrillic_ka,     Cyrillic_KA ] };
     key <AB07> { [     Cyrillic_ha,     Cyrillic_HA ] };
     key <AB08> { [           comma,            less ] };
