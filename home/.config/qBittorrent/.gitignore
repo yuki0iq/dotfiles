@@ -1,1 +1,3 @@
 qBittorrent-data.conf
+lockfile
+rss/storage.lock
