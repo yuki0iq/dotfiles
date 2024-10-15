@@ -6,7 +6,7 @@ Type=simple
 Environment=TOKIO_WORKER_THREADS=1
 Environment=RUST_LOG=info
 Environment=GTK_USE_PORTAL=0
-Environment=GSK_RENDERER=vulkan
+Environment=GSK_RENDERER=cairo
 ExecStart=/home/yuki/kek/swaynyaad/target/x86_64-unknown-linux-gnu/release/swaynyaad
 Restart=always
 MemoryHigh=64M
