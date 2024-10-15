@@ -3,6 +3,7 @@ Description=Sway Nyaa daemon, the bar and more
 
 [Service]
 Type=simple
+Environment=TOKIO_WORKER_THREADS=1
 Environment=RUST_LOG=info
 Environment=GTK_USE_PORTAL=0
 Environment=GSK_RENDERER=vulkan
