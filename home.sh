@@ -12,7 +12,7 @@ paru -Syu \
   firefox krita qbittorrent imv okular sublime-text-4 \
   thunar thunar-{archive-plugin,volman} gvfs{,-gphoto2,-mtp} engrampa \
   gef \
-  power-profiles-daemon \
+  tuned \
   fcitx5-im fcitx5-mozc
 
 mkdir -p ~/.ssh ~/.local ~/.local/share ~/.local/state
