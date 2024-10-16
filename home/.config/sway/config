@@ -187,3 +187,4 @@ bindsym $mod+Shift+o exec "swaynag -t warning -m 'Do you really want to exit swa
 
 # ====== Floating ======
 for_window [app_id="org.keepassxc.KeePassXC"] floating enable
+for_window [app_id="org.gnome.Tecla"] floating enable
