@@ -17,6 +17,8 @@ alias vim='nvim'
 alias emacs='nvim'
 alias nano='nvim'
 
+alias userctl='systemctl --user'
+
 export EDITOR=nvim
 export PAGER='less -R +X'
 export MANROFFOPT=-c
