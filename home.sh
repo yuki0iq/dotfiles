@@ -1,7 +1,5 @@
 #!/bin/sh
 
-paru -S --asdeps phonon-qt6-mpv
-
 paru -Syu \
   sway-git sway-systemd swaylock-effects xdg-desktop-portal{,-wlr,-gtk} foot \
   pipewire{,-pulse,-alsa,-jack} wireplumber sound-theme-freedesktop ffmpeg mpv fooyin-git \
@@ -9,7 +7,7 @@ paru -Syu \
   nwg-look materia-gtk-theme papirus-icon-theme qt5ct-kde breeze5 qt6ct-kde breeze grc \
   ttf-nerd-fonts-symbols ttf-fantasque-sans-mono ttf-dejavu noto-fonts{,-cjk} \
   wayvnc waypipe-git wdisplays \
-  firefox krita qbittorrent imv okular sublime-text-4 \
+  firefox krita qbittorrent loupe papers foliate sublime-text-4 \
   nautilus gvfs{,-gphoto2,-mtp} file-roller \
   gef \
   tuned \
