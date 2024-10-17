@@ -1,6 +1,6 @@
 #!/bin/sh
 
-paru -S --asdeps tumbler python-gobject phonon-qt6-mpv
+paru -S --asdeps phonon-qt6-mpv
 
 paru -Syu \
   sway-git sway-systemd swaylock-effects xdg-desktop-portal{,-wlr,-gtk} foot \
@@ -10,7 +10,7 @@ paru -Syu \
   ttf-nerd-fonts-symbols ttf-fantasque-sans-mono ttf-dejavu noto-fonts{,-cjk} \
   wayvnc waypipe-git wdisplays \
   firefox krita qbittorrent imv okular sublime-text-4 \
-  thunar thunar-{archive-plugin,volman} gvfs{,-gphoto2,-mtp} engrampa \
+  nautilus gvfs{,-gphoto2,-mtp} file-roller \
   gef \
   tuned \
   fcitx5-im fcitx5-mozc
