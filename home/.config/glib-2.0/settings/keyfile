@@ -86,3 +86,31 @@ overwrite=true
 skip-newer=false
 recreate-folders=true
 create-subdirectory=false
+
+[org/gnome/nautilus/preferences]
+migrated-gtk-settings=true
+search-filter-time-type='last_modified'
+default-folder-viewer='list-view'
+
+[org/gnome/nautilus/icon-view]
+default-zoom-level='medium'
+
+[org/gnome/nautilus/list-view]
+default-zoom-level='small'
+default-column-order=['name', 'size', 'type', 'owner', 'group', 'permissions', 'date_modified', 'date_accessed', 'date_created', 'recency', 'detailed_type']
+default-visible-columns=['name', 'size', 'type', 'date_modified']
+
+[org/gnome/nautilus/window-state]
+initial-size=(1090, 760)
+
+[org/gnome/file-roller/listing]
+show-path=false
+list-mode='as-folder'
+name-column-width=1370
+sort-method='name'
+sort-type='ascending'
+
+[org/gnome/file-roller/ui]
+window-width=600
+window-height=480
+sidebar-width=200
