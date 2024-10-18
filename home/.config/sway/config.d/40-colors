@@ -1,0 +1,10 @@
+# vim: ft=swayconfig
+
+# class                 border    backgr.   text      indicator child_border
+client.focused          #787878a0 #787878a0 #787878a0 #787878a0 #285577d0
+client.focused_inactive #333333a0 #333333a0 #333333a0 #333333a0 #5f676ad0
+client.unfocused        #000000a0 #000000a0 #000000a0 #000000a0 #222222d0
+client.urgent           #a00000a0 #a00000a0 #a00000a0 #a00000a0 #a00000d0
+client.placeholder      #000000a0 #000000a0 #000000a0 #000000a0 #0c0c0cd0
+
+client.background       #000000

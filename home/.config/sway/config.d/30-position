@@ -1,0 +1,13 @@
+# vim: ft=swayconfig
+bindsym $mod+Ctrl+Tab       move container to workspace next
+bindsym $mod+Shift+Ctrl+Tab move container to workspace prev
+
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$down  move down
+
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Down  move down

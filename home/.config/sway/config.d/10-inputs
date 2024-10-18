@@ -1,0 +1,10 @@
+# vim: ft=swayconfig
+# TODO: use host-specific configuration
+input type:keyboard {
+    xkb_layout us,ru
+    xkb_variant colemak_dh_yuki,rulemak_dh_yuki
+    xkb_options compose:rctrl,grp:caps_toggle,grp_led:caps,lv3:rwin_switch
+    xkb_numlock enabled
+}
+input type:pointer left_handed enabled
+input type:touchpad tap enabled

@@ -1,0 +1,3 @@
+# vim: ft=swayconfig
+exec ~/.config/sway/assign-cgroups.py
+exec busybox sh ~/.config/sway/session.sh

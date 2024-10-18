@@ -1,0 +1,4 @@
+# vim: ft=swayconfig
+# TODO: use host-specific configuration
+output "Apple Computer Inc Color LCD Unknown" scale 1.5
+output * bg ~/pixiv_81691677_p0.jpg fill

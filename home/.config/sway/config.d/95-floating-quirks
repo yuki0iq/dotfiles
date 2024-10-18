@@ -1,0 +1,3 @@
+# vim: ft=swayconfig
+for_window [app_id="org.keepassxc.KeePassXC"] floating enable
+for_window [app_id="org.gnome.Tecla"] floating enable

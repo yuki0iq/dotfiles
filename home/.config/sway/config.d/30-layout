@@ -1,0 +1,10 @@
+# vim: ft=swayconfig
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+w layout toggle split
+
+bindsym $mod+f fullscreen toggle
+
+floating_modifier Mod4
+
+bindsym $mod+Ctrl+Shift+space floating toggle

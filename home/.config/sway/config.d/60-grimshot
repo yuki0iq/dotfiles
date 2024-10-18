@@ -1,0 +1,8 @@
+# vim: ft=swayconfig
+bindsym Ctrl+Print       exec grimshot save screen
+bindsym Ctrl+Shift+Print exec grimshot save anything
+bindsym Ctrl+$mod+Print  exec grimshot save active
+
+bindsym Print       exec grimshot copy screen
+bindsym Shift+Print exec grimshot copy anything
+bindsym $mod+Print  exec grimshot copy active

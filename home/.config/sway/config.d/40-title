@@ -1,0 +1,7 @@
+# vim: ft=swayconfig
+
+# ah yes the "fuck you" solution
+font pango:Fantasque Sans Mono 0.001
+
+for_window [class=".*"] title_format ""
+# title_align center

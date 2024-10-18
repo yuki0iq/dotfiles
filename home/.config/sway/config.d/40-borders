@@ -1,0 +1,12 @@
+# vim: ft=swayconfig
+workspace_layout tabbed
+smart_borders on
+hide_edge_borders --i3 smart
+
+default_border pixel 2
+default_floating_border pixel 2
+titlebar_padding 2
+
+gaps inner 5
+gaps outer 0
+smart_gaps on
