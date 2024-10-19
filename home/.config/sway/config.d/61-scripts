@@ -1,5 +1,7 @@
 # vim: ft=swayconfig
-# bindsym --release Super_L -- CONFLICTS with other $mod+... bindings, idk why
+set $launcher ~/.config/sway/navigate-to
+bindsym --no-repeat --release Super_L exec pkill $launcher || $launcher
+
 bindsym $mod+N exec ~/.config/sway/navigate-to
 bindsym $mod+L exec ~/.config/sway/run-anything
 bindsym $mod+K exec ~/.config/sway/wss
