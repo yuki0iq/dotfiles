@@ -1,5 +1,5 @@
 # vim: ft=swayconfig
-bindsym --no-repeat --release Super_L exec pkill rofi || ~/.config/sway/navigate-to
+# bindsym --no-repeat --release Super_L exec pkill rofi || ~/.config/sway/navigate-to
 
 bindsym Super+N exec ~/.config/sway/navigate-to
 bindsym Super+L exec ~/.config/sway/run-anything
