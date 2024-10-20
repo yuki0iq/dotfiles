@@ -99,9 +99,20 @@
                                     }
                                 },
                                 {
-                                    "SelectionInfo": {
-                                        "Options": 23,
-                                        "State": "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ4AAAACAAAAAQAAAAAAAAAAAAAAAGT/////AAAAhAAAAAAAAAACAAAAZAAAAAEAAAAAAAABOgAAAAEAAAAAAAAD6AAAAABkAAAAAA=="
+                                    "SplitterVertical": {
+                                        "State": "AAAA/wAAAAEAAAACAAAAJAAAACQA/////wEAAAACAA==",
+                                        "Widgets": [
+                                            {
+                                                "SelectionInfo": {
+                                                    "Options": 23,
+                                                    "State": "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYkAAAACAAAAAQAAAAAAAAAAAAAAAGT/////AAAAhAAAAAAAAAACAAAAZAAAAAEAAAAAAAABJQAAAAEAAAAAAAAD6AAAAABkAAAAAA=="
+                                                }
+                                            },
+                                            {
+                                                "Lyrics": {
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             ]
