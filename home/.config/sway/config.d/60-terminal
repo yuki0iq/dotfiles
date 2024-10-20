@@ -1,2 +1,2 @@
 # vim: ft=swayconfig
-bindsym $mod+Return exec footclient
+bindsym Super+Return exec footclient

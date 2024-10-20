@@ -1,2 +1,2 @@
 # vim: ft=swayconfig
-bindsym $mod+F3 exec ~/.config/sway/layout-variant
+bindsym Super+F3 exec ~/.config/sway/layout-variant

@@ -1,4 +1,4 @@
 # vim: ft=swayconfig
-bindsym $mod+Shift+q kill
-bindsym $mod+Shift+r reload
-bindsym $mod+Shift+o exec "swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit' 'swaymsg exit' --font 'pango:Fantasque Sans Mono 10'"
+bindsym Super+Shift+q kill
+bindsym Super+Shift+r reload
+bindsym Super+Shift+o exec "swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit' 'swaymsg exit' --font 'pango:Fantasque Sans Mono 10'"

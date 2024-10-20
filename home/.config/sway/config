@@ -1,7 +1,5 @@
 # Sway configuration
 
-set $mod Mod4
-
 set $left  n
 set $right i
 set $up    u

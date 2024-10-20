@@ -1,10 +1,10 @@
 # vim: ft=swayconfig
-bindsym $mod+Mod1+$left  resize shrink width 10 px or 10 ppt
-bindsym $mod+Mod1+$right resize grow width 10 px or 10 ppt
-bindsym $mod+Mod1+$up    resize shrink height 10 px or 10 ppt
-bindsym $mod+Mod1+$down  resize grow height 10 px or 10 ppt
+bindsym Super+Alt+$left  resize shrink width 10 px or 10 ppt
+bindsym Super+Alt+$right resize grow width 10 px or 10 ppt
+bindsym Super+Alt+$up    resize shrink height 10 px or 10 ppt
+bindsym Super+Alt+$down  resize grow height 10 px or 10 ppt
 
-bindsym $mod+Mod1+Left  resize shrink width 10 px or 10 ppt
-bindsym $mod+Mod1+Right resize grow width 10 px or 10 ppt
-bindsym $mod+Mod1+Up    resize shrink height 10 px or 10 ppt
-bindsym $mod+Mod1+Down  resize grow height 10 px or 10 ppt
+bindsym Super+Alt+Left  resize shrink width 10 px or 10 ppt
+bindsym Super+Alt+Right resize grow width 10 px or 10 ppt
+bindsym Super+Alt+Up    resize shrink height 10 px or 10 ppt
+bindsym Super+Alt+Down  resize grow height 10 px or 10 ppt

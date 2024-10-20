@@ -2,5 +2,5 @@
 set $idle_lock ~/.config/sway/idle-lock
 set $idle_sleep ~/.config/sway/idle-sleep
 exec_always $idle_lock
-bindsym $mod+Shift+Ctrl+F1 exec $idle_lock
-bindsym $mod+Shift+Ctrl+F2 exec $idle_sleep
+bindsym Super+Shift+Ctrl+F1 exec $idle_lock
+bindsym Super+Shift+Ctrl+F2 exec $idle_sleep
