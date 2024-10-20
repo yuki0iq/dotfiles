@@ -6,5 +6,6 @@ bindsym Super+w layout toggle split
 bindsym Super+f fullscreen toggle
 
 floating_modifier Super
+bindsym --whole-window Super+button2 floating toggle
 
 bindsym Super+Ctrl+Shift+space floating toggle
