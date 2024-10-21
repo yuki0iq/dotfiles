@@ -139,3 +139,32 @@ inverted-colors=false
 show-sidebar=true
 sidebar-page='thumbnails'
 sizing-mode='automatic'
+
+[org/gnome/desktop/input-sources]
+sources=[('xkb', 'us+colemak_dh_yuki'), ('xkb', 'ru+rulemak_dh_yuki')]
+mru-sources=[('xkb', 'us')]
+xkb-options=['compose:rctrl','grp:caps_toggle','grp_led:caps','lv3:rwin_switch']
+
+[org/gnome/desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///home/yuki/pixiv_81691677_p0.jpg'
+picture-uri-dark='file:///home/yuki/pixiv_81691677_p0.jpg'
+primary-color='#000000000000'
+secondary-color='#000000000000'
+
+[org/gnome/desktop/screensaver]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///home/yuki/pixiv_81691677_p0.jpg'
+primary-color='#000000000000'
+secondary-color='#000000000000'
+
+[org/gnome/desktop/peripherals/touchpad]
+two-finger-scrolling-enabled=true
+
+[org/gnome/desktop/peripherals/mouse]
+left-handed=true
+
+[org/gnome/shell]
+favorite-apps=[]
