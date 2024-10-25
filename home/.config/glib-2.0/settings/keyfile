@@ -139,3 +139,6 @@ inverted-colors=false
 show-sidebar=true
 sidebar-page='thumbnails'
 sizing-mode='automatic'
+
+[org/gnome/desktop/a11y/interface]
+show-status-shapes=true
