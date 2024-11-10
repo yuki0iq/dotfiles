@@ -4,7 +4,7 @@
     "Widgets": [
         {
             "SplitterVertical": {
-                "State": "AAAA/wAAAAEAAAADAAAAHAAAA3cAAAASAP////8BAAAAAgA=",
+                "State": "AAAA/wAAAAEAAAADAAAAHAAAA3cAAAAWAP////8BAAAAAgA=",
                 "Widgets": [
                     {
                         "SplitterHorizontal": {
@@ -74,7 +74,7 @@
                                                                 "ID": "09356ff889694ff7941174448bd67b7a",
                                                                 "Index": 1,
                                                                 "ShowSummary": true,
-                                                                "State": "AAAAJXjaY2BgYAQiUQYwDQaM9h+gDKgAAwAWQAFK"
+                                                                "State": "AAAAJXjaY2BgYAQjKAGi7T9AGVABBgATygE1"
                                                             }
                                                         }
                                                     ]
