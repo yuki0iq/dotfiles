@@ -105,6 +105,7 @@ default-visible-columns=['name', 'size', 'type', 'date_modified']
 
 [org/gnome/nautilus/window-state]
 initial-size=(1090, 760)
+initial-size-file-chooser=(1550, 866)
 
 [org/gnome/file-roller/listing]
 show-path=false
