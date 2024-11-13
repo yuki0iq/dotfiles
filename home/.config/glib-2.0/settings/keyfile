@@ -29,6 +29,7 @@ enable-animations=false
 gtk-enable-primary-paste=false
 monospace-font-name='Fantasque Sans Mono 11'
 clock-show-weekday=true
+clock-format='24h'
 
 [org/gnome/desktop/sound]
 event-sounds=true
@@ -47,6 +48,7 @@ sort-order='ascending'
 type-format='category'
 window-position=(56, 50)
 window-size=(1550, 866)
+clock-format='24h'
 
 [org/gtk/gtk4/settings/file-chooser]
 date-format='regular'
