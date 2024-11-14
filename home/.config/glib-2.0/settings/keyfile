@@ -13,7 +13,7 @@ show-bar-border=true
 type='Lines'
 
 [org/gnome/desktop/interface]
-gtk-theme='Materia-light-compact'
+gtk-theme='adw-gtk3-dark'
 icon-theme='Papirus-Dark'
 cursor-theme='Adwaita'
 cursor-size=24
@@ -157,7 +157,9 @@ xkb-options=['compose:rctrl','grp:caps_toggle','grp_led:caps','lv3:rwin_switch']
 [org/gnome/shell]
 last-selected-power-profile='performance'
 welcome-dialog-last-shown-version='47.1'
-disable-user-extensions=true
+disable-user-extensions=false
+enabled-extensions=['light-style@gnome-shell-extensions.gcampax.github.com', 'legacyschemeautoswitcher@joshimukul29.gmail.com']
+disabled-extensions=[]
 favorite-apps=[]
 
 [org/gnome/desktop/peripherals/touchpad]
