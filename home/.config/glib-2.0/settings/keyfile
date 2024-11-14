@@ -158,7 +158,7 @@ xkb-options=['compose:rctrl','grp:caps_toggle','grp_led:caps','lv3:rwin_switch']
 last-selected-power-profile='performance'
 welcome-dialog-last-shown-version='47.1'
 disable-user-extensions=false
-enabled-extensions=['light-style@gnome-shell-extensions.gcampax.github.com', 'legacyschemeautoswitcher@joshimukul29.gmail.com']
+enabled-extensions=['light-style@gnome-shell-extensions.gcampax.github.com', 'legacyschemeautoswitcher@joshimukul29.gmail.com', 'caffeine@patapon.info']
 disabled-extensions=[]
 favorite-apps=[]
 
@@ -206,3 +206,6 @@ resize-with-right-button=true
 
 [org/gnome/desktop/peripherals/keyboard]
 numlock-state=false
+
+[org/gnome/shell/extensions/caffeine]
+indicator-position-max=1
