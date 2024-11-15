@@ -14,7 +14,7 @@ type='Lines'
 
 [org/gnome/desktop/interface]
 gtk-theme='adw-gtk3-dark'
-icon-theme='Papirus-Dark'
+icon-theme='Adwaita'
 cursor-theme='Adwaita'
 cursor-size=24
 font-name='Cantarell 11'
