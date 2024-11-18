@@ -30,6 +30,7 @@ gtk-enable-primary-paste=false
 monospace-font-name='Fantasque Sans Mono 11'
 clock-show-weekday=true
 clock-format='24h'
+accent-color='purple'
 
 [org/gnome/desktop/sound]
 event-sounds=true
