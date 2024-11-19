@@ -151,7 +151,8 @@ sizing-mode='automatic'
 show-status-shapes=true
 
 [org/gnome/desktop/input-sources]
-sources=[('ibus', 'anthy'), ('xkb', 'ru+rulemak_dh_yuki')]
+; sources=[('ibus', 'anthy'), ('xkb', 'ru+rulemak_dh_yuki')]
+sources=[('xkb', 'us+colemak_dh_yuki'), ('xkb', 'ru+rulemak_dh_yuki')]
 show-all-sources=false
 xkb-options=['compose:rctrl','grp:caps_toggle','grp_led:caps','lv3:rwin_switch']
 
