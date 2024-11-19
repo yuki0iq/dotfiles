@@ -21,7 +21,8 @@ alias userctl='systemctl --user'
 
 export EDITOR=nvim
 export PAGER='less -R +X'
-export MANROFFOPT=-c
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export LESS='-R +X'
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export MANROFFOPT="-P -c"
 
 shopt -s expand_aliases
