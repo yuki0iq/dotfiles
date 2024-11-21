@@ -20,8 +20,8 @@ alias nano='nvim'
 alias userctl='systemctl --user'
 
 export EDITOR=nvim
-export PAGER='less -R +X'
-export LESS='-R +X'
+export PAGER=less
+export LESS='-R -F'
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT="-P -c"
 
