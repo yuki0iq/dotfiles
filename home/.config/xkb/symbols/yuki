@@ -16,12 +16,16 @@ xkb_symbols "movement" {
     key <AD07>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Delete,     Delete,     Delete,     Delete      ]   };
     key <AB07>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  BackSpace,  BackSpace,  BackSpace,  BackSpace   ]   };
 
+    include "compose(rctrl)"
+    include "level3(ralt_switch)"
+    include "level3(rwin_switch)"
     include "level5(menu_switch)"
     include "yuki(level5_scroll_lock)"
+    include "group(caps_toggle)"
 };
 
 
 partial modifier_keys
 xkb_symbols "level5_scroll_lock" {
-  key <SCLK> {[  ISO_Level5_Lock  ], type[group1]="ONE_LEVEL" };
+    key <SCLK> {[  ISO_Level5_Lock  ], type[group1]="ONE_LEVEL" };
 };

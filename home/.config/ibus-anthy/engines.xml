@@ -7,7 +7,7 @@
 		<icon>ibus-anthy</icon>
 		<layout>us</layout>
 		<layout_variant>colemak_dh_yuki</layout_variant>
-        <layout_option>caps:none</layout_option>
+		<layout_option>caps:none,grp:caps_toggle</layout_option>
 		<longname translatable="no">Anthy</longname>
 		<description>Anthy Input Method</description>
 		<rank>99</rank>

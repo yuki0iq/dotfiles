@@ -151,10 +151,9 @@ sizing-mode='automatic'
 show-status-shapes=true
 
 [org/gnome/desktop/input-sources]
-sources=[('ibus', 'anthy'), ('xkb', 'ru+rulemak_dh_yuki')]
-; sources=[('xkb', 'us+colemak_dh_yuki'), ('xkb', 'ru+rulemak_dh_yuki')]
+sources=[('xkb', 'us+colemak_dh_yuki'), ('xkb', 'ru+rulemak_dh_yuki')]
 show-all-sources=false
-xkb-options=['compose:rctrl','grp:caps_toggle','grp_led:caps','lv3:rwin_switch']
+xkb-options=['grp:caps_toggle','grp_led:scroll']
 
 [org/gnome/shell]
 last-selected-power-profile='performance'
@@ -196,8 +195,18 @@ binding='<Super>Return'
 name='terminal'
 command='footclient'
 
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Super>F9'
+name='set layout us+ru'
+command="gsettings set org.gnome.desktop.input-sources sources \"[('xkb', 'us+colemak_dh_yuki'), ('xkb', 'ru+rulemak_dh_yuki')]\""
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Super>F10'
+name='set layout us+jp'
+command="gsettings set org.gnome.desktop.input-sources sources \"[('xkb', 'us+colemak_dh_yuki'), ('ibus', 'anthy')]\""
+
 [org/gnome/settings-daemon/plugins/media-keys]
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']
 
 [org/gnome/tweaks]
 show-extensions-notice=false
