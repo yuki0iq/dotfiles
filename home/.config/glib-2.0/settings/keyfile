@@ -151,8 +151,8 @@ sizing-mode='automatic'
 show-status-shapes=true
 
 [org/gnome/desktop/input-sources]
-; sources=[('ibus', 'anthy'), ('xkb', 'ru+rulemak_dh_yuki')]
-sources=[('xkb', 'us+colemak_dh_yuki'), ('xkb', 'ru+rulemak_dh_yuki')]
+sources=[('ibus', 'anthy'), ('xkb', 'ru+rulemak_dh_yuki')]
+; sources=[('xkb', 'us+colemak_dh_yuki'), ('xkb', 'ru+rulemak_dh_yuki')]
 show-all-sources=false
 xkb-options=['compose:rctrl','grp:caps_toggle','grp_led:caps','lv3:rwin_switch']
 
@@ -211,3 +211,9 @@ numlock-state=false
 
 [org/gnome/shell/extensions/caffeine]
 indicator-position-max=1
+
+[org/freedesktop/ibus/engine/anthy/common]
+shortcut-type='default'
+
+[org/freedesktop/ibus/engine/anthy/shortcut]
+default={'commit_selected_segment': <['Ctrl+Down']>, 'select_candidates_9': <['9']>, 'add_word': <['F12']>, 'delete': <['Delete', 'Ctrl+D']>, 'circle_typing_method': <['Alt+Romaji']>, 'convert_to_latin_all': <['Shift+F10']>, 'move_caret_first': <['Ctrl+A', 'Home']>, 'select_candidates_4': <['4']>, 'convert_to_half': <['F8']>, 'select_next_segment': <['Right', 'Ctrl+F']>, 'select_first_segment': <['Ctrl+A', 'Home']>, 'predict': <['Tab', 'ISO_Left_Tab']>, 'dict_admin': <['F11']>, 'convert_to_katakana_all': <['Shift+F7']>, 'select_last_segment': <['Ctrl+E', 'End']>, 'move_caret_last': <['Ctrl+E', 'End']>, 'reconvert': <['Shift+Henkan']>, 'select_candidates_5': <['5']>, 'select_next_candidate': <['space', 'KP_Space', 'Tab', 'ISO_Left_Tab', 'Henkan', 'Down', 'KP_Add', 'Ctrl+N']>, 'commit_first_segment': <['Shift+Down']>, 'expand_segment': <['Shift+Right', 'Ctrl+O']>, 'convert_to_wide_latin_all': <['Shift+F9']>, 'select_candidates_0': <['0']>, 'convert_to_wide_latin': <['F9']>, 'convert': <['space', 'KP_Space', 'Henkan']>, 'move_caret_backward': <['Left', 'Ctrl+B']>, 'select_candidates_6': <['6']>, 'convert_to_katakana': <['F7']>, 'candidates_page_up': <['Page_Up']>, 'circle_kana_mode': <@as []>, 'select_prev_segment': <['Left', 'Ctrl+B']>, 'select_prev_candidate': <['Shift+Tab', 'Shift+ISO_Left_Tab', 'Up', 'KP_Subtract', 'Ctrl+P']>, 'select_candidates_1': <['1']>, 'circle_dict_method': <['Alt+Henkan']>, 'select_last_candidate': <['End']>, 'on_off': <['Zenkaku_Hankaku', 'Ctrl+J']>, 'select_candidates_7': <['7']>, 'convert_to_latin': <['F10']>, 'shrink_segment': <['Shift+Left', 'Ctrl+I']>, 'convert_to_hiragana': <['F6']>, 'insert_alternate_space': <['Shift+space']>, 'cancel': <['Ctrl+G', 'Escape']>, 'select_candidates_2': <['2']>, 'convert_to_half_katakana': <['Shift+F8']>, 'backspace': <['BackSpace', 'Ctrl+H']>, 'commit': <['Return', 'KP_Enter', 'Ctrl+J', 'Ctrl+M']>, 'insert_space': <['space']>, 'select_first_candidate': <['Home']>, 'candidates_page_down': <['Page_Down', 'KP_Tab']>, 'select_candidates_8': <['8']>, 'circle_input_mode': <@as []>, 'convert_to_char_type_forward': <['Muhenkan']>, 'select_candidates_3': <['3']>, 'hiragana_for_latin_with_shift': <['Hiragana_Katakana']>, 'convert_to_hiragana_all': <['Shift+F6']>, 'move_caret_forward': <['Right', 'Ctrl+F']>}
