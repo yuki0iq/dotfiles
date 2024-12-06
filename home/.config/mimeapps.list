@@ -7,6 +7,7 @@ text/x-c++hdr=sublime_text.desktop
 application/xml=sublime_text.desktop
 image/png=org.gnome.Loupe.desktop
 application/pdf=org.gnome.Papers.desktop
+image/jpeg=org.gnome.Loupe.desktop
 
 [Added Associations]
 application/json=sublime_text.desktop;
@@ -20,3 +21,4 @@ application/x-openvpn-profile=sublime_text.desktop;
 text/x-patch=sublime_text.desktop;
 image/png=org.gnome.Loupe.desktop;
 application/pdf=org.gnome.Papers.desktop;
+image/jpeg=org.gnome.Loupe.desktop;
