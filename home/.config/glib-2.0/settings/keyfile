@@ -212,7 +212,7 @@ custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybin
 show-extensions-notice=false
 
 [org/gnome/desktop/wm/preferences]
-button-layout='appmenu:minimize,close'
+button-layout='appmenu:close'
 resize-with-right-button=true
 
 [org/gnome/desktop/peripherals/keyboard]
