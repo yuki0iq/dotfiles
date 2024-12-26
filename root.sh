@@ -25,7 +25,7 @@ paru -Syu \
   pacman-contrib pkgfile bat eza git-delta ripgrep htop ncdu moreutils \
   bind iproute2 iputils nft iwd curl rsync openssh iperf3 w3m nmap \
   inxi nvim lsof strace terminus-font greetd greetd-tuigreet \
-  nohang
+  networkmanager-iwd nohang
 paru -S --asdeps dmidecode
 
-systemctl enable systemd-{timesyncd,networkd,resolved} iwd sshd greetd pkgfile-update.timer nftables nohang-desktop
+systemctl enable systemd-{timesyncd,resolved} NetworkManager sshd greetd pkgfile-update.timer nftables nohang-desktop
