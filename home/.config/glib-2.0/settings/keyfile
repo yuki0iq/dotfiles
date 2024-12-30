@@ -149,6 +149,9 @@ sizing-mode='automatic'
 [org/gnome/desktop/a11y/interface]
 show-status-shapes=true
 
+[org/gnome/desktop/privacy]
+recent-files-max-age=1
+
 [org/gnome/desktop/input-sources]
 sources=[('xkb', 'us+colemak_dh_yuki'), ('xkb', 'ru+rulemak_dh_yuki')]
 show-all-sources=false
