@@ -62,6 +62,9 @@ type-format='category'
 view-type='list'
 window-size=(1550, 866)
 
+[org/gtk/gtk4/settings/debug]
+inspector-warning=true
+
 [com/github/wwmm/easyeffects]
 use-dark-theme=true
 
