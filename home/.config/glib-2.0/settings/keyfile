@@ -195,7 +195,7 @@ switch-applications-backward=['<Shift><Super>Tab']
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>Return'
 name='terminal'
-command='footclient'
+command='xdg-terminal-exec'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
 binding='<Super>F9'
