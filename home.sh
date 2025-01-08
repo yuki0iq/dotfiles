@@ -13,8 +13,10 @@ paru -Syu \
   nautilus gvfs{,-gphoto2,-mtp} file-roller loupe identity papers foliate \
   power-profiles-daemon
 
-mkdir -p ~/.ssh ~/.local ~/.local/share ~/.local/state
+mkdir -p ~/.ssh ~/.local ~/.local/share ~/.local/state ~/.local/share/flatpak
 
 ln -sf $PWD/home/.{bash{_profile,rc},config,var} ~/
 ln -sf $PWD/home/.ssh/authorized_keys ~/.ssh/
+
+ln -sf ~/.config/flatpak/overrides ~/.local/share/flatpak/
 
