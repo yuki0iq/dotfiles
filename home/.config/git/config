@@ -15,6 +15,7 @@
     f = fetch
     fa = fetch --all
     b = branch
+    bf = branch -f
     br = branch -d
     brr = branch -D
     bm = branch -M
