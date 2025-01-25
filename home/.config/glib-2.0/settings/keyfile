@@ -222,6 +222,10 @@ show-extensions-notice=false
 [org/gnome/desktop/wm/preferences]
 button-layout='appmenu:close'
 resize-with-right-button=true
+action-double-click-titlebar='toggle-maximize'
+action-middle-click-titlebar='none'
+action-right-click-titlebar='menu'
+focus-mode='click'
 
 [org/gnome/desktop/peripherals/keyboard]
 numlock-state=false
