@@ -24,3 +24,5 @@ image/png=org.gnome.Loupe.desktop;
 application/pdf=org.gnome.Papers.desktop;
 image/jpeg=org.gnome.Loupe.desktop;
 video/webm=mpv.desktop;
+image/vnd.microsoft.icon=org.gnome.Loupe.desktop;
+image/bmp=org.gnome.Loupe.desktop;
