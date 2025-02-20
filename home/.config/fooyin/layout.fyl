@@ -1,5 +1,6 @@
 {
     "Name": "Default",
+    "Theme": "AAAAAQAAAAAAAAAA/////wAAAAAAAAAAAv////8AAAASAFMAeQBzAHQAZQBtAC0AdQBp/////0AmAAAAAAAA/////wUAAQGQEAAAAQAAAAAAAAAAAAAAAAABAAAAEgBTAHkAcwB0AGUAbQAtAHUAaQAAACgARgBvAG8AeQBpAG4AOgA6AFAAbABhAHkAbABpAHMAdABWAGkAZQB3AAAAEgBOAG8AdABvACAAUwBhAG4Ac/////9AJAAAAAAAAP////8FAAEBkBAAAAEAAAAAAAAAAAAAAAAAAQAAABIATgBvAHQAbwAgAFMAYQBuAHM=",
     "Version": 1,
     "Widgets": [
         {
@@ -38,7 +39,7 @@
                             "Widgets": [
                                 {
                                     "SplitterVertical": {
-                                        "State": "AAAA/wAAAAEAAAACAAAAIAAAA6AA/////wEAAAACAA==",
+                                        "State": "AAAA/wAAAAEAAAACAAAAIQAAA6AA/////wEAAAACAA==",
                                         "Widgets": [
                                             {
                                                 "SearchBar": {
@@ -89,7 +90,7 @@
                                             {
                                                 "Playlist": {
                                                     "Columns": "8:132|3|0:2|1|7:2",
-                                                    "HeaderState": "AAAAZXjaY2BgYGVgYLBkYGDMAtI+UDqeASIOAoxAzATEzEDMAhK3X7cj8HWr3A77G2AqyH5L1UP3dSLVcP7OmSAwC6SR4f////8BAAkabg==",
+                                                    "HeaderState": "AAAAZXjaY2BgYGVgYHBmYGBMA9J+QLoESCcxQMRBgBGImYCYGYhZQOL2G7er5J6ULra/3qHHVLVlj/2WGazCFVPO2N8oaWOXN9hiv3MfW0TYLrBGhv////8HAKyeFuc=",
                                                     "ID": "4240fd767d8a4697a4607f2b5a215f0e",
                                                     "Preset": 0,
                                                     "SingleMode": false
