@@ -26,3 +26,4 @@ image/jpeg=org.gnome.Loupe.desktop;
 video/webm=mpv.desktop;
 image/vnd.microsoft.icon=org.gnome.Loupe.desktop;
 image/bmp=org.gnome.Loupe.desktop;
+text/csv=libreoffice-calc.desktop;
