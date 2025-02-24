@@ -231,7 +231,7 @@ focus-mode='click'
 numlock-state=false
 
 [org/gnome/shell/extensions/caffeine]
-indicator-position-max=1
+enable-fullscreen=false
 
 [desktop/ibus/general]
 use-system-keyboard-layout=true
@@ -245,12 +245,3 @@ default={'commit_selected_segment': <['Ctrl+Down']>, 'select_candidates_9': <['9
 [org/gnome/Fractal/Stable]
 is-maximized=true
 markdown-enabled=true
-
-[dev/geopjr/Tuba]
-advanced-boost-dialog=true
-dim-trivial-notifications=true
-letterbox-media=true
-scale-emoji-hover=true
-window-maximized=true
-copy-private-link-reminder=true
-proxy=''
