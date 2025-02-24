@@ -210,8 +210,8 @@ command="gsettings set org.gnome.desktop.input-sources sources \"[('xkb', 'us+co
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
 binding='<Super>F10'
-name='set layout us+jp'
-command="gsettings set org.gnome.desktop.input-sources sources \"[('xkb', 'us+colemak_dh_yuki'), ('ibus', 'anthy')]\""
+name='set layout jp+ipa'
+command="gsettings set org.gnome.desktop.input-sources sources \"[('ibus', 'anthy'), ('ibus', 'table:ipa-x-sampa')]\""
 
 [org/gnome/settings-daemon/plugins/media-keys]
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']
@@ -232,6 +232,9 @@ numlock-state=false
 
 [org/gnome/shell/extensions/caffeine]
 indicator-position-max=1
+
+[desktop/ibus/general]
+use-system-keyboard-layout=true
 
 [org/freedesktop/ibus/engine/anthy/common]
 shortcut-type='default'
