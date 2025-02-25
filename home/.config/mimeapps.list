@@ -9,6 +9,7 @@ image/png=org.gnome.Loupe.desktop
 application/pdf=org.gnome.Papers.desktop
 image/jpeg=org.gnome.Loupe.desktop
 video/webm=mpv.desktop
+image/svg+xml=org.gnome.Loupe.desktop
 
 [Added Associations]
 application/json=sublime_text.desktop;
@@ -16,7 +17,7 @@ text/plain=sublime_text.desktop;
 application/x-wine-extension-ini=sublime_text.desktop;
 text/x-makefile=sublime_text.desktop;
 text/x-c++hdr=sublime_text.desktop;
-image/svg+xml=firefox.desktop;
+image/svg+xml=firefox.desktop;org.gnome.Loupe.desktop;
 application/xml=sublime_text.desktop;
 application/x-openvpn-profile=sublime_text.desktop;
 text/x-patch=sublime_text.desktop;
