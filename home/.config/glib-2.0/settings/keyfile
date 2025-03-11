@@ -114,18 +114,19 @@ default-visible-columns=['name', 'size', 'type', 'date_modified']
 [org/gnome/nautilus/window-state]
 initial-size=(1090, 760)
 initial-size-file-chooser=(1550, 866)
+maximized=true
 
 [org/gnome/file-roller/listing]
 show-path=false
 list-mode='as-folder'
-name-column-width=1370
+name-column-width=496
 sort-method='name'
 sort-type='ascending'
 
 [org/gnome/file-roller/ui]
-window-width=600
-window-height=480
-sidebar-width=200
+window-width=1046
+window-height=796
+sidebar-width=203
 
 [com/github/johnfactotum/Foliate/viewer]
 fold-sidebar=false
