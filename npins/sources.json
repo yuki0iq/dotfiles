@@ -1,0 +1,67 @@
+{
+  "pins": {
+    "nixos-module": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "Forgejo",
+        "server": "https://git.lix.systems/",
+        "owner": "lix-project",
+        "repo": "nixos-module"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "2.91.1-2",
+      "revision": "f19bd752910bbe3a861c9cad269bd078689d50fe",
+      "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/2.91.1-2.tar.gz",
+      "hash": "1y6g4smwaa09914gd1biwnwr78axkrxylc25bf02i1m3mvbpzphc"
+    },
+    "nixpkgs": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nixos",
+        "repo": "nixpkgs"
+      },
+      "branch": "nixos-24.11",
+      "submodules": false,
+      "revision": "26d499fc9f1d567283d5d56fcf367edd815dba1d",
+      "url": "https://github.com/nixos/nixpkgs/archive/26d499fc9f1d567283d5d56fcf367edd815dba1d.tar.gz",
+      "hash": "1kj5i5k7jzr9ahm2hrb5bnf9dmv89grykgpw4r7zr645va854y8l"
+    },
+    "npins": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "andir",
+        "repo": "npins"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "0.3.0",
+      "revision": "6cc1930e703698487bd703258126435a536ca492",
+      "url": "https://api.github.com/repos/andir/npins/tarball/0.3.0",
+      "hash": "1450ddp5gm3n5jvg64v9rc2jvf9za79fv4dmac5m8d47l0iblfcx"
+    },
+    "yukigram": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "yukigram",
+        "repo": "yukigram"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": "yukigram-",
+      "submodules": true,
+      "version": "yukigram-5.13.1",
+      "revision": "fd98dc9a15ebc498ba31194a3e7a1e00b4060066",
+      "url": null,
+      "hash": "1na4znnxfc0mh01cjj0hlj2j5s4l17l1z5q1f60myf110h0dfl2g"
+    }
+  },
+  "version": 5
+}
