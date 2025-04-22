@@ -11,6 +11,7 @@ in {
     ./hardware-configuration.nix
 
     (import "${pins.nixos-module}/module.nix" {lix = null;})
+    (import "${pins.home-manager}/nixos")
   ];
 
   nix.settings.use-xdg-base-directories = true;
@@ -61,11 +62,16 @@ in {
     jack.enable = true;
   };
 
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+
   users.users.yuki = {
     isNormalUser = true;
     description = "yuki";
     extraGroups = ["networkmanager" "wheel"];
   };
+
+  home-manager.users.yuki = import ./users/yuki.nix;
 
   programs.firefox.enable = true;
   programs.firefox.package = pkgs.librewolf;

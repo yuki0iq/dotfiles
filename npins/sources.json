@@ -1,5 +1,18 @@
 {
   "pins": {
+    "home-manager": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "home-manager"
+      },
+      "branch": "release-24.11",
+      "submodules": false,
+      "revision": "c61bfe3ae692f42ce688b5865fac9e0de58e1387",
+      "url": "https://github.com/nix-community/home-manager/archive/c61bfe3ae692f42ce688b5865fac9e0de58e1387.tar.gz",
+      "hash": "024jcyjxsr0cj4ycz4r8i60bydrl13l6vc16innv6wq32rcgyacb"
+    },
     "nixos-module": {
       "type": "GitRelease",
       "repository": {
