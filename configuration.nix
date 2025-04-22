@@ -220,6 +220,11 @@ in {
     ssh-audit
     prismlauncher
     (pkgs.callPackage pins.yukigram {})
+    (pkgs.callPackage pins.fenix {}).complete.toolchain
+    (pkgs.callPackage ./statusline.nix {pins = pins;})
+    (nerdfonts.override {
+      fonts = ["NerdFontsSymbolsOnly"];
+    })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
