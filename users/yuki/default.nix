@@ -103,7 +103,7 @@
         show-all-sources = true;
       };
       "org/gnome/desktop/peripherals/mouse" = {
-        left-handed = true;
+        # left-handed = true; # FIXME: Breaks touchpad buttons, use with caution
       };
       "org/gnome/desktop/wm/keybindings" = {
         switch-windows = ["<Alt>Tab"];
