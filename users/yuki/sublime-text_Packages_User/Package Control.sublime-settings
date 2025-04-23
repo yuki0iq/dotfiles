@@ -1,0 +1,27 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Awk",
+		"CMake",
+		"Dockerfile Syntax Highlighting",
+		"i3 wm",
+		"INI",
+		"JQ Syntax",
+		"LSP",
+		"LSP-clangd",
+		"LSP-rust-analyzer",
+		"MarkdownEditing",
+		"Nftables",
+		"Nix",
+		"Package Control",
+		"Rust Enhanced",
+		"Sass",
+		"Strace Syntax",
+		"TOML",
+		"x86 and x86_64 Assembly",
+	],
+}

@@ -20,6 +20,7 @@
 
   xdg.configFile."xkb".source = ./xkb;
   xdg.configFile."ibus-anthy".source = ./ibus-anthy;
+  xdg.configFile."sublime-text/Packages/User".source = ./sublime-text_Packages_User;
 
   programs.bash = {
     enable = true;
@@ -133,6 +134,17 @@
   };
 
   home.packages = with pkgs; [
+    (sublime4.overrideAttrs (self: super: {
+      # XXX: Keep name here and in patch in sync with nixpkgs `primaryBinary`
+      sublime_text = super.sublime_text.overrideAttrs (self: super: {
+        postFixup =
+          ''
+            sed -i 's/\x80\x79\x05\x00\x0F\x94\xC2/\xC6\x41\x05\x01\xB2\x00\x90/' "$out/sublime_text"
+          ''
+          + super.postFixup;
+      });
+    }))
+
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif

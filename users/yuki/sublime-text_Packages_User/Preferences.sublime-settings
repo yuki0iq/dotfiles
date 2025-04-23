@@ -1,0 +1,23 @@
+{
+    // Font family is not `monospace` to control feautres
+    "font_face": "Fansasque Sans Mono",
+    "font_size": 12,
+    "font_options": ["liga", "clig", "calt", "dlig"],
+
+    "translate_tabs_to_spaces": true,
+    "index_files": true,
+    "word_wrap": true,
+    "rulers": [[100, "dotted"], [144, "solid"]],
+    "ignored_packages": [
+        "Rust",
+        "Vintage",
+    ],
+
+    "theme": "auto",
+    "dark_theme": "Default Dark.sublime-theme",
+    "light_theme": "Default.sublime-theme",
+
+    "color_scheme": "auto",
+    "dark_color_scheme": "Mariana.sublime-color-scheme",
+    "light_color_scheme": "Breakers.sublime-color-scheme",
+}

@@ -1,0 +1,11 @@
+// Settings in here override those in "LSP-rust-analyzer/LSP-rust-analyzer.sublime-settings"
+{
+    "settings": {
+        "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "always",
+        "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
+    },
+    "command": [
+        "rust-analyzer",
+    ],
+    "enabled": true,
+}

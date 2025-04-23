@@ -274,6 +274,16 @@ in {
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (pkgs.lib.getName pkg) [
+      "sublimetext4"
+    ];
+  # XXX: https://github.com/NixOS/nixpkgs/issues/239615
+  # Blocked on upstream: https://github.com/sublimehq/sublime_text/issues/5984
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.1.1w"
+  ];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
