@@ -206,28 +206,37 @@ in {
 
   environment.systemPackages = with pkgs; [
     curl
-    dua
-    vulkan-tools
-    wl-clipboard
     iperf3
     nmap
     socat
-    lsof
-    strace
+    ssh-audit
+
     bat
+    dua
     eza
     ripgrep
-    refine
+
     file
+    lsof
+    mesa-demos
+    pciutils
+    strace
+    usbutils
+    vulkan-tools
+    wl-clipboard
+
+    alejandra
     nix-output-monitor
     (pkgs.callPackage pins.npins {})
-    mesa-demos
-    alejandra
-    ssh-audit
+
     prismlauncher
+    refine
     (pkgs.callPackage pins.yukigram {})
+
     (pkgs.callPackage pins.fenix {}).complete.toolchain
+
     (pkgs.callPackage ./statusline.nix {pins = pins;})
+
     (nerdfonts.override {
       fonts = ["NerdFontsSymbolsOnly"];
     })
