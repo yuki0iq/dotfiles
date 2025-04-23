@@ -19,6 +19,7 @@ in {
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_14;
   boot.tmp.useTmpfs = true;
   security.allowSimultaneousMultithreading = false;
+  zramSwap.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
