@@ -14,6 +14,11 @@
   # changes in each release.
   home.stateVersion = "24.11";
 
+  xdg.enable = true;
+  home.preferXdgDirectories = true;
+
+  xdg.configFile."xkb".source = ./yuki/xkb;
+
   programs.bash = {
     enable = true;
     shellAliases = {

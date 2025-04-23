@@ -1,0 +1,31 @@
+// vim: ft=xkb
+
+partial alphanumeric_keys modifier_keys
+xkb_symbols "movement" {
+
+    key.type = "EIGHT_LEVEL";
+    key <AD02>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Insert,     Insert,     Insert,     Insert      ]   };
+    key <AD03>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Home,       Home,       Home,       Home        ]   };
+    key <AC03>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  End,        End,        End,        End         ]   };
+    key <AD04>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Prior,      Prior,      Prior,      Prior       ]   };
+    key <AC04>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Next,       Next,       Next,       Next        ]   };
+    key <AD08>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Up,         Up,         Up,         Up          ]   };
+    key <AC07>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Left,       Left,       Left,       Left        ]   };
+    key <AC08>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Down,       Down,       Down,       Down        ]   };
+    key <AC09>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Right,      Right,      Right,      Right       ]   };
+    key <AD07>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  Delete,     Delete,     Delete,     Delete      ]   };
+    key <AB07>  { [  NoSymbol,  NoSymbol,  NoSymbol,  NoSymbol,  BackSpace,  BackSpace,  BackSpace,  BackSpace   ]   };
+
+    include "compose(rctrl)"
+    include "level3(ralt_switch)"
+    include "level3(rwin_switch)"
+    include "level5(menu_switch)"
+    include "yuki(level5_scroll_lock)"
+    include "group(caps_toggle)"
+};
+
+
+partial modifier_keys
+xkb_symbols "level5_scroll_lock" {
+    key <SCLK> {[  ISO_Level5_Lock  ], type[group1]="ONE_LEVEL" };
+};
