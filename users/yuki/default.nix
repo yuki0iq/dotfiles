@@ -72,6 +72,11 @@
   dconf = {
     enable = true;
     settings = {
+      "org/gnome/mutter" = {
+        attach-modal-dialogs = true;
+        edge-tiling = true;
+        dynamic-workspaces = true;
+      };
       "org/gnome/desktop/interface" = {
         font-name = "System-ui 11";
         monospace-font-name = "Monospace 11";
