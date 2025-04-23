@@ -37,6 +37,12 @@ in {
     LC_TIME = "en_DK.UTF-8";
   };
 
+  i18n.inputMethod = {
+    enable = true;
+    type = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ anthy table table-others ];
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -71,7 +77,7 @@ in {
     extraGroups = ["networkmanager" "wheel"];
   };
 
-  home-manager.users.yuki = import ./users/yuki.nix;
+  home-manager.users.yuki = import ./users/yuki;
 
   programs.firefox.enable = true;
   programs.firefox.package = pkgs.librewolf;

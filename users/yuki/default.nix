@@ -1,0 +1,124 @@
+# vim:et:ts=2:sw=2
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  # This value determines the Home Manager release that your
+  # configuration is compatible with. This helps avoid breakage
+  # when a new Home Manager release introduces backwards
+  # incompatible changes.
+  #
+  # You can update Home Manager without changing this value. See
+  # the Home Manager release notes for a list of state version
+  # changes in each release.
+  home.stateVersion = "24.11";
+
+  xdg.enable = true;
+  home.preferXdgDirectories = true;
+
+  xdg.configFile."xkb".source = ./xkb;
+
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      downspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225";
+      upspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225 -R";
+      cat = "${pkgs.bat}/bin/bat";
+      ip = "ip -c=always";
+      ls = "${pkgs.eza}/bin/eza --color=auto --hyperlink";
+      diff = "diff --color=auto";
+      psu = "ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,ucmd";
+      psc = "ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,cmd";
+    };
+    initExtra = ''
+      case $TERM in
+          linux|tmux-*)
+              PS1_MODE=text
+              ;;
+          *)
+              PS1_MODE=minimal
+              ;;
+      esac
+      export PS1_MODE
+
+      if command -v statusline >/dev/null; then
+          # statusline does the job for bash
+          export MAILCHECK=-1
+          eval "$(statusline env)"
+      fi
+    '';
+  };
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      monospace = [
+        "Fantasque Sans Mono"
+      ];
+    };
+  };
+
+  programs.gnome-shell = {
+    enable = true;
+    extensions = with pkgs.gnomeExtensions; [
+      {package = caffeine;}
+      {package = light-style;}
+    ];
+  };
+
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        font-name = "System-ui 11";
+        monospace-font-name = "Monospace 11";
+        clock-show-weekday = true;
+        clock-format = "24h";
+        accent-color = "purple";
+      };
+      "org/gnome/desktop/a11y/interface" = {
+        show-status-shapes = true;
+      };
+      "org/gnome/desktop/privacy" = {
+        recent-files-max-age = 1;
+      };
+      "org/gnome/desktop/input-sources" = {
+        sources = [
+          (lib.hm.gvariant.mkTuple ["xkb" "us+colemak_dh_yuki"])
+          (lib.hm.gvariant.mkTuple ["xkb" "ru+rulemak_dh_yuki"])
+        ];
+        xkb-options = [
+          "grp:caps_toggle"
+          "grp_led:scroll" # XXX: What if only Caps lock led exists?
+        ];
+      };
+      "org/gnome/desktop/peripherals/mouse" = {
+        left-handed = true;
+      };
+      "org/gnome/desktop/wm/keybindings" = {
+        switch-windows = ["<Alt>Tab"];
+        switch-windows-backward = ["<Shift><Alt>Tab"];
+        switch-applications = ["<Super>Tab"];
+        switch-applications-backward = ["<Shift><Super>Tab"];
+      };
+      "org/gnome/shell/extensions/caffeine" = {
+        enable-fullscreen = false;
+      };
+      "desktop/ibus/general" = {
+        use-system-keyboard-layout = true;
+      };
+    };
+  };
+
+  home.packages = with pkgs; [
+    (fantasque-sans-mono.overrideAttrs (self: super: {
+      installPhase =
+        builtins.replaceStrings
+        ["OTF" "otf" "opentype"]
+        ["TTF" "ttf" "truetype"]
+        super.installPhase;
+    }))
+  ];
+}
