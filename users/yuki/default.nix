@@ -121,6 +121,9 @@
   };
 
   home.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
     (fantasque-sans-mono.overrideAttrs (self: super: {
       installPhase =
         builtins.replaceStrings
