@@ -19,6 +19,7 @@
   home.preferXdgDirectories = true;
 
   xdg.configFile."xkb".source = ./xkb;
+  xdg.configFile."ibus-anthy".source = ./ibus-anthy;
 
   programs.bash = {
     enable = true;
@@ -92,7 +93,9 @@
         xkb-options = [
           "grp:caps_toggle"
           "grp_led:scroll" # XXX: What if only Caps lock led exists?
+          "grp_led:caps"
         ];
+        show-all-sources = true;
       };
       "org/gnome/desktop/peripherals/mouse" = {
         left-handed = true;
