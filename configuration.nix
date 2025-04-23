@@ -40,7 +40,7 @@ in {
   i18n.inputMethod = {
     enable = true;
     type = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [ anthy table table-others ];
+    ibus.engines = with pkgs.ibus-engines; [anthy table table-others];
   };
 
   # Enable the X11 windowing system.

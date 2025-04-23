@@ -120,6 +120,18 @@
     };
   };
 
+  programs.mpv = {
+    enable = true;
+    config = {
+      hdr-compute-peak = false;
+      profile = "fast";
+      sub-auto = "fuzzy";
+      audio-file-auto = "fuzzy";
+      cache = true;
+      demuxer-max-bytes = "512MiB";
+    };
+  };
+
   home.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
