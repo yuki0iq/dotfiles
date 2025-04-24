@@ -226,6 +226,7 @@ in {
     bat
     dua
     eza
+    moreutils
     ripgrep
 
     kernel.cpupower
