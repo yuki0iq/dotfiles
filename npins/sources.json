@@ -73,21 +73,18 @@
       "hash": "1450ddp5gm3n5jvg64v9rc2jvf9za79fv4dmac5m8d47l0iblfcx"
     },
     "statusline": {
-      "type": "GitRelease",
+      "type": "Git",
       "repository": {
         "type": "Forgejo",
         "server": "https://codeberg.org/",
         "owner": "yuki0iq",
         "repo": "statusline"
       },
-      "pre_releases": false,
-      "version_upper_bound": null,
-      "release_prefix": null,
+      "branch": "main",
       "submodules": false,
-      "version": "v0.21.1",
-      "revision": "1920316f6336cfaa0ede716b7d14d95ba4f1f4ff",
-      "url": "https://codeberg.org/api/v1/repos/yuki0iq/statusline/archive/v0.21.1.tar.gz",
-      "hash": "193fsy5wmgz8q1zk81iys69x4gcbz9jhjd6wm0n6jrc795mbgji1"
+      "revision": "6e1618bf4d5298fd354ea5de22ac0399725aa11c",
+      "url": "https://codeberg.org/yuki0iq/statusline/archive/6e1618bf4d5298fd354ea5de22ac0399725aa11c.tar.gz",
+      "hash": "0bs1d2z6vdfb3w2a0iyg1gnamw20xl0p7jrvm38kc7w9blcxiklj"
     },
     "yukigram": {
       "type": "GitRelease",

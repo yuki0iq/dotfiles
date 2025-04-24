@@ -5,6 +5,8 @@
 {config, ...}: let
   pins = import ./npins;
   pkgs = import pins.nixpkgs {};
+  fenixToolchain = (pkgs.callPackage pins.fenix {}).complete.toolchain;
+  kernel = pkgs.linuxKernel.packages.linux_6_14;
 in {
   imports = [
     # Include the results of the hardware scan.
@@ -16,7 +18,7 @@ in {
 
   nix.settings.use-xdg-base-directories = true;
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_14;
+  boot.kernelPackages = kernel;
   boot.tmp.useTmpfs = true;
   security.allowSimultaneousMultithreading = false;
   zramSwap.enable = true;
@@ -205,6 +207,15 @@ in {
     '';
   };
 
+  nixpkgs.overlays = [
+    (self: super: {
+      inherit fenixToolchain;
+    })
+    (self: super: {
+      statusline = (super.callPackage "${pins.statusline}/statusline.nix" {});
+    })
+  ];
+
   environment.systemPackages = with pkgs; [
     curl
     iperf3
@@ -217,12 +228,16 @@ in {
     eza
     ripgrep
 
+    kernel.cpupower
+    kernel.perf
+    lm_sensors
+    pciutils
+    usbutils
+
     file
     lsof
     mesa-demos
-    pciutils
     strace
-    usbutils
     vulkan-tools
     wl-clipboard
 
@@ -234,9 +249,7 @@ in {
     refine
     (pkgs.callPackage pins.yukigram {})
 
-    (pkgs.callPackage pins.fenix {}).complete.toolchain
-
-    (pkgs.callPackage ./statusline.nix {pins = pins;})
+    fenixToolchain
 
     (nerdfonts.override {
       fonts = ["NerdFontsSymbolsOnly"];

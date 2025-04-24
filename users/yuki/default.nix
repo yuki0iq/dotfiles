@@ -45,11 +45,8 @@
       esac
       export PS1_MODE
 
-      if command -v statusline >/dev/null; then
-          # statusline does the job for bash
-          export MAILCHECK=-1
-          eval "$(statusline env)"
-      fi
+      export MAILCHECK=-1 # statusline does the job for bash
+      eval "$(${pkgs.statusline}/bin/statusline env)"
     '';
   };
 
