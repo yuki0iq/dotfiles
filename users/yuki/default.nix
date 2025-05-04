@@ -35,17 +35,7 @@
       psc = "ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,cmd";
     };
     initExtra = ''
-      case $TERM in
-          linux|tmux-*)
-              PS1_MODE=text
-              ;;
-          *)
-              PS1_MODE=minimal
-              ;;
-      esac
-      export PS1_MODE
-
-      export MAILCHECK=-1 # statusline does the job for bash
+      PS1_MODE=minimal
       eval "$(${pkgs.statusline}/bin/statusline env)"
     '';
   };

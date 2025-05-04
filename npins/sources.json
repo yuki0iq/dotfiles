@@ -9,9 +9,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "4a599e8652a6ca89f79c42f6e05806813f5abd0b",
-      "url": "https://github.com/nix-community/fenix/archive/4a599e8652a6ca89f79c42f6e05806813f5abd0b.tar.gz",
-      "hash": "10mnxkhyf8ks2j5mv52smh01rkhgvrc5jv88360yr8dkw8kzr649"
+      "revision": "e9ff07bb2ae690feef5bd961258b7f70d5f0d549",
+      "url": "https://github.com/nix-community/fenix/archive/e9ff07bb2ae690feef5bd961258b7f70d5f0d549.tar.gz",
+      "hash": "0rfircyjfa1djb98vkypbh39x472s3lvsmv4mmwqs8ljpgxa6drd"
     },
     "home-manager": {
       "type": "Git",
@@ -82,9 +82,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "6e1618bf4d5298fd354ea5de22ac0399725aa11c",
-      "url": "https://codeberg.org/yuki0iq/statusline/archive/6e1618bf4d5298fd354ea5de22ac0399725aa11c.tar.gz",
-      "hash": "0bs1d2z6vdfb3w2a0iyg1gnamw20xl0p7jrvm38kc7w9blcxiklj"
+      "revision": "fac6e6ae1354a318c6a4e486afec850363213d4e",
+      "url": "https://codeberg.org/yuki0iq/statusline/archive/fac6e6ae1354a318c6a4e486afec850363213d4e.tar.gz",
+      "hash": "0y26r74ic9wfjcrv0r7p5zj6l9izvb77kyljzbzi5gyl2cf6nww3"
     },
     "yukigram": {
       "type": "GitRelease",
