@@ -120,6 +120,12 @@
     };
   };
 
+  programs.librewolf = {
+    enable = true;
+    settings = {
+    };
+  };
+
   home.packages = with pkgs; [
     (sublime4.overrideAttrs (self: super: {
       # XXX: Keep name here and in patch in sync with nixpkgs `primaryBinary`

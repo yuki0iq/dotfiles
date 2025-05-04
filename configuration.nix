@@ -84,9 +84,6 @@ in {
 
   home-manager.users.yuki = import ./users/yuki;
 
-  programs.firefox.enable = true;
-  programs.firefox.package = pkgs.librewolf;
-
   programs.bash.completion.enable = true;
   programs.command-not-found.enable = true;
 
