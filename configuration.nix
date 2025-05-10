@@ -55,6 +55,10 @@ in {
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-console  # Replace with ptyxis
+  ];
+
   console.useXkbConfig = true;
   services.xserver.xkb = {
     layout = "us";
@@ -246,6 +250,7 @@ in {
     (pkgs.callPackage pins.npins {})
 
     prismlauncher
+    ptyxis
     refine
     (pkgs.callPackage pins.yukigram {})
 
