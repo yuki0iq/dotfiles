@@ -20,7 +20,6 @@ in {
 
   boot.kernelPackages = kernel;
   boot.tmp.useTmpfs = true;
-  security.allowSimultaneousMultithreading = false;
   zramSwap.enable = true;
 
   boot.loader.systemd-boot.enable = true;
