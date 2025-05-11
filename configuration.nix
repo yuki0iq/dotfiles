@@ -76,6 +76,16 @@ in {
     jack.enable = true;
   };
 
+  xdg.terminal-exec = {
+    enable = true;
+    package = pkgs.xdg-terminal-exec-mkhl;
+    settings = {
+      GNOME = [
+        "org.gnome.Ptyxis.desktop"
+      ];
+    };
+  };
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
