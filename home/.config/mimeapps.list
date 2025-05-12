@@ -6,6 +6,7 @@ text/x-makefile=sublime_text.desktop
 text/x-c++hdr=sublime_text.desktop
 application/xml=sublime_text.desktop
 video/webm=mpv.desktop
+text/x-python=sublime_text.desktop
 
 [Added Associations]
 application/json=sublime_text.desktop;
@@ -17,4 +18,6 @@ application/xml=sublime_text.desktop;
 application/x-openvpn-profile=sublime_text.desktop;
 text/x-patch=sublime_text.desktop;
 video/webm=mpv.desktop;
-text/csv=libreoffice-calc.desktop;
+text/csv=sublime_text.desktop;libreoffice-calc.desktop;
+text/x-python=sublime_text.desktop;
+application/zip=org.gnome.Nautilus.desktop;

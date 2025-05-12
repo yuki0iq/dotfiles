@@ -1,20 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?><engines>
+<?xml version="1.0" encoding="utf-8"?>
+<engines>
 	<engine>
 		<name>anthy</name>
 		<language>ja</language>
 		<license>GPL</license>
 		<author>Peng Huang &lt;shawn.p.huang@gmail.com&gt;</author>
 		<icon>ibus-anthy</icon>
-		<layout>us</layout>
-		<layout_variant>colemak_dh_yuki</layout_variant>
-		<layout_option>caps:none,grp:caps_toggle</layout_option>
+		<layout>jp</layout>
+		<layout_variant></layout_variant>
+		<layout_option></layout_option>
 		<longname translatable="no">Anthy</longname>
 		<description>Anthy Input Method</description>
 		<rank>99</rank>
 		<!-- <hotkeys>Control+space,Zenkaku_Hankaku</hotkeys> -->
-		<symbol>あ</symbol>
+		<symbol>&#x3042;</symbol>
 		<icon_prop_key>InputMode</icon_prop_key>
-		<version>1.5.16</version>
+		<version>1.5.17</version>
 		<textdomain>ibus-anthy</textdomain>
 	</engine>
 </engines>
