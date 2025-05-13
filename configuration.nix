@@ -86,13 +86,15 @@ in {
     };
   };
 
+  virtualisation.docker.enable = true;
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
   users.users.yuki = {
     isNormalUser = true;
     description = "yuki";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
   };
 
   home-manager.users.yuki = import ./users/yuki;
