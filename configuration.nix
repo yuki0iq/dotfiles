@@ -260,6 +260,7 @@ in {
     nix-output-monitor
     (pkgs.callPackage pins.npins {})
 
+    gnome-secrets
     prismlauncher
     ptyxis
     refine
