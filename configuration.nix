@@ -225,6 +225,7 @@ in {
     (self: super: {
       inherit fenixToolchain;
       statusline = super.callPackage "${pins.statusline}/statusline.nix" {};
+      rycee = super.callPackage pins.rycee {};
     })
   ];
 

@@ -72,6 +72,19 @@
       "url": "https://api.github.com/repos/andir/npins/tarball/0.3.0",
       "hash": "1450ddp5gm3n5jvg64v9rc2jvf9za79fv4dmac5m8d47l0iblfcx"
     },
+    "rycee": {
+      "type": "Git",
+      "repository": {
+        "type": "GitLab",
+        "repo_path": "rycee/nur-expressions",
+        "server": "https://gitlab.com/"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "49f3c5693b7d83dc5b6d1fb483cfc670bc397f6c",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=49f3c5693b7d83dc5b6d1fb483cfc670bc397f6c",
+      "hash": "1hzg28g4afvppdsicvi6bfzvapf8lv204z3ss83qyb23z5jw47jc"
+    },
     "statusline": {
       "type": "Git",
       "repository": {

@@ -124,6 +124,16 @@
     enable = true;
     settings = {
     };
+    profiles.default = {
+      extensions = with pkgs.rycee.firefox-addons; [
+        indie-wiki-buddy
+        native-mathml
+        shinigami-eyes
+        sponsorblock
+        ublock-origin
+        vimium
+      ];
+    };
   };
 
   home.packages = with pkgs; [
