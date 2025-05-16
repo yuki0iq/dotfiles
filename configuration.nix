@@ -55,7 +55,7 @@ in {
   services.xserver.desktopManager.gnome.enable = true;
 
   environment.gnome.excludePackages = with pkgs; [
-    gnome-console  # Replace with ptyxis
+    gnome-console # Replace with ptyxis
   ];
 
   console.useXkbConfig = true;
@@ -224,9 +224,7 @@ in {
   nixpkgs.overlays = [
     (self: super: {
       inherit fenixToolchain;
-    })
-    (self: super: {
-      statusline = (super.callPackage "${pins.statusline}/statusline.nix" {});
+      statusline = super.callPackage "${pins.statusline}/statusline.nix" {};
     })
   ];
 
