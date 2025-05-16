@@ -147,16 +147,5 @@
           + super.postFixup;
       });
     }))
-
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    (fantasque-sans-mono.overrideAttrs (self: super: {
-      installPhase =
-        builtins.replaceStrings
-        ["OTF" "otf" "opentype"]
-        ["TTF" "ttf" "truetype"]
-        super.installPhase;
-    }))
   ];
 }

@@ -266,10 +266,23 @@ in {
     (pkgs.callPackage pins.yukigram {})
 
     fenixToolchain
+  ];
 
+  fonts.packages = with pkgs; [
+    (fantasque-sans-mono.overrideAttrs (self: super: {
+      installPhase =
+        builtins.replaceStrings
+        ["OTF" "otf" "opentype"]
+        ["TTF" "ttf" "truetype"]
+        super.installPhase;
+    }))
     (nerdfonts.override {
       fonts = ["NerdFontsSymbolsOnly"];
     })
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    texlivePackages.euler-math
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
