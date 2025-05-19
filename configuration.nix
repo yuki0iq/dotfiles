@@ -311,6 +311,18 @@ in {
     };
   };
 
+  systemd.services = {
+    shadowsocks-proxy = {
+      enable = true;
+      description = "shadowsocks client service";
+      after = ["network.target"];
+      wantedBy = ["default.target"];
+      script = ''
+        exec ${pkgs.shadowsocks-rust}/bin/sslocal -c /etc/nixos/secrets/shadowsocks.json
+      '';
+    };
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
