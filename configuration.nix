@@ -230,6 +230,9 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    man-pages
+    man-pages-posix
+
     curl
     iperf3
     nmap
