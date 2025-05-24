@@ -66,7 +66,7 @@
         dynamic-workspaces = true;
       };
       "org/gnome/desktop/interface" = {
-        font-name = "System-ui 11";
+        font-name = "Adwaita Sans 11"; # FIXME: https://github.com/NixOS/nixpkgs/pull/401037 "System-ui 11";
         monospace-font-name = "Monospace 11";
         clock-show-weekday = true;
         clock-format = "24h";
@@ -125,7 +125,7 @@
     settings = {
     };
     profiles.default = {
-      extensions = with pkgs.rycee.firefox-addons; [
+      extensions.packages = with pkgs.rycee.firefox-addons; [
         indie-wiki-buddy
         native-mathml
         shinigami-eyes

@@ -17,6 +17,10 @@ in {
   ];
 
   nix.settings.use-xdg-base-directories = true;
+  nix.nixPath = [
+    "nixpkgs=${pins.nixpkgs}"
+    "nixos-config=/etc/nixos/configuration.nix"
+  ];
 
   boot.kernelPackages = kernel;
   boot.tmp.useTmpfs = true;
@@ -24,6 +28,9 @@ in {
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # FIXME(25.11): Enable by default
+  system.rebuild.enableNg = true;
 
   networking.hostName = "yuuka";
   networking.networkmanager.enable = true;
@@ -42,15 +49,17 @@ in {
   i18n.inputMethod = {
     enable = true;
     type = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [anthy table table-others];
+    ibus.engines = with pkgs.ibus-engines; [
+      anthy
+      # FIXME(25.05 regression): Fails to build. See https://github.com/NixOS/nixpkgs/issues/408662
+      # table
+      # table-others
+    ];
   };
 
   services.fwupd.enable = true;
 
-  # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
@@ -66,7 +75,7 @@ in {
 
   services.printing.enable = false;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -260,13 +269,19 @@ in {
 
     alejandra
     nix-output-monitor
-    (pkgs.callPackage pins.npins {})
+    npins
 
     gnome-secrets
     prismlauncher
     ptyxis
     refine
-    (pkgs.callPackage pins.yukigram {})
+    ((pkgs.callPackage pins.yukigram {}).overrideAttrs (self: super: {
+      unwrapped = super.unwrapped.overrideAttrs {
+        # FIXME(25.05 regression): Yukigram uses unreleased Telegram Desktop version and does not need
+        # patches for Qt 6.9 support
+        patches = [];
+      };
+    }))
 
     fenixToolchain
   ];
@@ -279,9 +294,7 @@ in {
         ["TTF" "ttf" "truetype"]
         super.installPhase;
     }))
-    (nerdfonts.override {
-      fonts = ["NerdFontsSymbolsOnly"];
-    })
+    nerd-fonts.symbols-only
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif

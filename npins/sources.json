@@ -9,9 +9,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "e9ff07bb2ae690feef5bd961258b7f70d5f0d549",
-      "url": "https://github.com/nix-community/fenix/archive/e9ff07bb2ae690feef5bd961258b7f70d5f0d549.tar.gz",
-      "hash": "0rfircyjfa1djb98vkypbh39x472s3lvsmv4mmwqs8ljpgxa6drd"
+      "revision": "c3c27e603b0d9b5aac8a16236586696338856fbb",
+      "url": "https://github.com/nix-community/fenix/archive/c3c27e603b0d9b5aac8a16236586696338856fbb.tar.gz",
+      "hash": "1019x2v1mn4fd0hm0d9mwj1xswwipi9c3h63yxpa9i6xb7xbfk6f"
     },
     "home-manager": {
       "type": "Git",
@@ -20,11 +20,11 @@
         "owner": "nix-community",
         "repo": "home-manager"
       },
-      "branch": "release-24.11",
+      "branch": "release-25.05",
       "submodules": false,
-      "revision": "c61bfe3ae692f42ce688b5865fac9e0de58e1387",
-      "url": "https://github.com/nix-community/home-manager/archive/c61bfe3ae692f42ce688b5865fac9e0de58e1387.tar.gz",
-      "hash": "024jcyjxsr0cj4ycz4r8i60bydrl13l6vc16innv6wq32rcgyacb"
+      "revision": "d0bbd221482c2713cccb80220f3c9d16a6e20a33",
+      "url": "https://github.com/nix-community/home-manager/archive/d0bbd221482c2713cccb80220f3c9d16a6e20a33.tar.gz",
+      "hash": "1iqfq5lz3102cp3ryqqqs2hr2bdmwn0mdajprh1ls5h5nsfkigs1"
     },
     "lix-nixos-module": {
       "type": "GitRelease",
@@ -44,33 +44,10 @@
       "hash": "1y6g4smwaa09914gd1biwnwr78axkrxylc25bf02i1m3mvbpzphc"
     },
     "nixpkgs": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "nixos",
-        "repo": "nixpkgs"
-      },
-      "branch": "nixos-24.11",
-      "submodules": false,
-      "revision": "26d499fc9f1d567283d5d56fcf367edd815dba1d",
-      "url": "https://github.com/nixos/nixpkgs/archive/26d499fc9f1d567283d5d56fcf367edd815dba1d.tar.gz",
-      "hash": "1kj5i5k7jzr9ahm2hrb5bnf9dmv89grykgpw4r7zr645va854y8l"
-    },
-    "npins": {
-      "type": "GitRelease",
-      "repository": {
-        "type": "GitHub",
-        "owner": "andir",
-        "repo": "npins"
-      },
-      "pre_releases": false,
-      "version_upper_bound": null,
-      "release_prefix": null,
-      "submodules": false,
-      "version": "0.3.0",
-      "revision": "6cc1930e703698487bd703258126435a536ca492",
-      "url": "https://api.github.com/repos/andir/npins/tarball/0.3.0",
-      "hash": "1450ddp5gm3n5jvg64v9rc2jvf9za79fv4dmac5m8d47l0iblfcx"
+      "type": "Channel",
+      "name": "nixos-25.05",
+      "url": "https://releases.nixos.org/nixos/25.05/nixos-25.05.802216.55d1f923c480/nixexprs.tar.xz",
+      "hash": "1vsl3j33q85skkjbjy2nrba7cdraa9kd6cpn8anng9rzc3pcf1bm"
     },
     "rycee": {
       "type": "Git",
@@ -81,9 +58,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "49f3c5693b7d83dc5b6d1fb483cfc670bc397f6c",
-      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=49f3c5693b7d83dc5b6d1fb483cfc670bc397f6c",
-      "hash": "1hzg28g4afvppdsicvi6bfzvapf8lv204z3ss83qyb23z5jw47jc"
+      "revision": "c6734fa6a82294b57927748b94a98b108e1daab7",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=c6734fa6a82294b57927748b94a98b108e1daab7",
+      "hash": "1143h1gid0yq35v8n5p2zwxwg1f4zcai790z5b3qk7znyif5xmr8"
     },
     "statusline": {
       "type": "Git",
