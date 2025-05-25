@@ -13,6 +13,7 @@ in {
     ./hardware-configuration.nix
 
     ./modules/git.nix
+    ./modules/gnome.nix
     ./modules/ssh.nix
 
     (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
@@ -66,10 +67,6 @@ in {
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-console # Replace with ptyxis
-  ];
-
   console.useXkbConfig = true;
   services.xserver.xkb = {
     layout = "us";
@@ -88,15 +85,7 @@ in {
     jack.enable = true;
   };
 
-  xdg.terminal-exec = {
-    enable = true;
-    package = pkgs.xdg-terminal-exec-mkhl;
-    settings = {
-      GNOME = [
-        "org.gnome.Ptyxis.desktop"
-      ];
-    };
-  };
+  xdg.terminal-exec.package = pkgs.xdg-terminal-exec-mkhl;
 
   virtualisation.docker.enable = true;
 
@@ -181,10 +170,7 @@ in {
     nix-output-monitor
     npins
 
-    gnome-secrets
     prismlauncher
-    ptyxis
-    refine
     ((pkgs.callPackage pins.yukigram {}).overrideAttrs (self: super: {
       unwrapped = super.unwrapped.overrideAttrs {
         # FIXME(25.05 regression): Yukigram uses unreleased Telegram Desktop version and does not need
