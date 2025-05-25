@@ -12,6 +12,8 @@ in {
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
+    ./modules/ssh.nix
+
     (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
     (import "${pins.home-manager}/nixos")
   ];
@@ -219,16 +221,7 @@ in {
 
   programs.obs-studio.enable = true;
 
-  programs.ssh = {
-    hostKeyAlgorithms = ["ssh-ed25519-cert-v01@openssh.com" "ssh-ed25519" "rsa-sha2-256" "rsa-sha2-512"];
-    kexAlgorithms = ["sntrup761x25519-sha512" "sntrup761x25519-sha512@openssh.com" "mlkem768x25519-sha256"];
-    ciphers = ["aes128-ctr" "aes128-gcm@openssh.com" "aes192-ctr" "aes256-ctr" "aes256-gcm@openssh.com"];
-    macs = ["hmac-sha2-512-etm@openssh.com"];
-
-    extraConfig = ''
-      VisualHostKey yes
-    '';
-  };
+  programs.ssh.hardened = true;
 
   nixpkgs.overlays = [
     (self: super: {
@@ -312,30 +305,9 @@ in {
     ];
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
   services.openssh = {
     enable = true;
-
-    settings = {
-      KbdInteractiveAuthentication = false;
-      PasswordAuthentication = false;
-      UsePAM = true;
-
-      KexAlgorithms = ["sntrup761x25519-sha512" "sntrup761x25519-sha512@openssh.com" "mlkem768x25519-sha256"];
-      Ciphers = ["aes128-ctr" "aes128-gcm@openssh.com" "aes192-ctr" "aes256-ctr" "aes256-gcm@openssh.com"];
-      Macs = ["hmac-sha2-512-etm@openssh.com"];
-      HostKeyAlgorithms = "ssh-ed25519-cert-v01@openssh.com,ssh-ed25519,rsa-sha2-256,rsa-sha2-512";
-      HostbasedAcceptedKeyTypes = "ssh-ed25519";
-      PubkeyAcceptedKeyTypes = "sk-ssh-ed25519@openssh.com,ssh-ed25519";
-      CASignatureAlgorithms = "ssh-ed25519";
-    };
+    hardened = true;
   };
 
   systemd.services = {
