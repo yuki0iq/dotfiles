@@ -12,6 +12,7 @@ in {
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
+    ./modules/git.nix
     ./modules/ssh.nix
 
     (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
@@ -116,96 +117,12 @@ in {
   programs.git = {
     enable = true;
     lfs.enable = true;
+    autosign = true;
+    short-aliases = true;
     config = {
-      alias = {
-        git = "!git";
-        l = "log --topo-order --graph --decorate --format=format:\"%C(bold blue)%h%C(reset) %C(dim italic cyan)%ah%C(reset) %C(dim white)%aN%C(reset) %C(green)(%ar)%C(reset)%C(yellow)%d%C(reset) %C(italic dim white)%GS%C(reset)%n %C(white)%s%C(reset)\"";
-        ll = "!git l --all";
-        ld = "!git ll --simplify-by-decoration";
-        lr = "!git ll $(git rev-list -g --all)";
-        lo = "!git l --oneline";
-        llo = "!git ll --oneline";
-        lro = "!git lr --oneline";
-        ldo = "!git ld --oneline";
-        p = "push";
-        pp = "push --force-with-lease";
-        ppp = "push --force";
-        take = "pull --rebase";
-        f = "fetch";
-        fa = "fetch --all";
-        b = "branch";
-        bf = "branch -f";
-        br = "branch -d";
-        brr = "branch -D";
-        bm = "branch -M";
-        s = "status";
-        a = "add -u";
-        ai = "add -i";
-        ap = "add -p";
-        d = "diff";
-        ds = "diff --staged";
-        do = "diff --ours";
-        dt = "diff --theirs";
-        c = "commit";
-        cc = "commit -m";
-        ca = "commit --amend";
-        cf = "commit --fixup";
-        co = "checkout";
-        cob = "checkout -b";
-        cobb = "checkout -B";
-        cpi = "cherry-pick";
-        cpa = "cherry-pick --abort";
-        cpc = "cherry-pick --continue";
-        me = "merge --no-ff";
-        mea = "merge --abort";
-        mec = "merge --continue";
-        meff = "merge --ff-only";
-        su = "submodule";
-        sud = "submodule deinit --force --all";
-        sus = "submodule status --recursive";
-        sui = "submodule init --recursive";
-        suu = "submodule update --init --recursive";
-        re = "rebase --rebase-merges";
-        rei = "rebase --rebase-merges -i";
-        reo = "rebase --rebase-merges --onto";
-        reio = "rebase --rebase-merges -i --onto";
-        rea = "rebase --abort";
-        "rec" = "rebase --continue";
-        reskip = "rebase --skip";
-        retodo = "rebase --edit-todo";
-        resoft = "reset --soft";
-        rehard = "reset --hard";
-      };
-      core = {
-        pager = "less -+X";
-      };
-      init = {
-        defaultBranch = "main";
-      };
       user = {
         name = "Yuki Sireneva";
         email = "yuki.utk8g@gmail.com";
-      };
-      merge = {
-        conflictstyle = "diff3";
-      };
-      diff = {
-        colorMoved = "default";
-      };
-      gpg = {
-        format = "ssh";
-      };
-      commit = {
-        gpgsign = true;
-      };
-      tag = {
-        gpgsign = true;
-      };
-      rerere = {
-        enabled = true;
-      };
-      push = {
-        default = "upstream";
       };
     };
   };
