@@ -286,20 +286,31 @@ in {
     fenixToolchain
   ];
 
-  fonts.packages = with pkgs; [
-    (fantasque-sans-mono.overrideAttrs (self: super: {
-      installPhase =
-        builtins.replaceStrings
-        ["OTF" "otf" "opentype"]
-        ["TTF" "ttf" "truetype"]
-        super.installPhase;
-    }))
-    nerd-fonts.symbols-only
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    texlivePackages.euler-math
-  ];
+  fonts = {
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        sansSerif = ["Noto Sans"];
+        serif = ["Noto Serif"];
+        monospace = ["Fantasque Sans Mono"];
+      };
+    };
+
+    packages = with pkgs; [
+      (fantasque-sans-mono.overrideAttrs (self: super: {
+        installPhase =
+          builtins.replaceStrings
+          ["OTF" "otf" "opentype"]
+          ["TTF" "ttf" "truetype"]
+          super.installPhase;
+      }))
+      nerd-fonts.symbols-only
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      texlivePackages.euler-math
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

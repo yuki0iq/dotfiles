@@ -40,15 +40,6 @@
     '';
   };
 
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      monospace = [
-        "Fantasque Sans Mono"
-      ];
-    };
-  };
-
   programs.gnome-shell = {
     enable = true;
     extensions = with pkgs.gnomeExtensions; [
