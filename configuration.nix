@@ -170,6 +170,7 @@ in {
     nix-output-monitor
     npins
 
+    fractal
     prismlauncher
     ((pkgs.callPackage pins.yukigram {}).overrideAttrs (self: super: {
       unwrapped = super.unwrapped.overrideAttrs {
