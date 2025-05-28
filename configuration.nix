@@ -101,7 +101,10 @@ in {
   home-manager.users.yuki = import ./users/yuki;
 
   programs.bash.completion.enable = true;
-  programs.command-not-found.enable = true;
+  programs.command-not-found = {
+    enable = true;
+    dbPath = "${pins.nixpkgs}/programs.sqlite";
+  };
 
   programs.git = {
     enable = true;

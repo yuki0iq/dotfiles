@@ -9,9 +9,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "c3c27e603b0d9b5aac8a16236586696338856fbb",
-      "url": "https://github.com/nix-community/fenix/archive/c3c27e603b0d9b5aac8a16236586696338856fbb.tar.gz",
-      "hash": "1019x2v1mn4fd0hm0d9mwj1xswwipi9c3h63yxpa9i6xb7xbfk6f"
+      "revision": "1c050d9008ff9e934f8bb5298c902259ea2cb3f7",
+      "url": "https://github.com/nix-community/fenix/archive/1c050d9008ff9e934f8bb5298c902259ea2cb3f7.tar.gz",
+      "hash": "109j9ky9bf3ly6vfzrkn0ji59siay6cl3jqb8iicrcnnqzpylqm5"
     },
     "home-manager": {
       "type": "Git",
@@ -22,9 +22,9 @@
       },
       "branch": "release-25.05",
       "submodules": false,
-      "revision": "d0bbd221482c2713cccb80220f3c9d16a6e20a33",
-      "url": "https://github.com/nix-community/home-manager/archive/d0bbd221482c2713cccb80220f3c9d16a6e20a33.tar.gz",
-      "hash": "1iqfq5lz3102cp3ryqqqs2hr2bdmwn0mdajprh1ls5h5nsfkigs1"
+      "revision": "83665c39fa688bd6a1f7c43cf7997a70f6a109f9",
+      "url": "https://github.com/nix-community/home-manager/archive/83665c39fa688bd6a1f7c43cf7997a70f6a109f9.tar.gz",
+      "hash": "06kpj2mgfd3b0sip93k12ls00vn48ghxn3xg8705cfyn321m380r"
     },
     "lix-nixos-module": {
       "type": "GitRelease",
@@ -46,8 +46,8 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-25.05",
-      "url": "https://releases.nixos.org/nixos/25.05/nixos-25.05.802216.55d1f923c480/nixexprs.tar.xz",
-      "hash": "1vsl3j33q85skkjbjy2nrba7cdraa9kd6cpn8anng9rzc3pcf1bm"
+      "url": "https://releases.nixos.org/nixos/25.05/nixos-25.05.802491.7c43f080a7f2/nixexprs.tar.xz",
+      "hash": "15pa2c2hgq9bwymm03jzbdx3j6fqkl0fb5sxw7pfcy6v8vwd246d"
     },
     "rycee": {
       "type": "Git",
@@ -58,9 +58,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "c6734fa6a82294b57927748b94a98b108e1daab7",
-      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=c6734fa6a82294b57927748b94a98b108e1daab7",
-      "hash": "1143h1gid0yq35v8n5p2zwxwg1f4zcai790z5b3qk7znyif5xmr8"
+      "revision": "f9801a86d6603260940890c36650275090d1dceb",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=f9801a86d6603260940890c36650275090d1dceb",
+      "hash": "0vwhr4h4aw25l9znyr6d2ps9q3dfb9742g684d094260b1478sx6"
     },
     "statusline": {
       "type": "Git",
