@@ -8,8 +8,14 @@
 in {
   config = lib.mkIf config.services.xserver.desktopManager.gnome.enable {
     environment.gnome.excludePackages = with pkgs; [
-      gnome-console # Replace with ptyxis
+      geary # thunderbird
+      gnome-console # ptyxis
+      gnome-system-monitor # mission-center
+      gnome-tour
+      evince # papers
     ];
+
+    programs.thunderbird.enable = true;
 
     xdg.terminal-exec = {
       enable = true;
@@ -22,6 +28,8 @@ in {
 
     environment.systemPackages = with pkgs; [
       gnome-secrets
+      mission-center
+      papers
       ptyxis
       refine
     ];
