@@ -153,8 +153,10 @@ in {
     ssh-audit
 
     bat
+    bc
     dua
     eza
+    libqalculate
     moreutils
     ripgrep
 
