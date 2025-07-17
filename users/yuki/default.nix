@@ -118,6 +118,7 @@
     profiles.default = {
       extensions.packages = with pkgs.rycee.firefox-addons; [
         indie-wiki-buddy
+        libredirect
         native-mathml
         shinigami-eyes
         sponsorblock
