@@ -57,7 +57,7 @@ in {
     type = "ibus";
     ibus.engines = with pkgs.ibus-engines; [
       anthy
-      # FIXME(25.05 regression): Fails to build. See https://github.com/NixOS/nixpkgs/issues/408662
+      # FIXME(25.05): https://nixpk.gs/pr-tracker.html?pr=420679
       # table
       # table-others
     ];
