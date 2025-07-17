@@ -6,7 +6,7 @@
   pins = import ./npins;
   pkgs = import pins.nixpkgs {};
   fenixToolchain = (pkgs.callPackage pins.fenix {}).complete.toolchain;
-  kernel = pkgs.linuxKernel.packages.linux_6_14;
+  kernel = pkgs.linuxKernel.packageAliases.linux_latest;
 in {
   imports = [
     # Include the results of the hardware scan.
