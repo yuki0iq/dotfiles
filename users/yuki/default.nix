@@ -19,8 +19,11 @@
   home.preferXdgDirectories = true;
 
   xdg.configFile."xkb".source = ./xkb;
-  xdg.configFile."ibus-anthy".source = ./ibus-anthy;
   xdg.configFile."sublime-text/Packages/User".source = ./sublime-text_Packages_User;
+  xdg.configFile."ibus-anthy/engines.xml".text = let
+    default = builtins.readFile "${pkgs.ibus-engines.anthy}/share/ibus-anthy/engine/default.xml";
+  in
+    builtins.replaceStrings ["<layout>jp</layout>"] ["<layout>default</layout>"] default;
 
   programs.bash = {
     enable = true;
