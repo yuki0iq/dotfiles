@@ -98,6 +98,7 @@ in {
     isNormalUser = true;
     description = "yuki";
     extraGroups = ["networkmanager" "wheel" "docker"];
+    openssh.authorizedKeys.keyFiles = [./users/yuki/authorized_keys];
   };
 
   home-manager.users.yuki = import ./users/yuki;
