@@ -53,53 +53,87 @@
 
   dconf = {
     enable = true;
-    settings = {
-      "org/gnome/mutter" = {
-        attach-modal-dialogs = true;
-        edge-tiling = true;
-        dynamic-workspaces = true;
-      };
-      "org/gnome/desktop/interface" = {
-        font-name = "Adwaita Sans 11"; # FIXME(25.11): https://github.com/NixOS/nixpkgs/pull/401037 "System-ui 11";
-        monospace-font-name = "Monospace 11";
-        clock-show-weekday = true;
-        clock-format = "24h";
-        accent-color = "purple";
-      };
-      "org/gnome/desktop/a11y/interface" = {
-        show-status-shapes = true;
-      };
-      "org/gnome/desktop/privacy" = {
-        recent-files-max-age = 1;
-      };
-      "org/gnome/desktop/input-sources" = {
-        sources = [
-          (lib.hm.gvariant.mkTuple ["xkb" "us+colemak_dh_yuki"])
-          (lib.hm.gvariant.mkTuple ["xkb" "ru+rulemak_dh_yuki"])
-        ];
-        xkb-options = [
-          "grp:caps_toggle"
-          "grp_led:scroll" # XXX: What if only Caps lock led exists?
-          "grp_led:caps"
-        ];
-        show-all-sources = true;
-      };
-      "org/gnome/desktop/peripherals/mouse" = {
-        left-handed = false;
-      };
-      "org/gnome/desktop/wm/keybindings" = {
-        switch-windows = ["<Alt>Tab"];
-        switch-windows-backward = ["<Shift><Alt>Tab"];
-        switch-applications = ["<Super>Tab"];
-        switch-applications-backward = ["<Shift><Super>Tab"];
-      };
-      "org/gnome/shell/extensions/caffeine" = {
-        enable-fullscreen = false;
-      };
-      "desktop/ibus/general" = {
-        use-system-keyboard-layout = true;
-      };
-    };
+    settings = lib.mkMerge [
+      {
+        "org/gnome/mutter" = {
+          attach-modal-dialogs = true;
+          edge-tiling = true;
+          dynamic-workspaces = true;
+        };
+        "org/gnome/desktop/interface" = {
+          font-name = "Adwaita Sans 11"; # FIXME(25.11): https://github.com/NixOS/nixpkgs/pull/401037 "System-ui 11";
+          monospace-font-name = "Monospace 11";
+          clock-show-weekday = true;
+          clock-format = "24h";
+          accent-color = "purple";
+        };
+        "org/gnome/desktop/a11y/interface" = {
+          show-status-shapes = true;
+        };
+        "org/gnome/desktop/privacy" = {
+          recent-files-max-age = 1;
+        };
+        "org/gnome/desktop/input-sources" = {
+          sources = [
+            (lib.hm.gvariant.mkTuple ["xkb" "us+colemak_dh_yuki"])
+            (lib.hm.gvariant.mkTuple ["xkb" "ru+rulemak_dh_yuki"])
+          ];
+          xkb-options = [
+            "grp:caps_toggle"
+            "grp_led:scroll" # XXX: What if only Caps lock led exists?
+            "grp_led:caps"
+          ];
+          show-all-sources = true;
+        };
+        "org/gnome/desktop/peripherals/mouse" = {
+          left-handed = false;
+        };
+        "org/gnome/desktop/wm/keybindings" = {
+          switch-windows = ["<Alt>Tab"];
+          switch-windows-backward = ["<Shift><Alt>Tab"];
+          switch-applications = ["<Super>Tab"];
+          switch-applications-backward = ["<Shift><Super>Tab"];
+        };
+        "org/gnome/shell/extensions/caffeine" = {
+          enable-fullscreen = false;
+        };
+        "desktop/ibus/general" = {
+          use-system-keyboard-layout = true;
+        };
+      }
+
+      (
+        let
+          klgs = ./keyboard-layout-group-switcher;
+          makeKeybindings = bindings: let
+            media-keys = "org/gnome/settings-daemon/plugins/media-keys";
+            names = builtins.genList (x: "${media-keys}/custom-keybindings/custom${toString x}") (builtins.length bindings);
+          in
+            (builtins.listToAttrs (lib.lists.zipListsWith (name: value: {inherit name value;}) names bindings))
+            // {
+              ${media-keys}.custom-keybindings = map (name: "/${name}/") names;
+            };
+        in
+          makeKeybindings [
+            {
+              binding = "<Super>Return";
+              command = "${pkgs.xdg-terminal-exec}/bin/xdg-terminal-exec";
+            }
+            {
+              binding = "<Super>F8";
+              command = "${klgs} qwerty";
+            }
+            {
+              binding = "<Super>F9";
+              command = "${klgs} yuki";
+            }
+            {
+              binding = "<Super>F10";
+              command = "${klgs} ibus";
+            }
+          ]
+      )
+    ];
   };
 
   programs.mpv = {

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -xe
+
+case $# in
+    0)
+        printf 'Usage: %q <yuki|ibus|qwerty>' "$0"
+        exit 1
+        ;;
+    1)
+        profile="$1"
+        ;;
+esac
+
+declare -A profiles=(
+    [yuki]="[('xkb', 'us+colemak_dh_yuki'), ('xkb', 'ru+rulemak_dh_yuki')]"
+    [ibus]="[('ibus', 'anthy'), ('ibus', 'table:ipa-x-sampa')]"
+    [qwerty]="[('xkb', 'us+euro'), ('xkb', 'by+ru')]"
+)
+
+# Reset on unknown profile name
+[[ -z "${profiles[$profile]}" ]] && profile=yuki
+
+gsettings set org.gnome.desktop.input-sources sources "${profiles[$profile]}"
+openrgb --noautoconnect --profile "$profile"
+
