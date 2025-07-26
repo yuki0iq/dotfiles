@@ -117,7 +117,7 @@
           makeKeybindings [
             {
               binding = "<Super>Return";
-              command = "${pkgs.xdg-terminal-exec}/bin/xdg-terminal-exec";
+              command = "${pkgs.ptyxis}/bin/ptyxis --new-window";
             }
             {
               binding = "<Super>F8";
