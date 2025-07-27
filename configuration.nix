@@ -188,6 +188,7 @@ in {
       };
     }))
 
+    gcc
     fenixToolchain
   ];
 
