@@ -27,6 +27,7 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
+      gnome-themes-extra
       gnome-secrets
       mission-center
       papers

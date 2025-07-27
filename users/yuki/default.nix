@@ -47,6 +47,7 @@
     enable = true;
     extensions = with pkgs.gnomeExtensions; [
       {package = caffeine;}
+      {package = legacy-gtk3-theme-scheme-auto-switcher;}
       {package = light-style;}
     ];
   };
