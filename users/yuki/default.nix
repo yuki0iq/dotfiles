@@ -146,6 +146,7 @@
       cache = true;
       demuxer-max-bytes = "512MiB";
     };
+    scripts = with pkgs.mpvScripts; [mpris];
   };
 
   programs.librewolf = {
