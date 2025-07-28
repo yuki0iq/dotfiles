@@ -233,6 +233,15 @@ in {
         exec ${pkgs.shadowsocks-rust}/bin/sslocal -c /etc/nixos/secrets/shadowsocks.json
       '';
     };
+    xray-proxy = {
+      enable = true;
+      description = "xray client service";
+      after = ["network.target"];
+      wantedBy = ["default.target"];
+      script = ''
+        exec ${pkgs.xray}/bin/xray run -c /etc/nixos/secrets/xray.json
+      '';
+    };
   };
 
   # Open ports in the firewall.
