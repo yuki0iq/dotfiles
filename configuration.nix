@@ -247,6 +247,16 @@ in {
         exec ${pkgs.xray}/bin/xray run -c /etc/nixos/secrets/xray.json
       '';
     };
+    byedpi-proxy = {
+      enable = true;
+      description = "byedpi service";
+      after = ["network.target"];
+      wantedBy = ["default.target"];
+      script = ''
+        source /etc/nixos/secrets/byedpi.sh
+        exec ${pkgs.byedpi}/bin/ciadpi $BYEDPI_OPTIONS
+      '';
+    };
   };
 
   # Open ports in the firewall.
