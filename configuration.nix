@@ -97,7 +97,7 @@ in {
   users.users.yuki = {
     isNormalUser = true;
     description = "yuki";
-    extraGroups = ["networkmanager" "wheel" "docker"];
+    extraGroups = ["networkmanager" "wheel" "docker" "wireshark"];
     openssh.authorizedKeys.keyFiles = [./users/yuki/authorized_keys];
   };
 
@@ -134,6 +134,11 @@ in {
   programs.obs-studio.enable = true;
 
   programs.ssh.hardened = true;
+
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
 
   nixpkgs.overlays = [
     (self: super: {
