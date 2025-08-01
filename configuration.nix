@@ -194,6 +194,7 @@ in {
     }))
 
     gcc
+    gef
     fenixToolchain
   ];
 
