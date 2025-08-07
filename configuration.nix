@@ -269,6 +269,17 @@ in {
         exec ${pkgs.byedpi}/bin/ciadpi $BYEDPI_OPTIONS
       '';
     };
+    xray-byedpi-proxy = {
+      enable = true;
+      description = "xray-over-byedpi client service";
+      after = ["network.target"];
+      wantedBy = ["default.target"];
+      script = ''
+        source /etc/nixos/secrets/xray-server.sh
+        ${pkgs.socat}/bin/socat TCP-LISTEN:8443,bind=127.0.0.4,fork,reuseaddr SOCKS5-CONNECT:127.0.0.3:1080:$XRAY_SERVER:443 &
+        ${pkgs.xray}/bin/xray run -c /etc/nixos/secrets/xray-over-byedpi.json
+      '';
+    };
   };
 
   # Open ports in the firewall.
