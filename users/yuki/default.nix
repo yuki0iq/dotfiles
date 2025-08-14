@@ -67,6 +67,7 @@
           clock-show-weekday = true;
           clock-format = "24h";
           accent-color = "purple";
+          gtk-enable-primary-paste = false;
         };
         "org/gnome/desktop/a11y/interface" = {
           show-status-shapes = true;
