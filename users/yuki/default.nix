@@ -49,6 +49,7 @@
       {package = caffeine;}
       {package = legacy-gtk3-theme-scheme-auto-switcher;}
       {package = light-style;}
+      {package = vitals;}
     ];
   };
 
@@ -98,6 +99,13 @@
         };
         "org/gnome/shell/extensions/caffeine" = {
           enable-fullscreen = false;
+        };
+        "org/gnome/shell/extensions/vitals" = {
+          hide-zeros = true;
+          menu-centered = true;
+          icon-style = 1; # GNOME
+          monitor-cmd = "${pkgs.mission-center}/bin/mission-center";
+          hot-sensors = ["_system_load_1m_"];
         };
         "desktop/ibus/general" = {
           use-system-keyboard-layout = true;

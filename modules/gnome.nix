@@ -10,7 +10,7 @@ in {
     environment.gnome.excludePackages = with pkgs; [
       geary # thunderbird
       gnome-console # ptyxis
-      gnome-system-monitor # mission-center
+      gnome-system-monitor # libgtop + mission-center
       gnome-tour
       evince # papers
     ];
@@ -29,6 +29,7 @@ in {
     environment.systemPackages = with pkgs; [
       gnome-themes-extra
       gnome-secrets
+      libgtop
       mission-center
       papers
       ptyxis
