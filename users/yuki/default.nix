@@ -67,7 +67,7 @@
           monospace-font-name = "Monospace 11";
           clock-show-weekday = true;
           clock-format = "24h";
-          accent-color = "purple";
+          accent-color = "teal";
           gtk-enable-primary-paste = false;
         };
         "org/gnome/desktop/a11y/interface" = {
