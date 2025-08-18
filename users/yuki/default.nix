@@ -73,6 +73,19 @@
         "org/gnome/desktop/a11y/interface" = {
           show-status-shapes = true;
         };
+        "org/gnome/desktop/background" = let
+          yuuka = pkgs.fetchurl {
+            urls = [
+              "https://pixiv.net/img-original/img/2024/02/04/23/14/09/115770254_p0.jpg"
+              "https://pixiv.ducks.party/img-original/img/2024/02/04/23/14/09/115770254_p0.jpg"
+            ];
+            hash = "sha256-jBVGOqZImknJ/gqSiplmCNII4skcvwxe8eE9mcxaVII=";
+          };
+        in {
+          picture-options = "zoom";
+          picture-uri = "file://${yuuka}";
+          picture-uri-dark = "file://${yuuka}";
+        };
         "org/gnome/desktop/privacy" = {
           recent-files-max-age = 1;
         };
