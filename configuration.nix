@@ -15,6 +15,7 @@ in {
     ./modules/fonts.nix
     ./modules/git.nix
     ./modules/gnome.nix
+    ./modules/graphical.nix
     ./modules/network.nix
     ./modules/nix.nix
     ./modules/proxies.nix
@@ -34,42 +35,7 @@ in {
 
   networking.hostName = "yuuka";
 
-  i18n.inputMethod = {
-    enable = true;
-    type = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [
-      anthy
-      # FIXME(25.05): https://nixpk.gs/pr-tracker.html?pr=420679
-      # table
-      # table-others
-    ];
-  };
-
   services.fwupd.enable = true;
-
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  console.useXkbConfig = true;
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "colemak_dh";
-  };
-
-  services.printing.enable = false;
-
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
-  xdg.terminal-exec.package = pkgs.xdg-terminal-exec-mkhl;
 
   virtualisation.docker.enable = true;
 
@@ -82,10 +48,6 @@ in {
 
   home-manager.users.yuki = import ./users/yuki;
 
-  programs.obs-studio.enable = true;
-
-  programs.wireshark.package = pkgs.wireshark;
-
   nixpkgs.overlays = [
     (self: super: {
       inherit fenixToolchain;
@@ -95,10 +57,6 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
-    mesa-demos
-    vulkan-tools
-    wl-clipboard
-
     fractal
     prismlauncher
     ((pkgs.callPackage pins.yukigram {}).overrideAttrs (self: super: {
@@ -115,7 +73,7 @@ in {
   ];
 
   # Headful
-  meow.fonts = true;
+  meow.graphical = true;
 
   # Headless
   meow.basics = true;
