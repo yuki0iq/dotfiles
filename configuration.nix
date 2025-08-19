@@ -6,12 +6,12 @@
   pins = import ./npins;
   pkgs = import pins.nixpkgs {};
   fenixToolchain = (pkgs.callPackage pins.fenix {}).complete.toolchain;
-  kernel = pkgs.linuxKernel.packageAliases.linux_latest;
 in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
+    ./modules/basics.nix
     ./modules/fonts.nix
     ./modules/git.nix
     ./modules/gnome.nix
@@ -23,13 +23,15 @@ in {
     (import "${pins.home-manager}/nixos")
   ];
 
+  _module.args = { inherit pins; };
+
   nix.settings.use-xdg-base-directories = true;
   nix.nixPath = [
     "nixpkgs=${pins.nixpkgs}"
     "nixos-config=/etc/nixos/configuration.nix"
   ];
 
-  boot.kernelPackages = kernel;
+  boot.kernelPackages = pkgs.linuxKernel.packageAliases.linux_latest;
   boot.tmp.useTmpfs = true;
   zramSwap.enable = true;
 
@@ -106,34 +108,6 @@ in {
 
   home-manager.users.yuki = import ./users/yuki;
 
-  programs.bash.completion.enable = true;
-  programs.command-not-found = {
-    enable = true;
-    dbPath = "${pins.nixpkgs}/programs.sqlite";
-  };
-
-  programs.git = {
-    enable = true;
-    lfs.enable = true;
-    autosign = true;
-    short-aliases = true;
-    config = {
-      user = {
-        name = "Yuki Sireneva";
-        email = "yuki.utk8g@gmail.com";
-      };
-    };
-  };
-
-  programs.htop.enable = true;
-  programs.tmux.enable = true;
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
-
   programs.obs-studio.enable = true;
 
   programs.wireshark.package = pkgs.wireshark;
@@ -147,27 +121,6 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
-    man-pages
-    man-pages-posix
-
-    bat
-    bc
-    dua
-    eza
-    libqalculate
-    moreutils
-    ripgrep
-
-    kernel.cpupower
-    kernel.perf
-    lm_sensors
-    pciutils
-    usbutils
-
-    file
-    lsof
-    strace
-
     mesa-demos
     vulkan-tools
     wl-clipboard
@@ -195,6 +148,7 @@ in {
   meow.fonts = true;
 
   # Headless
+  meow.basics = true;
   meow.network = true;
   meow.proxies = true;
 

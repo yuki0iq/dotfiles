@@ -1,0 +1,73 @@
+# vim:et:ts=2:sw=2
+{
+  config,
+  lib,
+  pkgs,
+  pins,
+  ...
+}: let
+in {
+  options = {
+    meow.basics = lib.mkOption {
+      type = lib.types.bool;
+      description = "Whether to enable basic debugging and maintenance tools";
+    };
+  };
+
+  config = lib.mkIf config.meow.basics {
+    environment.systemPackages = with pkgs; [
+      man-pages
+      man-pages-posix
+
+      bat
+      bc
+      dua
+      eza
+      libqalculate
+      moreutils
+      ripgrep
+
+      config.boot.kernelPackages.cpupower
+      config.boot.kernelPackages.perf
+      lm_sensors
+      pciutils
+      usbutils
+
+      file
+      lsof
+      strace
+    ];
+
+    programs.bash.completion.enable = true;
+
+    programs.command-not-found = {
+      enable = true;
+      dbPath = "${pins.nixpkgs}/programs.sqlite";
+    };
+
+    programs.git = {
+      enable = true;
+      autosign = true;
+      lfs.enable = true;
+      short-aliases = true;
+
+      config = {
+        user = {
+          name = "Yuki Sireneva";
+          email = "yuki.utk8g@gmail.com";
+        };
+      };
+    };
+
+    programs.htop.enable = true;
+
+    programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+    };
+
+    programs.tmux.enable = true;
+  };
+}
