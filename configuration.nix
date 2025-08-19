@@ -11,16 +11,7 @@ in {
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-    ./modules/basics.nix
-    ./modules/fonts.nix
-    ./modules/git.nix
-    ./modules/gnome.nix
-    ./modules/graphical.nix
-    ./modules/network.nix
-    ./modules/nix.nix
-    ./modules/proxies.nix
-    ./modules/ssh.nix
-    ./modules/system.nix
+    ./modules/default.nix
 
     (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
     (import "${pins.home-manager}/nixos")
@@ -72,15 +63,7 @@ in {
     fenixToolchain
   ];
 
-  # Headful
   meow.graphical = true;
-
-  # Headless
-  meow.basics = true;
-  meow.network = true;
-  meow.nix = true;
-  meow.proxies = true;
-  meow.system = true;
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [
