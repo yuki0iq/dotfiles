@@ -14,6 +14,7 @@ in {
 
     ./modules/git.nix
     ./modules/gnome.nix
+    ./modules/proxies.nix
     ./modules/ssh.nix
 
     (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
@@ -135,6 +136,11 @@ in {
 
   programs.ssh.hardened = true;
 
+  services.openssh = {
+    enable = true;
+    hardened = true;
+  };
+
   programs.wireshark = {
     enable = true;
     package = pkgs.wireshark;
@@ -235,52 +241,7 @@ in {
     ];
   };
 
-  services.openssh = {
-    enable = true;
-    hardened = true;
-  };
-
-  systemd.services = {
-    shadowsocks-proxy = {
-      enable = true;
-      description = "shadowsocks client service";
-      after = ["network.target"];
-      wantedBy = ["default.target"];
-      script = ''
-        exec ${pkgs.shadowsocks-rust}/bin/sslocal -c /etc/nixos/secrets/shadowsocks.json
-      '';
-    };
-    xray-proxy = {
-      enable = true;
-      description = "xray client service";
-      after = ["network.target"];
-      wantedBy = ["default.target"];
-      script = ''
-        exec ${pkgs.xray}/bin/xray run -c /etc/nixos/secrets/xray.json
-      '';
-    };
-    byedpi-proxy = {
-      enable = true;
-      description = "byedpi service";
-      after = ["network.target"];
-      wantedBy = ["default.target"];
-      script = ''
-        source /etc/nixos/secrets/byedpi.sh
-        exec ${pkgs.byedpi}/bin/ciadpi $BYEDPI_OPTIONS
-      '';
-    };
-    xray-byedpi-proxy = {
-      enable = true;
-      description = "xray-over-byedpi client service";
-      after = ["network.target"];
-      wantedBy = ["default.target"];
-      script = ''
-        source /etc/nixos/secrets/xray-server.sh
-        ${pkgs.socat}/bin/socat TCP-LISTEN:8443,bind=127.0.0.4,fork,reuseaddr SOCKS5-CONNECT:127.0.0.3:1080:$XRAY_SERVER:443 &
-        ${pkgs.xray}/bin/xray run -c /etc/nixos/secrets/xray-over-byedpi.json
-      '';
-    };
-  };
+  meow.proxies = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
