@@ -14,6 +14,7 @@ in {
 
     ./modules/git.nix
     ./modules/gnome.nix
+    ./modules/network.nix
     ./modules/proxies.nix
     ./modules/ssh.nix
 
@@ -134,17 +135,7 @@ in {
 
   programs.obs-studio.enable = true;
 
-  programs.ssh.hardened = true;
-
-  services.openssh = {
-    enable = true;
-    hardened = true;
-  };
-
-  programs.wireshark = {
-    enable = true;
-    package = pkgs.wireshark;
-  };
+  programs.wireshark.package = pkgs.wireshark;
 
   nixpkgs.overlays = [
     (self: super: {
@@ -157,12 +148,6 @@ in {
   environment.systemPackages = with pkgs; [
     man-pages
     man-pages-posix
-
-    curl
-    iperf3
-    nmap
-    socat
-    ssh-audit
 
     bat
     bc
@@ -180,8 +165,9 @@ in {
 
     file
     lsof
-    mesa-demos
     strace
+
+    mesa-demos
     vulkan-tools
     wl-clipboard
 
@@ -241,6 +227,7 @@ in {
     ];
   };
 
+  meow.network = true;
   meow.proxies = true;
 
   # Open ports in the firewall.
