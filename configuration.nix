@@ -16,6 +16,7 @@ in {
     ./modules/git.nix
     ./modules/gnome.nix
     ./modules/network.nix
+    ./modules/nix.nix
     ./modules/proxies.nix
     ./modules/ssh.nix
 
@@ -24,12 +25,6 @@ in {
   ];
 
   _module.args = { inherit pins; };
-
-  nix.settings.use-xdg-base-directories = true;
-  nix.nixPath = [
-    "nixpkgs=${pins.nixpkgs}"
-    "nixos-config=/etc/nixos/configuration.nix"
-  ];
 
   boot.kernelPackages = pkgs.linuxKernel.packageAliases.linux_latest;
   boot.tmp.useTmpfs = true;
@@ -125,10 +120,6 @@ in {
     vulkan-tools
     wl-clipboard
 
-    alejandra
-    nix-output-monitor
-    npins
-
     fractal
     prismlauncher
     ((pkgs.callPackage pins.yukigram {}).overrideAttrs (self: super: {
@@ -150,6 +141,7 @@ in {
   # Headless
   meow.basics = true;
   meow.network = true;
+  meow.nix = true;
   meow.proxies = true;
 
   # Open ports in the firewall.
