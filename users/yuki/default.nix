@@ -117,7 +117,7 @@
           hide-zeros = true;
           menu-centered = true;
           icon-style = 1; # GNOME
-          monitor-cmd = "${pkgs.mission-center}/bin/mission-center";
+          monitor-cmd = "${pkgs.mission-center}/bin/missioncenter";
           hot-sensors = ["_system_load_1m_"];
         };
         "desktop/ibus/general" = {
