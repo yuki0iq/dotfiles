@@ -12,6 +12,7 @@ in {
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
+    ./modules/fonts.nix
     ./modules/git.nix
     ./modules/gnome.nix
     ./modules/network.nix
@@ -190,43 +191,10 @@ in {
     fenixToolchain
   ];
 
-  fonts = {
-    fontconfig = {
-      enable = true;
-      defaultFonts = {
-        sansSerif = ["Noto Sans"];
-        serif = ["Noto Serif"];
-        monospace = ["Fantasque Sans Mono"];
-      };
-    };
+  # Headful
+  meow.fonts = true;
 
-    # Most NixOS default fonts are either
-    # - redundant with this config (DejaVu over Noto),
-    # - useless (freefont), or
-    # - awful (gyre-fonts does not support Cyrillic script)
-    enableDefaultPackages = false;
-
-    packages = with pkgs; [
-      (fantasque-sans-mono.overrideAttrs (self: super: {
-        installPhase =
-          builtins.replaceStrings
-          ["OTF" "otf" "opentype"]
-          ["TTF" "ttf" "truetype"]
-          super.installPhase;
-      }))
-      nerd-fonts.symbols-only
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      texlivePackages.euler-math
-      twitter-color-emoji
-
-      # Fallback fonts
-      liberation_ttf  # Nice Arial/Times New Roman/Courier New replacement
-      unifont
-    ];
-  };
-
+  # Headless
   meow.network = true;
   meow.proxies = true;
 
