@@ -19,6 +19,7 @@ in {
     ./modules/nix.nix
     ./modules/proxies.nix
     ./modules/ssh.nix
+    ./modules/system.nix
 
     (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
     (import "${pins.home-manager}/nixos")
@@ -27,30 +28,11 @@ in {
   _module.args = { inherit pins; };
 
   boot.kernelPackages = pkgs.linuxKernel.packageAliases.linux_latest;
-  boot.tmp.useTmpfs = true;
-  zramSwap.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # FIXME(25.11): Enable by default
-  system.rebuild.enableNg = true;
-
   networking.hostName = "yuuka";
-  networking.networkmanager.enable = true;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  time.timeZone = "Europe/Moscow";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_MEASUREMENT = "C.UTF-8";
-    LC_PAPER = "C.UTF-8";
-    LC_TIME = "en_DK.UTF-8";
-  };
 
   i18n.inputMethod = {
     enable = true;
@@ -90,9 +72,6 @@ in {
   xdg.terminal-exec.package = pkgs.xdg-terminal-exec-mkhl;
 
   virtualisation.docker.enable = true;
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
 
   users.users.yuki = {
     isNormalUser = true;
@@ -143,12 +122,7 @@ in {
   meow.network = true;
   meow.nix = true;
   meow.proxies = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  meow.system = true;
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [
