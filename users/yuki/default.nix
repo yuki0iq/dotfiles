@@ -101,6 +101,9 @@
           monitor-cmd = "${pkgs.mission-center}/bin/missioncenter";
           hot-sensors = ["_system_load_1m_"];
         };
+        "org/gnome/Ptyxis" = {
+          restore-session = false; # Useless without VTE integration
+        };
         "desktop/ibus/general" = {
           use-system-keyboard-layout = true;
         };
