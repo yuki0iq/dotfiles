@@ -37,7 +37,25 @@ in {
       strace
     ];
 
-    programs.bash.completion.enable = true;
+    programs.bash = {
+      completion.enable = true;
+
+      promptInit = ''
+        PS1_MODE=minimal
+        eval "$(${pkgs.statusline}/bin/statusline env)"
+      '';
+
+      shellAliases = {
+        downspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225";
+        upspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225 -R";
+        cat = "${pkgs.bat}/bin/bat";
+        ip = "ip -c=always";
+        ls = "${pkgs.eza}/bin/eza --color=auto --hyperlink";
+        diff = "diff --color=auto";
+        psu = "ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,ucmd";
+        psc = "ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,cmd";
+      };
+    };
 
     programs.command-not-found = {
       enable = true;

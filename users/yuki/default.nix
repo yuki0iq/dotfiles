@@ -24,24 +24,6 @@
   in
     builtins.replaceStrings ["<layout>jp</layout>"] ["<layout>default</layout>"] default;
 
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      downspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225";
-      upspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225 -R";
-      cat = "${pkgs.bat}/bin/bat";
-      ip = "ip -c=always";
-      ls = "${pkgs.eza}/bin/eza --color=auto --hyperlink";
-      diff = "diff --color=auto";
-      psu = "ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,ucmd";
-      psc = "ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,cmd";
-    };
-    initExtra = ''
-      PS1_MODE=minimal
-      eval "$(${pkgs.statusline}/bin/statusline env)"
-    '';
-  };
-
   programs.gnome-shell = {
     enable = true;
     extensions = with pkgs.gnomeExtensions; [
