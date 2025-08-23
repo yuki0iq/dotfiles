@@ -13,6 +13,7 @@ in {
     ./modules
 
     (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
+    (import "${pins.home-manager}/nixos")
   ];
 
   _module.args = {inherit pins;};

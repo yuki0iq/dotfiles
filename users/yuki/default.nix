@@ -14,134 +14,65 @@
   # changes in each release.
   home.stateVersion = "24.11";
 
-  xdg.enable = true;
-  home.preferXdgDirectories = true;
+  meow.graphical = true;
 
   xdg.configFile."xkb".source = ./xkb;
   xdg.configFile."sublime-text/Packages/User".source = ./sublime-text_Packages_User;
-  xdg.configFile."ibus-anthy/engines.xml".text = let
-    default = builtins.readFile "${pkgs.ibus-engines.anthy}/share/ibus-anthy/engine/default.xml";
-  in
-    builtins.replaceStrings ["<layout>jp</layout>"] ["<layout>default</layout>"] default;
 
-  programs.gnome-shell = {
-    enable = true;
-    extensions = with pkgs.gnomeExtensions; [
-      {package = caffeine;}
-      {package = legacy-gtk3-theme-scheme-auto-switcher;}
-      {package = light-style;}
-      {package = vitals;}
-    ];
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      accent-color = "teal";
+    };
+
+    "org/gnome/desktop/background" = let
+      yuuka = pkgs.fetchurl {
+        urls = [
+          "https://pixiv.net/img-original/img/2024/02/04/23/14/09/115770254_p0.jpg"
+          "https://pixiv.ducks.party/img-original/img/2024/02/04/23/14/09/115770254_p0.jpg"
+        ];
+        hash = "sha256-jBVGOqZImknJ/gqSiplmCNII4skcvwxe8eE9mcxaVII=";
+      };
+    in {
+      picture-options = "zoom";
+      picture-uri = "file://${yuuka}";
+      picture-uri-dark = "file://${yuuka}";
+    };
+
+    "org/gnome/desktop/input-sources" = {
+      sources = [
+        (lib.hm.gvariant.mkTuple ["xkb" "us+colemak_dh_yuki"])
+        (lib.hm.gvariant.mkTuple ["xkb" "ru+rulemak_dh_yuki"])
+      ];
+      xkb-options = [
+        "grp:caps_toggle"
+        "grp_led:scroll" # XXX: What if only Caps lock led exists?
+        "grp_led:caps"
+      ];
+    };
+
+    "org/gnome/desktop/peripherals/mouse" = {
+      left-handed = false;
+    };
   };
 
-  dconf = {
-    enable = true;
-    settings = lib.mkMerge [
-      {
-        "org/gnome/mutter" = {
-          attach-modal-dialogs = true;
-          edge-tiling = true;
-          dynamic-workspaces = true;
-        };
-        "org/gnome/desktop/interface" = {
-          font-name = "Adwaita Sans 11"; # FIXME(25.11): https://github.com/NixOS/nixpkgs/pull/401037 "System-ui 11";
-          monospace-font-name = "Monospace 11";
-          clock-show-weekday = true;
-          clock-format = "24h";
-          accent-color = "teal";
-          gtk-enable-primary-paste = false;
-        };
-        "org/gnome/desktop/a11y/interface" = {
-          show-status-shapes = true;
-        };
-        "org/gnome/desktop/background" = let
-          yuuka = pkgs.fetchurl {
-            urls = [
-              "https://pixiv.net/img-original/img/2024/02/04/23/14/09/115770254_p0.jpg"
-              "https://pixiv.ducks.party/img-original/img/2024/02/04/23/14/09/115770254_p0.jpg"
-            ];
-            hash = "sha256-jBVGOqZImknJ/gqSiplmCNII4skcvwxe8eE9mcxaVII=";
-          };
-        in {
-          picture-options = "zoom";
-          picture-uri = "file://${yuuka}";
-          picture-uri-dark = "file://${yuuka}";
-        };
-        "org/gnome/desktop/privacy" = {
-          recent-files-max-age = 1;
-        };
-        "org/gnome/desktop/input-sources" = {
-          sources = [
-            (lib.hm.gvariant.mkTuple ["xkb" "us+colemak_dh_yuki"])
-            (lib.hm.gvariant.mkTuple ["xkb" "ru+rulemak_dh_yuki"])
-          ];
-          xkb-options = [
-            "grp:caps_toggle"
-            "grp_led:scroll" # XXX: What if only Caps lock led exists?
-            "grp_led:caps"
-          ];
-          show-all-sources = true;
-        };
-        "org/gnome/desktop/peripherals/mouse" = {
-          left-handed = false;
-        };
-        "org/gnome/desktop/wm/keybindings" = {
-          switch-windows = ["<Alt>Tab"];
-          switch-windows-backward = ["<Shift><Alt>Tab"];
-          switch-applications = ["<Super>Tab"];
-          switch-applications-backward = ["<Shift><Super>Tab"];
-        };
-        "org/gnome/shell/extensions/caffeine" = {
-          enable-fullscreen = false;
-        };
-        "org/gnome/shell/extensions/vitals" = {
-          hide-zeros = true;
-          menu-centered = true;
-          icon-style = 1; # GNOME
-          monitor-cmd = "${pkgs.mission-center}/bin/missioncenter";
-          hot-sensors = ["_system_load_1m_"];
-        };
-        "org/gnome/Ptyxis" = {
-          restore-session = false; # Useless without VTE integration
-        };
-        "desktop/ibus/general" = {
-          use-system-keyboard-layout = true;
-        };
-      }
-
-      (
-        let
-          klgs = ./keyboard-layout-group-switcher;
-          makeKeybindings = bindings: let
-            media-keys = "org/gnome/settings-daemon/plugins/media-keys";
-            names = builtins.genList (x: "${media-keys}/custom-keybindings/custom${toString x}") (builtins.length bindings);
-          in
-            (builtins.listToAttrs (lib.lists.zipListsWith (name: value: {inherit name value;}) names bindings))
-            // {
-              ${media-keys}.custom-keybindings = map (name: "/${name}/") names;
-            };
-        in
-          makeKeybindings [
-            {
-              binding = "<Super>Return";
-              command = "${pkgs.ptyxis}/bin/ptyxis --new-window";
-            }
-            {
-              binding = "<Super>F8";
-              command = "${klgs} qwerty";
-            }
-            {
-              binding = "<Super>F9";
-              command = "${klgs} yuki";
-            }
-            {
-              binding = "<Super>F10";
-              command = "${klgs} ibus";
-            }
-          ]
-      )
-    ];
-  };
+  meow.gnome.keybindings = [
+    {
+      binding = "<Super>Return";
+      command = "${pkgs.ptyxis}/bin/ptyxis --new-window";
+    }
+    {
+      binding = "<Super>F8";
+      command = "${./keyboard-layout-group-switcher} qwerty";
+    }
+    {
+      binding = "<Super>F9";
+      command = "${./keyboard-layout-group-switcher} yuki";
+    }
+    {
+      binding = "<Super>F10";
+      command = "${./keyboard-layout-group-switcher} ibus";
+    }
+  ];
 
   programs.mpv = {
     enable = true;
