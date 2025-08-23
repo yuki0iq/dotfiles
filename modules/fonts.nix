@@ -45,7 +45,7 @@ in {
         twitter-color-emoji
 
         # Fallback fonts
-        liberation_ttf  # Nice Arial/Times New Roman/Courier New replacement
+        liberation_ttf # Nice Arial/Times New Roman/Courier New replacement
         unifont
       ];
     };

@@ -15,7 +15,7 @@ in {
     (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
   ];
 
-  _module.args = { inherit pins; };
+  _module.args = {inherit pins;};
 
   boot.kernelPackages = pkgs.linuxKernel.packageAliases.linux_latest;
 
