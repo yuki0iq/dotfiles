@@ -10,7 +10,7 @@ in {
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-    ./modules/default.nix
+    ./modules
 
     (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
     (import "${pins.home-manager}/nixos")
