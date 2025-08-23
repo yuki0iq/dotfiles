@@ -16,9 +16,6 @@ in {
   config = lib.mkIf config.meow.system {
     boot.tmp.useTmpfs = true;
 
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
-
     i18n.defaultLocale = "en_US.UTF-8";
     i18n.extraLocaleSettings = {
       LC_MEASUREMENT = "C.UTF-8";
