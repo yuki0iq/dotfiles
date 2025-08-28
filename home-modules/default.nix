@@ -15,5 +15,8 @@
   config = {
     home.preferXdgDirectories = lib.mkDefault true;
     xdg.enable = lib.mkDefault true;
+
+    # XXX: Source hm-session-vars.sh in user shells even if bash is unmanaged by home-manager
+    programs.bash.enable = true;
   };
 }
