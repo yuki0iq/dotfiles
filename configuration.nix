@@ -49,13 +49,7 @@ in {
   environment.systemPackages = with pkgs; [
     fractal
     prismlauncher
-    ((pkgs.callPackage pins.yukigram {}).overrideAttrs (self: super: {
-      unwrapped = super.unwrapped.overrideAttrs {
-        # FIXME(25.05 regression): Yukigram uses unreleased Telegram Desktop version and does not need
-        # patches for Qt 6.9 support
-        patches = [];
-      };
-    }))
+    (pkgs.callPackage pins.yukigram {})
 
     gcc
     gef

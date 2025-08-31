@@ -22,7 +22,7 @@ in {
       "org/gnome/desktop/input-sources".show-all-sources = true;
 
       "org/gnome/desktop/interface" = {
-        font-name = "Adwaita Sans 11"; # FIXME(25.11): https://github.com/NixOS/nixpkgs/pull/401037 "System-ui 11";
+        font-name = "System-ui 11";
         monospace-font-name = "Monospace 11";
         clock-show-weekday = true;
         clock-format = "24h";

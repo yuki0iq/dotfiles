@@ -35,9 +35,6 @@ in {
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
 
-    # FIXME(25.11): Enable by default
-    system.rebuild.enableNg = true;
-
     time.timeZone = "Europe/Moscow";
 
     zramSwap.enable = true;

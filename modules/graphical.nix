@@ -32,9 +32,8 @@ in {
       type = "ibus";
       ibus.engines = with pkgs.ibus-engines; [
         anthy
-        # FIXME(25.05): https://nixpk.gs/pr-tracker.html?pr=420679
-        # table
-        # table-others
+        table
+        table-others
       ];
     };
 
