@@ -5,7 +5,7 @@
   ...
 }: let
 in {
-  config = lib.mkIf config.services.xserver.desktopManager.gnome.enable {
+  config = lib.mkIf config.services.desktopManager.gnome.enable {
     environment.gnome.excludePackages = with pkgs; [
       geary # thunderbird
       gnome-console # ptyxis
