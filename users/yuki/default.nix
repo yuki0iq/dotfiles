@@ -108,9 +108,10 @@
     (sublime4.overrideAttrs (self: super: {
       # XXX: Keep name here and in patch in sync with nixpkgs `primaryBinary`
       sublime_text = super.sublime_text.overrideAttrs (self: super: {
+        # https://gist.github.com/JerryLokjianming/71dac05f27f8c96ad1c8941b88030451?permalink_comment_id=5590975
         postFixup =
           ''
-            sed -i 's/\x80\x79\x05\x00\x0F\x94\xC2/\xC6\x41\x05\x01\xB2\x00\x90/' "$out/sublime_text"
+            sed -i 's/\x0F\xB6\x51\x05\x83\xF2\x01/\xC6\x41\x05\x01\xB2\x00\x90/' "$out/sublime_text"
           ''
           + super.postFixup;
       });
