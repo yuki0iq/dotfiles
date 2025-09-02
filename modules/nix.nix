@@ -20,10 +20,9 @@ in {
       npins
     ];
 
-    nix.nixPath = [
-      "nixpkgs=${pins.nixpkgs}"
-      "nixos-config=/etc/nixos/configuration.nix"
-    ];
+    nix.channel.enable = false;
+
+    nix.nixPath = ["nixpkgs=${pins.nixpkgs}"];
 
     nix.settings.use-xdg-base-directories = true;
   };
