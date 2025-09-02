@@ -96,6 +96,7 @@
         indie-wiki-buddy
         libredirect
         native-mathml
+        seventv
         shinigami-eyes
         sponsorblock
         ublock-origin
