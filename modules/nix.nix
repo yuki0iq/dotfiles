@@ -6,6 +6,10 @@
   ...
 }: let
 in {
+  imports = [
+    (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
+  ];
+
   options.meow.nix.enable = lib.mkEnableOption "nix configuration and tools" // {default = true;};
 
   config = lib.mkIf config.meow.nix.enable {

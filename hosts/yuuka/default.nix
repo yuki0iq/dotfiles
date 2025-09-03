@@ -1,33 +1,13 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
   pkgs,
+  pins,
   ...
-}: let
-  pins = let
-    pins = import ./npins;
-    # XXX: Can't reference neither toplevel `pkgs` nor `config.nixpkgs.pkgs` here. Using these will
-    # result in infinite recursion whenever `pins` are used in `imports`.
-    # This can be fixed by supplying nixpkgs with overlays *and* correct pins from outside like with
-    # flakes or colmena. How cursed it is to make a second nixpkgs evaluation just for fetchers...
-    pkgs = import pins.nixpkgs {};
-    applyPkgs = name: pinned: pinned {inherit pkgs;};
-  in
-    builtins.mapAttrs applyPkgs pins;
-in {
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-
-    ./modules
-
-    (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
-    (import "${pins.home-manager}/nixos")
   ];
-
-  _module.args = {inherit pins;};
 
   boot.kernelPackages = pkgs.linuxKernel.packageAliases.linux_latest;
 
@@ -44,10 +24,10 @@ in {
     isNormalUser = true;
     description = "yuki";
     extraGroups = ["networkmanager" "wheel" "docker" "wireshark"];
-    openssh.authorizedKeys.keyFiles = [./users/yuki/authorized_keys];
+    openssh.authorizedKeys.keyFiles = [../../users/yuki/authorized_keys];
   };
 
-  home-manager.users.yuki = import ./users/yuki;
+  home-manager.users.yuki = import ../../users/yuki;
 
   nixpkgs.overlays = [
     (self: super: rec {
