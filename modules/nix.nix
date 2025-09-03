@@ -17,7 +17,7 @@ in {
     environment.systemPackages = with pkgs; [
       alejandra
       nix-output-monitor
-      npins
+      (pkgs.callPackage pins.npins {})
     ];
 
     nix.channel.enable = false;

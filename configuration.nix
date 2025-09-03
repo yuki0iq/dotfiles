@@ -1,10 +1,21 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{config, ...}: let
-  pins = import ./npins;
-  pkgs = import pins.nixpkgs {};
-  fenixToolchain = (pkgs.callPackage pins.fenix {}).complete.toolchain;
+{
+  config,
+  pkgs,
+  ...
+}: let
+  pins = let
+    pins = import ./npins;
+    # XXX: Can't reference neither toplevel `pkgs` nor `config.nixpkgs.pkgs` here. Using these will
+    # result in infinite recursion whenever `pins` are used in `imports`.
+    # This can be fixed by supplying nixpkgs with overlays *and* correct pins from outside like with
+    # flakes or colmena. How cursed it is to make a second nixpkgs evaluation just for fetchers...
+    pkgs = import pins.nixpkgs {};
+    applyPkgs = name: pinned: pinned {inherit pkgs;};
+  in
+    builtins.mapAttrs applyPkgs pins;
 in {
   imports = [
     # Include the results of the hardware scan.
@@ -39,17 +50,20 @@ in {
   home-manager.users.yuki = import ./users/yuki;
 
   nixpkgs.overlays = [
-    (self: super: {
-      inherit fenixToolchain;
-      statusline = super.callPackage "${pins.statusline}/statusline.nix" {};
-      rycee = super.callPackage pins.rycee {};
+    (self: super: rec {
+      fenix = self.callPackage pins.fenix {};
+      rycee = self.callPackage pins.rycee {};
+      statusline = self.callPackage "${pins.statusline}/statusline.nix" {};
+      yukigram = self.callPackage pins.yukigram {};
+
+      fenixToolchain = fenix.complete.toolchain;
     })
   ];
 
   environment.systemPackages = with pkgs; [
     fractal
     prismlauncher
-    (pkgs.callPackage pins.yukigram {})
+    yukigram
 
     gcc
     gef
