@@ -5,14 +5,9 @@
   ...
 }: let
 in {
-  options = {
-    meow.fonts = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to enable font configuration";
-    };
-  };
+  options.meow.fonts.enable = lib.mkEnableOption "font configuration";
 
-  config = lib.mkIf config.meow.fonts {
+  config = lib.mkIf config.meow.fonts.enable {
     fonts = {
       fontconfig = {
         enable = true;

@@ -5,15 +5,10 @@
   pins,
   ...
 }: {
-  options = {
-    meow.graphical = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to enable graphical desktop";
-    };
-  };
+  options.meow.graphical.enable = lib.mkEnableOption "graphical desktop";
 
-  config = {
-    meow.anthy = lib.mkDefault true;
+  config = lib.mkIf config.meow.graphical.enable {
+    meow.anthy.enable = lib.mkDefault true;
     meow.gnome.enable = lib.mkDefault true;
   };
 }

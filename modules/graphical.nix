@@ -6,15 +6,10 @@
   ...
 }: let
 in {
-  options = {
-    meow.graphical = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to enable graphical desktop";
-    };
-  };
+  options.meow.graphical.enable = lib.mkEnableOption "graphical desktop";
 
-  config = lib.mkIf config.meow.graphical {
-    meow.fonts = lib.mkDefault true;
+  config = lib.mkIf config.meow.graphical.enable {
+    meow.fonts.enable = lib.mkDefault true;
 
     services.xserver.enable = true;
 

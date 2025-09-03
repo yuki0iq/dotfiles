@@ -31,7 +31,7 @@ in {
     };
   };
 
-  config.dconf.settings =
-    lib.mkIf (builtins.length config.meow.gnome.keybindings > 0)
-    (makeKeybindings config.meow.gnome.keybindings);
+  config = lib.mkIf (builtins.length config.meow.gnome.keybindings > 0) {
+    dconf.settings = makeKeybindings config.meow.gnome.keybindings;
+  };
 }

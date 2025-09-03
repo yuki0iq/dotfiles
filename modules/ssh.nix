@@ -6,14 +6,8 @@
 }: let
 in {
   options = {
-    programs.ssh.hardened = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to harden SSH client";
-    };
-    services.openssh.hardened = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to harden SSH server";
-    };
+    programs.ssh.hardened = lib.mkEnableOption "SSH client hardening";
+    services.openssh.hardened = lib.mkEnableOption "SSH server hardening";
   };
 
   config = {

@@ -5,14 +5,9 @@
   ...
 }: let
 in {
-  options = {
-    meow.proxies = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to enable proxies to bypass censorship";
-    };
-  };
+  options.meow.proxies.enable = lib.mkEnableOption "proxies to bypass censorship" // {default = true;};
 
-  config = lib.mkIf config.meow.proxies {
+  config = lib.mkIf config.meow.proxies.enable {
     systemd.services = let
       makeProxyUnit = args: (args
         // {

@@ -6,14 +6,9 @@
   ...
 }: let
 in {
-  options = {
-    meow.nix = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to enable nix configuration and tools";
-    };
-  };
+  options.meow.nix.enable = lib.mkEnableOption "nix configuration and tools" // {default = true;};
 
-  config = lib.mkIf config.meow.nix {
+  config = lib.mkIf config.meow.nix.enable {
     environment.systemPackages = with pkgs; [
       alejandra
       nix-output-monitor

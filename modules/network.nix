@@ -5,14 +5,9 @@
   ...
 }: let
 in {
-  options = {
-    meow.network = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to enable network tools and services";
-    };
-  };
+  options.meow.network.enable = lib.mkEnableOption "network tools and services" // {default = true;};
 
-  config = lib.mkIf config.meow.network {
+  config = lib.mkIf config.meow.network.enable {
     environment.systemPackages = with pkgs; [
       curl
       iperf3

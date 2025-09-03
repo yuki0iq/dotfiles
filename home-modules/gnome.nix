@@ -6,12 +6,7 @@
   ...
 }: let
 in {
-  options = {
-    meow.gnome.enable = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to configure GNOME";
-    };
-  };
+  options.meow.gnome.enable = lib.mkEnableOption "configure GNOME";
 
   config = lib.mkIf config.meow.gnome.enable {
     dconf.enable = true;

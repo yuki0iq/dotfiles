@@ -14,7 +14,7 @@
   # changes in each release.
   home.stateVersion = "24.11";
 
-  meow.graphical = true;
+  meow.graphical.enable = true;
 
   xdg.configFile."xkb".source = ./xkb;
   xdg.configFile."sublime-text/Packages/User".source = ./sublime-text_Packages_User;

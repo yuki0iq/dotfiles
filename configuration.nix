@@ -70,7 +70,7 @@ in {
     fenixToolchain
   ];
 
-  meow.graphical = true;
+  meow.graphical.enable = true;
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [

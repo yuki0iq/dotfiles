@@ -6,14 +6,9 @@
   ...
 }: let
 in {
-  options = {
-    meow.basics = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to enable basic debugging and maintenance tools";
-    };
-  };
+  options.meow.basics.enable = lib.mkEnableOption "basic debugging and maintenance tools" // {default = true;};
 
-  config = lib.mkIf config.meow.basics {
+  config = lib.mkIf config.meow.basics.enable {
     environment.shellAliases = {
       downspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225";
       upspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225 -R";

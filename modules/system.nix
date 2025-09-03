@@ -6,14 +6,9 @@
   ...
 }: let
 in {
-  options = {
-    meow.system = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to configure system";
-    };
-  };
+  options.meow.system.enable = lib.mkEnableOption "essential system configuration" // {default = true;};
 
-  config = lib.mkIf config.meow.system {
+  config = lib.mkIf config.meow.system.enable {
     boot.tmp.useTmpfs = true;
 
     i18n.defaultLocale = "en_US.UTF-8";

@@ -6,20 +6,9 @@
 }: let
   cfg = config.programs.git;
 in {
-  options = {
-    programs.git = {
-      short-aliases = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable opinionated short aliases";
-      };
-
-      autosign = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Enable automatic ssh signature of commits and tags";
-      };
-    };
+  options.programs.git = {
+    autosign = lib.mkEnableOption "automatic ssh signature of commits and tags";
+    short-aliases = lib.mkEnableOption "opinionated short aliases";
   };
 
   config = {

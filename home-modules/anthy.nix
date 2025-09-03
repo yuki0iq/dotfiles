@@ -6,14 +6,9 @@
   ...
 }: let
 in {
-  options = {
-    meow.anthy = lib.mkOption {
-      type = lib.types.bool;
-      description = "Whether to configure anthy";
-    };
-  };
+  options.meow.anthy.enable = lib.mkEnableOption "anthy configuration";
 
-  config = lib.mkIf config.meow.anthy {
+  config = lib.mkIf config.meow.anthy.enable {
     dconf.settings."desktop/ibus/general".use-system-keyboard-layout = true;
 
     xdg.configFile."ibus-anthy/engines.xml".text = let
