@@ -47,6 +47,12 @@ in {
           ${pkgs.xray}/bin/xray run -c /etc/nixos/secrets/xray-over-byedpi.json
         '';
       };
+      xray-alternative = makeProxyUnit {
+        description = "xray alternative client service";
+        script = ''
+          exec ${pkgs.xray}/bin/xray run -c /etc/nixos/secrets/xray-alt.json
+        '';
+      };
     };
   };
 }
