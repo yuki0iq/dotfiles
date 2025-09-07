@@ -5,18 +5,18 @@ let
 
   lib = pkgs.lib;
   evalConfig = import "${pins.nixpkgs}/nixos/lib/eval-config.nix";
-  nixosSystem = host: evalConfig {
-    specialArgs = {
-      inherit pins;
-    };
+  nixosSystem = host:
+    evalConfig {
+      specialArgs = {
+        inherit pins;
+      };
 
-    modules = [
-      ./modules
-      ./hosts/${host}
-    ];
-  };
-in
-{
+      modules = [
+        ./modules
+        ./hosts/${host}
+      ];
+    };
+in {
   nixosConfigurations = lib.flip lib.genAttrs nixosSystem [
     "yuuka"
   ];
