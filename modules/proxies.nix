@@ -9,14 +9,17 @@ in {
 
   config = lib.mkIf config.meow.proxies.enable {
     systemd.services = let
-      makeProxyUnit = args: (args
-        // {
-          enable = true;
+      makeProxyUnit = args: (lib.mkMerge [
+        args
+        {
+          enable = lib.mkDefault true;
           after = ["network.target"];
           wantedBy = ["default.target"];
-        });
+        }
+      ]);
     in {
       shadowsocks-proxy = makeProxyUnit {
+        enable = false;
         description = "shadowsocks client service";
         script = ''
           exec ${pkgs.shadowsocks-rust}/bin/sslocal -c /etc/nixos/secrets/shadowsocks.json
@@ -36,6 +39,7 @@ in {
         '';
       };
       xray-byedpi-proxy = makeProxyUnit {
+        enable = false;
         description = "xray-over-byedpi client service";
         script = ''
           source /etc/nixos/secrets/xray-server.sh
