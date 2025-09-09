@@ -16,22 +16,33 @@
   in
     bindingsList // compiledBindings;
 in {
-  options = {
-    meow.gnome.keybindings = lib.mkOption {
-      type = lib.types.listOf lib.types.attrs;
-      description = "Custom keybindings for GNOME";
-      example = lib.literalExpression ''
-        [
-          {
-            binding = "<Super>Return";
-            command = "${pkgs.firefox}/bin/firefox";
-          }
-        ]
-      '';
-    };
+  options.meow.gnome.keybindings = lib.mkOption {
+    type = lib.types.listOf (lib.types.submodule {
+      options = {
+        name = lib.mkOption {
+          type = lib.types.nullOr lib.types.str;
+          default = null;
+        };
+        binding = lib.mkOption {type = lib.types.str;};
+        command = lib.mkOption {type = lib.types.str;};
+        enable-in-lockscreen = lib.mkEnableOption "this keybinding in lockscreen";
+      };
+    });
+    description = "Custom keybindings for GNOME";
+    example = lib.literalExpression ''
+      [
+        {
+          binding = "<Super>Return";
+          command = "${pkgs.firefox}/bin/firefox";
+        }
+      ]
+    '';
   };
 
-  config = lib.mkIf (builtins.length config.meow.gnome.keybindings > 0) {
-    dconf.settings = makeKeybindings config.meow.gnome.keybindings;
-  };
+  config.dconf.settings = let
+    cfg = config.meow.gnome.keybindings;
+    removeNullName = lib.filterAttrs (k: v: k == "name" -> v != null);
+    bindings = map removeNullName cfg;
+  in
+    lib.mkIf (builtins.length cfg > 0) (makeKeybindings bindings);
 }
