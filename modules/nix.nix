@@ -21,7 +21,10 @@ in {
 
     nix.channel.enable = false;
 
-    nix.nixPath = ["nixpkgs=${pins.nixpkgs}"];
+    nix.nixPath = [
+      "nixpkgs=${pins.nixpkgs}"
+      "fenix=${pins.fenix}"
+    ];
 
     nix.settings.use-xdg-base-directories = true;
   };

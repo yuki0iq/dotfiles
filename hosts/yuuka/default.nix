@@ -33,10 +33,8 @@
     (final: prev: rec {
       fenix = prev.callPackage pins.fenix {};
       rycee = prev.callPackage pins.rycee {};
-      statusline = prev.callPackage "${pins.statusline}/statusline.nix" {};
+      statusline = prev.callPackage pins.statusline {};
       yukigram = prev.callPackage pins.yukigram {};
-
-      fenixToolchain = fenix.complete.toolchain;
     })
   ];
 
@@ -47,7 +45,7 @@
 
     gcc
     gef
-    fenixToolchain
+    fenix.complete.toolchain
   ];
 
   meow.graphical.enable = true;

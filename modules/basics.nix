@@ -33,9 +33,9 @@ in {
       ripgrep
 
       config.boot.kernelPackages.cpupower
-      config.boot.kernelPackages.perf
       lm_sensors
       pciutils
+      perf
       usbutils
 
       file
