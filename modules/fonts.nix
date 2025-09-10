@@ -25,12 +25,12 @@ in {
       enableDefaultPackages = false;
 
       packages = with pkgs; [
-        (fantasque-sans-mono.overrideAttrs (self: super: {
+        (fantasque-sans-mono.overrideAttrs (final: prev: {
           installPhase =
             builtins.replaceStrings
             ["OTF" "otf" "opentype"]
             ["TTF" "ttf" "truetype"]
-            super.installPhase;
+            prev.installPhase;
         }))
         nerd-fonts.symbols-only
         noto-fonts
