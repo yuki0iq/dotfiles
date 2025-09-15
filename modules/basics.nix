@@ -28,6 +28,7 @@ in {
       bc
       dua
       eza
+      jq
       libqalculate
       moreutils
       ripgrep
