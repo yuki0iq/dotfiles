@@ -16,6 +16,7 @@
     ./nix.nix
     ./proxies.nix
     ./ssh.nix
+    ./sysbox.nix
     ./system.nix
   ];
 }

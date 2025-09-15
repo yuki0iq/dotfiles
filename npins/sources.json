@@ -1,5 +1,18 @@
 {
   "pins": {
+    "abbradar-nixpkgs-ugractf": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "abbradar",
+        "repo": "nixpkgs"
+      },
+      "branch": "ugractf",
+      "submodules": false,
+      "revision": "1bbd1b1bea07f05538f1cb8c2584a82815379e30",
+      "url": "https://github.com/abbradar/nixpkgs/archive/1bbd1b1bea07f05538f1cb8c2584a82815379e30.tar.gz",
+      "hash": "sha256-3QjrH0J9BtqJHZqtVueAjslups6EqpVQjGo4sQA7xEo="
+    },
     "fenix": {
       "type": "Git",
       "repository": {

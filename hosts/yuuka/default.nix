@@ -18,7 +18,10 @@
 
   services.fwupd.enable = true;
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    enableSysbox = true;
+  };
 
   users.users.yuki = {
     isNormalUser = true;
