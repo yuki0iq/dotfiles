@@ -30,7 +30,7 @@
   home-manager.users.yuki = import ../../users/yuki;
 
   nixpkgs.overlays = [
-    (final: prev: rec {
+    (final: prev: {
       fenix = prev.callPackage pins.fenix {};
       rycee = prev.callPackage pins.rycee {};
       statusline = prev.callPackage pins.statusline {};
