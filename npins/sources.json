@@ -22,9 +22,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "0682b9b518792c9428865c511a4c40c9ad85c243",
-      "url": "https://github.com/nix-community/fenix/archive/0682b9b518792c9428865c511a4c40c9ad85c243.tar.gz",
-      "hash": "sha256-5Rcs6juMoMTaMJSR1glravl4QB9yLAFBD8s7KLi4kdQ="
+      "revision": "5c342209226275f704ab84d89efc80b2d3963517",
+      "url": "https://github.com/nix-community/fenix/archive/5c342209226275f704ab84d89efc80b2d3963517.tar.gz",
+      "hash": "sha256-30KHoIXMgyNQULifR1yQ5Sp0vr4tWpGRJXPOTgEzx1A="
     },
     "home-manager": {
       "type": "Git",
@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "3c97248d6f896232355735e34bb518ae9f130c5d",
-      "url": "https://github.com/nix-community/home-manager/archive/3c97248d6f896232355735e34bb518ae9f130c5d.tar.gz",
-      "hash": "sha256-bBh9sAJn0x/EdCVA6NYj/hXpcW1YBLCRMgn8A2T1l2E="
+      "revision": "619ae569293b6427d23cce4854eb4f3c33af3eec",
+      "url": "https://github.com/nix-community/home-manager/archive/619ae569293b6427d23cce4854eb4f3c33af3eec.tar.gz",
+      "hash": "sha256-GjLvAl7qxGxKtop6ghasxjQ1biTT7pA+WU45byzMl/4="
     },
     "lix-nixos-module": {
       "type": "Git",
@@ -56,8 +56,8 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-unstable",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre858212.b599843bad24/nixexprs.tar.xz",
-      "hash": "sha256-cUwlZ3aSduI9dw5AbF3PzktsCztcvt+0GBClTeGaksI="
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre868392.e9f00bd89398/nixexprs.tar.xz",
+      "hash": "sha256-Lz9jvhswQu/niKVttNvOds0w+OS+2x63NivPVJng5G4="
     },
     "npins": {
       "type": "Git",
@@ -68,9 +68,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "e4683671e145c652c371b6b8ad9b0d757c88853c",
-      "url": "https://github.com/andir/npins/archive/e4683671e145c652c371b6b8ad9b0d757c88853c.tar.gz",
-      "hash": "sha256-Nu86s1xok+1EFM0J9e55hrYPgfoutEZUDBpeXReCOaY="
+      "revision": "e49bcf58d66fa7f586aff687feae72c23e429672",
+      "url": "https://github.com/andir/npins/archive/e49bcf58d66fa7f586aff687feae72c23e429672.tar.gz",
+      "hash": "sha256-ZLrVWa7WU+IUXPAd6mR7B9c6FDZSiGgW8ClfW0SxbMs="
     },
     "rycee": {
       "type": "Git",
@@ -81,9 +81,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "64287f374ef7b55102662e2909c83fec030dbdb7",
-      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=64287f374ef7b55102662e2909c83fec030dbdb7",
-      "hash": "sha256-yZax/+znnGrYdwM00U8r/zhLsoWWUXrlmIp4gBlXCJY="
+      "revision": "58402e09ad48f9f509d9249b8704c1a4f390c434",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=58402e09ad48f9f509d9249b8704c1a4f390c434",
+      "hash": "sha256-vWk2iw/i5c0RHc/zLVyB51UYvmbzPq3uB14NN7kaouE="
     },
     "statusline": {
       "type": "Git",
