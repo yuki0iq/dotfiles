@@ -10,8 +10,8 @@ in {
 
   config = lib.mkIf config.meow.basics.enable {
     environment.shellAliases = {
-      downspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225";
-      upspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225 -R";
+      downspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225 -R";
+      upspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225";
       cat = "${pkgs.bat}/bin/bat";
       ip = "ip -c=always";
       ls = "${pkgs.eza}/bin/eza --color=auto --hyperlink";
