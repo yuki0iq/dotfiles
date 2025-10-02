@@ -44,6 +44,8 @@ in {
       strace
     ];
 
+    documentation.nixos.includeAllModules = true;
+
     programs.bash = {
       completion.enable = true;
 
