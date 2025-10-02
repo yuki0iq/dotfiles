@@ -44,6 +44,7 @@ in {
       strace
     ];
 
+    documentation.man.generateCaches = true;
     documentation.nixos.includeAllModules = true;
 
     programs.bash = {
