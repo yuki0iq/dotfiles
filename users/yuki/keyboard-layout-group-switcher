@@ -12,14 +12,14 @@ case $# in
 esac
 
 declare -A profiles=(
-    [yuki]="[('xkb', 'us+colemak_dh_yuki'), ('xkb', 'ru+rulemak_dh_yuki')]"
+    [yuki]="[('xkb', 'us_yuki+colemak_dh'), ('xkb', 'ru_yuki+rulemak_dh')]"
     [ibus]="[('ibus', 'anthy'), ('ibus', 'table:ipa-x-sampa')]"
-    [qwerty]="[('xkb', 'us+euro'), ('xkb', 'by+ru')]"
+    [qwerty]="[('xkb', 'us'), ('xkb', 'ru')]"
 )
 
 # Reset on unknown profile name
 [[ -z "${profiles[$profile]}" ]] && profile=yuki
 
 gsettings set org.gnome.desktop.input-sources sources "${profiles[$profile]}"
-openrgb --noautoconnect --profile "$profile"
+# openrgb --noautoconnect --profile "$profile"
 

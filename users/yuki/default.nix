@@ -40,13 +40,17 @@
 
     "org/gnome/desktop/input-sources" = {
       sources = [
-        (lib.hm.gvariant.mkTuple ["xkb" "us+colemak_dh_yuki"])
-        (lib.hm.gvariant.mkTuple ["xkb" "ru+rulemak_dh_yuki"])
+        (lib.hm.gvariant.mkTuple ["xkb" "us_yuki+colemak_dh"])
+        (lib.hm.gvariant.mkTuple ["xkb" "ru_yuki+rulemak_dh"])
       ];
       xkb-options = [
         "grp:caps_toggle"
         "grp_led:scroll" # XXX: What if only Caps lock led exists?
         "grp_led:caps"
+        "compose:rctrl"
+        "lv3:ralt_switch"
+        "lv3:rwin_switch"
+        "lv5:menu_switch"
       ];
     };
 
