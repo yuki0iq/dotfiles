@@ -39,7 +39,13 @@ in {
         edge-tiling = true;
       };
 
-      "org/gnome/Ptyxis".restore-session = false; # Useless without VTE integration
+      "org/gnome/Ptyxis" = {
+        restore-session = false; # Useless without VTE integration
+        default-profile-uuid = "default";
+        profile-uuids = ["default"];
+      };
+
+      "org/gnome/Ptyxis/Profiles/default".palette = "gnome-high-contrast";
 
       "org/gnome/shell/app-switcher".current-workspace-only = false;
 
