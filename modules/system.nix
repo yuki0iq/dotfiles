@@ -18,7 +18,12 @@ in {
       LC_TIME = "en_DK.UTF-8";
     };
 
-    networking.networkmanager.enable = true;
+    networking.networkmanager = {
+      enable = true;
+      settings = {
+        connectivity.uri = "http://nmcheck.gnome.org/check_network_status.txt";
+      };
+    };
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
