@@ -95,9 +95,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "59286a1a9fe97b726d145835d098818129712553",
-      "url": "https://codeberg.org/yuki0iq/statusline/archive/59286a1a9fe97b726d145835d098818129712553.tar.gz",
-      "hash": "sha256-/pubIFkV39Fy0tUW+e30Cqmuob0XWQr2V2NDC7YObTA="
+      "revision": "0a4038a6e94f0fcd8428fecbe45321bc92325f12",
+      "url": "https://codeberg.org/yuki0iq/statusline/archive/0a4038a6e94f0fcd8428fecbe45321bc92325f12.tar.gz",
+      "hash": "sha256-Pd1UBNVar5eHIo8B3z7bBDVbfx4cy71SEiZBbSdOa7Q="
     },
     "yukigram": {
       "type": "GitRelease",
