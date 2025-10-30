@@ -51,8 +51,7 @@ in {
       completion.enable = true;
 
       promptInit = ''
-        PS1_MODE=minimal
-        eval "$(${pkgs.statusline}/bin/statusline env)"
+        PS1_MODE=minimal source <(${pkgs.statusline}/bin/statusline env)
       '';
 
       vteIntegration = false;
