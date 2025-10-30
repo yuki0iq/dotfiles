@@ -29,8 +29,7 @@ The contents of these files? That's a secret.
 
 ## TODO
 
-- Figure out how to autoformat everything except for `hardware-configuration.nix` files. Or don't and format these anyways.
+- Figure out how to autoformat everything except for `npins/` files. Or don't and format these anyways.
 - `/users/{username}` is not the best idea, probably `/users/{username}@{hostname}` is better, e.g. for standalone home-manager configurations or servers where graphical system is unneeded.
 - Gate home-manager module behind "enable"-style option
 - Make modules prettier
-- (external) Make statusline use stable rust from nixpkgs
