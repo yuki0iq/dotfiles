@@ -57,6 +57,8 @@ in {
       vteIntegration = false;
     };
 
+    services.openssh.settings.AcceptEnv = "WORKGROUP_CHAIN";
+
     programs.command-not-found = {
       enable = true;
       dbPath = "${pins.nixpkgs}/programs.sqlite";
