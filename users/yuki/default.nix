@@ -97,6 +97,7 @@
     };
     profiles.default = {
       extensions.packages = with pkgs.rycee.firefox-addons; [
+        consent-o-matic
         indie-wiki-buddy
         libredirect
         native-mathml
