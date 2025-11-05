@@ -87,6 +87,8 @@ in {
       vimAlias = true;
     };
 
+    programs.nix-ld.enable = true;
+
     programs.tmux.enable = true;
   };
 }
