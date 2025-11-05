@@ -47,6 +47,7 @@
 
     gcc
     gef
+    python3
     rustup
   ];
 
