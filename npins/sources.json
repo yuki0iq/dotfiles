@@ -13,19 +13,6 @@
       "url": "https://github.com/abbradar/nixpkgs/archive/1bbd1b1bea07f05538f1cb8c2584a82815379e30.tar.gz",
       "hash": "sha256-3QjrH0J9BtqJHZqtVueAjslups6EqpVQjGo4sQA7xEo="
     },
-    "fenix": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "nix-community",
-        "repo": "fenix"
-      },
-      "branch": "main",
-      "submodules": false,
-      "revision": "5c342209226275f704ab84d89efc80b2d3963517",
-      "url": "https://github.com/nix-community/fenix/archive/5c342209226275f704ab84d89efc80b2d3963517.tar.gz",
-      "hash": "sha256-30KHoIXMgyNQULifR1yQ5Sp0vr4tWpGRJXPOTgEzx1A="
-    },
     "home-manager": {
       "type": "Git",
       "repository": {

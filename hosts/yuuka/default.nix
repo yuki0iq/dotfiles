@@ -34,7 +34,6 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      fenix = prev.callPackage pins.fenix {};
       rycee = prev.callPackage pins.rycee {};
       statusline = prev.callPackage pins.statusline {};
       yukigram = prev.callPackage pins.yukigram {};
@@ -48,7 +47,7 @@
 
     gcc
     gef
-    fenix.complete.toolchain
+    rustup
   ];
 
   meow.graphical.enable = true;
