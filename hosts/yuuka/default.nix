@@ -9,14 +9,7 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxKernel.packageAliases.linux_latest;
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   networking.hostName = "yuuka";
-
-  services.fwupd.enable = true;
 
   virtualisation.docker = {
     enable = true;
@@ -43,6 +36,7 @@
     rustup
   ];
 
+  meow.boot.enable = true;
   meow.graphical.enable = true;
 
   nixpkgs.config.allowUnfreePredicate = pkg:

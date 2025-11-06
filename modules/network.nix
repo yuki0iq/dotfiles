@@ -11,6 +11,7 @@
       curl
       iperf3
       nmap
+      rsync
       socat
       ssh-audit
     ];

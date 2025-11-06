@@ -8,63 +8,16 @@
   options.meow.basics.enable = lib.mkEnableOption "basic debugging and maintenance tools" // {default = true;};
 
   config = lib.mkIf config.meow.basics.enable {
-    environment.shellAliases = {
-      downspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225 -R";
-      upspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225";
-      cat = "${pkgs.bat}/bin/bat";
-      ip = "ip -c=always";
-      ls = "${pkgs.eza}/bin/eza --color=auto --hyperlink";
-      diff = "diff --color=auto";
-      psu = "ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,ucmd";
-      psc = "ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,cmd";
-      nix-build = "nix-build --log-format multiline-with-logs";
-      nix-shell = "nix-shell --log-format multiline-with-logs";
-      nixos-rebuild = "nixos-rebuild --log-format multiline-with-logs";
-    };
+    environment.defaultPackages = lib.mkForce [];
 
     environment.systemPackages = with pkgs; [
-      man-pages
-      man-pages-posix
-
-      bat
       bc
       dua
-      eza
-      jq
-      libqalculate
-      moreutils
-      ripgrep
-
-      config.boot.kernelPackages.cpupower
-      lm_sensors
-      pciutils
-      perf
-      usbutils
-
       file
+      libqalculate
       lsof
       strace
     ];
-
-    documentation.man.generateCaches = true;
-    documentation.nixos.includeAllModules = true;
-
-    programs.bash = {
-      completion.enable = true;
-
-      promptInit = ''
-        PS1_MODE=minimal source <(${pkgs.callPackage pins.statusline {}}/bin/statusline env)
-      '';
-
-      vteIntegration = false;
-    };
-
-    services.openssh.settings.AcceptEnv = "WORKGROUP_CHAIN";
-
-    programs.command-not-found = {
-      enable = true;
-      dbPath = "${pins.nixpkgs}/programs.sqlite";
-    };
 
     programs.git = {
       enable = true;
