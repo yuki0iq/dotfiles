@@ -2,10 +2,8 @@
   config,
   lib,
   pkgs,
-  pins,
   ...
-}: let
-in {
+}: {
   options.meow.gnome.enable = lib.mkEnableOption "configure GNOME";
 
   config = lib.mkIf config.meow.gnome.enable {

@@ -1,11 +1,8 @@
 {
   config,
   lib,
-  pkgs,
-  pins,
   ...
-}: let
-in {
+}: {
   options.meow.system.enable = lib.mkEnableOption "essential system configuration" // {default = true;};
 
   config = lib.mkIf config.meow.system.enable {

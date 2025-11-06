@@ -1,19 +1,10 @@
-{
-  config,
-  lib,
-  pkgs,
-  pins,
-  ...
-}: let
-in {
+{pins, ...}: {
   imports = ["${pins.home-manager}/nixos"];
 
-  config = {
-    home-manager = {
-      extraSpecialArgs = {inherit pins;};
-      sharedModules = [../home-modules];
-      useGlobalPkgs = true;
-      useUserPackages = true;
-    };
+  config.home-manager = {
+    extraSpecialArgs = {inherit pins;};
+    sharedModules = [../home-modules];
+    useGlobalPkgs = true;
+    useUserPackages = true;
   };
 }

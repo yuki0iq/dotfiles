@@ -1,8 +1,6 @@
 {
   config,
   lib,
-  pkgs,
-  pins,
   ...
 }: {
   options.meow.graphical.enable = lib.mkEnableOption "graphical desktop";

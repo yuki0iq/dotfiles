@@ -2,10 +2,8 @@
   config,
   lib,
   pkgs,
-  pins,
   ...
-}: let
-in {
+}: {
   options.meow.graphical.enable = lib.mkEnableOption "graphical desktop";
 
   config = lib.mkIf config.meow.graphical.enable {

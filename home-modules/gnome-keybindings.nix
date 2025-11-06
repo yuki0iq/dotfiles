@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  pins,
   ...
 }: let
   makeKeybindings = bindings: let

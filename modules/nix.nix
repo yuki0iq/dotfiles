@@ -4,8 +4,7 @@
   pkgs,
   pins,
   ...
-}: let
-in {
+}: {
   imports = [
     (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
   ];

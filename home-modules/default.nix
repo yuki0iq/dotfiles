@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  pins,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ./anthy.nix
     ./gnome.nix

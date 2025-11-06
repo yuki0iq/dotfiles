@@ -2,10 +2,8 @@
   config,
   lib,
   pkgs,
-  pins,
   ...
-}: let
-in {
+}: {
   options.meow.anthy.enable = lib.mkEnableOption "anthy configuration";
 
   config = lib.mkIf config.meow.anthy.enable {

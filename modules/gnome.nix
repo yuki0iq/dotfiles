@@ -3,8 +3,7 @@
   lib,
   pkgs,
   ...
-}: let
-in {
+}: {
   config = lib.mkIf config.services.desktopManager.gnome.enable {
     environment.gnome.excludePackages = with pkgs; [
       geary # thunderbird

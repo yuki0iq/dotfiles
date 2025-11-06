@@ -1,10 +1,8 @@
 {
   config,
   lib,
-  pkgs,
   ...
-}: let
-in {
+}: {
   options = {
     programs.ssh.hardened = lib.mkEnableOption "SSH client hardening";
     services.openssh.hardened = lib.mkEnableOption "SSH server hardening";

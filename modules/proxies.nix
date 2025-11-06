@@ -3,21 +3,20 @@
   lib,
   pkgs,
   ...
-}: let
-in {
+}: {
   options.meow.proxies.enable = lib.mkEnableOption "proxies to bypass censorship" // {default = true;};
 
-  config = lib.mkIf config.meow.proxies.enable {
-    systemd.services = let
-      makeProxyUnit = args: (lib.mkMerge [
-        args
-        {
-          enable = lib.mkDefault true;
-          after = ["network.target"];
-          wantedBy = ["default.target"];
-        }
-      ]);
-    in {
+  config.systemd.services = let
+    makeProxyUnit = args: (lib.mkMerge [
+      args
+      {
+        enable = lib.mkDefault true;
+        after = ["network.target"];
+        wantedBy = ["default.target"];
+      }
+    ]);
+  in
+    lib.mkIf config.meow.proxies.enable {
       shadowsocks-proxy = makeProxyUnit {
         enable = false;
         description = "shadowsocks client service";
@@ -54,5 +53,4 @@ in {
         '';
       };
     };
-  };
 }

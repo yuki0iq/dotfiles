@@ -4,8 +4,7 @@
   pkgs,
   pins,
   ...
-}: let
-in {
+}: {
   options.meow.basics.enable = lib.mkEnableOption "basic debugging and maintenance tools" // {default = true;};
 
   config = lib.mkIf config.meow.basics.enable {

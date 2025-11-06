@@ -3,8 +3,7 @@
   lib,
   pkgs,
   ...
-}: let
-in {
+}: {
   options.meow.network.enable = lib.mkEnableOption "network tools and services" // {default = true;};
 
   config = lib.mkIf config.meow.network.enable {
