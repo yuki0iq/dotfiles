@@ -32,18 +32,10 @@
 
   home-manager.users.yuki = import ../../users/yuki;
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      rycee = prev.callPackage pins.rycee {};
-      statusline = prev.callPackage pins.statusline {};
-      yukigram = prev.callPackage pins.yukigram {};
-    })
-  ];
-
   environment.systemPackages = with pkgs; [
     fractal
     prismlauncher
-    yukigram
+    (callPackage pins.yukigram {})
 
     gcc
     gef
