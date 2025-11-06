@@ -62,10 +62,6 @@
 
   meow.gnome.keybindings = [
     {
-      binding = "<Super>Return";
-      command = "${pkgs.ptyxis}/bin/ptyxis --new-window";
-    }
-    {
       binding = "<Super>F8";
       command = "${./keyboard-layout-group-switcher} qwerty";
     }
@@ -78,38 +74,6 @@
       command = "${./keyboard-layout-group-switcher} ibus";
     }
   ];
-
-  programs.mpv = {
-    enable = true;
-    config = {
-      hdr-compute-peak = false;
-      profile = "fast";
-      sub-auto = "fuzzy";
-      audio-file-auto = "fuzzy";
-      cache = true;
-      demuxer-max-bytes = "512MiB";
-    };
-    scripts = with pkgs.mpvScripts; [mpris];
-  };
-
-  programs.librewolf = {
-    enable = true;
-    settings = {
-    };
-    profiles.default = {
-      extensions.packages = with (pkgs.callPackage pins.rycee {}).firefox-addons; [
-        consent-o-matic
-        indie-wiki-buddy
-        libredirect
-        native-mathml
-        seventv
-        shinigami-eyes
-        sponsorblock
-        ublock-origin
-        vimium
-      ];
-    };
-  };
 
   home.packages = with pkgs; [
     (sublime4.overrideAttrs (final: prev: {

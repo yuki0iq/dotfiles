@@ -58,6 +58,13 @@
       };
     };
 
+    meow.gnome.keybindings = [
+      {
+        binding = "<Super>Return";
+        command = "${pkgs.ptyxis}/bin/ptyxis --new-window";
+      }
+    ];
+
     programs.gnome-shell = {
       enable = true;
       extensions = with pkgs.gnomeExtensions; [

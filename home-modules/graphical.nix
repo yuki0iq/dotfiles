@@ -8,5 +8,8 @@
   config = lib.mkIf config.meow.graphical.enable {
     meow.anthy.enable = lib.mkDefault true;
     meow.gnome.enable = lib.mkDefault true;
+
+    programs.librewolf.enable = true;
+    programs.mpv.enable = true;
   };
 }
