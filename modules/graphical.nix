@@ -7,7 +7,7 @@
   options.meow.graphical.enable = lib.mkEnableOption "graphical desktop";
 
   config = lib.mkIf config.meow.graphical.enable {
-    meow.fonts.enable = lib.mkDefault true;
+    meow.fonts.enable = true;
 
     services.xserver.enable = true;
 

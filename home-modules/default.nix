@@ -9,8 +9,8 @@
   ];
 
   config = {
-    home.preferXdgDirectories = lib.mkDefault true;
-    xdg.enable = lib.mkDefault true;
+    home.preferXdgDirectories = true;
+    xdg.enable = true;
 
     manual.html.enable = true;
     manual.manpages.enable = true;
