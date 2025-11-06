@@ -19,6 +19,8 @@
       strace
     ];
 
+    programs.direnv.enable = true;
+
     programs.git = {
       enable = true;
       autosign = true;
