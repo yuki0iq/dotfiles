@@ -20,6 +20,8 @@
       nix-build = "nix-build --log-format multiline-with-logs";
       nix-shell = "nix-shell --log-format multiline-with-logs";
       nixos-rebuild = "nixos-rebuild --log-format multiline-with-logs";
+      ffmpeg = "ffmpeg -hide_banner";
+      ffprobe = "ffprobe -hide_banner";
     };
 
     environment.systemPackages = with pkgs; [
