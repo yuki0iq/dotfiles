@@ -18,7 +18,6 @@
 
   users.users.yuki = {
     isNormalUser = true;
-    description = "yuki";
     extraGroups = ["networkmanager" "wheel" "docker" "wireshark"];
     openssh.authorizedKeys.keyFiles = [../../users/yuki/authorized_keys];
   };
