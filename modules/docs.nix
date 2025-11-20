@@ -11,6 +11,5 @@
     ];
 
     documentation.man.generateCaches = true;
-    documentation.nixos.includeAllModules = true;
   };
 }
