@@ -37,11 +37,9 @@
 
     programs.htop.enable = true;
 
-    programs.neovim = {
+    programs.vim = {
       enable = true;
       defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
     };
 
     programs.nix-ld.enable = true;
