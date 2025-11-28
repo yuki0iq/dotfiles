@@ -29,6 +29,7 @@
       eza
       jq
       moreutils
+      pv
       ripgrep
     ];
 
