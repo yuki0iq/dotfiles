@@ -20,10 +20,16 @@
 
     nix.channel.enable = false;
 
+    nix.package = pkgs.lixPackageSets.stable.lix;
+
     nix.nixPath = [
       "nixpkgs=${pins.nixpkgs}"
     ];
 
     nix.settings.use-xdg-base-directories = true;
+
+    system.tools = {
+      nixos-option.enable = false;
+    };
   };
 }
