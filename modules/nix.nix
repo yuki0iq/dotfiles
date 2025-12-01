@@ -5,28 +5,29 @@
   pins,
   ...
 }: {
-  imports = [
-    (import "${pins.lix-nixos-module}/module.nix" {lix = null;})
-  ];
-
   options.meow.nix.enable = lib.mkEnableOption "nix configuration and tools" // {default = true;};
 
   config = lib.mkIf config.meow.nix.enable {
     environment.systemPackages = with pkgs; [
       alejandra
       nix-output-monitor
-      (pkgs.callPackage pins.npins {})
+      (pkgs.callPackage "${pins.npins}/npins.nix" {
+        nix-gitignore = pkgs.nix-gitignore.override { nix = config.nix.package; };
+        nix-prefetch-docker = pkgs.nix-prefetch-docker.override { nix = config.nix.package; };
+      })
     ];
 
     nix.channel.enable = false;
 
-    nix.package = pkgs.lixPackageSets.stable.lix;
+    nix.package = pkgs.lixPackageSets.latest.lix;
 
     nix.nixPath = [
       "nixpkgs=${pins.nixpkgs}"
     ];
 
     nix.settings.use-xdg-base-directories = true;
+
+    system.forbiddenDependenciesRegexes = ["nix-2"];
 
     system.tools = {
       nixos-option.enable = false;
