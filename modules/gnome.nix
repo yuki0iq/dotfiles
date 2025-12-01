@@ -10,7 +10,6 @@
       gnome-console # ptyxis
       gnome-system-monitor # libgtop + mission-center
       gnome-tour
-      evince # papers
     ];
 
     programs.thunderbird.enable = true;
@@ -29,7 +28,6 @@
       gnome-secrets
       libgtop
       mission-center
-      papers
       ptyxis
       refine
     ];

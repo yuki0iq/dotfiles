@@ -22,9 +22,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "619ae569293b6427d23cce4854eb4f3c33af3eec",
-      "url": "https://github.com/nix-community/home-manager/archive/619ae569293b6427d23cce4854eb4f3c33af3eec.tar.gz",
-      "hash": "sha256-GjLvAl7qxGxKtop6ghasxjQ1biTT7pA+WU45byzMl/4="
+      "revision": "e4e25a8c310fa45f2a8339c7972dc43d2845a612",
+      "url": "https://github.com/nix-community/home-manager/archive/e4e25a8c310fa45f2a8339c7972dc43d2845a612.tar.gz",
+      "hash": "sha256-GVBGjO7UsmzLrlOJV8NlKSxukHaHencrJqWkCA6FkqI="
     },
     "lix-nixos-module": {
       "type": "Git",
@@ -43,8 +43,8 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-unstable",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre868392.e9f00bd89398/nixexprs.tar.xz",
-      "hash": "sha256-Lz9jvhswQu/niKVttNvOds0w+OS+2x63NivPVJng5G4="
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre904649.2d293cbfa5a7/nixexprs.tar.xz",
+      "hash": "sha256-xLPjeWHfxEJtZmosOmLaT25Vb2rbktbbE7ShRtAm8h0="
     },
     "npins": {
       "type": "Git",
@@ -55,9 +55,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "e49bcf58d66fa7f586aff687feae72c23e429672",
-      "url": "https://github.com/andir/npins/archive/e49bcf58d66fa7f586aff687feae72c23e429672.tar.gz",
-      "hash": "sha256-ZLrVWa7WU+IUXPAd6mR7B9c6FDZSiGgW8ClfW0SxbMs="
+      "revision": "84a362d77fb3c487ad759c80547facb028f4d96f",
+      "url": "https://github.com/andir/npins/archive/84a362d77fb3c487ad759c80547facb028f4d96f.tar.gz",
+      "hash": "sha256-EWA14ovB/5UFiK9fmEYtofIMbGnVeJ/4yK0aJEJXtsI="
     },
     "rycee": {
       "type": "Git",
@@ -68,9 +68,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "58402e09ad48f9f509d9249b8704c1a4f390c434",
-      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=58402e09ad48f9f509d9249b8704c1a4f390c434",
-      "hash": "sha256-vWk2iw/i5c0RHc/zLVyB51UYvmbzPq3uB14NN7kaouE="
+      "revision": "aba4621459aec251d90d6452e3495b58a8a5e185",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=aba4621459aec251d90d6452e3495b58a8a5e185",
+      "hash": "sha256-vQ3iFPPhxsLqV3c5kgmYP53mVD6id6gsP0tN+oTmqok="
     },
     "statusline": {
       "type": "Git",
@@ -97,10 +97,10 @@
       "version_upper_bound": null,
       "release_prefix": "yukigram-",
       "submodules": true,
-      "version": "yukigram-6.1.3",
-      "revision": "3b06ad7b73bf85732cfa458b6ad3a72ec5c5250e",
+      "version": "yukigram-6.2.4.1",
+      "revision": "4895bf3764cf79c665bb2c4bd46c96388281301c",
       "url": null,
-      "hash": "sha256-/CqXc+bIXNt4lXK6mIdwkZGimjNJVgS8eVy/msaEdrU="
+      "hash": "sha256-cGDipHwSOPxavDR+Dv/MVfL8hTRj7koTyAUAztbed4c="
     }
   },
   "version": 6
