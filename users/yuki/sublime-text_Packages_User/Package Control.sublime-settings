@@ -7,7 +7,7 @@
 	[
 		"Awk",
 		"CMake",
-		"Dockerfile Syntax Highlighting",
+		"Containerfile",
 		"EditorConfig",
 		"i3 wm",
 		"INI",
