@@ -22,6 +22,11 @@
     openssh.authorizedKeys.keyFiles = [../../users/yuki/authorized_keys];
   };
 
+  users.users.test = {
+    isNormalUser = true;
+    openssh.authorizedKeys.keyFiles = config.users.users.yuki.openssh.authorizedKeys.keyFiles;
+  };
+
   home-manager.users.yuki = import ../../users/yuki;
 
   environment.systemPackages = with pkgs; [
