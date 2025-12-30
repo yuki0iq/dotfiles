@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   pins,
   ...
@@ -42,6 +43,15 @@
 
   meow.boot.enable = true;
   meow.graphical.enable = true;
+
+  services.printing = {
+    enable = lib.mkForce true;
+    drivers = [pkgs.hplip];
+  };
+  hardware.sane = {
+    enable = true;
+    extraBackends = [pkgs.hplip];
+  };
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [
