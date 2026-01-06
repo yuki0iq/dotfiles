@@ -19,6 +19,7 @@
         sponsorblock
         ublock-origin
         vimium
+        youtube-no-translation
       ];
     };
   };
