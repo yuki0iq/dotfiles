@@ -16,6 +16,6 @@
       vteIntegration = false;
     };
 
-    services.openssh.settings.AcceptEnv = "WORKGROUP_CHAIN";
+    services.openssh.settings.AcceptEnv = ["WORKGROUP_CHAIN"];
   };
 }

@@ -11,10 +11,7 @@
     environment.systemPackages = with pkgs; [
       alejandra
       nix-output-monitor
-      (pkgs.callPackage "${pins.npins}/npins.nix" {
-        nix-gitignore = pkgs.nix-gitignore.override { nix = config.nix.package; };
-        nix-prefetch-docker = pkgs.nix-prefetch-docker.override { nix = config.nix.package; };
-      })
+      npins
     ];
 
     nix.channel.enable = false;

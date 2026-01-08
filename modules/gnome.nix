@@ -6,7 +6,6 @@
 }: {
   config = lib.mkIf config.services.desktopManager.gnome.enable {
     environment.gnome.excludePackages = with pkgs; [
-      geary # thunderbird
       gnome-console # ptyxis
       gnome-system-monitor # libgtop + mission-center
       gnome-tour

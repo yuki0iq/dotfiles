@@ -22,28 +22,15 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "e4e25a8c310fa45f2a8339c7972dc43d2845a612",
-      "url": "https://github.com/nix-community/home-manager/archive/e4e25a8c310fa45f2a8339c7972dc43d2845a612.tar.gz",
-      "hash": "sha256-GVBGjO7UsmzLrlOJV8NlKSxukHaHencrJqWkCA6FkqI="
+      "revision": "cd6e96d56ed4b2a779ac73a1227e0bb1519b3509",
+      "url": "https://github.com/nix-community/home-manager/archive/cd6e96d56ed4b2a779ac73a1227e0bb1519b3509.tar.gz",
+      "hash": "sha256-u/bcU0xePi5bgNoRsiqSIwaGBwDilKKFTz3g0hqOBAo="
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-unstable",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre904649.2d293cbfa5a7/nixexprs.tar.xz",
-      "hash": "sha256-xLPjeWHfxEJtZmosOmLaT25Vb2rbktbbE7ShRtAm8h0="
-    },
-    "npins": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "andir",
-        "repo": "npins"
-      },
-      "branch": "master",
-      "submodules": false,
-      "revision": "84a362d77fb3c487ad759c80547facb028f4d96f",
-      "url": "https://github.com/andir/npins/archive/84a362d77fb3c487ad759c80547facb028f4d96f.tar.gz",
-      "hash": "sha256-EWA14ovB/5UFiK9fmEYtofIMbGnVeJ/4yK0aJEJXtsI="
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre923638.5912c1772a44/nixexprs.tar.xz",
+      "hash": "sha256-LmdqDciUNW4a3tFH539SorGLD/5t8PFOXhEQlIxbtww="
     },
     "rycee": {
       "type": "Git",
@@ -54,9 +41,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "aba4621459aec251d90d6452e3495b58a8a5e185",
-      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=aba4621459aec251d90d6452e3495b58a8a5e185",
-      "hash": "sha256-vQ3iFPPhxsLqV3c5kgmYP53mVD6id6gsP0tN+oTmqok="
+      "revision": "fabfd99ebed009f2a44cbc3fb436d0d2a145a120",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=fabfd99ebed009f2a44cbc3fb436d0d2a145a120",
+      "hash": "sha256-mT00ZXQ4/myUWL3pTDw9gMV8/45yLN1/Faw9YanMa4k="
     },
     "statusline": {
       "type": "Git",
