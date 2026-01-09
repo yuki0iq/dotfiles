@@ -32,7 +32,26 @@
 
   environment.systemPackages = with pkgs; [
     fractal
-    prismlauncher
+    ((prismlauncher.override {
+        prismlauncher-unwrapped = prismlauncher-unwrapped.overrideAttrs (final: prev: {
+          pname = "fjordlauncher-unwrapped";
+          version = "10.0-unstable-2026-01-08";
+          src = prev.src.override {
+            owner = "unmojang";
+            repo = "FjordLauncher";
+            tag = null;
+            rev = "31d3cc63669e60509c965cff5385ac2711691c4f";
+            hash = "sha256-N6eGWxcNvKqUyFzHinOLV9NosH63eLMfCT8LAWHPTtI=";
+          };
+          patches = (prev.patches or []) ++ [../../patches/fjordlauncher/0001-Make-FjordLauncher-DRM-free.patch];
+          buildInputs = prev.buildInputs ++ [kdePackages.qt5compat]; # XXX: This isn't mentioned anywhere, hacky
+        });
+      }).overrideAttrs (final: prev: {
+        pname = "fjordlauncher";
+        name = "${final.pname}-${final.version}"; # XXX: otherwise the derivation is named prismlauncher-...
+        qtWrapperArgs = map (builtins.replaceStrings ["PRISMLAUNCHER_JAVA_PATHS"] ["FJORDLAUNCHER_JAVA_PATHS"]) prev.qtWrapperArgs;
+        meta = prev.meta // {mainProgram = "fjordlauncher";};
+      }))
     (callPackage pins.yukigram {})
 
     gcc

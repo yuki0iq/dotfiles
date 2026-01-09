@@ -1,0 +1,27 @@
+From bcbfcc010cbd7b7f90e6015291c2ea8511f4eff1 Mon Sep 17 00:00:00 2001
+From: Yuki Sireneva <yuki.utk8g@gmail.com>
+Date: Fri, 9 Jan 2026 06:39:20 +0300
+Subject: [PATCH] Make FjordLauncher DRM-free
+
+PrismLauncher 10 introduced some bullshit and broke auth bypass with
+accounts.json, so this is a more radical way of pirating.
+---
+ launcher/minecraft/auth/MinecraftAccount.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/launcher/minecraft/auth/MinecraftAccount.h b/launcher/minecraft/auth/MinecraftAccount.h
+index 1020b4270..d8a3ffa69 100644
+--- a/launcher/minecraft/auth/MinecraftAccount.h
++++ b/launcher/minecraft/auth/MinecraftAccount.h
+@@ -133,7 +133,7 @@ class MinecraftAccount : public QObject, public Usable {
+ 
+     AccountType accountType() const noexcept { return data.type; }
+ 
+-    bool ownsMinecraft() const { return data.type != AccountType::Offline && data.minecraftEntitlement.ownsMinecraft; }
++    bool ownsMinecraft() const { return true; }
+ 
+     bool hasProfile() const { return data.profileId().size() != 0; }
+ 
+-- 
+2.52.0
+
