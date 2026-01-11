@@ -4,7 +4,12 @@ let
   pins = builtins.mapAttrs (name: pinned: pinned {inherit pkgs;}) bare_pins;
 
   lib = pkgs.lib;
-  readDir' = dir: lib.mapAttrsToList (name: _: lib.path.append dir name) (builtins.readDir dir);
+  readDir' = dir: let
+    contents = builtins.readDir dir;
+    filtered = lib.filterAttrs (name: _: builtins.substring 0 1 name != "_") contents;
+    toRealPath = name: _: lib.path.append dir name;
+  in
+    lib.mapAttrsToList toRealPath filtered;
   nixosSystem = name:
     (import "${pins.nixpkgs}/nixos") {
       specialArgs = {inherit pins;};

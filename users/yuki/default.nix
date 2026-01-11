@@ -17,7 +17,6 @@
 
   meow.graphical.enable = true;
 
-  xdg.configFile."xkb".source = ./xkb;
   xdg.configFile."sublime-text/Packages/User".source = ./sublime-text_Packages_User;
 
   dconf.settings = {

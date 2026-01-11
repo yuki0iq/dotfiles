@@ -8,6 +8,7 @@
 
   config = lib.mkIf config.meow.graphical.enable {
     meow.fonts.enable = true;
+    meow.xkb.enable = true;
 
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
