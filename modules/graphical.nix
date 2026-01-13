@@ -49,7 +49,9 @@
     environment.systemPackages = with pkgs; [
       mesa-demos
       vulkan-tools
+      waypipe
       wl-clipboard
+      xwayland-satellite # waypipe dep
     ];
   };
 }
