@@ -52,5 +52,11 @@
           exec ${pkgs.xray}/bin/xray run -c /etc/nixos/secrets/xray-alt.json
         '';
       };
+      xray-cat = makeProxyUnit {
+        description = "xray cat client service";
+        script = ''
+          exec ${pkgs.xray}/bin/xray run -c /etc/nixos/secrets/xray-cat.json
+        '';
+      };
     };
 }
