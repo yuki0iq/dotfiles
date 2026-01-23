@@ -40,7 +40,6 @@ The contents of these files? That's a secret.
 - make home-manager optional by gating it behind enable-style option or removing it completely
 - package overrides should probably live under separate nix files under separate directory (prismlauncher -> fjordlauncher, sublime-text)
 - decide if modules should be Merged or Autoimported and maybe expose them in top-level
-- use symlinkJoin instead of whatever currently is for anthy to move from home-manager
 - check if docker-compose still works correctly
 - check if sysbox works with nftables enabled, and if it does, check same with firewalld
 - replace systemd-boot with refind + secure boot

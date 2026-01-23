@@ -81,8 +81,26 @@
             monitor-cmd = "${pkgs.mission-center}/bin/missioncenter";
             hot-sensors = ["_system_load_1m_"];
           };
+
+          "desktop/ibus/general".use-system-keyboard-layout = true;
         };
       }
     ];
+
+    i18n.inputMethod = {
+      enable = true;
+      type = "ibus";
+      ibus.engines = with pkgs.ibus-engines; [
+        (anthy.overrideAttrs (final: prev: {
+          postInstall =
+            (prev.postInstall or "")
+            + ''
+              substituteInPlace $out/share/ibus-anthy/engine/default.xml --replace-fail '<layout>jp</layout>' '<layout>default</layout>'
+            '';
+        }))
+        table
+        table-others
+      ];
+    };
   };
 }
