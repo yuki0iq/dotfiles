@@ -11,17 +11,6 @@
       gnome-tour
     ];
 
-    programs.thunderbird.enable = true;
-
-    xdg.terminal-exec = {
-      enable = true;
-      settings = {
-        GNOME = [
-          "org.gnome.Ptyxis.desktop"
-        ];
-      };
-    };
-
     environment.systemPackages = with pkgs; [
       gnome-themes-extra
       gnome-secrets
@@ -30,5 +19,12 @@
       ptyxis
       refine
     ];
+
+    programs.thunderbird.enable = true;
+
+    xdg.terminal-exec = {
+      enable = true;
+      settings.GNOME = ["org.gnome.Ptyxis.desktop"];
+    };
   };
 }
