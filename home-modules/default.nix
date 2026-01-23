@@ -2,7 +2,6 @@
   imports = [
     ./anthy.nix
     ./gnome.nix
-    ./gnome-keybindings.nix
     ./graphical.nix
     ./librewolf.nix
     ./mpv.nix

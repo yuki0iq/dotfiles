@@ -71,6 +71,53 @@
     rustup
   ];
 
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/gnome/desktop/interface".accent-color = "teal";
+
+        "org/gnome/desktop/background" = let
+          yuuka = pkgs.fetchurl {
+            urls = [
+              "https://pixiv.net/img-original/img/2024/02/04/23/14/09/115770254_p0.jpg"
+              "https://pixiv.ducks.party/img-original/img/2024/02/04/23/14/09/115770254_p0.jpg"
+            ];
+            hash = "sha256-jBVGOqZImknJ/gqSiplmCNII4skcvwxe8eE9mcxaVII=";
+          };
+        in {
+          picture-options = "zoom";
+          picture-uri = "file://${yuuka}";
+          picture-uri-dark = "file://${yuuka}";
+        };
+
+        "org/gnome/desktop/input-sources" = {
+          sources = [
+            (lib.gvariant.mkTuple ["xkb" "us_yuki+colemak_dh"])
+            (lib.gvariant.mkTuple ["xkb" "ru_yuki+rulemak_dh"])
+          ];
+          xkb-options = ["grp:caps_toggle" "grp_led:scroll" "compose:rctrl" "lv3:ralt_switch" "lv3:rwin_switch" "lv5:menu_switch"];
+        };
+
+        "org/gnome/desktop/peripherals/mouse".left-handed = false;
+      };
+    }
+  ];
+
+  services.desktopManager.gnome.keybindings = [
+    {
+      binding = "<Super>F8";
+      command = "${./keyboard-layout-group-switcher} qwerty";
+    }
+    {
+      binding = "<Super>F9";
+      command = "${./keyboard-layout-group-switcher} yuki";
+    }
+    {
+      binding = "<Super>F10";
+      command = "${./keyboard-layout-group-switcher} ibus";
+    }
+  ];
+
   meow.boot.enable = true;
   meow.graphical.enable = true;
 

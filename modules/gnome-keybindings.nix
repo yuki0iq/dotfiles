@@ -3,19 +3,8 @@
   lib,
   pkgs,
   ...
-}: let
-  makeKeybindings = bindings: let
-    media-keys = "org/gnome/settings-daemon/plugins/media-keys";
-    makeName = x: "${media-keys}/custom-keybindings/custom${toString x}";
-    names = builtins.genList makeName (builtins.length bindings);
-    bindingsList = {
-      "${media-keys}".custom-keybindings = map (name: "/${name}/") names;
-    };
-    compiledBindings = builtins.listToAttrs (lib.lists.zipListsWith (name: value: {inherit name value;}) names bindings);
-  in
-    bindingsList // compiledBindings;
-in {
-  options.meow.gnome.keybindings = lib.mkOption {
+}: {
+  options.services.desktopManager.gnome.keybindings = lib.mkOption {
     type = lib.types.listOf (lib.types.submodule {
       options = {
         name = lib.mkOption {
@@ -38,10 +27,22 @@ in {
     '';
   };
 
-  config.dconf.settings = let
-    cfg = config.meow.gnome.keybindings;
+  config.programs.dconf.profiles.user.databases = let
+    cfg = config.services.desktopManager.gnome.keybindings;
     removeNullName = lib.filterAttrs (k: v: k == "name" -> v != null);
     bindings = map removeNullName cfg;
+
+    media-keys = "org/gnome/settings-daemon/plugins/media-keys";
+    makeName = x: "${media-keys}/custom-keybindings/custom${toString x}";
+    names = builtins.genList makeName (builtins.length bindings);
+
+    bindingsList = {
+      "${media-keys}".custom-keybindings = map (name: "/${name}/") names;
+    };
+    compiledBindings = builtins.listToAttrs (lib.lists.zipListsWith (name: value: {inherit name value;}) names bindings);
   in
-    lib.mkIf (builtins.length cfg > 0) (makeKeybindings bindings);
+    lib.mkIf (builtins.length cfg > 0) [
+      {settings = bindingsList;}
+      {settings = compiledBindings;}
+    ];
 }
