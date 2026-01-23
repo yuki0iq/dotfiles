@@ -97,9 +97,10 @@
           ];
           xkb-options = ["grp:caps_toggle" "grp_led:scroll" "compose:rctrl" "lv3:ralt_switch" "lv3:rwin_switch" "lv5:menu_switch"];
         };
-
-        "org/gnome/desktop/peripherals/mouse".left-handed = false;
       };
+
+      # XXX: Prevent gnome-shell from resetting to wrong xkb options in case they are reset to default
+      locks = ["/org/gnome/desktop/input-sources/xkb-options"];
     }
   ];
 

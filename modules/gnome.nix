@@ -33,6 +33,7 @@
 
     programs.dconf.profiles.user.databases = [
       {
+        lockAll = true;
         settings = {
           "org/gnome/desktop/a11y/interface".show-status-shapes = true;
 
