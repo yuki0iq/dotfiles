@@ -3,7 +3,6 @@
 
   config.home-manager = {
     extraSpecialArgs = {inherit pins;};
-    sharedModules = [../home-modules];
     useGlobalPkgs = true;
     useUserPackages = true;
   };

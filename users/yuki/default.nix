@@ -15,7 +15,39 @@
   # changes in each release.
   home.stateVersion = "24.11";
 
-  meow.graphical.enable = true;
+  home.preferXdgDirectories = true;
+  xdg.enable = true;
+
+  # XXX: Source hm-session-vars.sh in user shells even if bash is unmanaged by home-manager
+  programs.bash = {
+    enable = true;
+    package = null;
+  };
+
+  manual.html.enable = true;
+  manual.manpages.enable = true;
+  # TODO: Readd when https://github.com/NixOS/nixpkgs/pull/414076 for h-m lands
+  # programs.man.generateCaches = true;
+
+  programs.librewolf = {
+    enable = true;
+    settings = {
+    };
+    profiles.default = {
+      extensions.packages = with (pkgs.callPackage pins.rycee {}).firefox-addons; [
+        consent-o-matic
+        indie-wiki-buddy
+        libredirect
+        native-mathml
+        seventv
+        shinigami-eyes
+        sponsorblock
+        ublock-origin
+        vimium
+        youtube-no-translation
+      ];
+    };
+  };
 
   xdg.configFile."sublime-text/Packages/User".source = ./sublime-text_Packages_User;
 }
