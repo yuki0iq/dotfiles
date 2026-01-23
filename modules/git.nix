@@ -49,7 +49,7 @@ in {
         bm = "branch -M";
         s = "status";
         a = "add -u";
-        ai = "add -i";
+        ai = "add -N";
         ap = "add -p";
         d = "diff";
         ds = "diff --staged";
