@@ -19,9 +19,14 @@
       ssh-audit
     ];
 
-    programs.ssh.hardened = true;
+    networking.networkmanager = {
+      enable = true;
+      settings.connectivity.uri = "http://nmcheck.gnome.org/check_network_status.txt";
+    };
 
-    programs.wireshark.enable = true;
+    networking.nftables.enable = true;
+
+    programs.ssh.hardened = true;
 
     services.openssh = {
       enable = true;

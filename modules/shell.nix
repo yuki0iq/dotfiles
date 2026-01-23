@@ -24,22 +24,52 @@
       ffprobe = "ffprobe -hide_banner";
     };
 
+    environment.defaultPackages = lib.mkForce [];
+
     environment.systemPackages = with pkgs; [
       bat
+      bc
+      dua
       eza
+      file
       jq
+      libqalculate
+      lsof
       moreutils
       pv
       ripgrep
+      strace
     ];
 
     programs.bash.completion.enable = true;
+    programs.direnv.enable = true;
+    programs.htop.enable = true;
+    programs.nix-ld.enable = true;
+    programs.statusline.enable = true;
+    programs.tmux.enable = true;
 
     programs.command-not-found = {
       enable = true;
       dbPath = "${pins.nixpkgs}/programs.sqlite";
     };
 
-    programs.statusline.enable = true;
+    programs.vim = {
+      enable = true;
+      defaultEditor = true;
+    };
+
+    programs.git = {
+      enable = true;
+      autosign = true;
+      lfs.enable = true;
+      short-aliases = true;
+
+      config = {
+        user = {
+          name = "Yuki Sireneva";
+          email = "yuki.utk8g@gmail.com";
+        };
+      };
+    };
   };
 }

@@ -17,6 +17,13 @@
     enableSysbox = true;
   };
 
+  programs.obs-studio.enable = true;
+
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
+
   users.users.yuki = {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel" "docker" "wireshark"];

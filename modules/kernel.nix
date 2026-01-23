@@ -9,6 +9,8 @@
   config = lib.mkIf config.meow.kernel.enable {
     boot.kernelPackages = pkgs.linuxKernel.packageAliases.linux_latest;
 
+    boot.tmp.useTmpfs = true;
+
     environment.systemPackages = with pkgs; [
       config.boot.kernelPackages.cpupower
       lm_sensors
@@ -16,5 +18,7 @@
       perf
       usbutils
     ];
+
+    zramSwap.enable = true;
   };
 }
