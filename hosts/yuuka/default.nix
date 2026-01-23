@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  pins,
+  self,
   ...
 }: {
   imports = [
@@ -39,38 +39,9 @@
 
   environment.systemPackages = with pkgs; [
     fractal
-    ((prismlauncher.override {
-        prismlauncher-unwrapped = prismlauncher-unwrapped.overrideAttrs (final: prev: {
-          pname = "fjordlauncher-unwrapped";
-          version = "10.0-unstable-2026-01-08";
-          src = prev.src.override {
-            owner = "unmojang";
-            repo = "FjordLauncher";
-            tag = null;
-            rev = "31d3cc63669e60509c965cff5385ac2711691c4f";
-            hash = "sha256-N6eGWxcNvKqUyFzHinOLV9NosH63eLMfCT8LAWHPTtI=";
-          };
-          patches = (prev.patches or []) ++ [../../patches/fjordlauncher/0001-Make-FjordLauncher-DRM-free.patch];
-          buildInputs = prev.buildInputs ++ [kdePackages.qt5compat]; # XXX: This isn't mentioned anywhere, hacky
-        });
-      }).overrideAttrs (final: prev: {
-        pname = "fjordlauncher";
-        name = "${final.pname}-${final.version}"; # XXX: otherwise the derivation is named prismlauncher-...
-        qtWrapperArgs = map (builtins.replaceStrings ["PRISMLAUNCHER_JAVA_PATHS"] ["FJORDLAUNCHER_JAVA_PATHS"]) prev.qtWrapperArgs;
-        meta = prev.meta // {mainProgram = "fjordlauncher";};
-      }))
-    (sublime4.overrideAttrs (final: prev: {
-      # XXX: Keep name here and in patch in sync with nixpkgs `primaryBinary`
-      sublime_text = prev.sublime_text.overrideAttrs (final: prev: {
-        # https://gist.github.com/JerryLokjianming/71dac05f27f8c96ad1c8941b88030451?permalink_comment_id=5590975
-        postFixup =
-          ''
-            sed -i 's/\x0F\xB6\x51\x05\x83\xF2\x01/\xC6\x41\x05\x01\xB2\x00\x90/' "$out/sublime_text"
-          ''
-          + prev.postFixup;
-      });
-    }))
-    (callPackage pins.yukigram {})
+    self.packages.fjordlauncher
+    self.packages.sublime4
+    self.packages.yukigram
 
     gcc
     gef
@@ -128,16 +99,6 @@
     enable = true;
     extraBackends = [pkgs.hplip];
   };
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkgs.lib.getName pkg) [
-      "sublimetext4"
-    ];
-  # XXX: https://github.com/NixOS/nixpkgs/issues/239615
-  # Blocked on upstream: https://github.com/sublimehq/sublime_text/issues/5984
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.1.1w"
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

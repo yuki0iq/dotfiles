@@ -1,8 +1,8 @@
-{pins, ...}: {
-  imports = ["${pins.home-manager}/nixos"];
+{self, ...}: {
+  imports = ["${self.pins.home-manager}/nixos"];
 
   config.home-manager = {
-    extraSpecialArgs = {inherit pins;};
+    extraSpecialArgs = {inherit self;};
     useGlobalPkgs = true;
     useUserPackages = true;
   };

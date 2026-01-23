@@ -6,13 +6,13 @@
 ## Apply this configuration
 
 ```shell
-nixos-rebuild switch --sudo -A nixosConfigurations.$HOSTNAME
+nixos-rebuild switch --sudo -A hosts.$HOSTNAME
 ```
 
 or, with extra nom,
 
 ```shell
-nixos-rebuild switch --sudo -A nixosConfigurations.$HOSTNAME --log-format internal-json --show-trace |& nom --json
+nixos-rebuild switch --sudo -A hosts.$HOSTNAME --log-format internal-json --show-trace |& nom --json
 ```
 
 Tip: you can add `http_proxy` and `https_proxy` environment variables to `nixos-rebuild`.
@@ -38,8 +38,7 @@ The contents of these files? That's a secret.
 - figure out how to autoformat everything except for `npins/` files. or don't and format these anyways
 - `/users/{username}` is not the best idea, probably `/users/{username}@{hostname}` is better, e.g. for standalone home-manager configurations or servers where graphical system is unneeded
 - make home-manager optional by gating it behind enable-style option or removing it completely (librewolf, sublime-text)
-- package overrides should probably live under separate nix files under separate directory (prismlauncher -> fjordlauncher, sublime-text)
-- decide if modules should be Merged or Autoimported and maybe expose them in top-level
+- overridden package autoupdate (fjordlauncher)
 - check if docker-compose still works correctly
 - check if sysbox works with nftables enabled, and if it does, check same with firewalld
 - replace systemd-boot with refind + secure boot

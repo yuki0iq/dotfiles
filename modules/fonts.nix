@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: {
   options.meow.fonts.enable = lib.mkEnableOption "font configuration";
@@ -23,13 +24,7 @@
     enableDefaultPackages = false;
 
     packages = with pkgs; [
-      (fantasque-sans-mono.overrideAttrs (final: prev: {
-        installPhase =
-          builtins.replaceStrings
-          ["OTF" "otf" "opentype"]
-          ["TTF" "ttf" "truetype"]
-          prev.installPhase;
-      }))
+      self.packages.fantasque-sans-mono-ttf
       nerd-fonts.symbols-only
       noto-fonts
       noto-fonts-cjk-sans

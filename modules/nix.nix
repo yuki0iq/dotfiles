@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  pins,
+  self,
   ...
 }: {
   options.meow.nix.enable = lib.mkEnableOption "nix configuration and tools" // {default = true;};
@@ -20,7 +20,7 @@
     nix.package = pkgs.lixPackageSets.latest.lix;
 
     nix.nixPath = [
-      "nixpkgs=${pins.nixpkgs}"
+      "nixpkgs=${self.pins.nixpkgs}"
     ];
 
     nix.settings.use-xdg-base-directories = true;

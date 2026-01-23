@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  pins,
+  self,
   ...
 }: {
   options.meow.shell.enable = lib.mkEnableOption "shell configuration" // {default = true;};
@@ -50,7 +50,7 @@
 
     programs.command-not-found = {
       enable = true;
-      dbPath = "${pins.nixpkgs}/programs.sqlite";
+      dbPath = "${self.pins.nixpkgs}/programs.sqlite";
     };
 
     programs.vim = {

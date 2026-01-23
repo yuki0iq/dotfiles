@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  pins,
+  self,
   ...
 }: {
   # This value determines the Home Manager release that your
@@ -34,7 +34,7 @@
     settings = {
     };
     profiles.default = {
-      extensions.packages = with (pkgs.callPackage pins.rycee {}).firefox-addons; [
+      extensions.packages = with self.packages.rycee-nur.firefox-addons; [
         consent-o-matic
         indie-wiki-buddy
         libredirect

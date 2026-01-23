@@ -1,20 +1,102 @@
-let
-  bare_pins = import ./npins;
-  pkgs = import bare_pins.nixpkgs {};
-  pins = builtins.mapAttrs (name: pinned: pinned {inherit pkgs;}) bare_pins;
+{
+  system ? builtins.currentSystem,
+  pins ? import ./npins,
+  nixpkgs ? pins.nixpkgs,
+  lib ? import "${nixpkgs}/lib",
+  ...
+}: let
+  pkgs = import nixpkgs {inherit system;};
+in lib.fix (self: {
+  inherit system nixpkgs;
 
-  lib = pkgs.lib;
-  readDir' = dir: let
-    contents = builtins.readDir dir;
-    filtered = lib.filterAttrs (name: _: builtins.substring 0 1 name != "_") contents;
-    toRealPath = name: _: lib.path.append dir name;
-  in
-    lib.mapAttrsToList toRealPath filtered;
-  nixosSystem = name:
-    (import "${pins.nixpkgs}/nixos") {
-      specialArgs = {inherit pins;};
-      configuration.imports = (readDir' ./modules) ++ [./hosts/${name}];
+  pins = (builtins.mapAttrs (name: pinned: pinned {inherit pkgs;}) pins) // {inherit nixpkgs;};
+
+  lib = {
+    readDir' = dir: let
+      contents = builtins.readDir dir;
+      filtered = lib.filterAttrs (name: _: builtins.substring 0 1 name != "_") contents;
+      toRealPath = name: _: lib.path.append dir name;
+    in
+      lib.mapAttrsToList toRealPath filtered;
+
+    nixosSystem = import "${self.pins.nixpkgs}/nixos";
+
+    mkHost = name: self.lib.nixosSystem {
+      specialArgs = {inherit self;};
+      configuration.imports = (self.lib.readDir' ./modules) ++ [./hosts/${name}];
     };
-in {
-  nixosConfigurations = lib.mapAttrs (name: _: nixosSystem name) (builtins.readDir ./hosts);
-}
+  };
+
+  hosts = lib.mapAttrs (name: _: self.lib.mkHost name) (builtins.readDir ./hosts);
+
+  packages = {
+    fantasque-sans-mono-ttf = pkgs.fantasque-sans-mono.overrideAttrs (final: prev: {
+      installPhase = builtins.replaceStrings ["OTF" "otf" "opentype"] ["TTF" "ttf" "truetype"] prev.installPhase;
+    });
+
+    fjordlauncher-unwrapped = pkgs.prismlauncher-unwrapped.overrideAttrs (final: prev: {
+      pname = "fjordlauncher-unwrapped";
+      version = "10.0-unstable-2026-01-08";
+      src = prev.src.override {
+        owner = "unmojang";
+        repo = "FjordLauncher";
+        tag = null;
+        rev = "31d3cc63669e60509c965cff5385ac2711691c4f";
+        hash = "sha256-N6eGWxcNvKqUyFzHinOLV9NosH63eLMfCT8LAWHPTtI=";
+      };
+      patches = (prev.patches or []) ++ [./patches/fjordlauncher/0001-Make-FjordLauncher-DRM-free.patch];
+      buildInputs = prev.buildInputs ++ [pkgs.kdePackages.qt5compat]; # XXX: This isn't mentioned anywhere, hacky
+    });
+
+    fjordlauncher = (pkgs.prismlauncher.override {prismlauncher-unwrapped = self.packages.fjordlauncher-unwrapped;}).overrideAttrs (final: prev: {
+      pname = "fjordlauncher";
+      name = "${final.pname}-${final.version}"; # XXX: otherwise the derivation is named prismlauncher-...
+      qtWrapperArgs = map (builtins.replaceStrings ["PRISMLAUNCHER_JAVA_PATHS"] ["FJORDLAUNCHER_JAVA_PATHS"]) prev.qtWrapperArgs;
+      meta = prev.meta // {mainProgram = "fjordlauncher";};
+    });
+
+    ibus-anthy = pkgs.ibus-engines.anthy.overrideAttrs (final: prev: {
+      postInstall =
+        (prev.postInstall or "")
+        + ''
+          substituteInPlace $out/share/ibus-anthy/engine/default.xml --replace-fail '<layout>jp</layout>' '<layout>default</layout>'
+        '';
+    });
+
+    mpv-unwrapped = pkgs.mpv-unwrapped.overrideAttrs (final: prev: {
+      # XXX: Remove when mpv from nixpkgs gains native support for /etc as system config dir
+      mesonFlags = prev.mesonFlags ++ [(lib.mesonOption "sysconfdir" "/etc")];
+    });
+
+    rycee-nur = pkgs.callPackage self.pins.rycee {};
+
+    statusline = pkgs.callPackage self.pins.statusline {};
+
+    sublime4 = let
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["sublimetext4"];
+          # XXX: https://github.com/NixOS/nixpkgs/issues/239615
+          # Blocked on upstream: https://github.com/sublimehq/sublime_text/issues/5984
+          permittedInsecurePackages = ["openssl-1.1.1w"];
+        };
+      };
+    in
+      pkgs.sublime4.overrideAttrs (final: prev: {
+        # XXX: Keep name here and in patch in sync with nixpkgs `primaryBinary`
+        sublime_text = prev.sublime_text.overrideAttrs (final: prev: {
+          # https://gist.github.com/JerryLokjianming/71dac05f27f8c96ad1c8941b88030451?permalink_comment_id=5590975
+          postFixup =
+            ''
+              sed -i 's/\x0F\xB6\x51\x05\x83\xF2\x01/\xC6\x41\x05\x01\xB2\x00\x90/' "$out/sublime_text"
+            ''
+            + prev.postFixup;
+        });
+      });
+
+    sysbox = pkgs.callPackage "${self.pins.abbradar-nixpkgs-ugractf}/pkgs/applications/virtualization/sysbox/default.nix" {};
+
+    yukigram = pkgs.callPackage self.pins.yukigram {};
+  };
+})

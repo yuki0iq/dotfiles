@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: {
   options.programs.mpv = {
@@ -21,10 +22,7 @@
   config = lib.mkIf config.programs.mpv.enable {
     environment.systemPackages = with pkgs; [
       (mpv.override {
-        mpv-unwrapped = mpv-unwrapped.overrideAttrs (final: prev: {
-          # XXX: Remove when mpv from nixpkgs gains native support for /etc as system config dir
-          mesonFlags = prev.mesonFlags ++ [(lib.mesonOption "sysconfdir" "/etc")];
-        });
+        mpv-unwrapped = self.packages.mpv-unwrapped;
         scripts = config.programs.mpv.scripts;
       })
     ];

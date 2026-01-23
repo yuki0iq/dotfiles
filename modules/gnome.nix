@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: {
   config = lib.mkIf config.services.desktopManager.gnome.enable {
@@ -99,13 +100,7 @@
       enable = true;
       type = "ibus";
       ibus.engines = with pkgs.ibus-engines; [
-        (anthy.overrideAttrs (final: prev: {
-          postInstall =
-            (prev.postInstall or "")
-            + ''
-              substituteInPlace $out/share/ibus-anthy/engine/default.xml --replace-fail '<layout>jp</layout>' '<layout>default</layout>'
-            '';
-        }))
+        self.packages.ibus-anthy
         table
         table-others
       ];
