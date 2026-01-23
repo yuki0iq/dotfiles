@@ -37,7 +37,7 @@ The contents of these files? That's a secret.
 
 - figure out how to autoformat everything except for `npins/` files. or don't and format these anyways
 - `/users/{username}` is not the best idea, probably `/users/{username}@{hostname}` is better, e.g. for standalone home-manager configurations or servers where graphical system is unneeded
-- make home-manager optional by gating it behind enable-style option or removing it completely (librewolf, mpv, sublime-text)
+- make home-manager optional by gating it behind enable-style option or removing it completely (librewolf, sublime-text)
 - package overrides should probably live under separate nix files under separate directory (prismlauncher -> fjordlauncher, sublime-text)
 - decide if modules should be Merged or Autoimported and maybe expose them in top-level
 - check if docker-compose still works correctly

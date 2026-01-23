@@ -2,7 +2,6 @@
   imports = [
     ./graphical.nix
     ./librewolf.nix
-    ./mpv.nix
   ];
 
   config = {

@@ -7,6 +7,5 @@
 
   config = lib.mkIf config.meow.graphical.enable {
     programs.librewolf.enable = true;
-    programs.mpv.enable = true;
   };
 }

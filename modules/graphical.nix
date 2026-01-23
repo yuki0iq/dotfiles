@@ -38,10 +38,26 @@
 
     environment.systemPackages = with pkgs; [
       mesa-demos
+      (mpv.override {
+        mpv-unwrapped = mpv-unwrapped.overrideAttrs (final: prev: {
+          # XXX: Remove when mpv from nixpkgs gains native support for /etc as system config dir
+          mesonFlags = prev.mesonFlags ++ [(lib.mesonOption "sysconfdir" "/etc")];
+        });
+        scripts = with pkgs.mpvScripts; [mpris];
+      })
       vulkan-tools
       waypipe
       wl-clipboard
       xwayland-satellite # waypipe dep
     ];
+
+    environment.etc."mpv/mpv.conf".text = ''
+      hdr-compute-peak=no
+      profile=fast
+      sub-auto=fuzzy
+      audio-file-auto=fuzzy
+      cache=yes
+      demuxer-max-bytes=512MiB
+    '';
   };
 }
