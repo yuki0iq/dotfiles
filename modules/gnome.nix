@@ -27,12 +27,7 @@
       settings.GNOME = ["org.gnome.Ptyxis.desktop"];
     };
 
-    services.desktopManager.gnome.keybindings = [
-      {
-        binding = "<Super>Return";
-        command = "${pkgs.ptyxis}/bin/ptyxis --new-window";
-      }
-    ];
+    services.desktopManager.gnome.keybindings."<Super>Return" = {command = "${pkgs.ptyxis}/bin/ptyxis --new-window";};
 
     programs.dconf.profiles.user.enableUserDb = true;
 

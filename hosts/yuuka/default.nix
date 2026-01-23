@@ -103,20 +103,11 @@
     }
   ];
 
-  services.desktopManager.gnome.keybindings = [
-    {
-      binding = "<Super>F8";
-      command = "${./keyboard-layout-group-switcher} qwerty";
-    }
-    {
-      binding = "<Super>F9";
-      command = "${./keyboard-layout-group-switcher} yuki";
-    }
-    {
-      binding = "<Super>F10";
-      command = "${./keyboard-layout-group-switcher} ibus";
-    }
-  ];
+  services.desktopManager.gnome.keybindings = {
+    "<Super>F8" = {command = "${./keyboard-layout-group-switcher} qwerty";};
+    "<Super>F9" = {command = "${./keyboard-layout-group-switcher} yuki";};
+    "<Super>F10" = {command = "${./keyboard-layout-group-switcher} ibus";};
+  };
 
   meow.boot.enable = true;
   meow.graphical.enable = true;

@@ -38,7 +38,6 @@ The contents of these files? That's a secret.
 - figure out how to autoformat everything except for `npins/` files. or don't and format these anyways
 - `/users/{username}` is not the best idea, probably `/users/{username}@{hostname}` is better, e.g. for standalone home-manager configurations or servers where graphical system is unneeded
 - make home-manager optional by gating it behind enable-style option or removing it completely
-- gnome keybindings should probably use attrset (binding -> options) instead of list (binding; ...options)
 - package overrides should probably live under separate nix files under separate directory (prismlauncher -> fjordlauncher, sublime-text)
 - decide if modules should be Merged or Autoimported and maybe expose them in top-level
 - use symlinkJoin instead of whatever currently is for anthy to move from home-manager
