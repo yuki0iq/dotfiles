@@ -29,6 +29,13 @@
 
     services.desktopManager.gnome.keybindings."<Super>Return" = {command = "${pkgs.ptyxis}/bin/ptyxis --new-window";};
 
+    services.desktopManager.gnome.extensions = with pkgs.gnomeExtensions; [
+      {package = caffeine;}
+      {package = legacy-gtk3-theme-scheme-auto-switcher;}
+      {package = light-style;}
+      {package = vitals;}
+    ];
+
     programs.dconf.profiles.user.enableUserDb = true;
 
     programs.dconf.profiles.user.databases = [

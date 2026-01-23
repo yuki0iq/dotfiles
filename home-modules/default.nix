@@ -1,6 +1,5 @@
 {lib, ...}: {
   imports = [
-    ./gnome.nix
     ./graphical.nix
     ./librewolf.nix
     ./mpv.nix
