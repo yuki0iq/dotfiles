@@ -39,13 +39,11 @@ The contents of these files? That's a secret.
 - `/users/{username}` is not the best idea, probably `/users/{username}@{hostname}` is better, e.g. for standalone home-manager configurations or servers where graphical system is unneeded
 - make home-manager optional by gating it behind enable-style option or removing it completely (librewolf, sublime-text)
 - overridden package autoupdate (fjordlauncher)
-- check if docker-compose still works correctly
-- check if sysbox works with nftables enabled, and if it does, check same with firewalld
+- separate `meow.` nixos options (profiles) from normal ones (semi-upstreamable) and maybe move them to top-level
 - replace systemd-boot with refind + secure boot
-- maybe use `services.byedpi` for byedpi?
-- migrate `/etc/nixos/secrets` somewhere under `/var` and/or use something smarter than just Not Disclosing and not having them backed up
+- prettify `meow.proxies` and migrate `/etc/nixos/secrets` somewhere under `/var` and/or use something smarter than just Not Disclosing and not having them backed up
 - migrate system configuration from chosen-user-writable `/etc/nixos` to somewhere under their home as nothing probably depends on it being there
 - consider using userborn and etc overlay
 - minimize closure size
 - (lix 2.95) use log-format option instead of shell aliases
-- (rust 1.92+) update statusline to latest commit
+- (rust 1.92+, on nixos-unstable now) update statusline to latest commit
