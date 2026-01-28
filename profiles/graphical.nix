@@ -13,6 +13,7 @@ self: {pkgs, ...}: {
     vulkan-tools
     waypipe
     wl-clipboard
+    xkeyboard-config
     xwayland-satellite # waypipe dep
   ];
 }
