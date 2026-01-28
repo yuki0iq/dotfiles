@@ -1,13 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  self,
-  ...
-}: {
-  options.meow.fonts.enable = lib.mkEnableOption "font configuration";
-
-  config.fonts = lib.mkIf config.meow.fonts.enable {
+self: {pkgs, ...}: {
+  fonts = {
     fontconfig = {
       enable = true;
       defaultFonts = {

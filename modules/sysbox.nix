@@ -1,8 +1,7 @@
-{
+self: {
   config,
   lib,
   pkgs,
-  self,
   ...
 }: {
   options.virtualisation.docker.enableSysbox = lib.mkEnableOption "Sysbox Docker runtime";

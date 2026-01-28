@@ -1,8 +1,6 @@
-{
+self: {
   config,
   lib,
-  pkgs,
-  self,
   ...
 }: {
   options.programs.statusline.enable = lib.mkEnableOption "statusline PS1 for bash";

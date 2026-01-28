@@ -8,6 +8,15 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+
+    self.profiles.boot
+    self.profiles.gnome
+    self.profiles.home-manager
+    self.profiles.locale
+    self.profiles.network
+    self.profiles.nix
+    self.profiles.proxies
+    self.profiles.shell
   ];
 
   networking.hostName = "yuuka";
@@ -88,8 +97,10 @@
     "<Super>F10" = {command = "${./keyboard-layout-group-switcher} ibus";};
   };
 
-  meow.boot.enable = true;
-  meow.graphical.enable = true;
+  programs.git.config.user = {
+    name = "Yuki Sireneva";
+    email = "yuki.utk8g@gmail.com";
+  };
 
   services.printing = {
     enable = lib.mkForce true;

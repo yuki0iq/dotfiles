@@ -1,0 +1,14 @@
+self: {pkgs, ...}: {
+  programs.mpv = {
+    enable = true;
+    scripts = with pkgs.mpvScripts; [mpris];
+    config = ''
+      hdr-compute-peak=no
+      profile=fast
+      sub-auto=fuzzy
+      audio-file-auto=fuzzy
+      cache=yes
+      demuxer-max-bytes=512MiB
+    '';
+  };
+}

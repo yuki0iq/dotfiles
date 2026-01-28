@@ -39,7 +39,6 @@ The contents of these files? That's a secret.
 - `/users/{username}` is not the best idea, probably `/users/{username}@{hostname}` is better, e.g. for standalone home-manager configurations or servers where graphical system is unneeded
 - make home-manager optional by gating it behind enable-style option or removing it completely (librewolf, sublime-text)
 - overridden package autoupdate (fjordlauncher)
-- separate `meow.` nixos options (profiles) from normal ones (semi-upstreamable) and maybe move them to top-level
 - replace systemd-boot with refind + secure boot
 - prettify `meow.proxies` and migrate `/etc/nixos/secrets` somewhere under `/var` and/or use something smarter than just Not Disclosing and not having them backed up
 - migrate system configuration from chosen-user-writable `/etc/nixos` to somewhere under their home as nothing probably depends on it being there

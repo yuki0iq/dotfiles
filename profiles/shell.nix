@@ -1,0 +1,62 @@
+self: {
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    self.profiles.git
+    self.profiles.git-aliases
+    self.profiles.git-autosign
+    self.profiles.man-pages
+  ];
+
+  environment.shellAliases = {
+    downspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225 -R";
+    upspeed = "${pkgs.iperf3}/bin/iperf3 -c iperf3.moji.fr -p 5225";
+    cat = "${pkgs.bat}/bin/bat";
+    ip = "ip -c=always";
+    ls = "${pkgs.eza}/bin/eza --color=auto --hyperlink";
+    diff = "diff --color=auto";
+    psu = "ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,ucmd";
+    psc = "ps ouser:8,tid:6,pri,bsdtime:6,pss:10,rss:10,uss:10,oom,tt:5,stat,cmd";
+    nix-build = "nix-build --log-format multiline-with-logs";
+    nix-shell = "nix-shell --log-format multiline-with-logs";
+    nixos-rebuild = "nixos-rebuild --log-format multiline-with-logs";
+    ffmpeg = "ffmpeg -hide_banner";
+    ffprobe = "ffprobe -hide_banner";
+  };
+
+  environment.defaultPackages = lib.mkForce [];
+
+  environment.systemPackages = with pkgs; [
+    bat
+    bc
+    dua
+    eza
+    file
+    jq
+    libqalculate
+    lsof
+    moreutils
+    pv
+    ripgrep
+    strace
+  ];
+
+  programs.bash.completion.enable = true;
+  programs.direnv.enable = true;
+  programs.htop.enable = true;
+  programs.nix-ld.enable = true;
+  programs.statusline.enable = true;
+  programs.tmux.enable = true;
+
+  programs.command-not-found = {
+    enable = true;
+    dbPath = "${self.pins.nixpkgs}/programs.sqlite";
+  };
+
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+  };
+}

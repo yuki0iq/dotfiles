@@ -3,10 +3,10 @@
   pins ? import ./npins,
   nixpkgs ? pins.nixpkgs,
   lib ? import "${nixpkgs}/lib",
+  pkgs ? import nixpkgs {inherit system;},
   ...
-}: let
-  pkgs = import nixpkgs {inherit system;};
-in lib.fix (self: {
+}:
+lib.fix (self: {
   inherit system nixpkgs;
 
   pins = (builtins.mapAttrs (name: pinned: pinned {inherit pkgs;}) pins) // {inherit nixpkgs;};
@@ -14,20 +14,29 @@ in lib.fix (self: {
   lib = {
     readDir' = dir: let
       contents = builtins.readDir dir;
-      filtered = lib.filterAttrs (name: _: builtins.substring 0 1 name != "_") contents;
-      toRealPath = name: _: lib.path.append dir name;
+      filteredContents = lib.filterAttrs (name: _: builtins.substring 0 1 name != "_") contents;
+      stripDotNix = s: builtins.replaceStrings [".nix##" "##"] ["" ""] (s + "##");
+      transformPath = name: _: {
+        name = stripDotNix name;
+        value = lib.path.append dir name;
+      };
     in
-      lib.mapAttrsToList toRealPath filtered;
+      lib.mapAttrs' transformPath filteredContents;
 
     nixosSystem = import "${self.pins.nixpkgs}/nixos";
 
-    mkHost = name: self.lib.nixosSystem {
-      specialArgs = {inherit self;};
-      configuration.imports = (self.lib.readDir' ./modules) ++ [./hosts/${name}];
-    };
+    mkHost = name: path:
+      self.lib.nixosSystem {
+        specialArgs = {inherit self;};
+        configuration.imports = (builtins.attrValues self.modules) ++ [path];
+      };
+
+    autoimport = dir: lib.mapAttrs (_: path: import path self) (self.lib.readDir' dir);
   };
 
-  hosts = lib.mapAttrs (name: _: self.lib.mkHost name) (builtins.readDir ./hosts);
+  hosts = lib.mapAttrs self.lib.mkHost (self.lib.readDir' ./hosts);
+  modules = self.lib.autoimport ./modules;
+  profiles = self.lib.autoimport ./profiles;
 
   packages = {
     fantasque-sans-mono-ttf = pkgs.fantasque-sans-mono.overrideAttrs (final: prev: {
