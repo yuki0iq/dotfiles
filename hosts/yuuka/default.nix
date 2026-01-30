@@ -52,6 +52,11 @@
     self.packages.sublime4
     self.packages.yukigram
 
+    imagemagick
+    exiftool
+    ffmpeg
+    libjxl # cjxl
+
     gcc
     gef
     python3
