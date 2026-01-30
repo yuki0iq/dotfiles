@@ -61,6 +61,7 @@
     gef
     python3
     rustup
+    tokei
   ];
 
   programs.dconf.profiles.user.databases = [
