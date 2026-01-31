@@ -14,7 +14,6 @@ self: {
     ]);
   in {
     shadowsocks-proxy = makeProxyUnit {
-      enable = false;
       script = ''
         exec ${pkgs.shadowsocks-rust}/bin/sslocal -c /etc/nixos/secrets/shadowsocks.json
       '';
