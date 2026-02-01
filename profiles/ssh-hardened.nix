@@ -1,4 +1,4 @@
-self: {...}: {
+self: {lib, ...}: {
   programs.ssh = {
     hostKeyAlgorithms = ["ssh-ed25519-cert-v01@openssh.com" "ssh-ed25519" "rsa-sha2-256" "rsa-sha2-512"];
     kexAlgorithms = ["sntrup761x25519-sha512" "sntrup761x25519-sha512@openssh.com" "mlkem768x25519-sha256"];
@@ -23,4 +23,8 @@ self: {...}: {
     PubkeyAcceptedKeyTypes = "sk-ssh-ed25519@openssh.com,ssh-ed25519";
     CASignatureAlgorithms = "ssh-ed25519";
   };
+
+  systemd.generators.systemd-ssh-generator = "/dev/null";
+  systemd.sockets.sshd-unix-local.enable = lib.mkForce false;
+  systemd.sockets.sshd-vsock.enable = lib.mkForce false;
 }
