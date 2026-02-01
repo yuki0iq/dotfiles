@@ -4,6 +4,7 @@ self: {
   ...
 }: {
   imports = [
+    self.profiles.chrony
     self.profiles.netcat-openbsd
     self.profiles.ssh-hardened
   ];
