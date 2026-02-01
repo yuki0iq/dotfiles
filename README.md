@@ -26,9 +26,7 @@ nix --extra-experimental-features nix-command store diff-closures /run/current-s
 
 ## Tell me your secrets
 
-Secrets should be placed under `/etc/nixos/secrets` directory.
-
-Currently they are only needed if `meow.proxies.enable` NixOS option is set to `true`.
+Secrets should be placed under `/var/secrets` directory. They are currently needed only if `profiles.proxies` is imported.
 
 The contents of these files? That's a secret.
 
@@ -40,7 +38,6 @@ The contents of these files? That's a secret.
 - make home-manager optional by gating it behind enable-style option or removing it completely (librewolf, sublime-text)
 - overridden package autoupdate (fjordlauncher)
 - replace systemd-boot with refind + secure boot
-- prettify `meow.proxies` and migrate `/etc/nixos/secrets` somewhere under `/var` and/or use something smarter than just Not Disclosing and not having them backed up
 - migrate system configuration from chosen-user-writable `/etc/nixos` to somewhere under their home as nothing probably depends on it being there
 - consider using userborn and etc overlay
 - minimize closure size
