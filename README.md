@@ -38,7 +38,6 @@ The contents of these files? That's a secret.
 - make home-manager optional by gating it behind enable-style option or removing it completely (librewolf, sublime-text)
 - overridden package autoupdate (fjordlauncher)
 - replace systemd-boot with refind + secure boot
-- migrate system configuration from chosen-user-writable `/etc/nixos` to somewhere under their home as nothing probably depends on it being there
 - consider using userborn and etc overlay
 - minimize closure size
 - (lix 2.95) use log-format option instead of shell aliases
