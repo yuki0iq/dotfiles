@@ -14,7 +14,12 @@ lib.fix (self: {
   lib = {
     readDir' = dir: let
       contents = builtins.readDir dir;
-      filteredContents = lib.filterAttrs (name: _: builtins.substring 0 1 name != "_") contents;
+      isNixFile = name: kind: let
+        masked = builtins.substring 0 1 name == "_";
+        importable = kind == "directory" || kind == "regular" && lib.hasSuffix ".nix" name;
+      in
+        !masked && importable;
+      filteredContents = lib.filterAttrs isNixFile contents;
       stripDotNix = s: builtins.replaceStrings [".nix##" "##"] ["" ""] (s + "##");
       transformPath = name: _: {
         name = stripDotNix name;
@@ -39,6 +44,14 @@ lib.fix (self: {
   profiles = self.lib.autoimport ./profiles;
 
   packages = {
+    bg.yuuka = pkgs.fetchurl {
+      urls = [
+        "https://pixiv.net/img-original/img/2024/02/04/23/14/09/115770254_p0.jpg"
+        "https://pixiv.ducks.party/img-original/img/2024/02/04/23/14/09/115770254_p0.jpg"
+      ];
+      hash = "sha256-jBVGOqZImknJ/gqSiplmCNII4skcvwxe8eE9mcxaVII=";
+    };
+
     fantasque-sans-mono-ttf = pkgs.fantasque-sans-mono.overrideAttrs (final: prev: {
       installPhase = builtins.replaceStrings ["OTF" "otf" "opentype"] ["TTF" "ttf" "truetype"] prev.installPhase;
     });

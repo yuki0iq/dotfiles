@@ -10,13 +10,18 @@
     ./hardware-configuration.nix
 
     self.profiles.boot
+    self.profiles.git-name
     self.profiles.gnome
     self.profiles.home-manager
+    self.profiles.hplip
     self.profiles.locale
     self.profiles.network
     self.profiles.nix
     self.profiles.proxies
     self.profiles.shell
+    self.profiles.shell-development
+    self.profiles.shell-multimedia
+    self.profiles.style-yuuka
   ];
 
   networking.hostName = "yuuka";
@@ -51,71 +56,7 @@
     self.packages.fjordlauncher
     self.packages.sublime4
     self.packages.yukigram
-
-    imagemagick
-    exiftool
-    ffmpeg
-    libjxl # cjxl
-
-    gcc
-    gef
-    python3
-    rustup
-    tokei
   ];
-
-  programs.dconf.profiles.user.databases = [
-    {
-      settings = {
-        "org/gnome/desktop/interface".accent-color = "teal";
-
-        "org/gnome/desktop/background" = let
-          yuuka = pkgs.fetchurl {
-            urls = [
-              "https://pixiv.net/img-original/img/2024/02/04/23/14/09/115770254_p0.jpg"
-              "https://pixiv.ducks.party/img-original/img/2024/02/04/23/14/09/115770254_p0.jpg"
-            ];
-            hash = "sha256-jBVGOqZImknJ/gqSiplmCNII4skcvwxe8eE9mcxaVII=";
-          };
-        in {
-          picture-options = "zoom";
-          picture-uri = "file://${yuuka}";
-          picture-uri-dark = "file://${yuuka}";
-        };
-
-        "org/gnome/desktop/input-sources" = {
-          sources = [
-            (lib.gvariant.mkTuple ["xkb" "us_yuki+colemak_dh"])
-            (lib.gvariant.mkTuple ["xkb" "ru_yuki+rulemak_dh"])
-          ];
-          xkb-options = ["grp:caps_toggle" "grp_led:scroll" "compose:rctrl" "lv3:ralt_switch" "lv3:rwin_switch" "lv5:menu_switch"];
-        };
-      };
-
-      # XXX: Prevent gnome-shell from resetting to wrong xkb options in case they are reset to default
-      locks = ["/org/gnome/desktop/input-sources/xkb-options"];
-    }
-  ];
-
-  services.desktopManager.gnome.keybindings = {
-    "<Super>F8" = {command = "${./keyboard-layout-group-switcher} qwerty";};
-    "<Super>F9" = {command = "${./keyboard-layout-group-switcher} yuki";};
-    "<Super>F10" = {command = "${./keyboard-layout-group-switcher} ibus";};
-  };
-
-  programs.git.config.user = {
-    name = "Yuki Sireneva";
-    email = "yuki.utk8g@gmail.com";
-  };
-
-  services.printing = {
-    enable = lib.mkForce true;
-    drivers = [pkgs.hplip];
-  };
-  hardware.sane = {
-    enable = true;
-    extraBackends = [pkgs.hplip];
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -47,7 +47,10 @@ self: {
       settings = {
         "org/gnome/desktop/a11y/interface".show-status-shapes = true;
 
-        "org/gnome/desktop/input-sources".show-all-sources = true;
+        "org/gnome/desktop/input-sources" = {
+          show-all-sources = true;
+          xkb-options = ["grp:caps_toggle" "grp_led:scroll" "compose:rctrl" "lv3:ralt_switch" "lv3:rwin_switch" "lv5:menu_switch"];
+        };
 
         "org/gnome/desktop/interface" = {
           font-name = "System-ui 11";
