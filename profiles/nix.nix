@@ -6,19 +6,15 @@ self: {pkgs, ...}: {
     npins
   ];
 
-  nix.channel.enable = false;
-
   nix.package = pkgs.lixPackageSets.latest.lix;
-
-  nix.nixPath = [
-    "nixpkgs=${self.pins.nixpkgs}"
-  ];
-
-  nix.settings.use-xdg-base-directories = true;
-
   system.forbiddenDependenciesRegexes = ["nix-2"];
-
   system.tools = {
     nixos-option.enable = false;
   };
+
+  nix.channel.enable = false;
+  nix.nixPath = ["/etc/nix-path"];
+  environment.etc."nix-path/nixpkgs".source = self.pins.nixpkgs;
+
+  nix.settings.use-xdg-base-directories = true;
 }
