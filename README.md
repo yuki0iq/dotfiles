@@ -37,7 +37,7 @@ The contents of these files? That's a secret.
 - `/users/{username}` is not the best idea, probably `/users/{username}@{hostname}` is better, e.g. for standalone home-manager configurations or servers where graphical system is unneeded
 - reduce reliance on home-manager (librewolf, sublime-text)
 - overridden package autoupdate (fjordlauncher)
-- replace systemd-boot with refind + secure boot
+- consider using secure boot
 - consider using userborn and etc overlay
 - minimize closure size
 - (lix 2.95) use log-format option instead of shell aliases
