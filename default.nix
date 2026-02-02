@@ -106,8 +106,8 @@ lib.fix (self: {
       };
     in
       pkgs.sublime4.overrideAttrs (final: prev: {
-        # XXX: Keep name here and in patch in sync with nixpkgs `primaryBinary`
-        sublime_text = prev.sublime_text.overrideAttrs (final: prev: {
+        installPhase = builtins.replaceStrings ["${prev.passthru.unwrapped}"] ["${final.passthru.unwrapped}"] prev.installPhase;
+        passthru.unwrapped = prev.passthru.unwrapped.overrideAttrs (final: prev: {
           # https://gist.github.com/JerryLokjianming/71dac05f27f8c96ad1c8941b88030451?permalink_comment_id=5590975
           postFixup =
             ''
